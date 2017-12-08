@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{20}%
+\begin{thebibliography}{18}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -189,18 +189,6 @@
   {Evans}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
   {Physical review letters}\ }\textbf {\bibinfo {volume} {108}},\ \bibinfo
   {pages} {070601} (\bibinfo {year} {2012})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Ivanova}(2007)}]{ivanova2007}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~M.}\ \bibnamefont
-  {Ivanova}},\ }\href {https://arxiv.org/abs/0710.4000} {\bibfield  {journal}
-  {\bibinfo  {journal} {arXiv preprint arXiv:0710.4000}\ } (\bibinfo {year}
-  {2007})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Sherratt}(1998)}]{sherratt1998transition}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~A.}\ \bibnamefont
-  {Sherratt}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
-  {Dynamics and Stability of Systems}\ }\textbf {\bibinfo {volume} {13}},\
-  \bibinfo {pages} {167} (\bibinfo {year} {1998})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Leetmaa}\ and\ \citenamefont
   {Skorodumova}(2014)}]{leetmaa2014kmclib}%
   \BibitemOpen
