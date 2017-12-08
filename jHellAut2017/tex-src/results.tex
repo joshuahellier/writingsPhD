@@ -5,10 +5,11 @@ There are a few different methods which could have been used, but we chose to ca
 on lattice systems. \texttt{KMCLib} has the advantage that it is python-wrapped \texttt{C++}, and thus quite easy to use whilst at the same time being quite computationally efficient; thus it was fairly easy for us to carry out large numbers
 of differently-parametrised serial \texttt{KMCLib} jobs on the \texttt{Eddie3} computing cluster here at Edinburgh. The codes used are kept here~\cite{jHellGitRepo}.
 \subsection{Flow in a Block}
-As we have MFT predictions about flow in a block, we can try to simulate that situation using KMC. In the bulk, the transition rates are simply those described in Figure~\ref{fig:rates}. At the boundaries, referred to as the ``top'' and ``bottom''
+As we have MFT predictions about flow in a block, we can try to simulate that situation using KMC. In the bulk, the transition rates are simply those described in Figure~\ref{fig:rates}. At the boundaries, referred to as the ``top''  and ``bottom''
 of the block, there are 2 layers of lattice sites what switch between being full and empty with rates such that the time-averaged occupation can be specified to match the desired boundary conditions; there are then chances for particles to spawn
 and despawn with rates depending upon the occupation of these boundary layers. In the end, the intention is that these boundaries should reproduce the effect of having particle reservoirs attached to the ends, which is something we can check for
-sanity in the output by inspecting the time-averaged occupations of sites near the boundary. I have used this setup to explore three scenarios, as follows:
+sanity in the output by inspecting the time-averaged occupations of sites near the boundary. I have used this setup to explore three scenarios, discussed in the following sections. In each of these I refer to a boundary condition configuration
+by $(\rho_B, \rho_T)$, with $\rho_B$ and $\rho_T$ being the bottom and top boundary densities respectively.
 
 \subsubsection{Varying $\lambda$ with Fixed Boundary Conditions}
 The MFT we derived suggests that some kind of transition might occur as $\lambda$ varies, as we go from a steady flow regime to a critically slow flow regime. An easy way to see if this happens is to hold the desired boundary densities constant
@@ -17,8 +18,8 @@ whilst changing $\lambda$, and measuring the particle density as well as the mea
 occasion where mean field theory predicts a transition which does not occur, instead of failing to predict one which does.
 \begin{figure*}[h!]
 \vspace{1em}
-\caption{\label{fig:lambdaScans} Some results obtained by varying $\lambda$ with fixed boundary densities $(\rho_B, \rho_T)$: Blue refers to $(\frac{2}{3}, \frac{2}{3})$, yellow to $(\frac{3}{4}, \frac{7}{12})$, (both with average density $\frac{2}{3}$); green to
-$(\frac{3}{4}, \frac{1}{4})$, red to $(\frac{99}{100}, \frac{1}{100})$, (with average density $\frac{1}{2}$). In the case of the mean flow we have an MFT prediction, indicated by the solid line.}
+\caption{\label{fig:lambdaScans} Moments of flow rates and average overall densities observed when varying $\lambda$ with fixed boundary densities $(\rho_B, \rho_T)$: Blue refers to $(\frac{2}{3}, \frac{2}{3})$, yellow to $(\frac{3}{4}, \frac{7}{12})$
+(both with average density $\frac{2}{3}$); green to $(\frac{3}{4}, \frac{1}{4})$, red to $(\frac{99}{100}, \frac{1}{100})$ (with average density $\frac{1}{2}$). In the case of the mean flow we have an MFT prediction, indicated by the solid line.}
 \begin{center}
  \begin{tabular}{c|c}
     \includegraphics[width=0.5\linewidth]{../tex-src/images/lambdaScan/flowMean} & \includegraphics[width=0.5\linewidth]{../tex-src/images/lambdaScan/flowVar} \\
@@ -30,8 +31,9 @@ $(\frac{3}{4}, \frac{1}{4})$, red to $(\frac{99}{100}, \frac{1}{100})$, (with av
 \end{figure*}
 
 
-\subsubsection{Varying $\lambda$ and Boundary Densities, Keeping the Mean Density Constant}
-Another situation we can investigate is 
+\subsubsection{Varying $\lambda$ and Boundary Densities, Keeping the Average Density Constant}
+Another situation we can investigate has boundaries $(\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ for some given $\rho_M$, where $\delta\rho$ and $\lambda$ are varied. As before, I calculated flow rate moments and average
+densities, and the results are displayed in Figure~\ref{fig:constDens}.
 
 
 \subsubsection{Diffusion Coefficient Measurement}
