@@ -10,12 +10,21 @@ of the block, there are 2 layers of lattice sites what switch between being full
 and despawn with rates depending upon the occupation of these boundary layers. In the end, the intention is that these boundaries should reproduce the effect of having particle reservoirs attached to the ends, which is something we can check for
 sanity in the output by inspecting the time-averaged occupations of sites near the boundary. I have used this setup to explore three scenarios, discussed in the following sections. In each of these I refer to a boundary condition configuration
 by $(\rho_B, \rho_T)$, with $\rho_B$ and $\rho_T$ being the bottom and top boundary densities respectively.
+When we measure flow rate in such a situation, we perform a specified number of Gillespie steps and count the number of particles entering at the top $e_T$, leaving at the top $l_T$, entering at the bottom $e_B$, leaving at the bottom $l_B$,
+as well as the Gillespie time interval $T$ that elapses during those steps; we then have an estimate of the overall flow rate $J$ via
+\begin{equation}
+ J = \frac{e_B-e_T+l_T-l_B}{2T}.
+\end{equation}
+We can also count the total number of particles in the system in order to measure the average particle density, although we need to make sure that it is correctly time-averaged; in my code this is done by updating a histogram of particle numbers
+as the simulation progresses. In each of our calculations, we make the initial configuration by randomly filling the system with particles and vacancies in such a way that the initial density should be $\frac{1}{2}(\rho_T + \rho_B)$, and then
+run the system for a specified number of equilibration steps to destroy any initial transients.
 
 \subsubsection{Varying $\lambda$ with Fixed Boundary Conditions}
 The MFT we derived suggests that some kind of transition might occur as $\lambda$ varies, as we go from a steady flow regime to a critically slow flow regime. An easy way to see if this happens is to hold the desired boundary densities constant
 whilst changing $\lambda$, and measuring the particle density as well as the mean, variance and skewness of the flow rate. If such a transition does indeed occur, we should expect to see a divergence in one of these moments. I have done this with
-4 fairly exemplary sets of boundary conditions as shown in Figure~\ref{fig:lambdaScans}, and do not see any peaks or divergences, so I do not think a sharp transition occurs; instead we see that the MFTs sharp transition is smoothed out, presumably by correlations, and so this is one
-occasion where mean field theory predicts a transition which does not occur, instead of failing to predict one which does.
+4 fairly exemplary sets of boundary conditions as shown in Figure~\ref{fig:lambdaScans}. In each case we used systems of length $64$ (length $32$ gives similar results, so this
+is probably big enough), running them for $400000$ Gillispie steps for equilibration followed by $10000$ measurement runs of $1000$ steps interspersed with relaxation runs of $16000$
+steps. This way we could gather statistics about flow rates and densities in a well-equilibrated system (if possible) whilst not having to worry too much about temporal autocorrelation effects.
 \begin{figure*}[h!]
 \vspace{1em}
 \caption{\label{fig:lambdaScans} Moments of flow rates and average overall densities observed when varying $\lambda$ with fixed boundary densities $(\rho_B, \rho_T)$: Blue refers to $(\frac{2}{3}, \frac{2}{3})$, yellow to $(\frac{3}{4}, \frac{7}{12})$
@@ -32,13 +41,14 @@ occasion where mean field theory predicts a transition which does not occur, ins
 
 
 \subsubsection{Varying $\lambda$ and Boundary Densities, Keeping the Average Density Constant}
-Another situation we can investigate has boundaries $(\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ for some given $\rho_M$, where $\delta\rho$ and $\lambda$ are varied. As before, I calculated flow rate moments and average
-densities, and the results are displayed in Figure~\ref{fig:constDens}.
+Another situation we can investigate has boundaries $(\rho_B, \rho_T) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ for some given $\rho_M$, where $\delta\rho$ and $\lambda$ are varied. As before, I calculated flow rate
+moments and average densities, and the results are displayed in Figure~\ref{fig:constDens}. These calculations were performed with the same run parameters (system length etc)
+as above.
 
 \begin{figure*}[h!]
 \vspace{1em}
-\caption{\label{fig:constDens} Flow rate moments and average overall densities observed when varying the difference $\delta\rho$ between the boundary concentrations $(\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ and $\lambda$.
-I chose $\rho_M=\frac{1}{2}$, as this gives us the biggest range of $\delta\rho$ to investigate.}
+\caption{\label{fig:constDens} Flow rate moments and average overall densities observed when varying the difference $\delta\rho$ between the boundary concentrations
+$(\rho_B, \rho_T) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ and $\lambda$. I chose $\rho_M=\frac{1}{2}$, as this gives us the biggest range of $\delta\rho$ to investigate.}
 \begin{center}
  \begin{tabular}{c|c}
     \includegraphics[width=0.5\linewidth]{../tex-src/images/constDens/meanFlow-crop} & \includegraphics[width=0.5\linewidth]{../tex-src/images/constDens/varFlow-crop} \\
@@ -52,17 +62,9 @@ I chose $\rho_M=\frac{1}{2}$, as this gives us the biggest range of $\delta\rho$
 
 
 \subsubsection{Diffusion Coefficient Measurement}
-In our calculations, we set the top and bottom densities to be $\rho_T = \rho_M - \frac{1}{2} \delta\rho$ and $\rho_B = \rho_M + \frac{1}{2} \delta\rho$ respectively, as well as specifying the value of $\lambda$ and the number of sites
-in the lattice. During the calculation, we perform a specified number
-of Gillespie steps, and count the number of particles entering at the top $e_T$, leaving at the top $l_T$, entering at the bottom $e_B$, leaving at the bottom $l_B$, as well as the Gillespie time interval $T$ that elapses during
-those steps; we then have an estimate of the overall flow rate $J$ via
-\begin{equation}
- J = \frac{e_B-e_T+l_T-l_B}{2T}.
-\end{equation}
-We can also count the total number of particles in the system in order to measure the average particle density, although we need to make sure that it is correctly time-averaged; in my code this is done by updating a histogram of particle numbers
-as the simulation progresses.
-If we keep $\delta\rho$ relatively small, $J$ varies approximately linearly with $\delta\rho$; thus if we calculate $J$ for a series of small $\delta \rho$, we can perform linear regression to find $D=\partDeriv{J}{\delta\rho}\big|_{\delta\rho=0}$,
-the effective diffusion coefficient. Computing this for different $(\rho_M, \lambda)$ combinations gives us numerical data which can be compared with the MFT result in Equation~\ref{eq:MFTflow}.
+Let us again specify the boundary densities to be $(\rho_B, \rho_T) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ for some given $\rho_M$. This time we keep $\delta\rho$ relatively small, so that $J$ varies approximately
+linearly with $\delta\rho$; thus if we calculate $J$ for a series of small $\delta \rho$, we can perform linear regression to find $D=\partDeriv{J}{\delta\rho}\big|_{\delta\rho=0}$, the effective diffusion coefficient.
+Computing this for different $(\rho_M, \lambda)$ combinations gives us numerical data which can be compared with the MFT result in Equation~\ref{eq:MFTflow}.
 \begin{figure*}[h!]
 \vspace{1em}
 \caption{\label{fig:diffCoef} The contour plot on the left shows the MFT prediction of the diffusion coefficient $D=\partDeriv{J}{\delta\rho}\big|_{\delta\rho=0}$ as a function of local density $\rho_M$ and $\lambda$;
@@ -75,12 +77,11 @@ with exactly the same plotting ranges. The dots indicate which points in $(\rho_
 \end{center}
     \vspace{-0em}
 \end{figure*}
-To produce the results in Figure~\ref{fig:diffCoef}, for each $(\rho_T, \rho_B, \lambda)$ combination we created the initial state by randomly inserting particles into an empty 124-length lattice, so that the density was $\rho_M$. We then ran the simulation for
-$1.6\times10^8$ steps, to wash away any spurious initial-data effects and allow the system to reach a steady state flow. We then ran for $8\times10^7$ steps whilst measuring flow rate and density, then allowed the system to run for $1.6\times10^7$
-steps without taking measurements in an effort to suppress temporal autocorrelation effects. This alternating process was repeated 10 times, yielding 10 measurements of flow rate and density, from which estimates of these quantities and their
-standard errors could be obtained. The whole setup was repeated with a 60-length system, in order to check for edge effects; however, the results were not significantly different, so those would not seem to be a problem.
+In this setup we ran the simulation for
+$1.6\times10^8$ equilibration steps, followed by $10$ sets of alternating measurement and relaxation runs, of lengths $8\times10^7$ and $1.6\times10^7$ steps respectively. We repeated the calculation with a system of half the size, and again
+found little difference between the two datasets, which gives us confidence that finite-size effects are small.
 We can of course obtain estimates of the confidence interval for our linear regression coefficient, and thus generate a standard error for $D$; likewise we can obtain goodness of fit estimates for the
-regression. They are not included here due to space constraints, but they are in the additional materials.
+regression. They are not included here for brevity, but they are in the additional materials.
 %REMEMBER TO ACTUALLY PUT IT THERE!!!
 
 \subsection{Flow Structure}
