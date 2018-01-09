@@ -1,4 +1,19 @@
 \section{Discussion} \label{sec:conc}
+\subsection{Varying $\lambda$ with Fixed Boundary Conditions} 
+Firstly, we should note that we only really have an MFT prediction for the flow rate as a function of $\lambda$. Technically we could attempt to predict the density as well, but we run into serious problems with solution uniqueness as soon
+as $\lambda$ drops below $\frac{1}{4}$, which is when precisely things actually start to get interesting, so I haven't plotted it here. So long as we steer clear of regimes where the MFT predicts no flow, it is actually a decent enough predictor
+of the actual behaviour, becoming a better approximation as $\lambda$ grows. However, one of the key predictions of the MFT, that a sharp transition to a no-flow regime occurs when $\lambda$ becomes small enough (at least for 3 of the 4 sets of
+boundary conditions we investigated here), does not seem to be realised in our simulations. Indeed what seems to be happening is that the sharp transition has been smoothed out, presumably by correlations the MFT does not consider; hence we
+do not see any peaks or jumps in the flow rate variance or skewness, which we would expect to see if there was a transition. As for the observed average density, for larger $\lambda$ the density approaches the average of the boundary densities,
+and for small $\lambda$ the density approaches $1$ (which makes sense as the particles are very strongly attracted to each other, and so the system has a tendency to fill up); the exception to this it the case with extreme full/empty boundary
+conditions, although in this case one might argue that the particles are ``sucked out'' of the system so rapidly at the empty end that the system never really has a chance to fill up. It is also worth noticing that this extreme case is the only
+one in which the flow rate skewness does anything interesting; it is mostly positive, especially at low-$\lambda$, implying that most of the time the system is fairly static, but occasionally short-lived strong flows occur which end up causing
+most of the bulk flow.
+\subsection{Varying $\lambda$ and Boundary Densities, Keeping the Average Density Constant}
+The results gathered in the previous section are of course a special case of situation presented here; indeed, the graphs displayed in~\ref{fig:constDens} 
+Comparing the MFT prediction for the mean flow to what we observe in the numerics, we immediately see that, as before, the MFT is really quite effective at predicting flow so long as we avoid regimes in which flow is very small. Again,
+we don't see spikes in the higher moments of the flow, indicating that hard transitions aren't occurring. Finally, the density is very close to the average of the boundary densities  until $\lambda$ drops below $\frac{1}{4}$, which is consistent
+with our previous findings.
 \subsection{Diffusion Coefficient}
 Putting the MFT prediction and the actual numerical results together as we have done in Figure~\ref{fig:diffCoef}, we can compare and contrast. The MFT seems to be a good predictor of the true behaviour of the diffusion coefficient,
 including the strange symmetry about $\rho_M=\frac{2}{3}$ we pointed out in Section~\ref{sec:contMFTPred}, so long as we avoid the region where the MFT predicts $D<0.4$. The incorrectness of the MFT prediction suggests that some kind of nontrivial

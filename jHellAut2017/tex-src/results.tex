@@ -4,7 +4,7 @@ We now have some MFT predictions about the SPM, and a few ideas about when those
 There are a few different methods which could have been used, but we chose to calculate using the excellent \texttt{KMCLib}\cite{leetmaa2014kmclib} package, which implements the Kinetic Monte Carlo algorithm (essentially the same as the Gillespie algorithm)
 on lattice systems. \texttt{KMCLib} has the advantage that it is python-wrapped \texttt{C++}, and thus quite easy to use whilst at the same time being quite computationally efficient; thus it was fairly easy for us to carry out large numbers
 of differently-parametrised serial \texttt{KMCLib} jobs on the \texttt{Eddie3} computing cluster here at Edinburgh. The codes used are kept here~\cite{jHellGitRepo}.
-\subsection{Flow in a Block}
+
 As we have MFT predictions about flow in a block, we can try to simulate that situation using KMC. In the bulk, the transition rates are simply those described in Figure~\ref{fig:rates}. At the boundaries, referred to as the ``top''  and ``bottom''
 of the block, there are 2 layers of lattice sites what switch between being full and empty with rates such that the time-averaged occupation can be specified to match the desired boundary conditions; there are then chances for particles to spawn
 and despawn with rates depending upon the occupation of these boundary layers. In the end, the intention is that these boundaries should reproduce the effect of having particle reservoirs attached to the ends, which is something we can check for
@@ -19,7 +19,7 @@ We can also count the total number of particles in the system in order to measur
 as the simulation progresses. In each of our calculations, we make the initial configuration by randomly filling the system with particles and vacancies in such a way that the initial density should be $\frac{1}{2}(\rho_T + \rho_B)$, and then
 run the system for a specified number of equilibration steps to destroy any initial transients.
 
-\subsubsection{Varying $\lambda$ with Fixed Boundary Conditions}
+\subsection{Varying $\lambda$ with Fixed Boundary Conditions}
 The MFT we derived suggests that some kind of transition might occur as $\lambda$ varies, as we go from a steady flow regime to a critically slow flow regime. An easy way to see if this happens is to hold the desired boundary densities constant
 whilst changing $\lambda$, and measuring the particle density as well as the mean, variance and skewness of the flow rate. If such a transition does indeed occur, we should expect to see a divergence in one of these moments. I have done this with
 4 fairly exemplary sets of boundary conditions as shown in Figure~\ref{fig:lambdaScans}. In each case we used systems of length $64$ (length $32$ gives similar results, so this
@@ -40,20 +40,21 @@ steps. This way we could gather statistics about flow rates and densities in a w
 \end{figure*}
 
 
-\subsubsection{Varying $\lambda$ and Boundary Densities, Keeping the Average Density Constant}
+\subsection{Varying $\lambda$ and Boundary Densities, Keeping the Average Density Constant}
 Another situation we can investigate has boundaries $(\rho_B, \rho_T) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ for some given $\rho_M$, where $\delta\rho$ and $\lambda$ are varied. As before, I calculated flow rate
 moments and average densities, and the results are displayed in Figure~\ref{fig:constDens}. These calculations were performed with the same run parameters (system length etc)
 as above.
 
 \begin{figure*}[h!]
 \vspace{1em}
-\caption{\label{fig:constDens} Flow rate moments and average overall densities observed when varying the difference $\delta\rho$ between the boundary concentrations
-$(\rho_B, \rho_T) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ and $\lambda$. I chose $\rho_M=\frac{1}{2}$, as this gives us the biggest range of $\delta\rho$ to investigate.}
+\caption{\label{fig:constDens} Flow rate mean, flow variance and average overall densities observed when varying the difference $\delta\rho$ between the boundary concentrations
+$(\rho_B, \rho_T) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ and $\lambda$. I chose $\rho_M=\frac{1}{2}$, as this gives us the biggest range of $\delta\rho$ to investigate. The top left panel is the MFT prediction
+for the flow rate, whilst top right shows the observed mean flow rate. The measured flow skewness and kurtosis are not displayed here as both signals were small and noisy, and didn't show anything particularly significant.}
 \begin{center}
  \begin{tabular}{c|c}
-    \includegraphics[width=0.5\linewidth]{../tex-src/images/constDens/meanFlow-crop} & \includegraphics[width=0.5\linewidth]{../tex-src/images/constDens/varFlow-crop} \\
+    \includegraphics[width=0.5\linewidth]{../tex-src/images/constDens/constAnalFlow-crop} & \includegraphics[width=0.5\linewidth]{../tex-src/images/constDens/meanFlowContour-crop} \\
     \hline
-    \includegraphics[width=0.5\linewidth]{../tex-src/images/constDens/skewFlow-crop} & \includegraphics[width=0.5\linewidth]{../tex-src/images/constDens/meanDens-crop} \\
+    \includegraphics[width=0.5\linewidth]{../tex-src/images/constDens/varFlow-crop} & \includegraphics[width=0.5\linewidth]{../tex-src/images/constDens/meanDens-crop} \\
     \end{tabular}
 \end{center}
     \vspace{-0em}
@@ -61,7 +62,7 @@ $(\rho_B, \rho_T) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delt
 
 
 
-\subsubsection{Diffusion Coefficient Measurement}
+\subsection{Diffusion Coefficient Measurement}
 Let us again specify the boundary densities to be $(\rho_B, \rho_T) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ for some given $\rho_M$. This time we keep $\delta\rho$ relatively small, so that $J$ varies approximately
 linearly with $\delta\rho$; thus if we calculate $J$ for a series of small $\delta \rho$, we can perform linear regression to find $D=\partDeriv{J}{\delta\rho}\big|_{\delta\rho=0}$, the effective diffusion coefficient.
 Computing this for different $(\rho_M, \lambda)$ combinations gives us numerical data which can be compared with the MFT result in Equation~\ref{eq:MFTflow}.
