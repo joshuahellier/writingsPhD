@@ -1,36 +1,13 @@
 \section{Discussion} \label{sec:conc}
 \subsection{Varying $\lambda$ with Fixed Boundary Conditions} 
-Firstly, we should note that we only really have an MFT prediction for the flow rate as a function of $\lambda$. Technically we could attempt to predict the density as well, but we run into serious problems with solution uniqueness as soon
-as $\lambda$ drops below $\frac{1}{4}$, which is when precisely things actually start to get interesting, so I haven't plotted it here. So long as we steer clear of regimes where the MFT predicts no flow, it is actually a decent enough predictor
-of the actual behaviour, becoming a better approximation as $\lambda$ grows. However, one of the key predictions of the MFT, that a sharp transition to a no-flow regime occurs when $\lambda$ becomes small enough (at least for 3 of the 4 sets of
-boundary conditions we investigated here), does not seem to be realised in our simulations. Indeed what seems to be happening is that the sharp transition has been smoothed out, presumably by correlations the MFT does not consider; hence we
-do not see any peaks or jumps in the flow rate variance or skewness, which we would expect to see if there was a transition. As for the observed average density, for larger $\lambda$ the density approaches the average of the boundary densities,
-and for small $\lambda$ the density approaches $1$ (which makes sense as the particles are very strongly attracted to each other, and so the system has a tendency to fill up); the exception to this it the case with extreme full/empty boundary
-conditions, although in this case one might argue that the particles are ``sucked out'' of the system so rapidly at the empty end that the system never really has a chance to fill up. It is also worth noticing that this extreme case is the only
-one in which the flow rate skewness does anything interesting; it is mostly positive, especially at low-$\lambda$, implying that most of the time the system is fairly static, but occasionally short-lived strong flows occur which end up causing
-most of the bulk flow.
+
 \subsection{Varying $\lambda$ and Boundary Densities, Keeping the Average Density Constant}
-The results gathered in the previous section are of course a special case of situation presented here; indeed, the graphs displayed in~\ref{fig:constDens} 
-Comparing the MFT prediction for the mean flow to what we observe in the numerics, we immediately see that, as before, the MFT is really quite effective at predicting flow so long as we avoid regimes in which flow is very small. Again,
-we don't see spikes in the higher moments of the flow, indicating that hard transitions aren't occurring. Finally, the density is very close to the average of the boundary densities  until $\lambda$ drops below $\frac{1}{4}$, which is consistent
-with our previous findings.
+
 \subsection{Diffusion Coefficient}
-Putting the MFT prediction and the actual numerical results together as we have done in Figure~\ref{fig:diffCoef}, we can compare and contrast. The MFT seems to be a good predictor of the true behaviour of the diffusion coefficient,
-including the strange symmetry about $\rho_M=\frac{2}{3}$ we pointed out in Section~\ref{sec:contMFTPred}, so long as we avoid the region where the MFT predicts $D<0.4$. The incorrectness of the MFT prediction suggests that some kind of nontrivial
-correlations have built up in this region, which makes sense as the coupling between particles has become stronger, whilst the density is middling, allowing that coupling to mean something. It is also worth noting that the discrepancy between
-intended density and actual density starts to become non-negligible here, which we can infer from how the originally rectangular grid of grey dots
-(indicating $(\rho_M, \lambda)$ points where we obtained the data) has been deformed, to the extent that there is a big cluster of them in the observed minimum of the diffusion coefficient. Some of these anomalous densities are greater
-than the density of the denser reservoir to which the system is coupled; thus, the reservoirs involved are in some sense ``unphysical'' as the data suggests that they would immediately attempt to switch to a higher density, which given a
-constant volume constraint would imply a phase separation occurs; thus the numerical results aren't fitting so well into the paradigm we were using to analyse them (flow between reservoirs with slightly different densities),
-so it's little wonder the MFT is having trouble keeping up. Of course, we do not see the negative diffusion coefficient that naive application of MFT would suggest, because it would cause instability; instead, the diffusion coefficient just
-becomes very small, as the system becomes unresponsive to concentration gradients.
+
 \subsection{Flow Structure}
-Looking at Figure~\ref{fig:flowPatterns}, we can make some observations. When $\lambda$ is extremely low, the medium consists of solid blocks surrounded by empty spaces containing a dilute gas of particles; as we alter the overall density,
-all that changes is the thicknesses of these blocks. The case $\lambda=1$ is just excluded Brownian motion, and is included here for comparison. The most interesting images are those for the intermediate $(\rho_M , \lambda)$; here
-we see a ``lumpy'' or ``foamy'' structure, in which small blocks of particles are being constantly created and destroyed whilst a rather minimal flow occurs across the system.
-We do not think that there is any hard phase transition as we vary $(\rho_M , \lambda)$; rather, it seems that this ``foamy'' behaviour is part of a continuous range of phenomena between the extremes, containing medium-range correlations between
-particles. However, numerically computing equal-time correlation functions to the accuracy required to draw conclusions about these correlations has proven to be extremely difficult, so we cannot speak in quantitative terms about them.
+
 \subsection{Conclusions}
-To conclude, the continuum MFT is a surprisingly good predictor of the bulk flow behaviour of the SPM, provided we avoid the region where it breaks down. That, combined with interpolations of our data about the flows during breakdown,
-could form the basis of a large-scale approximation of the flow, which could be used to make a PDE model of, say, interface growth on metal surfaces. Further study is required, of course; in particular it would be interesting to generalise this
-model to multiple species inhabiting coupled lattices, as this could inform us about the oxidation of alloys, such as niobium-enriched titanium.
+To conclude, we have solved a nonlinear model for self-interacting sticky particles diffusing in 1D.  Although only the particles exhibit stickiness,  the analytics suggest a symmetry between vacancy-type and particle-type flow
+at density of $\frac{2}{3}$, which is observed in the simulation.  The flow exhibits a foamy pattern with intermediate time-and-space correlations.  The continuum solution MFT is a good predictor of the bulk flow behavior of the SPM.
+The negative diffusion constant found in MFT at high stickiness indicates  that the assumption of homogeneous density break down: thus the MFT predicts its own demise.

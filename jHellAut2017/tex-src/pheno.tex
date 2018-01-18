@@ -1,10 +1,11 @@
 \section{Model Phenomenology} \label{sec:pheno}
 The model described in Figure~\ref{fig:rates} is very simple, but numerical simulation shows that it is capable of a wide range of behaviours, such as those shown in Figure~\ref{fig:flowPatterns}. We will discuss
-these numerical results in more detail in Section~\ref{sec:numRes}, but first let us try to predict the model behaviour using analytic means.
+these numerical results in more detail in Section~\ref{sec:numRes}, but first let us analyse the model behaviour using analytic means.
 
 \subsection{Mean-Field Theory Derivation}
-Let the spacing between lattice sites be $a$, $\tau_0$ be the non-sticky hopping timescale and the time-averaged (or ensemble-averaged, assuming ergodicity) occupation probability of the $i^{\mathrm{th}}$ lattice site be $\rho_i$. 
+Let the spacing between lattice sites be $a$, $\tau_0$ be the free-particle hopping timescale and the time-averaged (or ensemble-averaged, assuming ergodicity) occupation probability of the $i^{\mathrm{th}}$ lattice site be $\rho_i$. 
 One may show that, in the mean-field approximation regime,
+% maybe derive in appendix
 \begin{align*}
  \tau_0 \partDeriv{\rho_i}{t} = &\left( 1-\rho_i \right) \left[ \left(1-\zeta\rho_{i-2} \right) \rho_{i-1} + \left(1-\zeta\rho_{i+2} \right) \rho_{i+1} \right] \\
  &- \rho_i \left[ 2 \zeta \rho_{i-1} \rho_{i+1}  - (3-\zeta)\left(\rho_{i-1} + \rho_{i+1}\right) + 2 \right],\\.
@@ -15,7 +16,7 @@ Switching to the continuum limit by taking $a\rightarrow 0$, and neglecting $\ma
  J &= - \frac{a^2}{\tau_0} A(\rho) \partDeriv{\rho}{x}, \\
  A &= 1 - \zeta \rho(4-3\rho). \\
 \end{align*}
-Thus, the MFT says that the particles should diffuse with a diffusion coefficient which depends upon the local density.
+Thus, the MFT says that the particles should diffuse with a diffusion coefficient $A(\rho)$ which depends upon the local density.
 \subsection{Continuum MFT Predictions} \label{sec:contMFTPred}
 First let us consider some limits. As $\zeta \rightarrow 0$ (in other words, as the model becomes a simple exclusion model), $A \rightarrow 1$, which makes sense. Likewise, in the
 dilute limit $\rho \rightarrow 0$, $A \rightarrow 1$, reflecting the fact that it becomes a dilute lattice gas and therefore the interactions between particles become irrelevant as they never meet.
@@ -28,7 +29,7 @@ the density of the medium should gravitate towards a density for which $A(\rho)\
 to this critically slowly-flowing regime happens suddenly, like a phase transition; this is something we can check with our numerics.
 
 \subsection{Steady-State Flow Through a Block}
-It is possible to solve the continuum MFT in a steady state on a finite domain, say $x\in(0, L)$. The continuity equation implies that $J(x)=J_0$, and by integrating both sides of our current equation with respect to $x$ we find that
+It is possible to solve the continuum MFT in a steady state on a finite domain, say $x\in(0, L)$. The continuity equation implies that $J(x)=J_0$, and by integrating both sides of that equation with respect to $x$ we find that
 \begin{equation}
  J_0 (x-x_0) = -\frac{a^2}{\tau_0} \rho \left[1+\zeta \rho\left(\rho-2\right)\right],
 \end{equation}
