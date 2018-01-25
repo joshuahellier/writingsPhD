@@ -75,20 +75,22 @@ for the flow rate, whilst top right shows the observed mean flow rate. The measu
     \vspace{-0em}
 \end{figure*}
 
+
 The MFT prediction for the mean flow is generally in good agreement with the numerics, except in the very sticky regime in which flow is very small.
 The simulations show no evidence of negative diffusion; rather the flow becomes critically slow for very sticky particles.
-Once again we observed that the higher moments of the flow don't diverge or peak, indicating that a phase transition in the conventional sense doesn't occur.
+The higher moments of the flow (e.g. variance, Figure~\ref{fig:constDens} bottom left) do not show peaks, indicating that hard transitions aren’t occurring.
 Finally (bottom right), the density is very close to the average of the boundary densities until λ drops below 1/4, at which point the stickiness causes the system to fill.
 
 
 \subsection{Diffusion Coefficient Measurement}
 Let us again specify the boundary densities to be $(\rho_0, \rho_L) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ for some given $\rho_M$. This time we keep $\delta\rho$ relatively small, so that $J$ varies approximately
 linearly with $\delta\rho$; thus if we calculate $J$ for a series of small $\delta \rho$, we can perform linear regression to find $D=\partDeriv{J}{\delta\rho}\big|_{\delta\rho=0}$, the effective diffusion coefficient.
-Computing this for different $(\rho_M, \lambda)$ combinations gives us numerical data which can be compared with the MFT result in Equation~\ref{eq:MFTflow}.
+Computing this for different $(\rho_M, \lambda)$ combinations yields results that can be compared with Equation~\ref{eq:MFTflow}.
 \begin{figure*}[h!]
 \vspace{1em}
 \caption{\label{fig:diffCoef} The contour plot on the left shows the MFT prediction of the diffusion coefficient $D=\partDeriv{J}{\delta\rho}\big|_{\delta\rho=0}$ as a function of local density $\rho_M$ and $\lambda$;
-we are only plotting where $0 \le D \le 1.2$, other regions are shown in white, including the region in which $D<0$, which would cause instabilities and so prevent a flow from actually occurring. On the right is our numerical calculation of $D(\rho_M, \lambda)$,
+we are only plotting where $0 \le D \le 1.2$, other regions are shown in white, including the region in which $D<0$, which would cause instabilities and so prevent a flow from actually occurring.
+On the right is our numerical calculation of $D(\rho_M, \lambda)$,
 with exactly the same plotting ranges. The dots indicate which points in $(\rho_M, \lambda)$ we calculated $D$ around, to give an impression of how the interpolation in the contour plot was done.}
 \begin{center}
  \begin{tabular}{c@{\hspace{1em}}c}
@@ -104,8 +106,11 @@ We can of course obtain estimates of the confidence interval for our linear regr
 regression. They are not included here for brevity, but they are in the additional materials.
 %REMEMBER TO ACTUALLY PUT IT THERE!!!
 
-Putting the MFT prediction and the actual numerical results together as we have done in Figure~\ref{fig:diffCoef}, we can compare and contrast. The MFT seems to be a good predictor of the true behaviour of the diffusion coefficient,
-including the strange symmetry about $\rho_M=\frac{2}{3}$ we pointed out in Section~\ref{sec:contMFTPred}, so long as we avoid the region where the MFT predicts $D<0.4$. The incorrectness of the MFT prediction suggests that some kind of nontrivial
+Putting the MFT prediction and the actual numerical results together as we have done in Figure~\ref{fig:diffCoef}, we can compare and contrast. We see that MFT and simulation agree well for low stickiness, and both show the strange symmetry
+about $ρ_M = \frac{2}{3}$. For high stickiness, where the MFT prediction gives negative diffusion constant, the simulation generates a much increased density in the system.  This takes $ρ_M$ outside the negative-$D$ regime of the MFT,
+and into slow, but positive $D$. 
+%Query
+The incorrectness of the MFT prediction suggests that some kind of nontrivial
 correlations have built up in this region, which makes sense as the coupling between particles has become stronger, whilst the density is middling, allowing that coupling to mean something. It is also worth noting that the discrepancy between
 intended density and actual density starts to become non-negligible here, which we can infer from how the originally rectangular grid of grey dots
 (indicating $(\rho_M, \lambda)$ points where we obtained the data) has been deformed, to the extent that there is a big cluster of them in the observed minimum of the diffusion coefficient. Some of these anomalous densities are greater
@@ -116,8 +121,7 @@ becomes very small, as the system becomes unresponsive to concentration gradient
 
 \subsection{Flow Structure}
 \label{sec:flowStruc}
-It is possible to produce diagrams which show the changes in short-time-averaged local density as a function of space and time. I have made such diagrams for a selection of $(\rho_M, \lambda)$ pairs, so that the reader can
-get an impression of what these flows actually look like; they are shown in Figure~\ref{fig:flowPatterns}.
+Figure~\ref{fig:flowPatterns} shows the short-time-averaged local density as a function of space and time for a range of densities and stickiness.
 \iffalse
 \begin{figure*}[h!]
 \caption{\label{fig:flowPatterns} The spacetime flow patterns, for the $(\lambda, \rho_M)$ combinations indicated in the row and column headers. In each plot time runs along the $x$-axis, space along the $y$-axis. White represents full occupation, black empty, and grey shades partial
@@ -157,7 +161,23 @@ per simulation). Time has been rescaled this way in order to allow fair comparis
 &
 \end{tabular}
 \end{figure*}
-Looking at Figure~\ref{fig:flowPatterns}, we can make some observations. When $\lambda$ is extremely low, the medium consists of solid blocks surrounded by empty spaces containing a dilute gas of particles; as we alter the overall density,
+A few observations:
+
+When $\lambda$ is extremely low (left), the medium consists of solid blocks surrounded by empty spaces containing a dilute
+gas of particles; as we alter the overall density, all that changes is the thicknesses of these blocks.   Thus the breakdown of MFT
+is revealed as a decomposition into two regions, of low and high density, each of which allows similar flow rate.  The MFT solution, which assumed
+intermediate density and gave negative diffusion constant, is revealed to be unstable.
+The case $\lambda = 1$ (right) is just excluded Brownian motion, and is included here for comparison.
+The most interesting images (centre) are those for the intermediate $(\rho_M , \lambda)$; here we see a ``lumpy'' or ``foamy'' structure, in which small blocks
+of particles are being constantly created and destroyed whilst a rather minimal flow occurs across the system.
+The simulation did not show any hard phase transition as we vary $\rho_M, \lambda)$; rather, it seems that this ``foamy''
+behaviour is part of a continuous range between the extremes, containing medium-range correlations between particles.
+Unfortunately, computing equal-time correlation functions to the accuracy required
+to draw conclusions about these correlations has proven to be extremely difficult, so we cannot find a quantitative description of the foam beyond the averages properties in Figures~\ref{fig:lambdaScans, fig:constDens, fig:diffCoeff}.
+In all images in Figure~\ref{fig:flowPatterns}, long straight segments of white of black can be seen.  The represent coherent motion at a characteristic velocity given by their gradient. There is nothing in the MFT to suggest what this velocity
+should be, and it is much smaller than the simulated system's length divided by the elapsed time,  $\frac{L}{T}$, thus it must be an emergent property arising from correlated motion of self-assembled regions of  high- or low-density material.
+
+When $\lambda$ is extremely low, the medium consists of solid blocks surrounded by empty spaces containing a dilute gas of particles; as we alter the overall density,
 all that changes is the thicknesses of these blocks. The case $\lambda=1$ is just excluded Brownian motion, and is included here for comparison. The most interesting images are those for the intermediate $(\rho_M , \lambda)$; here
 we see a ``lumpy'' or ``foamy'' structure, in which small blocks of particles are being constantly created and destroyed whilst a rather minimal flow occurs across the system.
 We do not think that there is any hard phase transition as we vary $(\rho_M , \lambda)$; rather, it seems that this ``foamy'' behaviour is part of a continuous range of phenomena between the extremes, containing medium-range correlations between

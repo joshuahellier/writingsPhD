@@ -12,16 +12,17 @@ It is extremely energetically unfavourable for multiple oxygen atoms to occupy s
 therefore to a good approximation we may regard these oxygen atoms as excluding each other from these sites, just like in ASEP~\cite{sugden2007dynamically, liggett1985interacting}.
 \fi
 
-Lattice gases are a ubiquitous tool for modelling complex systems from biology to traffic\cite{1742-5468-2011-07-P07007, Mobilia2007}. 
+Lattice gases are a ubiquitous tool for modelling complex systems from biology to traffic\cite{1742-5468-2011-07-P07007, Mobilia2007, tegner2015high, zhu2012atomic, DealGrove1965, MottCabrera1949, Buzzaccaro2007}. 
 %One example is the oxidation process, as occurs in the growth of an oxide layer on a metallic surface. Almost all uncoated metallic objects
 %[Al, Ti, Ca, Zr, Sn] are protected by such a thin, self-assembling layer, driven by the oxidation potential but arrested by the slow kinetics of transporting material through the oxide layer~\cite{tegner2015high, zhu2012atomic, DealGrove1965, MottCabrera1949}.
 Analytically solvable cases involve non-interacting or excluding particles~\cite{ladd1988application, liggett1985interacting}. But in any real system of interest the moving objects interact. Many models tackle the situation where the diffusing
 object interact with the substrate,
 % find example
 but despite the clear application-relevance there is surprisingly little work considering interactions between the moving particles.  One reason for this is that the interactions introduce nonlinearities in analytical models, which makes them
-challenging to solve, at least outside of limits in which they can be linearised. This is unfortunate, because it is precisely these nonlinearities which introduce interesting behaviours - discontinuities at the oxide-metal interface, diffusion instability, to name just a few. In this paper we will
-investigate a simple 1-dimensional model, specified in Figure~\ref{fig:rates}, which contains such an interaction, and we will explore the impact this has, particularly on behaviour in the large-scale limit. One might contrast
-this approach (making a simple microscopic model and trying to learn about large-scale interface growth from it) with approaches such as the KPZ equation~\cite{PhysRevLett.56.889, PhysRevA.38.4271} (where one analyses the extreme
+challenging to solve, at least outside of limits in which they can be linearised. This is unfortunate, because it is precisely these nonlinearities which introduce interesting behaviours - discontinuities at the oxide-metal interface,
+diffusion instability, to name just a few. In this paper we will
+investigate a simple one-dimensional model, specified in Figure~\ref{fig:rates}, which contains such an interaction, and we will explore the impact this has, particularly on behaviour in the large-scale limit. One might contrast
+this approach (making a simple microscopic model and trying to learn about large-scale interface growth from it) with approaches such as the KPZ equation~\cite{PhysRevLett.56.889, PhysRevA.38.4271, Sasamoto2010} (where one analyses the extreme
 large-scale dynamics using universality classes).
 
 \iffalse
@@ -45,7 +46,9 @@ particle behind the position they're moving from, in which case they move with r
     \end{tabular}
     \vspace{-1em}
 \end{figure}
-Our model, which we will refer to as the ``Sticky Particle Model'' or SPM, is based upon the symmetric exclusion process~\cite{sugden2007dynamically}, the difference being that adjacent particles separate with rate $\lambda=1-\zeta$
+
+Our model, which we will refer to as the ``Sticky Particle Model'' or SPM, is based upon the symmetric exclusion process~\cite{sugden2007dynamically, Kollmann2003,  Lin2005, Hegde2014, Krapivsky2014, Imamura2017},
+the difference being that adjacent particles separate with rate $\lambda=1-\zeta$
 instead of their normal hopping rate, $1$. It is in fact a version of the KLS model~\cite{Katz1984, Zia2010} in 1-dimension without an applied field, which is itself similar to the dynamics used to analyse the Ising model by
 Kawasaki~\cite{PhysRev.145.224}. It seems that this symmetric model has not been researched much, at least in terms of its dynamics, because the model with the applied field is so interesting; however, it seems that the simple symmetric model
 exhibits complex unexpected behaviour when a concentration gradient is applied.
