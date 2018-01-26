@@ -1,12 +1,12 @@
 \section{Numerical Results}
 \label{sec:numRes}
-We now have some MFT predictions about the SPM, and a few ideas about when those predictions might be invalid. Thus, it is prudent for us to test them out numerically.
-There are a few different methods which could have been used, but we chose to calculate using the excellent \texttt{KMCLib}\cite{leetmaa2014kmclib} package, which implements the Kinetic Monte Carlo algorithm
+We now have some MFT predictions about the SPM, and a few ideas about when those predictions might be invalid. Thus, we test them out numerically.
+We chose to calculate using the \texttt{KMCLib}\cite{leetmaa2014kmclib} package, which implements the Kinetic Monte Carlo algorithm
 (essentially the same as the Gillespie algorithm\cite{Gillespie1977})
-on lattice systems. \texttt{KMCLib} has the advantage that it is python-wrapped \texttt{C++}, and thus quite easy to use whilst at the same time being quite computationally efficient; thus it was fairly easy for us to carry out large numbers
-of differently-parametrised serial \texttt{KMCLib} jobs on the \texttt{Eddie3} computing cluster here at Edinburgh. The codes used are kept here~\cite{jHellGitRepo}.
-
-As we have MFT predictions about flow in a block, we can try to simulate that situation using KMC. In the bulk, the transition rates are simply those described in Figure~\ref{fig:rates}. At the boundaries, referred to as the ``top''  and ``bottom''
+on lattice systems. The codes used are kept here~\cite{jHellGitRepo}.
+%\texttt{KMCLib} has the advantage that it is python-wrapped \texttt{C++}, and thus quite easy to use whilst at the same time being quite computationally efficient; thus it was fairly easy for us to carry out large numbers
+%of differently-parametrised serial \texttt{KMCLib} jobs on the \texttt{Eddie3} computing cluster here at Edinburgh. 
+As we have MFT predictions about flow in a block, we can simulate that situation using KMC. In the bulk, the transition rates are simply those described in Figure~\ref{fig:rates}. At the boundaries, referred to as the ``top''  and ``bottom''
 of the block, there are 2 layers of lattice sites what switch between being full and empty with rates such that the time-averaged occupation can be specified to match the desired boundary conditions; there are then chances for particles to spawn
 and despawn with rates depending upon the occupation of these boundary layers. In the end, the intention is that these boundaries should reproduce the effect of having particle reservoirs attached to the ends, which is something we check
 in the output by inspecting the time-averaged occupations of sites near the boundary. We have used this setup to explore three scenarios, discussed in the following sections. In each of these we refer to a boundary condition configuration
@@ -16,22 +16,22 @@ as well as the Gillespie time interval $T$ that elapses during those steps; we t
 \begin{equation}
  J = \frac{e_0-e_L+l_L-l_0}{2T}.
 \end{equation}
-We can also count the total number of particles in the system in order to measure the average particle density, although we need to make sure that it is correctly time-averaged; this is done by updating a histogram of particle numbers
+We can also calculate the time-averaged total number of particles in the system; this is done by updating a histogram of particle numbers
 as the simulation progresses. In each of our calculations, we make the initial configuration by randomly filling the system with particles and vacancies in such a way that the initial density should be $\frac{1}{2}(\rho_0 + \rho_L)$, and then
 run the system for a sufficient number of equilibration steps to destroy any initial transients.
 
-\subsection{Varying $\lambda$ with Fixed Boundary Conditions}
-The MFT suggests that a  transition, from a steady flow regime to a critically slow flow regime, might occur as $\lambda$ varies.
+The MFT suggests that a  transition, from a steady flow regime to a critically slow flow regime, might occur as the stickiness varies.
 We test this by holding the boundary densities constant
 whilst changing $\lambda$, and measuring the particle density as well as the mean, variance and skewness of the flow rate. If such a transition does indeed occur, we should expect to see a divergence in one of these moments.
-We have done this with 4 sets of boundary conditions as shown in Figure~\ref{fig:lambdaScans}. In each case we used systems of length $64$ (length $32$ gives similar results),
-running them for $400000$ Gillispie steps for equilibration followed by $10000$ measurement runs of $1000$ steps interspersed with relaxation runs of $16000$
-steps. This way we could gather statistics about flow rates and densities in a well-equilibrated system. Specifically, we generate a pool of $10000$ samples of flow rate and density,
-from which we can calculate estimates of the sample mean, variance, skewness and kurtosis of both quantities.
+We have done this with 4 sets of boundary conditions as shown in Figure~\ref{fig:lambdaScans}. 
 \begin{figure*}[h!]
 \vspace{1em}
 \caption{\label{fig:lambdaScans} Moments of flow rates and average overall densities observed when varying $\lambda$ with fixed boundary densities $(\rho_0, \rho_L)$: Blue refers to $(\frac{2}{3}, \frac{2}{3})$, yellow to $(\frac{3}{4}, \frac{7}{12})$
-(both with average density $\frac{2}{3}$); green to $(\frac{3}{4}, \frac{1}{4})$, red to $(\frac{99}{100}, \frac{1}{100})$ (with average density $\frac{1}{2}$). In the case of the mean flow we have an MFT prediction, indicated by the solid line.}
+(both with average density $\frac{2}{3}$); green to $(\frac{3}{4}, \frac{1}{4})$, red to $(\frac{99}{100}, \frac{1}{100})$ (with average density $\frac{1}{2}$). In the case of the mean flow we have an MFT prediction, indicated by the solid line.
+In each case we used systems of length $64$ (length $32$ gives similar results),
+running them for $400000$ Gillispie steps for equilibration followed by $10000$ measurement runs of $1000$ steps interspersed with relaxation runs of $16000$
+steps. This way we could gather statistics about flow rates and densities in a well-equilibrated system. Specifically, we generate a pool of $10000$ samples of flow rate and density,
+from which we can calculate estimates of the descriptive statistics of both quantities.}
 \begin{center}
  \begin{tabular}{c|c}
     \includegraphics[width=0.5\linewidth]{../tex-src/images/lambdaScan/flowMean} & \includegraphics[width=0.5\linewidth]{../tex-src/images/lambdaScan/flowVar} \\
@@ -42,28 +42,26 @@ from which we can calculate estimates of the sample mean, variance, skewness and
     \vspace{-0em}
 \end{figure*}
 
-Firstly, we should note that we only really have an MFT prediction for the flow rate as a function of $\lambda$. Technically we could attempt to predict the density as well, but $\rho(x)$ stops being unique when $\lambda$ drops below $\frac{1}{4}$,
+Firstly, we should note that we only have an MFT prediction for the flow rate as a function of $\lambda$ as  $\rho(x)$ stops being unique when $\lambda$ drops below $\frac{1}{4}$,
 and so the MFT lacks predictive power. For low-stickiness, when $\lambda>\frac{1}{4}$, the MFT is in good agreement with the simulations.
 However, one of the key predictions of the MFT, that a sharp transition to a no-flow regime occurs when $\lambda$ becomes small enough (at least for 3 of the 4 sets of
 boundary conditions we investigated here), does not seem to be realised in our simulations. Indeed what seems to be happening is that the sharp transition has been smoothed out, as we
 do not see any peaks or jumps in the flow rate variance or skewness, which we would expect to see if there was a transition. We suspect that this discrepancy is due to nontrivial correlations emerging between the particles, which the MFT
-does not take account of for obvious reasons. Alternatively, it could be the continuum assumption which has broken down, which in this case corresponds to the MFT assuming the presence of quasiparticles longer than the system length.
+does not take account of for obvious reasons. Alternatively, it could be that the continuum assumption is failing due to the (finite-sized) system filling with particles and blocking.
 As for the observed average density, for larger $\lambda$ the density approaches the average of the boundary densities,
 and for small $\lambda$ the density approaches $1$ (which makes sense as the particles are very strongly attracted to each other, and so the system has a tendency to fill up); the exception to this it the case with extreme full/empty boundary
 conditions, although in this case one might argue that the particles are ``sucked out'' of the system so rapidly at the empty end that the system never really has a chance to fill up. It is also worth noticing that this extreme case is the only
 one in which the flow rate skewness does anything interesting; it is mostly positive, especially at low-$\lambda$, implying that most of the time the system is fairly static, but occasionally short-lived strong flows occur which end up causing
 most of the bulk flow.
 
-
-\subsection{Varying $\lambda$ and Boundary Densities, Keeping the Average Density Constant}
 Another situation we can investigate has boundaries $(\rho_B, \rho_T) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ for some given $\rho_M$, where $\delta\rho$ and $\lambda$ are varied. As before, I calculated flow rate
-moments and average densities, and the results are displayed in Figure~\ref{fig:constDens}. These calculations were performed with the same run parameters (system length etc)
-as above.
-
+moments and average densities, and the results are displayed in Figure~\ref{fig:constDens}. 
 \begin{figure*}[h!]
 \vspace{1em}
 \caption{\label{fig:constDens} Flow rate mean, flow variance and average overall densities observed when varying the difference $\delta\rho$ between the boundary concentrations
-$(\rho_B, \rho_T) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ and $\lambda$. I chose $\rho_M=\frac{1}{2}$, as this gives us the biggest range of $\delta\rho$ to investigate. The top left panel is the MFT prediction
+$(\rho_B, \rho_T) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ and $\lambda$. I chose $\rho_M=\frac{1}{2}$, as this gives us the biggest range of $\delta\rho$ to investigate.
+These calculations were performed with the same run parameters (system length etc)
+as above. The top left panel is the MFT prediction
 for the flow rate, whilst top right shows the observed mean flow rate. The measured flow skewness and kurtosis are not displayed here as both signals were small and noisy, and didn't show anything particularly significant.}
 \begin{center}
  \begin{tabular}{c|c}
@@ -74,8 +72,6 @@ for the flow rate, whilst top right shows the observed mean flow rate. The measu
 \end{center}
     \vspace{-0em}
 \end{figure*}
-
-
 The MFT prediction for the mean flow is generally in good agreement with the numerics, except in the very sticky regime in which flow is very small.
 The simulations show no evidence of negative diffusion; rather the flow becomes critically slow for very sticky particles.
 The higher moments of the flow (e.g. variance, Figure~\ref{fig:constDens} bottom left) do not show peaks, indicating that hard transitions aren’t occurring.
