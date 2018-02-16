@@ -255,10 +255,9 @@
   {volume} {81}},\ \bibinfo {pages} {2340} (\bibinfo {year} {1977})},\ \Eprint
   {http://arxiv.org/abs/http://dx.doi.org/10.1021/j100540a008}
   {http://dx.doi.org/10.1021/j100540a008} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Hellier}(2017)}]{jHellGitRepo}%
+\bibitem [{\citenamefont {Hellier}(2018)}]{jHellGitRepo}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
-  {Hellier}},\ }\href {\doibase 10.5281/zenodo.809438} {\enquote {\bibinfo
-  {title} {{Codes for Sticky Particles in 1D}},}\ } (\bibinfo {year}
-  {2017})\BibitemShut {NoStop}%
+  {Hellier}},\ }\href {\doibase 10.5281/zenodo.1162818} {\  (\bibinfo {year}
+  {2018}),\ 10.5281/zenodo.1162818}\BibitemShut {NoStop}%
 \end{thebibliography}%
