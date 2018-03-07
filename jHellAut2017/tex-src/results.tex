@@ -47,8 +47,8 @@ running them for $400000$ Gillispie steps for equilibration followed by $10000$ 
 steps. This way we could gather statistics about flow rates and densities in a well-equilibrated system. Specifically, we generate a pool of $10000$ samples of flow rate and density
 from which we can calculate estimates of the descriptive statistics of both quantities; flow moments and the density data are included in the supplementary materials.
 \vspace{1em}}
-\includegraphics[width=0.9\linewidth]{../tex-src/images/lambdaScan/newFlowMean}
-    \vspace{-2em}
+\includegraphics[width=0.98\linewidth]{../tex-src/images/lambdaScan/newFlowMean}
+    \vspace{-1em}
 \end{figure}
 
 Firstly, we should note that we only have an MFT prediction for the flow rate as a function of $\lambda$, since $\rho(x)$ stops being unique when $\lambda$ drops below $\frac{1}{4}$,
@@ -154,11 +154,13 @@ regards to the accuracy of the MFT.
 
 %The structure of the flow is shown in Fig 5.  We observe density correlations persisting over many sites and for very long timescales.  These high and low density structures show no systematic movement.
 %Superimposed on the pattern we see narrow lines with well defined gradient (velocity) which we believe correspond to individual particles/vacancies diffusing through regions of low/high density.
-It is instructive to get an overview of how the particles move during flow. Fig.~\ref{fig:flowPatterns} show a plot of the flow structure in an interesting regime. Additional plots can be found in the supplementary materials.
+It is instructive to get an overview of how the particles move during flow. Fig.~\ref{fig:flowPatterns} show a plot of the flow structure in an interesting regime.
+We note that over short timescales little structure is visible, the dynamics appearing as a random walk with some tendency for particles to clump; over longer timescales the diffusive behavior is more evident, with a textured structure suggesting characteristic velocity of  particles or vacancies through emergent correlated clumps.
+Additional plots can be found in the supplementary materials at [URL will be inserted by publisher].
 
 \begin{figure}[h!]
 \caption{\label{fig:flowPatterns} Indicative spacetime flow pattern for sticky free-flow $\left[\lambda = \frac{3}{20}, (\rho_0, \rho_L) = (\frac{3}{4}, \frac{1}{4})\right]$; other combinations shown in the supplementary materials.
-Time runs along the x-axis, space (1 pixel=1 site) along the y-axis, with grayscale tone illustrating average site occupation over (clockwise from top left) $\frac{1}{32}$, $1$, $8$ and $32$ Gillespie steps per site respectively.}
+Time runs along the x-axis, space (1 pixel=1 site) along the y-axis, with grayscale tone (black being empty, white being full) illustrating average site occupation over (clockwise from top left) $\frac{1}{32}$, $1$, $8$ and $32$ Gillespie steps per site respectively.}
 %\includegraphics[width=0.98\linewidth]{../tex-src/images/flowImps2/flowl2r2.png}
 \begin{center}
  \begin{tabular}{c | c}
