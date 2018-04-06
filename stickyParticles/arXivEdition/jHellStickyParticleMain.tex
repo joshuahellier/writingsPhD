@@ -1,0 +1,562 @@
+% ****** Start of file apssamp.tex ******
+%
+%   This file is part of the APS files in the REVTeX 4.1 distribution.
+%   Version 4.1r of REVTeX, August 2010
+%
+%   Copyright (c) 2009, 2010 The American Physical Society.
+%
+%   See the REVTeX 4 README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.1
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)  bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+\documentclass[
+reprint,
+ amsmath,amssymb,
+ aps,
+ prl,
+]{revtex4-1}
+
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\DeclareMathOperator\erf{erf}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{hyperref}
+
+
+\begin{document}
+
+\title{On The Diffusion of Sticky Particles in 1-D}
+
+\author{Joshua DM Hellier}
+ \email{J.D.M.Hellier@sms.ed.ac.uk}
+\author{Graeme J Ackland}
+ \email{G.J.Ackland@ed.ac.uk}
+\affiliation{
+ SUPA, School of Physics and Astronomy, University of Edinburgh, Mayfield Road, Edinburgh EH9 3JZ, United Kingdom
+}
+
+\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+
+\begin{abstract}
+The 1D Ising model is the simplest Hamiltonian-based model in statistical
+mechanics. The simplest interacting particle process is the Symmetric
+Exclusion Process (SEP), a  1D lattice gas of particles that hop
+symmetrically and cannot overlap.  Combining the two gives a model for
+sticky particle diffusion, SPM, which is described here.  SPM dynamics
+are based on SEP with short-range interaction, allowing flow due to
+non-equilibrium boundary conditions.  We prove that SPM is also a
+detailed-balance respecting, particle-conserving,  Monte Carlo description of the Ising
+model.  Neither the Ising model nor SEP have a phase transition in 1D, but the SPM exhibits a non-equilibrium transition from a
+diffusing to a blocked state as stickiness increases.  We present a
+fully non-linear, analytic, mean-field solution, which has a crossover
+from a positive to a negative diffusion constant.  Simulations in the
+positive-diffusion region agree with the analytics. The negative
+diffusion constant in fact indicates a breakdown of the mean-field
+approximation, with close to zero flow and breaking into a two-phase
+mixture, and thus the mean field theory successfully predicts its own
+demise.  The simplicity of the model suggests a wide range of
+possible applications.
+
+
+\end{abstract}
+
+%\keywords{Suggested keywords}%Use showkeys class option if keyword
+                              %display desired
+\maketitle
+
+
+
+
+Lattice gases are a ubiquitous tool for modeling complex systems from biology to traffic~\cite{1742-5468-2011-07-P07007, Mobilia2007, tegner2015high, zhu2012atomic, DealGrove1965, MottCabrera1949, Buzzaccaro2007}. 
+Analytically solvable cases involve non-interacting or excluding particles~\cite{ladd1988application, liggett1985interacting}, but in any real system of interest the moving objects interact. Many models tackle the situation where the diffusing
+object interact with the substrate,
+% find example
+but despite the clear application-relevance there is surprisingly little work considering interactions between the moving particles themselves.  One reason for this is that the interactions introduce nonlinearities in analytical models, which makes them
+challenging to solve, at least outside of limits in which they can be linearized. This is unfortunate because it is precisely these nonlinearities which introduce interesting behaviors such as discontinuities at the oxide-metal interface or
+diffusion instability.
+
+In this paper we will
+investigate a simple one-dimensional model, the ``Sticky Particle Model'' or SPM, specified in Fig.~\ref{fig:rates}, which contains such an interaction, and we will explore the impact this has on particle behavior, in particular
+when observed in the large-scale limit.
+One might contrast
+this approach (making a simple microscopic model and trying to learn from it about large-scale interface growth) with approaches such as the KPZ equation~\cite{PhysRevLett.56.889, PhysRevA.38.4271, Sasamoto2010} (where one analyses the extreme
+large-scale dynamics using universality classes).
+
+\begin{figure}
+\vspace{1em}
+\caption{\label{fig:rates} White circles indicate particles, dark circles indicate empty sites (vacancies). Particles randomly move into adjacent vacancies with rate $1$ (having rescaled time for notational convenience), unless there is a
+particle behind the position they're moving from, in which case they move with rate $\lambda$; the state of the site next to the position the particle is moving into is irrelevant.
+Particles also move to the left, with rates such that the whole model is totally symmetric.}
+    \includegraphics[width=\linewidth]{newRates}
+    \vspace{-3em}
+\end{figure}
+The SPM is based upon the symmetric exclusion process~\cite{sugden2007dynamically, Kollmann2003,  Lin2005, Hegde2014, Krapivsky2014, Imamura2017};
+it differs from the original in that adjacent particles separate with rate $\lambda$
+instead of their normal hopping rate, $1$. It is in fact a version of the KLS model~\cite{Katz1984, Zia2010} in 1-dimension without an applied field, which is itself similar to the dynamics used to analyze the Ising model by
+Kawasaki~\cite{PhysRev.145.224}. It seems that this symmetric model has not been researched much (at least in terms of its dynamics) because the model with the applied field is so interesting; however, it seems that the simple symmetric model
+exhibits complex unexpected behavior when a concentration gradient is applied. The quantity $\lambda$ parametrizes the ``stickiness'' of the particles; when $\lambda>1$, there is a tendency for particles to repel,
+whilst $\lambda < 1$ represents attraction.
+It is worth noting that the rates specified in Fig.~\ref{fig:rates} obey detailed balance,  %cite supplimentary materials
+with an energy proportional to the number of particle-particle adjacencies
+in the system. It seems that space of highly-local exclusion models is so tightly constrained in one-dimension that there is no option but to comply with the detailed balance condition.
+
+
+The model described in Fig.~\ref{fig:rates} is very simple, but numerical simulation shows that it is capable of a wide range of behaviors, such as those shown in Fig.~\ref{fig:flowPatterns}. We will discuss
+these numerical results in more detail later, but first let us analyze the model behavior using analytic means.
+Because this model contains interactions, the types of methods for the full analytic solution of SEP don't help us; thus, the best we can currently do is a mean field theory approximation.
+Let the spacing between lattice sites be $a$, let $\tau_0$ be the free-particle hopping timescale, and the time-averaged (or ensemble-averaged, assuming ergodicity) occupation probability of the $i^{\mathrm{th}}$ lattice site be $\rho_i$.
+We introduce $\zeta = 1 - \lambda $ here for convenience.
+One may show that, in the mean-field approximation regime,
+% maybe derive in appendix
+\begin{align}
+\begin{split}
+ \tau_0 \partDeriv{\rho_i}{t} = &\left( 1-\rho_i \right) \left[ \left(1-\zeta\rho_{i-2} \right) \rho_{i-1} + \left(1-\zeta\rho_{i+2} \right) \rho_{i+1} \right] \\
+ &- \rho_i \left[ 2 \zeta \rho_{i-1} \rho_{i+1}  - (3-\zeta)\left(\rho_{i-1} + \rho_{i+1}\right) + 2 \right].
+ \end{split}
+ \end{align}
+Switching to the continuum limit by taking $a\rightarrow 0$, and neglecting $\mathcal{O}(a^4)$ terms, we may re-express this as a conserved flow $J$ as follows:
+\begin{align}
+ \partDeriv{\rho}{t} &= - \partDeriv{J}{x}, \\
+ J &= -  D(\rho) \partDeriv{\rho}{x}, \\
+ D(\rho) &= \frac{a^2}{\tau_0} \left[1 - \zeta \rho\left(4-3\rho\right) \right]. 
+\end{align}
+Thus, the MFT says that the particles should diffuse with a diffusion coefficient $A(\rho)$ which depends upon the local density.
+
+In order to understand the implications of the MFT, let us consider some limits. As $\zeta \rightarrow 0$ (i.e. as the model becomes a simple exclusion model), $D \rightarrow \frac{a^2}{\tau_0}$. Likewise, in the
+dilute limit $\rho \rightarrow 0$, $D \rightarrow \frac{ a^2}{\tau_0}$, reflecting the fact that it becomes a dilute lattice gas and therefore the interactions between particles become irrelevant as they never meet.
+Conversely, in the full limit $\rho \rightarrow 1$, $D \rightarrow \frac{\lambda a^2}{\tau_0}$; this is because we now have a dilute gas of vacancies, which hop with rate $\frac{\lambda}{\tau_0}$.
+One may observe that the continuum limit MFT has a symmetry under $\rho \mapsto \frac{4}{3} - \rho$; thus, the dynamics should be symmetric under a density profile reflection around $\rho = \frac{2}{3}$. This is where $D$ always
+attains its extremal value, $ \frac{a^2}{\tau_0}\left[1 - \frac{4}{3}\zeta\right]$, hence for $\zeta>3/4$ the diffusion coefficient becomes negative in regions with
+$\frac{2}{3} - \frac{\sqrt{\zeta\left(4\zeta - 3\right)}}{3\zeta} < \rho < \frac{2}{3} + \frac{\sqrt{\zeta\left(4\zeta - 3\right)}}{3\zeta}$.
+Finally, it is possible to show that solutions to the continuum MFT containing domains with a negative diffusion coefficient are linearly unstable; thus, if we try to have a flow containing $\rho$ for which $D(\rho)<0$,
+the density of the medium should gravitate towards a density for which $D(\rho)\sim 0$. Instead of observing ``backwards diffusion'' we would see an extremely slow flow or no flow at all. The MFT implies that the transition
+to this critically slowly-flowing regime happens suddenly, like a phase transition: this can be checked with our numerics.
+
+It is possible to solve the continuum MFT in a steady state on a finite domain, say $x\in(0, L)$. The continuity equation implies that $J(x)=J_0$, and by integrating both sides of that equation with respect to $x$ we find that
+\begin{equation}
+ J_0 (x-x_0) = -\frac{a^2}{\tau_0} \rho \left[1+\zeta \rho\left(\rho-2\right)\right],
+\end{equation}
+a cubic equation which can be solved to give $\rho(x)$. If we impose Dirichlet boundary conditions on this system, say $\rho(0)=\rho_0$ and $\rho(L)=\rho_L$, we find that
+\begin{equation}
+ J = \frac{a^2}{L \tau_0} \left[ \rho_0 - \rho_L + \zeta \left( \rho_0\left[\rho_0^2-2\right] - \rho_L\left[\rho_L^2-2\right] \right) \right].
+\end{equation}
+We may consider applying small concentration gradients across a block by setting $\rho_0 = \rho_M + \frac{1}{2}\delta\rho$ and $\rho_L = \rho_M - \frac{1}{2}\delta\rho$. Doing so, we find that the effective diffusion coefficient of the block
+$D_\mathrm{Eff}=\partDeriv{J}{\delta\rho}\big|_{\delta\rho=0}$ obeys
+\begin{equation}
+\label{eq:MFTflow}
+ \partDeriv{J}{\delta\rho}\bigg|_{\delta\rho=0} = \frac{a^2}{L \tau_0} \left[ 1 - \zeta\rho_M(4-3\rho_M) \right].
+\end{equation}
+
+We have derived MFT predictions about the SPM, and have indications about when those predictions might become invalid, which we tested numerically.
+We chose to calculate using the \texttt{KMCLib}\cite{leetmaa2014kmclib} package, which implements the Kinetic Monte Carlo algorithm
+(essentially the same as the Gillespie algorithm\cite{Gillespie1977})
+on lattice systems. The codes used are kept here~\cite{jHellGitRepo}.
+%\texttt{KMCLib} has the advantage that it is python-wrapped \texttt{C++}, and thus quite easy to use whilst at the same time being quite computationally efficient; thus it was fairly easy for us to carry out large numbers
+%of differently-parametrised serial \texttt{KMCLib} jobs on the \texttt{Eddie3} computing cluster here at Edinburgh. 
+As we have MFT predictions about flow in a block, we can simulate that situation using KMC. In the bulk, the transition rates are simply those described in Fig.~\ref{fig:rates}. At the boundaries
+there are 2 layers of lattice sites what switch between being full and empty with rates such that the time-averaged occupation can be specified to match the desired boundary conditions; there are then chances for particles to appear
+and disappear with rates depending upon the occupation of these boundary layers. In the end, the intention is that these boundaries should reproduce the effect of having particle reservoirs attached to the edges of the domain,
+which is something we check
+in the output by inspecting the time-averaged occupations of sites near the boundary. We have used this setup to explore three scenarios, discussed in the following sections. In each of these we refer to a boundary condition configuration
+by $(\rho_0, \rho_L)$, with $\rho_0$ and $\rho_L$ being the bottom and top boundary densities respectively.
+Measuring overall particle flow rate with such a setup is fairly simple, as we know how many particles enter and leave in a given time.
+We can also calculate the time-averaged total number of particles in the system; this is done by updating a histogram of particle numbers
+as the simulation progresses. In each of our calculations, we make the initial configuration by randomly filling the system with particles and vacancies in such a way that the initial density should be $\frac{1}{2}(\rho_0 + \rho_L)$, and then
+run the system for a sufficient number of equilibration steps to destroy any initial transients.
+
+The MFT suggests that a  transition from a steady flow regime to a critically slow flow regime might occur as the stickiness varies.
+We test this by holding the boundary densities constant
+whilst changing $\lambda$, and measuring the particle density as well as the mean, variance and skewness of the flow rate. If such a transition does indeed occur, we should expect to see a divergence in one of these moments.
+We have done this with four sets of boundary conditions as shown in Fig.~\ref{fig:lambdaScans}. 
+\iffalse
+\begin{figure*}[h!]
+\vspace{1em}
+\caption{\label{fig:lambdaScans} Descriptive statistics of flow rates and average overall densities observed when varying $\lambda$ with fixed boundary densities $(\rho_0, \rho_L)$; data series are labelled in the plot.
+In the case of the mean flow we have an MFT prediction, indicated by the solid line.
+In each case we used systems of length $64$ (length $32$ gives similar results),
+running them for $400000$ Gillispie steps for equilibration followed by $10000$ measurement runs of $1000$ steps interspersed with relaxation runs of $16000$
+steps. This way we could gather statistics about flow rates and densities in a well-equilibrated system. Specifically, we generate a pool of $10000$ samples of flow rate and density,
+from which we can calculate estimates of the descriptive statistics of both quantities.}
+\begin{center}
+ \begin{tabular}{c|c}
+    \includegraphics[width=0.5\linewidth]{../tex-src/lambdaScan/newFlowMean} & \includegraphics[width=0.5\linewidth]{../tex-src/lambdaScan/newFlowVar} \\
+    \hline
+    \includegraphics[width=0.5\linewidth]{../tex-src/lambdaScan/newFlowSkew} & \includegraphics[width=0.5\linewidth]{../tex-src/lambdaScan/newDens} \\
+    \end{tabular}
+\end{center}
+    \vspace{-0em}
+\end{figure*}
+\fi
+\begin{figure}[h!]
+\vspace{1em}
+\caption{\label{fig:lambdaScans} Mean flow rate observed when varying $\lambda$ with fixed boundary densities $(\rho_0, \rho_L)$; data series are labeled in the plot.
+The MFT prediction is indicated by the solid line.
+In each case we used systems of length $64$ (length $32$ gives similar results),
+running them for $400000$ Gillispie steps for equilibration followed by $10000$ measurement runs of $1000$ steps interspersed with relaxation runs of $16000$
+steps. This way we could gather statistics about flow rates and densities in a well-equilibrated system. Specifically, we generate a pool of $10000$ samples of flow rate and density
+from which we can calculate estimates of the descriptive statistics of both quantities; flow moments and the density data are included in the supplementary materials.
+\vspace{1em}}
+\includegraphics[width=0.98\linewidth]{newFlowMean}
+    \vspace{-1em}
+\end{figure}
+
+Firstly, we should note that we only have an MFT prediction for the flow rate as a function of $\lambda$, since $\rho(x)$ stops being unique when $\lambda$ drops below $\frac{1}{4}$,
+and so the MFT lacks predictive power. For low-stickiness, when $\lambda>\frac{1}{4}$, the MFT is in good agreement with the simulations.
+However, one of the key predictions of the MFT - that a sharp transition to a no-flow regime occurs when $\lambda$ becomes small enough (at least for 3 of the 4 sets of
+boundary conditions we investigated here) - is not realized in our simulations. Indeed what seems to be happening is that the sharp transition has been smoothed out, as we
+do not see any peaks or jumps in the flow rate variance or skewness (which we would expect to see if there was a transition). We suspect that this discrepancy is due to nontrivial correlations emerging between the particles, which the MFT
+does not take account of. Alternatively, it could be that the continuum assumption is failing due to the finite-sized system filling with particles and blocking.
+
+Another situation we can investigate has boundaries $(\rho_B, \rho_T) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ for some given $\rho_M$, where $\delta\rho$ and $\lambda$ are varied. As before, we calculated flow rate
+moments and average densities, and the results are displayed in Fig.~\ref{fig:constDens}.
+\begin{figure}[h!]
+\vspace{1em}
+\caption{\label{fig:constDens} Flow rate mean observed when varying the difference $\delta\rho$ between the boundary concentrations
+$(\rho_B, \rho_T) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ and $\lambda$ (The top panel is the MFT prediction
+for the flow rate, whilst bottom shows the observed mean flow rate).
+We chose $\rho_M=\frac{1}{2}$, as this gives us the biggest range of $\delta\rho$ to investigate.
+These calculations were performed with the same run parameters (system length etc)
+as above.}
+\begin{center}
+ \begin{tabular}{c}
+    \includegraphics[width=0.98\linewidth]{newMftPred} \\
+    \includegraphics[width=0.98\linewidth]{newFlow}
+    \end{tabular}
+\end{center}
+    \vspace{-2.5em}
+\end{figure}
+The MFT prediction for the mean flow is generally in good agreement with the numerics, except in the very sticky regime in which flow is very small.
+The simulations show no evidence of negative diffusion; rather the flow becomes critically slow for very sticky particles.
+The higher moments of the flow (e.g. variance) do not show peaks, indicating that hard transitions are not occurring.
+Finally, the density is very close to the average of the boundary densities until λ drops below 1/4, at which point the stickiness causes the system to fill.
+
+Continuing to specify the boundary densities to be $(\rho_0, \rho_L) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ for some given $\rho_M$, we can keep $\delta\rho$ relatively small, so that $J$ varies approximately
+linearly with $\delta\rho$; thus if we calculate $J$ for a series of small $\delta \rho$, we can perform linear regression to find $D_\mathrm{Eff}=\partDeriv{J}{\delta\rho}\big|_{\delta\rho=0}$, the effective diffusion coefficient.
+Computing this for different $(\rho_M, \lambda)$ combinations yields results that can be compared with Eq.~\ref{eq:MFTflow}.
+\begin{figure}[h!]
+\vspace{1em}
+\caption{\label{fig:diffCoef}
+Comparison of effective diffusion coefficient $D$ in the MFT (top) and in direct simulation (bottom) as a function of density and stickiness.
+The white region is where the MFT gives negative diffusion. The simulations used 124 sites averaged over $\sim 10^9$ steps at each of $12 \times 24 \times 16 $ $(\lambda, \rho_M, \delta \rho)$ combinations.
+Full details in the supplementary materials.}
+
+\begin{center}
+ \begin{tabular}{c}
+    \includegraphics[width=0.98\linewidth]{newAnalFlow} \\
+    \includegraphics[width=0.98\linewidth]{newDataFlow}
+    \end{tabular}
+\end{center}
+    \vspace{-2em}
+\end{figure}
+
+One can compare the MFT prediction and the actual numerical results together as we have done in Fig.~\ref{fig:diffCoef}. We see that MFT and simulation agree well for low stickiness, and both show the symmetry
+about $\rho_M = \frac{2}{3}$. For high stickiness, where the MFT prediction gives negative diffusion constant, the simulation generates a much increased density in the system.  This takes $\rho_M$ outside the negative-$D$ regime of the MFT,
+and into slow, but positive $D$ regime; this might explain why our measured diffusion coefficients seem to have been ``stretched'' along the $\rho_M$ axis. As before, we don't see a consistent spiking in the variance of the flow rate,
+which is generally consistent with out other findings with
+regards to the accuracy of the MFT.
+
+It is instructive to get an overview of how the particles move during flow. Fig.~\ref{fig:flowPatterns} show a plot of the flow structure in an interesting regime.
+We note that over short timescales little structure is visible, the dynamics appearing as a random walk with some tendency for particles to clump; over longer timescales the diffusive behavior is more evident, with a textured structure suggesting characteristic velocity of  particles or vacancies through emergent correlated clumps.
+Additional plots can be found in the supplementary materials at [URL will be inserted by publisher].
+
+\begin{figure}[h!]
+\caption{\label{fig:flowPatterns} Indicative spacetime flow pattern for sticky free-flow $\left[\lambda = \frac{3}{20}, (\rho_0, \rho_L) = (\frac{3}{4}, \frac{1}{4})\right]$; other combinations shown in the supplementary materials.
+Time runs along the x-axis, space (1 pixel=1 site) along the y-axis, with grayscale tone (black being empty, white being full) illustrating average site occupation over (clockwise from top left) $\frac{1}{32}$, $1$, $8$ and $32$ Gillespie steps per site respectively.}
+\begin{center}
+ \begin{tabular}{c | c}
+    \includegraphics[width=0.49\linewidth]{shortTime}  &\includegraphics[width=0.49\linewidth]{midShortTime} \\
+    \hline
+    \includegraphics[width=0.49\linewidth]{longTime} &\includegraphics[width=0.49\linewidth]{midLongTime}
+    \end{tabular}
+\end{center}
+    \vspace{-2em}
+\end{figure}
+
+
+To conclude, we have solved a nonlinear model for self-interacting sticky particles diffusing in 1D.  Although only the particles exhibit stickiness,  the analytics suggest a symmetry between vacancy-type and particle-type flow
+at density of $\frac{2}{3}$, which is observed in the simulation.  The flow exhibits a foamy pattern with intermediate time-and-space correlations.  The continuum solution MFT is a good predictor of the bulk flow behavior of the SPM.
+The negative diffusion constant found in MFT at high stickiness indicates  that the assumption of homogeneous density break down: thus the MFT predicts its own demise.
+
+We would like to thank EPSRC (student grant 1527137) and Wolfson Foundation for providing the funding, Mikael Leetmaa for producing \texttt{KMCLib}, and the \texttt{Eddie3} team here at Edinburgh for maintaining the hardware used.
+We would also like to thank Martin Evans, Bartek Waclaw and Richard Blythe for some very helpful discussions during the production of this letter.
+
+\begin{thebibliography}{24}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{http://dx.doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Belitsky}\ and\ \citenamefont
+  {Sch{\"u}tz}(2011)}]{1742-5468-2011-07-P07007}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
+  {Belitsky}}\ and\ \bibinfo {author} {\bibfnamefont {G.~M.}\ \bibnamefont
+  {Sch{\"u}tz}},\ }\href {http://stacks.iop.org/1742-5468/2011/i=07/a=P07007}
+  {\bibfield  {journal} {\bibinfo  {journal} {Journal of Statistical Mechanics:
+  Theory and Experiment}\ }\textbf {\bibinfo {volume} {2011}},\ \bibinfo
+  {pages} {P07007} (\bibinfo {year} {2011})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mobilia}\ \emph {et~al.}(2007)\citenamefont
+  {Mobilia}, \citenamefont {Georgiev},\ and\ \citenamefont
+  {T{\"a}uber}}]{Mobilia2007}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Mobilia}}, \bibinfo {author} {\bibfnamefont {I.~T.}\ \bibnamefont
+  {Georgiev}}, \ and\ \bibinfo {author} {\bibfnamefont {U.~C.}\ \bibnamefont
+  {T{\"a}uber}},\ }\href {\doibase 10.1007/s10955-006-9146-3} {\bibfield
+  {journal} {\bibinfo  {journal} {Journal of Statistical Physics}\ }\textbf
+  {\bibinfo {volume} {128}},\ \bibinfo {pages} {447} (\bibinfo {year}
+  {2007})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Tegner}\ \emph {et~al.}(2015)\citenamefont {Tegner},
+  \citenamefont {Zhu}, \citenamefont {Siemers}, \citenamefont {Saksl},\ and\
+  \citenamefont {Ackland}}]{tegner2015high}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Tegner}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Zhu}},
+  \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Siemers}}, \bibinfo
+  {author} {\bibfnamefont {K.}~\bibnamefont {Saksl}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Ackland}},\ }\href {\doibase
+  10.1016/j.jallcom.2015.04.115} {\bibfield  {journal} {\bibinfo  {journal}
+  {Journal of alloys and compounds}\ }\textbf {\bibinfo {volume} {643}},\
+  \bibinfo {pages} {100} (\bibinfo {year} {2015})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Zhu}\ \emph {et~al.}(2012)\citenamefont {Zhu},
+  \citenamefont {Hu}, \citenamefont {Yang},\ and\ \citenamefont
+  {Ackland}}]{zhu2012atomic}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Zhu}}, \bibinfo {author} {\bibfnamefont {Q.-M.}\ \bibnamefont {Hu}},
+  \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Yang}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {G.}~\bibnamefont {Ackland}},\ }\href {\doibase
+  10.1021/jp309305n} {\bibfield  {journal} {\bibinfo  {journal} {Journal of
+  Physical Chemistry C}\ }\textbf {\bibinfo {volume} {116}},\ \bibinfo {pages}
+  {24201} (\bibinfo {year} {2012})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Deal}\ and\ \citenamefont
+  {Grove}(1965)}]{DealGrove1965}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.~E.}\ \bibnamefont
+  {Deal}}\ and\ \bibinfo {author} {\bibfnamefont {A.~S.}\ \bibnamefont
+  {Grove}},\ }\href {\doibase 10.1063/1.1713945} {\bibfield  {journal}
+  {\bibinfo  {journal} {Journal of Applied Physics}\ }\textbf {\bibinfo
+  {volume} {36}},\ \bibinfo {pages} {3770} (\bibinfo {year} {1965})},\ \Eprint
+  {http://arxiv.org/abs/https://doi.org/10.1063/1.1713945}
+  {https://doi.org/10.1063/1.1713945} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Cabrera}\ and\ \citenamefont
+  {Mott}(1949)}]{MottCabrera1949}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Cabrera}}\ and\ \bibinfo {author} {\bibfnamefont {N.~F.}\ \bibnamefont
+  {Mott}},\ }\href {http://stacks.iop.org/0034-4885/12/i=1/a=308} {\bibfield
+  {journal} {\bibinfo  {journal} {Reports on Progress in Physics}\ }\textbf
+  {\bibinfo {volume} {12}},\ \bibinfo {pages} {163} (\bibinfo {year}
+  {1949})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Buzzaccaro}\ \emph {et~al.}(2007)\citenamefont
+  {Buzzaccaro}, \citenamefont {Rusconi},\ and\ \citenamefont
+  {Piazza}}]{Buzzaccaro2007}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Buzzaccaro}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Rusconi}},
+  \ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Piazza}},\ }\href
+  {\doibase 10.1103/PhysRevLett.99.098301} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {99}},\ \bibinfo
+  {pages} {098301} (\bibinfo {year} {2007})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ladd}\ \emph {et~al.}(1988)\citenamefont {Ladd},
+  \citenamefont {Colvin},\ and\ \citenamefont {Frenkel}}]{ladd1988application}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~J.~C.}\
+  \bibnamefont {Ladd}}, \bibinfo {author} {\bibfnamefont {M.~E.}\ \bibnamefont
+  {Colvin}}, \ and\ \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Frenkel}},\ }\href {\doibase 10.1103/PhysRevLett.60.975} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo
+  {volume} {60}},\ \bibinfo {pages} {975} (\bibinfo {year} {1988})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Liggett}(1985)}]{liggett1985interacting}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.~M.}\ \bibnamefont
+  {Liggett}},\ }\href@noop {} {\emph {\bibinfo {title} {Interacting particle
+  systems}}}\ (\bibinfo  {publisher} {Springer-Verlag, Berlin},\ \bibinfo
+  {year} {1985})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kardar}\ \emph {et~al.}(1986)\citenamefont {Kardar},
+  \citenamefont {Parisi},\ and\ \citenamefont {Zhang}}]{PhysRevLett.56.889}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Kardar}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Parisi}}, \
+  and\ \bibinfo {author} {\bibfnamefont {Y.-C.}\ \bibnamefont {Zhang}},\ }\href
+  {\doibase 10.1103/PhysRevLett.56.889} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {56}},\ \bibinfo
+  {pages} {889} (\bibinfo {year} {1986})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Krug}\ and\ \citenamefont
+  {Spohn}(1988)}]{PhysRevA.38.4271}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Krug}}\ and\ \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Spohn}},\
+  }\href {\doibase 10.1103/PhysRevA.38.4271} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {38}},\ \bibinfo
+  {pages} {4271} (\bibinfo {year} {1988})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sasamoto}\ and\ \citenamefont
+  {Spohn}(2010)}]{Sasamoto2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Sasamoto}}\ and\ \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Spohn}},\ }\href {\doibase 10.1103/PhysRevLett.104.230602} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo
+  {volume} {104}},\ \bibinfo {pages} {230602} (\bibinfo {year}
+  {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sugden}\ and\ \citenamefont
+  {Evans}(2007)}]{sugden2007dynamically}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.~E.~P.}\
+  \bibnamefont {Sugden}}\ and\ \bibinfo {author} {\bibfnamefont {M.~R.}\
+  \bibnamefont {Evans}},\ }\href
+  {http://stacks.iop.org/1742-5468/2007/i=11/a=P11013} {\bibfield  {journal}
+  {\bibinfo  {journal} {Journal of Statistical Mechanics: Theory and
+  Experiment}\ }\textbf {\bibinfo {volume} {2007}},\ \bibinfo {pages} {P11013}
+  (\bibinfo {year} {2007})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kollmann}(2003)}]{Kollmann2003}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Kollmann}},\ }\href {\doibase 10.1103/PhysRevLett.90.180602} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo
+  {volume} {90}},\ \bibinfo {pages} {180602} (\bibinfo {year}
+  {2003})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Lin}\ \emph {et~al.}(2005)\citenamefont {Lin},
+  \citenamefont {Meron}, \citenamefont {Cui}, \citenamefont {Rice},\ and\
+  \citenamefont {Diamant}}]{Lin2005}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Lin}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Meron}}, \bibinfo
+  {author} {\bibfnamefont {B.}~\bibnamefont {Cui}}, \bibinfo {author}
+  {\bibfnamefont {S.~A.}\ \bibnamefont {Rice}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {H.}~\bibnamefont {Diamant}},\ }\href {\doibase
+  10.1103/PhysRevLett.94.216001} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {94}},\ \bibinfo {pages}
+  {216001} (\bibinfo {year} {2005})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hegde}\ \emph {et~al.}(2014)\citenamefont {Hegde},
+  \citenamefont {Sabhapandit},\ and\ \citenamefont {Dhar}}]{Hegde2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Hegde}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Sabhapandit}},
+  \ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Dhar}},\ }\href
+  {\doibase 10.1103/PhysRevLett.113.120601} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {113}},\ \bibinfo
+  {pages} {120601} (\bibinfo {year} {2014})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Krapivsky}\ \emph {et~al.}(2014)\citenamefont
+  {Krapivsky}, \citenamefont {Mallick},\ and\ \citenamefont
+  {Sadhu}}]{Krapivsky2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.~L.}\ \bibnamefont
+  {Krapivsky}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Mallick}},
+  \ and\ \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Sadhu}},\ }\href
+  {\doibase 10.1103/PhysRevLett.113.078101} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {113}},\ \bibinfo
+  {pages} {078101} (\bibinfo {year} {2014})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Imamura}\ \emph {et~al.}(2017)\citenamefont
+  {Imamura}, \citenamefont {Mallick},\ and\ \citenamefont
+  {Sasamoto}}]{Imamura2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Imamura}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Mallick}}, \
+  and\ \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Sasamoto}},\ }\href
+  {\doibase 10.1103/PhysRevLett.118.160601} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {118}},\ \bibinfo
+  {pages} {160601} (\bibinfo {year} {2017})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Katz}\ \emph {et~al.}(1984)\citenamefont {Katz},
+  \citenamefont {Lebowitz},\ and\ \citenamefont {Spohn}}]{Katz1984}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Katz}}, \bibinfo {author} {\bibfnamefont {J.~L.}\ \bibnamefont {Lebowitz}},
+  \ and\ \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Spohn}},\ }\href
+  {\doibase 10.1007/BF01018556} {\bibfield  {journal} {\bibinfo  {journal}
+  {Journal of Statistical Physics}\ }\textbf {\bibinfo {volume} {34}},\
+  \bibinfo {pages} {497} (\bibinfo {year} {1984})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Zia}(2010)}]{Zia2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~K.~P.}\
+  \bibnamefont {Zia}},\ }\href {\doibase 10.1007/s10955-009-9884-0} {\bibfield
+  {journal} {\bibinfo  {journal} {Journal of Statistical Physics}\ }\textbf
+  {\bibinfo {volume} {138}},\ \bibinfo {pages} {20} (\bibinfo {year}
+  {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kawasaki}(1966)}]{PhysRev.145.224}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Kawasaki}},\ }\href {\doibase 10.1103/PhysRev.145.224} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {145}},\
+  \bibinfo {pages} {224} (\bibinfo {year} {1966})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Leetmaa}}\ and\ \citenamefont
+  {{Skorodumova}}(2014)}]{leetmaa2014kmclib}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {{Leetmaa}}}\ and\ \bibinfo {author} {\bibfnamefont {N.~V.}\ \bibnamefont
+  {{Skorodumova}}},\ }\href {\doibase 10.1016/j.cpc.2014.04.017} {\bibfield
+  {journal} {\bibinfo  {journal} {Computer Physics Communications}\ }\textbf
+  {\bibinfo {volume} {185}},\ \bibinfo {pages} {2340} (\bibinfo {year}
+  {2014})},\ \Eprint {http://arxiv.org/abs/1405.1221} {arXiv:1405.1221
+  [physics.comp-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gillespie}(1977)}]{Gillespie1977}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~T.}\ \bibnamefont
+  {Gillespie}},\ }\href {\doibase 10.1021/j100540a008} {\bibfield  {journal}
+  {\bibinfo  {journal} {The Journal of Physical Chemistry}\ }\textbf {\bibinfo
+  {volume} {81}},\ \bibinfo {pages} {2340} (\bibinfo {year} {1977})},\ \Eprint
+  {http://arxiv.org/abs/http://dx.doi.org/10.1021/j100540a008}
+  {http://dx.doi.org/10.1021/j100540a008} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hellier}(2018)}]{jHellGitRepo}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Hellier}},\ }\href {\doibase 10.5281/zenodo.1162818} {\  (\bibinfo {year}
+  {2018}),\ 10.5281/zenodo.1162818}\BibitemShut {NoStop}%
+\end{thebibliography}%
+
+
+
+\end{document}
+%
+% ****** End of file apssamp.tex ******

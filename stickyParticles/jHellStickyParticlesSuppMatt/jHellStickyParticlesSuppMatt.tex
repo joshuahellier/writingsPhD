@@ -1,0 +1,221 @@
+% ****** Start of file apssamp.tex ******
+%
+%   This file is part of the APS files in the REVTeX 4.1 distribution.
+%   Version 4.1r of REVTeX, August 2010
+%
+%   Copyright (c) 2009, 2010 The American Physical Society.
+%
+%   See the REVTeX 4 README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.1
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)  bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+\documentclass[
+reprint,
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%showpacs,preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+ amsmath,amssymb,
+ aps,
+ prl,
+%pra,
+%prb,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+]{revtex4-1}
+
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\DeclareMathOperator\erf{erf}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{hyperref}
+%\usepackage{hyperref}% add hypertext capabilities
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+
+\begin{document}
+
+%\preprint{APS/123-QED}
+
+\title{Supplementary Materials for ``On The Diffusion of Sticky Particles in 1-D''}% Force line breaks with \\
+%\thanks{A footnote to the article title}%
+
+\author{Joshua DM Hellier}
+ \email{J.D.M.Hellier@sms.ed.ac.uk}
+% \altaffiliation[Also at ]{Physics Department, XYZ University.}%Lines break automatically or can be forced with \\
+\author{Graeme J Ackland}%
+ \email{G.J.Ackland@ed.ac.uk}
+\affiliation{%
+ SUPA, School of Physics and Astronomy, University of Edinburgh, Mayfield Road, Edinburgh EH9 3JZ, United Kingdom
+}%
+
+
+\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+\maketitle
+
+%\bibliography{jHellSpring2017}
+
+\textit{Lattice MFT Derivation.} Let the ensemble-averaged occupation probability of the $i^\mathrm{th}$ site at time $t$ be $\rho_i (t)$. In the mean-field approximation regime this is assumed to be independent of $\rho_j(t)$ for $j \neq i $ at
+equal times. Therefore, we can condition on the probability of the $i^\mathrm{th}$ site being occupied at a given time $t$ simply by multiplying by $\rho_i (t)$.
+If the $i^\mathrm{th}$ site is full, then the rate at which it empties is the sum of the probabilities that the $(i+1)^\mathrm{th}$ and $(i-1)^\mathrm{th}$ sites are empty, multiplied by a rate which depends on the occupation probability
+of the $(i+2)^\mathrm{th}$ and $(i-2)^\mathrm{th}$ sites respectively. Therefore in the MFT the rate at which the $i^\mathrm{th}$ site empties is 
+\begin{align}
+\begin{split}
+ &\frac{1}{\tau_0 } (1-\rho_{i-1})\left[ (1 - \rho_{i+1}) + \lambda \rho_{i+1} \right] \\
+ +&\frac{1}{\tau_0 } (1-\rho_{i+1})\left[ (1 - \rho_{i-1}) + \lambda \rho_{i-1} \right] .
+\end{split}
+ \end{align}
+Similarly, if the $(i)^\mathrm{th}$ site is unoccupied, it fills with rate
+\begin{equation}
+\frac{1}{\tau_0 } \left\{ \rho_{i+1} \left[ \lambda \rho_{i+2} + (1-\rho_{i+2}) \right] + \rho_{i-1} \left[ \lambda \rho_{i-2} + (1-\rho_{i-2}) \right] \right\}.
+\end{equation}
+If we now multiply the filling and emptying rates of site $i$ by its occupation probability and the complement respectively, we obtain the final result that
+\begin{align}
+\label{eq:latticeMFT}
+\begin{split}
+ \tau_0 \partDeriv{\rho_i}{t} &= \left( 1-\rho_i \right) \left[ \left(1-\zeta\rho_{i-2} \right) \rho_{i-1} + \left(1-\zeta\rho_{i+2} \right) \rho_{i+1} \right] \\
+ &- \rho_i \left[ 2 \zeta \rho_{i-1} \rho_{i+1}  - (3-\zeta)\left(\rho_{i-1} + \rho_{i+1}\right) + 2 \right].
+ \end{split}
+ \end{align}
+
+\textit{MFT Continuum Limit.} To obtain the continuum limit of the MFT simply substitute $\rho_i(t) \rightarrow \rho(x, t)$, $\rho_{i+m}(t) \rightarrow \rho(x + am, t)$ into Eq.~\ref{eq:latticeMFT}.
+Then, Taylor expand around $x$ for small $a$, neglecting terms of $\mathcal{O}(a^4)$. Doing this and collecting terms we find that
+\begin{align}
+ \begin{split}
+  \tau_0 \partDeriv{\rho}{t} =& a^2 \left[ 1-\zeta \rho (4-3\rho) \partDeriv{^2 \rho}{x^2}  \right] \\
+  +& 2 a^2 \zeta (3\rho-2) \left(\partDeriv{\rho}{x}\right)^2 + \mathcal{O}(a^4) ,
+ \end{split}
+\end{align}
+which can be factorized into the more familiar continuity equation
+\begin{equation}
+\label{eq:contPDE}
+ \partDeriv{\rho}{t} = \frac{a^2}{\tau_0} \partDeriv{}{x} \left\{ \left[1 - \zeta \rho\left(4-3\rho\right) \right] \partDeriv{\rho}{x} \right\},
+\end{equation}
+having dropped the higher-order terms in the continuum limit.
+
+\textit{Steady State Solution to the Continuum MFT.} Eq.~\ref{eq:contPDE} is simple to solve in the time-independent steady state. Integrating both sides with respect to $x$ and using the chain rule, we see that
+\begin{align}
+ \begin{split}
+  J_0 (x-x_0) = \int \! \! \mathrm{d} \rho  \left[1 - \zeta \rho\left(4-3\rho\right) \right]  = \rho + \zeta (\rho - 2) \rho^2 .
+ \end{split}
+\end{align}
+$J_0$ and $x_0$ may be chosen to yield the desired boundary conditions, and the equation may then be inverted by solving a cubic to find $\rho(x)$.
+
+\begin{figure}[h!]
+\vspace{0em}
+\caption{\label{fig:detailedBalance}
+\vspace{1em}}
+\includegraphics[width=0.98\linewidth]{images/detailedBalanceDiagram-crop}
+    \vspace{-0em}
+\end{figure}
+
+\textit{Detailed Balance Proof.} In Fig.~\ref{fig:detailedBalance} we see all the possible transitions which may occur between local configurations. Assume that the system is now on a ring, with $L$ lattice sites and $N$ particles.
+Let us label possible system configurations by $\xi$ and let the number of adjacencies (or ``bonds'') between particles is $b(\xi)$. Now for our ansatz assume that the probability of the system being in state $\xi$ is $\lambda^{-b(\xi)}$.
+In the top and bottom diagrams of Fig.~\ref{fig:detailedBalance} we can see that the number of bonds on both sides is the same, as are the transition rates back and forth; thus our ansatz holds for these states, as it predicts the probabilities
+of the left and right configurations are the same. The middle two diagrams are the same only flipped; in the upper diagram a bond is formed going left to right and then broken going right to left, so the probability of being in the left state is
+$\lambda$ times that of being in the right state. This is again in agreement with the detailed balance criterion. As these are the only types of transition that may occur on a ring, we may then say that the closed system obeys detailed balance.
+
+\textit{Additional Flow Data.} Fig.~\ref{fig:fullLambdaScans}, \ref{fig:fullConstDens} and \ref{fig:fullDiffCoef} display additional data and information from computations discussed in the main body of the Letter.
+\begin{figure*}[h!]
+\vspace{1em}
+\caption{\label{fig:fullLambdaScans} Additional flow rate moments and overall system densities for the sweeps through $\lambda$ with fixed boundaries.}
+\begin{center}
+ \begin{tabular}{c|c}
+    \includegraphics[width=0.5\linewidth]{images/newFlowMean} & \includegraphics[width=0.5\linewidth]{images/newFlowVar} \\
+    \hline
+    \includegraphics[width=0.5\linewidth]{images/newFlowSkew} & \includegraphics[width=0.5\linewidth]{images/newDens} \\
+    \end{tabular}
+\end{center}
+    \vspace{-0em}
+\end{figure*}
+
+\begin{figure*}[h!]
+\vspace{1em}
+\caption{\label{fig:fullConstDens} Flow rate variance and average overall densities observed when varying the difference $\delta\rho$ between the boundary concentrations
+$(\rho_B, \rho_T) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ and $\lambda$. $\rho_M=\frac{1}{2}$, as in the Letter.}
+\begin{center}
+ \begin{tabular}{c|c}
+    \includegraphics[width=0.5\linewidth]{images/newConstVar} & \includegraphics[width=0.5\linewidth]{images/newConstDens} \\
+    \end{tabular}
+\end{center}
+    \vspace{0em}
+\end{figure*}
+
+\begin{figure*}[h!]
+\vspace{1em}
+\caption{\label{fig:fullDiffCoef}
+These images are in addition to our computation of the effective diffusion coefficient $D$. The left shows the overall system density as a function of $\rho_M$ and $\lambda$, whilst the right shows the standard error in our estimate of $D$.
+In this setup we ran the simulation for
+$1.6\times10^8$ equilibration steps, followed by $10$ sets of alternating measurement and relaxation runs, of lengths $8\times10^7$ and $1.6\times10^7$ steps respectively. These results are consistent with calculations performed on smaller
+systems, so finite-size effects should be suppressed.
+}
+
+\begin{center}
+ \begin{tabular}{c@{\hspace{1em}}c}
+    \includegraphics[width=0.5\linewidth]{images/newFlowDens} & \includegraphics[width=0.5\linewidth]{images/newFlowErr} 
+    \end{tabular}
+\end{center}
+    \vspace{0em}
+\end{figure*}
+
+\textit{More flow plots.} For the interested reader we have included for spacetime flow diagrams, show in Fig.~\ref{fig:flowPatterns}. When $\lambda=0.05$, the medium consists of solid blocks surrounded by empty spaces containing a dilute
+gas of particles; at $\lambda=0.35$
+The most interesting images (center) are those for the intermediate $\lambda$; here we see a ``lumpy'' or ``foamy'' structure, in which small blocks
+of particles are being constantly created and destroyed whilst a rather minimal flow occurs across the system.
+The simulations did not show any hard phase transition as we vary $\lambda$; rather, it seems that this ``foamy''
+behavior is part of a continuous range between the extremes, containing medium-range correlations between particles.
+Unfortunately, computing equal-time correlation functions to the accuracy required
+to draw conclusions about these correlations has proven to be extremely difficult, so we cannot find a quantitative description of the foam beyond the flow rate and density data we have discussed in this Letter.
+In all images in Fig.~\ref{fig:flowPatterns}, long straight segments of white of black can be seen.  The represent coherent motion at a characteristic velocity given by their gradient. There is nothing in the MFT to suggest what this velocity
+should be, and it is much smaller than the simulated system's length divided by the elapsed time,  $\frac{L}{T}$, thus it must be an emergent property arising from correlated motion of self-assembled regions of  high- or low-density material.
+However, it ha again proved difficult to analyze this numerically.
+
+
+\begin{figure*}[h!]
+\caption{\label{fig:flowPatterns} The spacetime flow patterns, for $\lambda$-values of $0.05$, $0.15$, $0.25$ and $0.35$ going clockwise from top left.
+In each plot time runs along the $x$-axis, space along the $y$-axis, with the bottom boundary being held with a concentration of $\frac{1}{4}$ and the top at $\frac{3}{4}$. White represents full occupation, black empty, and grey shades partial
+occupation. The degree of occupation was calculated by taking the \texttt{KMCLib} record of a particular site's occupation (i.e. the Gillespie times at
+which the site changed occupation), assigning $0$ and $1$ to particles and vacancies respectively, linearly interpolating this and then integrating over times longer than a single Gillespie step but much shorter than the total time in question.
+In each case the total time elapsed is that taken by $2^6$ Gillespie steps, and each short-time-average has been done over the total time divided by $512$, the number of lattice sites; this means that on average a site would change state 8 times
+per pixel, although of course the real distribution is not nearly this even.
+Time has been rescaled this way in order to allow fair comparison of different $\lambda$-values.}
+\begin{center}
+ \begin{tabular}{c@{\hspace{0.35em}}c}
+    \includegraphics[height=0.3\paperheight]{images/l05-crop} & \includegraphics[height=0.3\paperheight]{images/l15-crop} \\
+    \includegraphics[height=0.3\paperheight]{images/l35-crop} & \includegraphics[height=0.3\paperheight]{images/l25-crop} \\
+    \end{tabular}
+\end{center}
+    \vspace{0em}
+\end{figure*}
+
+\end{document}
+%
+% ****** End of file apssamp.tex ******
