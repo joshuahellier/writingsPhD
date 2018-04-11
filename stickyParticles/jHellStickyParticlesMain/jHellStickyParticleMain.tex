@@ -80,7 +80,7 @@ possible applications.
 
 
 Lattice gases are a ubiquitous tool for modeling complex systems from biology to traffic~\cite{1742-5468-2011-07-P07007, Mobilia2007, tegner2015high, zhu2012atomic, DealGrove1965, MottCabrera1949, Buzzaccaro2007}. 
-Analytically solvable cases involve non-interacting or excluding particles~\cite{ladd1988application, liggett1985interacting}, but in any real system of interest the moving objects interact. Many models tackle the situation where the diffusing
+Analytically solvable cases involve non-interacting or excluding particles~\cite{ladd1988application, liggett1985interacting, BenNaim1999}, but in any real system of interest the moving objects interact. Many models tackle the situation where the diffusing
 object interact with the substrate,
 % find example
 but despite the clear application-relevance there is surprisingly little work considering interactions between the moving particles themselves.  One reason for this is that the interactions introduce nonlinearities in analytical models, which makes them
@@ -108,9 +108,14 @@ instead of their normal hopping rate, $1$. It is in fact a version of the KLS mo
 Kawasaki~\cite{PhysRev.145.224}. It seems that this symmetric model has not been researched much (at least in terms of its dynamics) because the model with the applied field is so interesting; however, it seems that the simple symmetric model
 exhibits complex unexpected behavior when a concentration gradient is applied. The quantity $\lambda$ parametrizes the ``stickiness'' of the particles; when $\lambda>1$, there is a tendency for particles to repel,
 whilst $\lambda < 1$ represents attraction.
-It is worth noting that the rates specified in Fig.~\ref{fig:rates} obey detailed balance,  %cite supplimentary materials
-with an energy proportional to the number of particle-particle adjacencies
-in the system. It seems that space of highly-local exclusion models is so tightly constrained in one-dimension that there is no option but to comply with the detailed balance condition.
+We prove in the supplementary materials that the rates specified in Fig.~\ref{fig:rates} obey detailed balance, with a Hamiltonian isomorphic to the Ising model.
+We further demonstrate that any highly-local, symmetric exclusion model in any dimension must obey the detailed balance condition.
+
+
+
+%It is worth noting that the rates specified in Fig.~\ref{fig:rates} obey detailed balance,  %cite supplimentary materials
+%with an energy proportional to the number of particle-particle adjacencies
+%in the system. It seems that space of highly-local exclusion models is so tightly constrained in one-dimension that there is no option but to comply with the detailed balance condition.
 
 
 The model described in Fig.~\ref{fig:rates} is very simple, but numerical simulation shows that it is capable of a wide range of behaviors, such as those shown in Fig.~\ref{fig:flowPatterns}. We will discuss
@@ -130,9 +135,9 @@ Switching to the continuum limit by taking $a\rightarrow 0$, and neglecting $\ma
 \begin{align}
  \partDeriv{\rho}{t} &= - \partDeriv{J}{x}, \\
  J &= -  D(\rho) \partDeriv{\rho}{x}, \\
- D(\rho) &= \frac{a^2}{\tau_0} \left[1 - \zeta \rho\left(4-3\rho\right) \right]. 
+ D(\rho) &= \frac{a^2}{\tau_0} \left[1 - \zeta \rho\left(4-3\rho\right) \right]. \label{eq:diffCoeff} 
 \end{align}
-Thus, the MFT says that the particles should diffuse with a diffusion coefficient $A(\rho)$ which depends upon the local density.
+Thus, the MFT says that the particles should diffuse with a diffusion coefficient $D(\rho)$ which depends upon the local density.
 
 In order to understand the implications of the MFT, let us consider some limits. As $\zeta \rightarrow 0$ (i.e. as the model becomes a simple exclusion model), $D \rightarrow \frac{a^2}{\tau_0}$. Likewise, in the
 dilute limit $\rho \rightarrow 0$, $D \rightarrow \frac{ a^2}{\tau_0}$, reflecting the fact that it becomes a dilute lattice gas and therefore the interactions between particles become irrelevant as they never meet.
@@ -144,20 +149,23 @@ Finally, it is possible to show that solutions to the continuum MFT containing d
 the density of the medium should gravitate towards a density for which $D(\rho)\sim 0$. Instead of observing ``backwards diffusion'' we would see an extremely slow flow or no flow at all. The MFT implies that the transition
 to this critically slowly-flowing regime happens suddenly, like a phase transition: this can be checked with our numerics.
 
-It is possible to solve the continuum MFT in a steady state on a finite domain, say $x\in(0, L)$. The continuity equation implies that $J(x)=J_0$, and by integrating both sides of that equation with respect to $x$ we find that
+It is possible to solve the continuum MFT in a steady state on a finite domain, say $x\in(0, L)$. The continuity equation implies that $J(x)=J_0=\mathrm{const.}$, and by integrating both sides of this equation with respect to $x$ we find that
 \begin{equation}
- J_0 (x-x_0) = -\frac{a^2}{\tau_0} \rho \left[1+\zeta \rho\left(\rho-2\right)\right],
+ J_0 (x-x_0) = -\frac{a^2}{\tau_0} \rho \left[1+\zeta \rho\left(\rho-2\right)\right]
 \end{equation}
+with real constant $x_0$,
 a cubic equation which can be solved to give $\rho(x)$. If we impose Dirichlet boundary conditions on this system, say $\rho(0)=\rho_0$ and $\rho(L)=\rho_L$, we find that
 \begin{equation}
  J = \frac{a^2}{L \tau_0} \left[ \rho_0 - \rho_L + \zeta \left( \rho_0\left[\rho_0^2-2\right] - \rho_L\left[\rho_L^2-2\right] \right) \right].
 \end{equation}
-We may consider applying small concentration gradients across a block by setting $\rho_0 = \rho_M + \frac{1}{2}\delta\rho$ and $\rho_L = \rho_M - \frac{1}{2}\delta\rho$. Doing so, we find that the effective diffusion coefficient of the block
-$D_\mathrm{Eff}=\partDeriv{J}{\delta\rho}\big|_{\delta\rho=0}$ obeys
+We may consider applying small concentration gradients across a domain by setting $\rho_0 = \rho_M + \frac{1}{2}\delta\rho$ and $\rho_L = \rho_M - \frac{1}{2}\delta\rho$. Doing so, we find that the effective diffusion coefficient of the domain
+$D_\mathrm{Eff}=L \partDeriv{J}{\delta\rho}\big|_{\delta\rho=0}$ obeys
 \begin{equation}
 \label{eq:MFTflow}
- \partDeriv{J}{\delta\rho}\bigg|_{\delta\rho=0} = \frac{a^2}{L \tau_0} \left[ 1 - \zeta\rho_M(4-3\rho_M) \right].
+ D_\mathrm{Eff} = \frac{a^2}{ \tau_0} \left[ 1 - \zeta\rho_M(4-3\rho_M) \right],
 \end{equation}
+which is analogous to Eq.~\ref{eq:diffCoeff}
+
 
 We have derived MFT predictions about the SPM, and have indications about when those predictions might become invalid, which we tested numerically.
 We chose to calculate using the \texttt{KMCLib}\cite{leetmaa2014kmclib} package, which implements the Kinetic Monte Carlo algorithm
@@ -214,17 +222,20 @@ from which we can calculate estimates of the descriptive statistics of both quan
 
 Firstly, we should note that we only have an MFT prediction for the flow rate as a function of $\lambda$, since $\rho(x)$ stops being unique when $\lambda$ drops below $\frac{1}{4}$,
 and so the MFT lacks predictive power. For low-stickiness, when $\lambda>\frac{1}{4}$, the MFT is in good agreement with the simulations.
-However, one of the key predictions of the MFT - that a sharp transition to a no-flow regime occurs when $\lambda$ becomes small enough (at least for 3 of the 4 sets of
-boundary conditions we investigated here) - is not realized in our simulations. Indeed what seems to be happening is that the sharp transition has been smoothed out, as we
-do not see any peaks or jumps in the flow rate variance or skewness (which we would expect to see if there was a transition). We suspect that this discrepancy is due to nontrivial correlations emerging between the particles, which the MFT
-does not take account of. Alternatively, it could be that the continuum assumption is failing due to the finite-sized system filling with particles and blocking.
+However, one of the key predictions of the MFT -that a sharp transition to negative flow occurs at low $\lambda$ - manifests in the simulations as a transition to a no flow regime.
+This transition is smoothed by finite size effects at very low flow rates, but we can determine its position in the thermodynamic limit  by extrapolation from the linear regime (Fig.~\ref{fig:lambdaScans}).
+The discrepancy in the character of the transition in due to the breakdown of the MFT approximation: flow up a concentration gradient means that the homogeneous density assumed in MFT cannot be maintained.
+%However, one of the key predictions of the MFT - that a sharp transition to a no-flow regime occurs when $\lambda$ becomes small enough (at least for 3 of the 4 sets of
+%boundary conditions we investigated here) - is not realized in our simulations. Indeed what seems to be happening is that the sharp transition has been smoothed out, as we
+%do not see any peaks or jumps in the flow rate variance or skewness (which we would expect to see if there was a transition). We suspect that this discrepancy is due to nontrivial correlations emerging between the particles, which the MFT
+%does not take account of. Alternatively, it could be that the continuum assumption is failing due to the finite-sized system filling with particles and blocking.
 
-Another situation we can investigate has boundaries $(\rho_B, \rho_T) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ for some given $\rho_M$, where $\delta\rho$ and $\lambda$ are varied. As before, we calculated flow rate
+Another situation we can investigate has boundaries $(\rho_0, \rho_L) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ for some given $\rho_M$, where $\delta\rho$ and $\lambda$ are varied. As before, we calculated flow rate
 moments and average densities, and the results are displayed in Fig.~\ref{fig:constDens}.
 \begin{figure}[h!]
 \vspace{1em}
 \caption{\label{fig:constDens} Flow rate mean observed when varying the difference $\delta\rho$ between the boundary concentrations
-$(\rho_B, \rho_T) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ and $\lambda$ (The top panel is the MFT prediction
+$(\rho_0, \rho_L) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ and $\lambda$ (The top panel is the MFT prediction
 for the flow rate, whilst bottom shows the observed mean flow rate).
 We chose $\rho_M=\frac{1}{2}$, as this gives us the biggest range of $\delta\rho$ to investigate.
 These calculations were performed with the same run parameters (system length etc)
@@ -265,7 +276,7 @@ One can compare the MFT prediction and the actual numerical results together as 
 about $\rho_M = \frac{2}{3}$. For high stickiness, where the MFT prediction gives negative diffusion constant, the simulation generates a much increased density in the system.  This takes $\rho_M$ outside the negative-$D$ regime of the MFT,
 and into slow, but positive $D$ regime; this might explain why our measured diffusion coefficients seem to have been ``stretched'' along the $\rho_M$ axis. As before, we don't see a consistent spiking in the variance of the flow rate,
 which is generally consistent with out other findings with
-regards to the accuracy of the MFT.
+regards to the accuracy of the MFT; however, the important thing to note is that the slow-flow region predicted by the MFT (indicated in purple) is present.
 
 It is instructive to get an overview of how the particles move during flow. Fig.~\ref{fig:flowPatterns} show a plot of the flow structure in an interesting regime.
 We note that over short timescales little structure is visible, the dynamics appearing as a random walk with some tendency for particles to clump; over longer timescales the diffusive behavior is more evident, with a textured structure suggesting characteristic velocity of  particles or vacancies through emergent correlated clumps.

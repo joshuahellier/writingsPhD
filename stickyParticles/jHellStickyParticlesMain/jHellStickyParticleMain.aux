@@ -17,7 +17,7 @@
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \citation{1742-5468-2011-07-P07007,Mobilia2007,tegner2015high,zhu2012atomic,DealGrove1965,MottCabrera1949,Buzzaccaro2007}
-\citation{ladd1988application,liggett1985interacting}
+\citation{ladd1988application,liggett1985interacting,BenNaim1999}
 \citation{PhysRevLett.56.889,PhysRevA.38.4271,Sasamoto2010}
 \citation{sugden2007dynamically,Kollmann2003,Lin2005,Hegde2014,Krapivsky2014,Imamura2017}
 \citation{Katz1984,Zia2010}
@@ -30,11 +30,12 @@
 \citation{leetmaa2014kmclib}
 \citation{Gillespie1977}
 \citation{jHellGitRepo}
+\newlabel{eq:diffCoeff}{{4}{2}{}{equation.0.4}{}}
 \newlabel{eq:MFTflow}{{7}{2}{}{equation.0.7}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  Mean flow rate observed when varying $\lambda $ with fixed boundary densities $(\rho _0, \rho _L)$; data series are labeled in the plot. The MFT prediction is indicated by the solid line. In each case we used systems of length $64$ (length $32$ gives similar results), running them for $400000$ Gillispie steps for equilibration followed by $10000$ measurement runs of $1000$ steps interspersed with relaxation runs of $16000$ steps. This way we could gather statistics about flow rates and densities in a well-equilibrated system. Specifically, we generate a pool of $10000$ samples of flow rate and density from which we can calculate estimates of the descriptive statistics of both quantities; flow moments and the density data are included in the supplementary materials. \vspace  {1em}}}{3}{figure.2}}
 \newlabel{fig:lambdaScans}{{2}{3}{Mean flow rate observed when varying $\lambda $ with fixed boundary densities $(\rho _0, \rho _L)$; data series are labeled in the plot. The MFT prediction is indicated by the solid line. In each case we used systems of length $64$ (length $32$ gives similar results), running them for $400000$ Gillispie steps for equilibration followed by $10000$ measurement runs of $1000$ steps interspersed with relaxation runs of $16000$ steps. This way we could gather statistics about flow rates and densities in a well-equilibrated system. Specifically, we generate a pool of $10000$ samples of flow rate and density from which we can calculate estimates of the descriptive statistics of both quantities; flow moments and the density data are included in the supplementary materials. \vspace {1em}}{figure.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  Flow rate mean observed when varying the difference $\delta \rho $ between the boundary concentrations $(\rho _B, \rho _T) = (\rho _M + \frac  {1}{2} \delta \rho , \rho _M - \frac  {1}{2} \delta \rho )$ and $\lambda $ (The top panel is the MFT prediction for the flow rate, whilst bottom shows the observed mean flow rate). We chose $\rho _M=\frac  {1}{2}$, as this gives us the biggest range of $\delta \rho $ to investigate. These calculations were performed with the same run parameters (system length etc) as above.}}{3}{figure.3}}
-\newlabel{fig:constDens}{{3}{3}{Flow rate mean observed when varying the difference $\delta \rho $ between the boundary concentrations $(\rho _B, \rho _T) = (\rho _M + \frac {1}{2} \delta \rho , \rho _M - \frac {1}{2} \delta \rho )$ and $\lambda $ (The top panel is the MFT prediction for the flow rate, whilst bottom shows the observed mean flow rate). We chose $\rho _M=\frac {1}{2}$, as this gives us the biggest range of $\delta \rho $ to investigate. These calculations were performed with the same run parameters (system length etc) as above}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  Flow rate mean observed when varying the difference $\delta \rho $ between the boundary concentrations $(\rho _0, \rho _L) = (\rho _M + \frac  {1}{2} \delta \rho , \rho _M - \frac  {1}{2} \delta \rho )$ and $\lambda $ (The top panel is the MFT prediction for the flow rate, whilst bottom shows the observed mean flow rate). We chose $\rho _M=\frac  {1}{2}$, as this gives us the biggest range of $\delta \rho $ to investigate. These calculations were performed with the same run parameters (system length etc) as above.}}{3}{figure.3}}
+\newlabel{fig:constDens}{{3}{3}{Flow rate mean observed when varying the difference $\delta \rho $ between the boundary concentrations $(\rho _0, \rho _L) = (\rho _M + \frac {1}{2} \delta \rho , \rho _M - \frac {1}{2} \delta \rho )$ and $\lambda $ (The top panel is the MFT prediction for the flow rate, whilst bottom shows the observed mean flow rate). We chose $\rho _M=\frac {1}{2}$, as this gives us the biggest range of $\delta \rho $ to investigate. These calculations were performed with the same run parameters (system length etc) as above}{figure.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  Comparison of effective diffusion coefficient $D$ in the MFT (top) and in direct simulation (bottom) as a function of density and stickiness. The white region is where the MFT gives negative diffusion. The simulations used 124 sites averaged over $\sim 10^9$ steps at each of $12 \times 24 \times 16 $ $(\lambda , \rho _M, \delta \rho )$ combinations. Full details in the supplementary materials.}}{4}{figure.4}}
 \newlabel{fig:diffCoef}{{4}{4}{Comparison of effective diffusion coefficient $D$ in the MFT (top) and in direct simulation (bottom) as a function of density and stickiness. The white region is where the MFT gives negative diffusion. The simulations used 124 sites averaged over $\sim 10^9$ steps at each of $12 \times 24 \times 16 $ $(\lambda , \rho _M, \delta \rho )$ combinations. Full details in the supplementary materials}{figure.4}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces  Indicative spacetime flow pattern for sticky free-flow $\left [\lambda = \frac  {3}{20}, (\rho _0, \rho _L) = (\frac  {3}{4}, \frac  {1}{4})\right ]$; other combinations shown in the supplementary materials. Time runs along the x-axis, space (1 pixel=1 site) along the y-axis, with grayscale tone (black being empty, white being full) illustrating average site occupation over (clockwise from top left) $\frac  {1}{32}$, $1$, $8$ and $32$ Gillespie steps per site respectively.}}{4}{figure.5}}
@@ -49,24 +50,25 @@
 \bibcite{Buzzaccaro2007}{{7}{2007}{{Buzzaccaro\ \emph  {et~al.}}}{{Buzzaccaro, Rusconi,\ and\ Piazza}}}
 \bibcite{ladd1988application}{{8}{1988}{{Ladd\ \emph  {et~al.}}}{{Ladd, Colvin,\ and\ Frenkel}}}
 \bibcite{liggett1985interacting}{{9}{1985}{{Liggett}}{{}}}
-\bibcite{PhysRevLett.56.889}{{10}{1986}{{Kardar\ \emph  {et~al.}}}{{Kardar, Parisi,\ and\ Zhang}}}
-\bibcite{PhysRevA.38.4271}{{11}{1988}{{Krug\ and\ Spohn}}{{}}}
-\bibcite{Sasamoto2010}{{12}{2010}{{Sasamoto\ and\ Spohn}}{{}}}
-\bibcite{sugden2007dynamically}{{13}{2007}{{Sugden\ and\ Evans}}{{}}}
-\bibcite{Kollmann2003}{{14}{2003}{{Kollmann}}{{}}}
-\bibcite{Lin2005}{{15}{2005}{{Lin\ \emph  {et~al.}}}{{Lin, Meron, Cui, Rice,\ and\ Diamant}}}
-\bibcite{Hegde2014}{{16}{2014}{{Hegde\ \emph  {et~al.}}}{{Hegde, Sabhapandit,\ and\ Dhar}}}
-\bibcite{Krapivsky2014}{{17}{2014}{{Krapivsky\ \emph  {et~al.}}}{{Krapivsky, Mallick,\ and\ Sadhu}}}
-\bibcite{Imamura2017}{{18}{2017}{{Imamura\ \emph  {et~al.}}}{{Imamura, Mallick,\ and\ Sasamoto}}}
-\bibcite{Katz1984}{{19}{1984}{{Katz\ \emph  {et~al.}}}{{Katz, Lebowitz,\ and\ Spohn}}}
-\bibcite{Zia2010}{{20}{2010}{{Zia}}{{}}}
-\bibcite{PhysRev.145.224}{{21}{1966}{{Kawasaki}}{{}}}
-\bibcite{leetmaa2014kmclib}{{22}{2014}{{{Leetmaa}\ and\ {Skorodumova}}}{{}}}
-\bibcite{Gillespie1977}{{23}{1977}{{Gillespie}}{{}}}
-\bibcite{jHellGitRepo}{{24}{2018}{{Hellier}}{{}}}
+\bibcite{BenNaim1999}{{10}{1999}{{Ben-Naim\ \emph  {et~al.}}}{{Ben-Naim, Chen, Doolen,\ and\ Redner}}}
+\bibcite{PhysRevLett.56.889}{{11}{1986}{{Kardar\ \emph  {et~al.}}}{{Kardar, Parisi,\ and\ Zhang}}}
+\bibcite{PhysRevA.38.4271}{{12}{1988}{{Krug\ and\ Spohn}}{{}}}
+\bibcite{Sasamoto2010}{{13}{2010}{{Sasamoto\ and\ Spohn}}{{}}}
+\bibcite{sugden2007dynamically}{{14}{2007}{{Sugden\ and\ Evans}}{{}}}
+\bibcite{Kollmann2003}{{15}{2003}{{Kollmann}}{{}}}
+\bibcite{Lin2005}{{16}{2005}{{Lin\ \emph  {et~al.}}}{{Lin, Meron, Cui, Rice,\ and\ Diamant}}}
+\bibcite{Hegde2014}{{17}{2014}{{Hegde\ \emph  {et~al.}}}{{Hegde, Sabhapandit,\ and\ Dhar}}}
+\bibcite{Krapivsky2014}{{18}{2014}{{Krapivsky\ \emph  {et~al.}}}{{Krapivsky, Mallick,\ and\ Sadhu}}}
+\bibcite{Imamura2017}{{19}{2017}{{Imamura\ \emph  {et~al.}}}{{Imamura, Mallick,\ and\ Sasamoto}}}
+\bibcite{Katz1984}{{20}{1984}{{Katz\ \emph  {et~al.}}}{{Katz, Lebowitz,\ and\ Spohn}}}
+\bibcite{Zia2010}{{21}{2010}{{Zia}}{{}}}
+\bibcite{PhysRev.145.224}{{22}{1966}{{Kawasaki}}{{}}}
+\bibcite{leetmaa2014kmclib}{{23}{2014}{{{Leetmaa}\ and\ {Skorodumova}}}{{}}}
+\bibcite{Gillespie1977}{{24}{1977}{{Gillespie}}{{}}}
+\bibcite{jHellGitRepo}{{25}{2018}{{Hellier}}{{}}}
 \bibstyle{apsrev4-1}
 \citation{REVTEX41Control}
 \citation{apsrev41Control}
 \@writefile{toc}{\contentsline {section}{\numberline {}References}{5}{section*.3}}
-\newlabel{LastBibItem}{{24}{5}{}{section*.3}{}}
+\newlabel{LastBibItem}{{25}{5}{}{section*.3}{}}
 \newlabel{LastPage}{{}{5}{}{}{}}

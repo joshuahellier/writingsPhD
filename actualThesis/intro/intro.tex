@@ -1,0 +1,44 @@
+\chapter{Preliminary Work, Background and Motivation}
+
+Here we need to talk about the original intent of the project.
+
+\section{The Ti$\text{O}_\mathbf{2}$/Ti Interface System}
+
+A description of the initial problem upon which the project was based.
+
+\section{Initial Attempts to Model the Ti$\text{O}_\mathbf{2}$/Ti Interface System}
+\subsection{The Difficulties of Nonequilibrium Statistical Mechanics}
+\subsection{Dynamics of Ionic Crystals}
+Maybe mention Ewald sums, and the other issues with computations about materials.
+\subsection{Initial Work Done with MD}
+I used some LAMMPS code to try to work with MD initially; melts and things.
+\subsection{The Problems with MD}
+Need to explain why issues with using MD, and why I eventually decided it was not a useful technique for this problem; in particular, why MD is fundamentally flawed as a concept.
+
+\section{Simple Large-Scale Models of the Ti/O/Nb Interacting System}
+I had a think about various methods I could use to tackle the system in question, and decided that the approach would would be most likely to bear fruit would be a continuum-modelled bulk PDE system with appropriate boundary conditions between
+phases.
+\subsection{Proposed Linear System}
+Simplest possible model, and why it failed.
+\subsection{Attempts to create a Suitable Nonlinear System}
+Talk about why nonlinearity is necessary (as in, it just spits out the previous system again), and the difficulties of parametrising it.
+\subsection{Parametrisation from a Microscopic Model}
+Talk about the Dresden conference and what I learned from it.
+
+\section{The Sticky Particle Model}
+\subsection{Model Motivation}
+As in, why this is a good start in 1d.
+\subsection{Model Definition}
+\subsection{Model Properties}
+Including Detailed Balance, symmetry, ``locality''. Also mention that it is a Markov process.
+\subsection{Relation to Existing Literature}
+\subsection{Generalisation to Higher Dimensions}
+Including a proof of detailed balance in arbitrary dimensions (on square lattice).
+
+\section{Implications of Initial Work for the PhD Direction}
+\subsection{Why the Change of Direction?}
+Essentially, why trying to solve this particular problem is actually kind of silly, and why having a better theory of driven lattice flows would be more useful.
+\subsection{Why Investigate Flow in the SPM?}
+Talk about how boundary-condition-induced flow on systems that would otherwise obey detailed balance hasn't really been done before.
+Bring it around to the question:
+``Can we have interesting dynamics in a model which is symmetric and obeys detailed balance?''
