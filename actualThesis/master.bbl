@@ -4,10 +4,9 @@
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{}
 
-\bibitem[{Conway(2000)}]{Conway2000}
-Conway, D.
-\newblock \emph{Object {O}riented {P}erl: {A} comprehensive guide to concepts
-  and programming techniques}.
-\newblock Connecticut, USA: Manning Publications Co., 2000.
+\bibitem[{Landau et~al.(1980)Landau, Lifshitz, and
+  Pitaevskii}]{landauLifshitzStatmech}
+Landau, L.~D., E.~M. Lifshitz, and L.~Pitaevskii.
+\newblock \enquote{Statistical physics, part I.}, 1980.
 
 \end{thebibliography}

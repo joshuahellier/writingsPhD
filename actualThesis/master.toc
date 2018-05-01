@@ -25,27 +25,33 @@
 \contentsline {subsection}{\numberline {1.5.1}Why the Change of Direction?}{3}{subsection.1.5.1}
 \contentsline {subsection}{\numberline {1.5.2}Why Investigate Flow in the SPM?}{3}{subsection.1.5.2}
 \contentsline {chapter}{\numberline {2}Analytical Results about the SPM}{4}{chapter.2}
-\contentsline {section}{\numberline {2.1}Existing Approaches to Nonequlibrium Statistical Mechanics}{4}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Mean-Field Theory}{4}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Exact Solutions}{4}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Where does the SPM stand?}{4}{subsection.2.1.3}
-\contentsline {section}{\numberline {2.2}Analytic Derivations from the SPM in 1D}{5}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Lattice MFT Derivation}{5}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Continuum Limit MFT Derivation}{5}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Negative Diffusion Coefficients}{5}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Continuum Limit MFT Solutions}{5}{subsection.2.2.4}
-\contentsline {subsection}{\numberline {2.2.5}Continuum MFT Breakdown}{5}{subsection.2.2.5}
-\contentsline {section}{\numberline {2.3}The SPM in Higher Dimensions}{5}{section.2.3}
-\contentsline {chapter}{\numberline {3}Numerical Results about the SPM}{6}{chapter.3}
-\contentsline {section}{\numberline {3.1}Numerical Simulations of Continuous-Time Markov Processes}{6}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Known Methods}{6}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}\texttt {KMCLib}}{6}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Running \texttt {KMCLib} on \texttt {Eddie3}}{6}{subsection.3.1.3}
-\contentsline {section}{\numberline {3.2}Calculation Results }{7}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}1D}{7}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}2D}{7}{subsection.3.2.2}
-\contentsline {chapter}{\numberline {4}Conclusions}{8}{chapter.4}
-\contentsline {chapter}{\numberline {A}The First Appendix}{9}{appendix.A}
+\contentsline {section}{\numberline {2.1}Solving Problems in Nonequlibrium Statistical Mechanics}{4}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Equilibrium Statistical Mechanics}{5}{subsection.2.1.1}
+\contentsline {subsubsection}{Exact Solutions}{5}{subsection.2.1.1}
+\contentsline {subsubsection}{Approximations}{6}{equation.2.1.2}
+\contentsline {subsection}{\numberline {2.1.2}Nonequlibrium Statistical Mechanics}{6}{subsection.2.1.2}
+\contentsline {subsubsection}{Exact Solutions}{6}{subsection.2.1.2}
+\contentsline {subsubsection}{Approximations}{6}{subsection.2.1.2}
+\contentsline {subsubsection}{Similarities and Differences Between Nonequlibrium and Equilibrium Statistical Mechanics}{6}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Where does the SPM stand?}{6}{subsection.2.1.3}
+\contentsline {section}{\numberline {2.2}Analytic Derivations from the SPM in 1D}{6}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Equivalence with the Misanthrope Process}{6}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Lattice MFT Derivation}{7}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Continuum Limit MFT Derivation}{7}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Negative Diffusion Coefficients}{7}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Continuum Limit MFT Solutions}{7}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}Continuum MFT Breakdown}{7}{subsection.2.2.6}
+\contentsline {section}{\numberline {2.3}The SPM in Higher Dimensions}{7}{section.2.3}
+\contentsline {chapter}{\numberline {3}Numerical Results about the SPM}{8}{chapter.3}
+\contentsline {section}{\numberline {3.1}Numerical Simulations of Continuous-Time Markov Processes}{8}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Known Methods}{8}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}\texttt {KMCLib}}{8}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Running \texttt {KMCLib} on \texttt {Eddie3}}{8}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Calculation Results }{9}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}1D}{9}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}2D}{9}{subsection.3.2.2}
+\contentsline {chapter}{\numberline {4}Conclusions}{10}{chapter.4}
+\contentsline {chapter}{\numberline {A}The First Appendix}{11}{appendix.A}
 \tocappendix 
-\contentsline {chapter}{Bibliography}{10}{section*.11}
+\contentsline {chapter}{Bibliography}{12}{section*.11}
 \contentsfinish 

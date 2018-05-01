@@ -1,16 +1,68 @@
 \chapter{Analytical Results about the SPM}
 
-\section{Existing Approaches to Nonequlibrium Statistical Mechanics}
-\subsection{Mean-Field Theory}
-Quick history of this, how to use it, when it might work.
-\subsection{Exact Solutions}
-Talk about stuff like ASEP. Remember to mention that only very specific models seem to be analytically solveable, in particular you can't have interactions and range in the current models.
+We now have a model, the SPM, which should represent the kind of behaviour we are interested in. In this chapter we will attempt to derive analytic results about how material flows in the model. Initially this was all done with the aim of
+producing an approximation to the behaviour in the hydrodynamic limit and thus informing us about the surface layer formation; however, as you will see the analytic predictions suggest that the flows could be quite interesting in their own
+right.
+
+\section{Solving Problems in Nonequlibrium Statistical Mechanics}
+Models in nonequlibrium statistical mechanics which contain nontrivial interactions between components often produce interesting behaviour, hence the wide interest in these models. However, they usually prove to be difficult to ``solve'' in any
+concrete sense. In this section I will give a brief overview of solution methods in equilibrium statistical mechanics, why nonequilibrium statistical mechanics problems tend to be harder to solve, and how this affects the way we approach
+the SPM.
+
+
+\subsection{Equilibrium Statistical Mechanics}
+
+Equilibrium statistical mechanics is a bread and butter part of undergraduate physics, and there are a great many texts on the subject~\cite{landauLifshitzStatmech}. %others too probably, like whatever
+When we speak of ``solving'' an equilibrium statistical mechanics system, the gold standard is to be able to calculate relationships between the statistics of large-scale quantities as a function of the system constraints or their conjugates.
+This allows one to classify the system's behaviour by making equations of state  and identifying phase transitions  (situations where at least some large-scale quantity statistics vary with respect to each other in a discontinuous manner).
+As you will see, the SPM itself is isomorphic to an equilibrium statistical mechanics model so long as we do not drive the system using boundary conditions (e.g. particle reservoirs with different concentrations).
+% would like to write about the ideal gas and Ising model here
+\subsubsection{Exact Solutions}
+
+A quantity of key interest in equilibrium statistical mechanics is the partition function, usually denoted by $Z$. Say we have a closed classical mechanical system maintained at constant temperature $T$ by a heat bath,
+so only energy can enter and leave the system (the canonical ensemble). Let its state space be $\Xi$, and denote an individual microstate (specific configuration of the system) by $\xi$.
+Such a system must of course have a Hamiltonian $H : \Xi \rightarrow \mathbb{R}$. The canonical partition function for this system is defined to be
+\begin{equation}
+ Z(\beta) = \int_\Xi  \! \! \mathrm{d}  \xi \  \  e^{- \beta H(\xi)},
+\end{equation}
+with $\beta T = 1$, where the integrand on the right hand side is the familiar Boltzmann weighting. This quantity is extremely useful, because itself and its derivatives are directly related to the statistics of large-scale quantities.
+For example, the ensemble-averaged total energy $\langle E \rangle$ satisfies
+\begin{equation}
+ \langle E \rangle = - \partDeriv{\log{Z}}{\beta}
+\end{equation}
+If one is able to obtain an expression for the canonical partition function by analytic means, you can calculate essentially any statistical moment of any large-scale quantity you desire, and thus the system is ``solved'' in the sense we used above.
+
+
+
+\subsubsection{Approximations}
+
+
+\subsection{Nonequlibrium Statistical Mechanics}
+
+\subsubsection{Exact Solutions}
+
+Talk about stuff like ASEP. Remember to mention that only very specific models seem to be analytically solvable, in particular you can't have interactions and range in the current models.
+
+\subsubsection{Approximations}
+
+Approximations in noneq statmech  
+
+\subsubsection{Similarities and Differences Between Nonequlibrium and Equilibrium Statistical Mechanics}
+
 \subsection{Where does the SPM stand?}
 Basically, why we can't analytically solve it, and so why performing mean-field approximation is a decent start.
 
 \section{Analytic Derivations from the SPM in 1D}
-This stuff is kinda self-explanatory.
+In the previous section we have discussed the various approaches one might use when attempted to derive properties of a nonequilibrium statistical mechanical system. We will now try to put these ideas into practise on the SPM.
+\subsection{Equivalence with the Misanthrope Process}
+\begin{itemize}
+ \item show the equivalence
+ \item show lack of explosive condensation
+ \item discuss limits of this (e.g. doesn't really clue us in to how flow works etc)
+\end{itemize}
 \subsection{Lattice MFT Derivation}
+
+From here we will be assuming that there isn't a way to solve the SPM exactly, so we will attempt to use approximation. MFT is, as always, and option.
 \subsection{Continuum Limit MFT Derivation}
 \subsection{Negative Diffusion Coefficients}
 When do they happen? What do they mean?

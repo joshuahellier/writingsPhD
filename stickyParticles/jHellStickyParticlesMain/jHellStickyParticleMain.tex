@@ -85,7 +85,7 @@ object interact with the substrate,
 % find example
 but despite the clear application-relevance there is surprisingly little work considering interactions between the moving particles themselves.  One reason for this is that the interactions introduce nonlinearities in analytical models, which makes them
 challenging to solve, at least outside of limits in which they can be linearized. This is unfortunate because it is precisely these nonlinearities which introduce interesting behaviors such as discontinuities at the oxide-metal interface or
-diffusion instability.
+diffusion instability~\cite{Obukhovsky2017, Gorokhova2010}.
 
 In this paper we will
 investigate a simple one-dimensional model, the ``Sticky Particle Model'' or SPM, specified in Fig.~\ref{fig:rates}, which contains such an interaction, and we will explore the impact this has on particle behavior, in particular
@@ -109,7 +109,7 @@ Kawasaki~\cite{PhysRev.145.224}. It seems that this symmetric model has not been
 exhibits complex unexpected behavior when a concentration gradient is applied. The quantity $\lambda$ parametrizes the ``stickiness'' of the particles; when $\lambda>1$, there is a tendency for particles to repel,
 whilst $\lambda < 1$ represents attraction.
 We prove in the supplementary materials that the rates specified in Fig.~\ref{fig:rates} obey detailed balance, with a Hamiltonian isomorphic to the Ising model.
-We further demonstrate that any highly-local, symmetric exclusion model in any dimension must obey the detailed balance condition.
+We further demonstrate that any highly-local, symmetric exclusion model on a square lattice in any dimension must obey the detailed balance condition.
 
 
 
@@ -169,11 +169,11 @@ which is analogous to Eq.~\ref{eq:diffCoeff}
 
 We have derived MFT predictions about the SPM, and have indications about when those predictions might become invalid, which we tested numerically.
 We chose to calculate using the \texttt{KMCLib}\cite{leetmaa2014kmclib} package, which implements the Kinetic Monte Carlo algorithm
-(essentially the same as the Gillespie algorithm\cite{Gillespie1977})
+(essentially the same as the Gillespie algorithm\cite{Gillespie1977, Bortz1975, Prados1997})
 on lattice systems. The codes used are kept here~\cite{jHellGitRepo}.
 %\texttt{KMCLib} has the advantage that it is python-wrapped \texttt{C++}, and thus quite easy to use whilst at the same time being quite computationally efficient; thus it was fairly easy for us to carry out large numbers
 %of differently-parametrised serial \texttt{KMCLib} jobs on the \texttt{Eddie3} computing cluster here at Edinburgh. 
-As we have MFT predictions about flow in a block, we can simulate that situation using KMC. In the bulk, the transition rates are simply those described in Fig.~\ref{fig:rates}. At the boundaries
+As we have MFT predictions about flow in a bounded domain, we can simulate that situation using KMC. In the bulk, the transition rates are simply those described in Fig.~\ref{fig:rates}. At the boundaries
 there are 2 layers of lattice sites what switch between being full and empty with rates such that the time-averaged occupation can be specified to match the desired boundary conditions; there are then chances for particles to appear
 and disappear with rates depending upon the occupation of these boundary layers. In the end, the intention is that these boundaries should reproduce the effect of having particle reservoirs attached to the edges of the domain,
 which is something we check
@@ -216,7 +216,8 @@ running them for $400000$ Gillispie steps for equilibration followed by $10000$ 
 steps. This way we could gather statistics about flow rates and densities in a well-equilibrated system. Specifically, we generate a pool of $10000$ samples of flow rate and density
 from which we can calculate estimates of the descriptive statistics of both quantities; flow moments and the density data are included in the supplementary materials.
 \vspace{1em}}
-\includegraphics[width=0.98\linewidth]{newFlowMean}
+\setbox1=\hbox{\includegraphics[width=\linewidth]{logFlowRates}}
+  \includegraphics[width=\linewidth]{logFlowRates}\llap{\makebox[0.525\linewidth][l]{\raisebox{0.68cm}{\includegraphics[width=0.475\linewidth]{linearFlowRates}}}}\llap{\makebox[0.85\linewidth][l]{\raisebox{3.75cm}{\includegraphics[width=0.45\linewidth]{newRates}}}}
     \vspace{-1em}
 \end{figure}
 
@@ -251,7 +252,7 @@ as above.}
 The MFT prediction for the mean flow is generally in good agreement with the numerics, except in the very sticky regime in which flow is very small.
 The simulations show no evidence of negative diffusion; rather the flow becomes critically slow for very sticky particles.
 The higher moments of the flow (e.g. variance) do not show peaks, indicating that hard transitions are not occurring.
-Finally, the density is very close to the average of the boundary densities until λ drops below 1/4, at which point the stickiness causes the system to fill.
+Finally, the density is very close to the average of the boundary densities until $\lambda$ drops below 1/4, at which point the stickiness causes the system to fill.
 
 Continuing to specify the boundary densities to be $(\rho_0, \rho_L) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ for some given $\rho_M$, we can keep $\delta\rho$ relatively small, so that $J$ varies approximately
 linearly with $\delta\rho$; thus if we calculate $J$ for a series of small $\delta \rho$, we can perform linear regression to find $D_\mathrm{Eff}=\partDeriv{J}{\delta\rho}\big|_{\delta\rho=0}$, the effective diffusion coefficient.
