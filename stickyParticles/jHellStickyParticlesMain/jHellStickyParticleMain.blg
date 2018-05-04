@@ -24,45 +24,45 @@ Control: page (0) single
 Control: year (1) truncated
 Control: production of eprint (0) enabled
 Warning--missing journal in jHellGitRepo
-You've used 31 entries,
+You've used 32 entries,
             5847 wiz_defined-function locations,
-            1866 strings with 21150 characters,
-and the built_in function-call counts, 28137 in all, are:
-= -- 1859
-> -- 663
-< -- 205
-+ -- 219
-- -- 167
-* -- 4246
-:= -- 2807
-add.period$ -- 29
-call.type$ -- 31
-change.case$ -- 116
-chr.to.int$ -- 39
-cite$ -- 32
-duplicate$ -- 2658
-empty$ -- 2066
-format.name$ -- 387
-if$ -- 5551
+            1874 strings with 21393 characters,
+and the built_in function-call counts, 29337 in all, are:
+= -- 1928
+> -- 703
+< -- 213
++ -- 231
+- -- 177
+* -- 4446
+:= -- 2918
+add.period$ -- 30
+call.type$ -- 32
+change.case$ -- 120
+chr.to.int$ -- 40
+cite$ -- 33
+duplicate$ -- 2765
+empty$ -- 2153
+format.name$ -- 410
+if$ -- 5794
 int.to.chr$ -- 1
-int.to.str$ -- 38
-missing$ -- 358
-newline$ -- 139
-num.names$ -- 87
-pop$ -- 1134
+int.to.str$ -- 39
+missing$ -- 372
+newline$ -- 142
+num.names$ -- 90
+pop$ -- 1175
 preamble$ -- 1
-purify$ -- 145
+purify$ -- 150
 quote$ -- 0
-skip$ -- 1052
+skip$ -- 1094
 stack$ -- 0
-substring$ -- 771
-swap$ -- 2467
-text.length$ -- 74
+substring$ -- 803
+swap$ -- 2576
+text.length$ -- 79
 text.prefix$ -- 0
 top$ -- 10
-type$ -- 404
+type$ -- 420
 warning$ -- 2
-while$ -- 94
+while$ -- 97
 width$ -- 0
-write$ -- 285
+write$ -- 293
 (There were 2 warnings)
