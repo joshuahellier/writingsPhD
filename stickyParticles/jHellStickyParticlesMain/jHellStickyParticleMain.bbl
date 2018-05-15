@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{30}%
+\begin{thebibliography}{33}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -149,6 +149,34 @@
   {\doibase 10.1103/PhysRevLett.83.4069} {\bibfield  {journal} {\bibinfo
   {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {83}},\ \bibinfo
   {pages} {4069} (\bibinfo {year} {1999})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Shandarin}\ and\ \citenamefont
+  {Zeldovich}(1989)}]{Shandarin1989}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~F.}\ \bibnamefont
+  {Shandarin}}\ and\ \bibinfo {author} {\bibfnamefont {Y.~B.}\ \bibnamefont
+  {Zeldovich}},\ }\href {\doibase 10.1103/RevModPhys.61.185} {\bibfield
+  {journal} {\bibinfo  {journal} {Rev. Mod. Phys.}\ }\textbf {\bibinfo {volume}
+  {61}},\ \bibinfo {pages} {185} (\bibinfo {year} {1989})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Frachebourg}(1999)}]{Frachebourg1999}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Frachebourg}},\ }\href {\doibase 10.1103/PhysRevLett.82.1502} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo
+  {volume} {82}},\ \bibinfo {pages} {1502} (\bibinfo {year}
+  {1999})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Frachebourg}}\ \emph {et~al.}(2000)\citenamefont
+  {{Frachebourg}}, \citenamefont {{Martin}},\ and\ \citenamefont
+  {{Piasecki}}}]{Frachebourg2000}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {{Frachebourg}}}, \bibinfo {author} {\bibfnamefont {P.~A.}\ \bibnamefont
+  {{Martin}}}, \ and\ \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {{Piasecki}}},\ }\href {\doibase 10.1016/S0378-4371(99)00585-3} {\bibfield
+  {journal} {\bibinfo  {journal} {Physica A Statistical Mechanics and its
+  Applications}\ }\textbf {\bibinfo {volume} {279}},\ \bibinfo {pages} {69}
+  (\bibinfo {year} {2000})},\ \Eprint {http://arxiv.org/abs/cond-mat/9911346}
+  {cond-mat/9911346} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Obukhovsky}\ \emph {et~al.}(2017)\citenamefont
   {Obukhovsky}, \citenamefont {Kutsyk}, \citenamefont {Nikonova},\ and\
   \citenamefont {Ilchenko}}]{Obukhovsky2017}%

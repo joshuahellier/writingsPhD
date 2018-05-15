@@ -52,14 +52,149 @@ Approximations in noneq statmech
 \subsection{Where does the SPM stand?}
 Basically, why we can't analytically solve it, and so why performing mean-field approximation is a decent start.
 
-\section{Analytic Derivations from the SPM in 1D}
+\section{Similarities between the SPM and Established Models in 1D}
 In the previous section we have discussed the various approaches one might use when attempted to derive properties of a nonequilibrium statistical mechanical system. We will now try to put these ideas into practise on the SPM.
+
+\subsection{Relationship with the Ising Model}
+
+If we implement the rules of the SPM on a periodic domain, we no longer have to deal with boundary conditions. In this special circumstance, we can find an isomorphism between this model and the Ising model with fixed magnetisation.
+One does this by associating the Ising spins $\sigma_i \in \left\{-1, 1 \right\}$ with $\rho_i \in \left\{ 0, 1 \right\}$ via
+\begin{equation}
+ \rho_i = \frac{1}{2}\left(1+\sigma_i\right).
+\end{equation}
+Recalling our proof that the SPM obeys detailed balance, we saw that the equilibrium probability of finding the SPM in a state containing $N$ particle-particle adjacencies is proportional to $\lambda^{-N}$.
+%obviously refer to this
+If our Ising Hamiltonian is defined via
+\begin{equation}
+ H = \frac{1}{2} \sum_{i=1}^L J \sigma_i \sigma_{i+1 \pmod L},
+\end{equation}
+the probability of finding ourselves in a state with $N$ paired spins is $e^{-\beta N J}$, with $\beta T =1$. The comparison with the SPM is now obvious; we set $\log{\lambda} = \beta J$. Thus $\lambda$ in the SPM is simultaneously playing the
+of the binding energy and temperature in the Ising model.
+!Try to compute average energy!
+
+
+\subsection{Correlation Functions}
+For relatively small systems, given a system size $L$ and a number of particles $N$, we can analytically compute the pairwise correlation function $C(l) = \left\langle \rho_i \rho_{i+l} \right\rangle$ (as the system is clearly homogeneous in $i$).
+The following \texttt{Python} code does this:
+\begin{lstlisting}[language=Python]
+import copy
+import sys
+
+def configMake(L, N, prevList, totList):
+    if L==1:
+        endList = [copy.deepcopy(prevList), N]
+        totList.append(unfold(endList))
+        return [N]
+    if N==0:
+       return configMake(L-1, 0, [copy.deepcopy(prevList), 0], totList)
+    if L==N:
+        return configMake(L-1, N-1, [copy.deepcopy(prevList), 1], totList)
+    return [configMake(L-1, N, [copy.deepcopy(prevList), 0], totList), configMake(L-1, N-1, [copy.deepcopy(prevList), 1], totList)]
+
+def adjSum(candList):
+    listLen = len(candList)
+    total = 0
+    for index in range(0, listLen):
+        total += candList[index-1]*candList[index]
+    return total
+
+def unfold(candList):
+    if isinstance(candList, list):
+        if len(candList)==2:
+            return unfold(candList[0])+unfold(candList[1])
+        if len(candList)==1:
+            return candList
+        if len(candList)==0:
+            return []
+    return [candList]
+
+def listCollate(candList):
+    maxItem = 0
+    for index in candList:
+        if index > maxItem:
+            maxItem = index
+    outPut = []
+    for size in range(0, maxItem+1):
+        numCounts = 0
+        for index in candList:
+            if index == size:
+                numCounts += 1
+        outPut.append((size, numCounts))
+    return outPut
+
+def genCorrFn(L, N):
+    totList = []
+    allStates = configMake(L, N, [], totList)
+    restStates = []
+    weightList = []
+    maxAdj = 0
+    for state in totList:
+        if state[0]==1:
+            restStates.append((state, adjSum(state)))
+            if restStates[-1][1]>maxAdj:
+                maxAdj = restStates[-1][1]
+            weightList.append(restStates[-1][1])
+    partFnList = listCollate(weightList)
+    print(partFnList)
+    partitionFn = "("
+    for pair in partFnList:
+        partitionFn += str(pair[1])+" Exp["+str(pair[0]-maxAdj)+"b] + "
+    partitionFn += "0)"
+    print(partitionFn)
+    finalOut = "{"
+    for shift in range(0, L-L/2):
+        tempList = []
+        for config in restStates:
+            if config[0][shift] == 1:
+                tempList.append(config[1])
+        stateDist = listCollate(tempList)
+        outSum = "{"+str(shift)+", ("
+        for pair in stateDist:
+            outSum += str(pair[1])+" Exp["+str(pair[0]-maxAdj)+"b] + "
+        outSum += "0)/"+partitionFn+"}"
+        finalOut += outSum
+        if shift != L-L/2-1:
+            finalOut += ", "
+    finalOut+="}"
+    return finalOut
+
+L = int(sys.argv[1])
+
+with open("corrFnResults.m", 'w') as f:
+    f.write("{")
+    for n in range(2, L-2):
+        f.write("{"+str(n)+"/"+str(L)+", "+genCorrFn(L, n)+"}, ")
+    f.write(genCorrFn(L, L-2) + "}")
+\end{lstlisting}
+
+This is quite a nice result, as we can use simple recursion to perform a calculation which would otherwise be quite difficult to code.
+Unfortunately the time complexity of the calculation grows exponentially in and $L$, so the largest $L$ I can reasonably run for is $20$. In the table below I have plotted the occupation probability of sites shifted from the origin
+(assuming the origin is occupied)  for a selection of $\lambda = e^{-b}$ and particle densities.
+
+\begin{figure}[h!]
+\caption{\label{fig:corrFns} }
+\begin{center}
+ \begin{tabular}{c | c | c}
+    \includegraphics[width=0.32\linewidth]{analytics/images/exactCorrFns/lowDensLowL}  & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/midDensLowL} & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/highDensLowL} \\
+    \hline
+        \includegraphics[width=0.32\linewidth]{analytics/images/exactCorrFns/lowDensMidL}  & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/midDensMidL} & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/highDensMidL} \\
+    \hline
+        \includegraphics[width=0.32\linewidth]{analytics/images/exactCorrFns/lowDensHighL}  & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/midDensHighL} & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/highDensHighL} \\
+    \end{tabular}
+\end{center}
+    \vspace{-2em}
+\end{figure}
+
+!write some more about this sometime!
+
 \subsection{Equivalence with the Misanthrope Process}
 \begin{itemize}
  \item show the equivalence
  \item show lack of explosive condensation
  \item discuss limits of this (e.g. doesn't really clue us in to how flow works etc)
 \end{itemize}
+
+\section{Using the Mean-Field Approximation on the SPM}
 \subsection{Lattice MFT Derivation}
 
 From here we will be assuming that there isn't a way to solve the SPM exactly, so we will attempt to use approximation. MFT is, as always, and option.
