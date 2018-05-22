@@ -1,0 +1,378 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+%opening
+\title{}
+\author{Joshua DM Hellier and Graeme J Ackland}
+
+\begin{document}
+
+\maketitle
+
+ Dear PRL Editors,
+ \\
+ \\
+  Thank you for the response of the referees. We feel we have
+  addressed both criticisms, and would like to resubmit.
+ 
+  Referee A states:
+{\it  Since the main result of the paper seems to be a consequence of a ``bad'' approximation --- namely a mean-field approximation ---, rather than a description of the actual phenomenology of the model, I do not recommend to publish this manuscript in PRL.}
+
+  This is mistaken: the main result is about the transition being in the actual phenomenology of the model, as measured numerically, so the referee's central reason for rejection does not hold.
+ 
+  Referee B, by contrast, appears to think it obvious that ``the actual phenomenology of the model'' , has a transition, but is unconvinced that the details are sufficiently well presented to be a significant advance.
+
+ While accepting that ``significance'' is always a matter of opinion,
+ the referee's comments seem to focus on the necessary, but less
+ significant, results of the work.
+ 
+ 
+In our revised version, we have addressed their comments and the paper is enormously improved in consequence.
+ 
+ 
+\section*{Detailed response}
+
+
+   \subsection*{Referee A}
+  
+   {\it This work presents a mean-field study of a one-dimensional non
+   equilibrium transport model: particles diffuse on a lattice, and
+   interact through both excluded-volume interactions and through
+   attractive nearest-neighbor interactions. Mean-field analysis shows a
+   phase transition from a regime with positive flux to a regime without
+   flux.
+  
+   This manuscript has one issue: the main result found, namely a phase
+   transition from a positive-flux phase to a zero-flux phase, seems to
+   be an artifact of the mean-field approximation (see figure 2 and
+   figure 4). At least, that is what the authors conclude: "However, one
+   of the key predictions of the MFT - that a sharp transition to a
+   no-flow regime occurs when ``$\lambda$'' becomes small enough (at least
+   for 3 of the 4 sets of boundary conditions we investigated here) - is
+   not realized in our simulations."
+  
+   The fact that the main result is only recovered in a mean-field
+   approximation is not clearly mentioned in the abstract, where it is
+   stated that: ``Neither the Ising model nor SEP have a phase transition
+   in 1D, but the SPM exhibits a non-equilibrium transition from a
+   diffusive to a blocked state as stickiness increases.'' Can the authors
+   clarify: does the model has a non equilibrium phase transition, or
+   does the model has no non-equilibrium phase transition?
+  
+   Since the main result of the paper seems to be a consequence of a
+   ``bad'' approximation -namely a mean-field approximation-, rather
+   than a description of the actual phenomenology of the model, I do not
+   recommend to publish this manuscript in PRL.}
+
+
+
+
+  The referee asks us to clarify the main result: ``does the model have a non equilibrium phase transition?''. 
+  It does.
+ 
+  Our simulations show the non-equilibrium transition is to a non-diffusing state.  
+This is not just an artefact of the MFT, in which the same transition manifests as negative diffusion.
+ 
+  Clearly we failed to we emphasize this main point clearly enough.
+  Therefore we have made significant changes to the paper: in particular the
+  new Fig.~1 is designed to emphasize the point, by showing the
+  transition both according to MFT and simulation in the same plot.
+  The previous figure, which failed to convince the referee, is
+  included as an inset.  The figure extends the range of the
+  stickiness parameter to show more clearly the excellent agreement of
+  MFT and simulation at the ``non-sticky'', high lambda regime, the
+  transition of MFT to negative flow, and the equivalent transition to
+  the blocked state in the real system.
+ 
+  As for our MFT, we never expected it particularly good predictor in the very sticky limit. However, it is the breakdown of the MFT which suggested that the transition might occur in the first place,
+  and inspired us to look for the transition, which we found.
+ 
+ 
+  
+{\it    Minor comments:
+  
+   1) In the abstract it is said that:
+  
+   ``We prove that SPM is also a detailed-balance respecting,
+   particle-conserving, Monte Carlo description of the Ising model.''
+  
+   This sentence seems to indicate that the authors prove an outstanding problem. But, isn't the detail balance criterion an immediate consequence of the definition of the model? }
+ 
+   -Of course, detailed balance (or not) is always a consequence of the
+   definition of the model.  However, we did not explicitly set it up
+   to have detailed balance so, at least to us, detailed balance
+   wasn't immediately obvious. 
+  
+   The model is defined in terms of rates, and because we did not
+   notice it at first, we feel that detailed balance is not trivial
+   and worth proving (see Referee B point 1).  Some well-known jamming
+   models defined by rates, e.g. ASEP, do not have detailed balance.
+   It is sometimes assumed that this lack of detailed balance is
+   necessary for non-trivial flow behaviour.  An important aspect of
+   this work is to demonstrate that obtaining non-trivial flow *can*
+   be achieved in a model with detailed balance.
+ 
+So the referee is right to say that proving detailed balance is not an
+outstanding achievement of the paper, but it is important to establish
+it.
+
+{\it 
+   2) ``Thus, the MFT says that the particles should diffuse with a diffusion coefficient $A(\rho)$ which depends upon the local density.''
+  
+  
+   I think $A(\rho)$ should be $D(\rho)$.}
+
+The referee is correct, this typo has been corrected.
+
+\subsection*{Referee B}
+{\it
+   In the manuscript ``On The Diffusion of Sticky Particles in 1-D'', the
+   authors look into a variant of the so-called Symmetric Exclusion
+   Process (SEP). They consider a 1d lattice model in which lattices
+   sites can be occupied or empty, and particles may hop to empty
+   adjacent sites. The difference with the usual SEP model stems from the
+   considered transition rate, which in this work depends on the state of
+   the hopping particle's nearest neighbors sites. If one of these sites
+   is occupied, the hopping rate is reduced by a factor $\lambda$ and
+   this is reasoned to be modelling ``stickiness'' between neighboring
+   particles. This model, although very simple, does not seem to have
+   been proposed before in the physics literature, although see more
+   concrete comments on this point below.
+  
+   My reading of the paper ended with mixed feelings, so to say. On the
+   one hand, I think that the results, which are interesting and
+   non-trivial, reported in this paper are solid and thus the paper is
+   undoubtedly publishable science. On the other hand, the paper is not
+   well written and, without doubt, the results can be presented in a
+   much clearer way. Besides, the paper lacks a discussion on the
+   relation of the present work with other approaches, such as the
+   general field of dynamical 1d Ising models or the diffusion of sticky
+   particles in 1d. With regard to the specific criteria for acceptance
+   in the Physical Review Letters, honestly I do not see that this paper
+   meets any of them: the work is certainly interesting to the community
+   of people working in 1d systems, who look for
+   exact/perturbative/approximate results therein, but not for all
+   physicists. In this particular field, I would not say that this work
+   represents a substantial advance; after a major revision the obtained
+   results might certainly be published in a specialized journal such as
+   the Physical Review E (or JSTAT or JSP, thinking of journals outside
+   the APS ecosystem).
+}
+
+We feel that the referee has missed the more important contributions
+made by the paper.  The referee states that {\it the paper is not well
+  written and, without doubt, the results can be presented in a much
+  clearer way}.  Following this observation, we have restructured the
+paper to emphasize more clearly those contribution we felt were missed.
+
+{\it
+
+   Some more specific points below:
+  
+   1) The authors should enhance the part of the paper devoted to the
+   introduction of the model and link it with other approaches, such as
+   dynamical Ising models or sticky particles in 1d.
+  
+   a) The authors state that ``It seems that space of highly-local
+   exclusion models is so tightly constrained in one-dimension that there
+   is no option but to comply with the detailed balance condition.''
+  
+   Is this a speculative sentence or is there an available proof for
+   this? If the right choice is the latter, please give a reference and a
+   precise statement of what the authors want to say (it seems quite a
+   strong statement, given the equivalence between particle/hole models
+   and Ising models.) If it is the former, give some hint of the
+   physical/mathematical reason or delete the sentence. }
+  
+
+We agree that this is a strong statement and one of our non-trivial
+results.  We are not aware of a pre-existing proof, and because it is quite technical we
+presented our proof in the SM.  In the main paper now are more specific about the class
+of models which we refer to.
+
+
+  {\it
+   b) Given that detailed balance holds, a certain effective ``energy'' can
+   be written for the model, which the authors state that are
+   ``proportional to the number of particle-particle adjacencies in the
+   system''.
+  
+   If I am getting this right, what the authors say in spin variables
+   ($n_i=(1+\sigma_i)/2$ can be rewritten as the usual Ising model with
+   nearest neighbor interactions \dots}
+
+The referee is almost correct. As we said in the abstract, the Ising
+Hamiltonian does apply to the system.  
+
+{\it  in the presence of an external field. Since the proposed rates verify detailed balance, I suspect that the
+   authors are considering a variation of the Metropolis (or Glauber's)
+   transition rates.}
+
+This is a particle model, not a spin one, so away from the boundaries
+the dynamics conserve particle number (i.e. they are not Glauber).
+Also, there is no term equivalent to an external field: an important
+feature of the model is that there are no symmetry-breaking local driving forces, such as a field might provide.
+
+{\it   Is this the correct picture? If so, it seems a bit exaggerated to
+   speak of a ``new'' model and it would be fairer to speak of a new
+   ``interpretation'' of a previously existing model.}
+  
+
+The referee is right that, in equilibrium, our dynamics must reproduce
+the Ising model because of detailed balance.  Indeed, we did verify
+the Ising-like equilibrium behaviour, but only to test the coding - we
+didn't think that result interesting enough to include in PRL.
+
+It sounds as if the referee suspects we are simply solving the
+Ising model with novel dynamics.  Perhaps this suspicion is behind the comment: 
+ ``I would not say that this work represents a substantial advance''.  
+  In fact, we do much more than this.
+
+
+  The novelty is to show that non-trivial flow behaviour does not require violating detailed balance.  Previous 1D models induce non-equilibrium behaviour by breaking detailed balance. We demonstrate that this is not necessary.
+ 
+  For that reason our model is not just another non-equilibrium 1D flow model: it is a wholly new class of transformation, because the only asymmetry driving the flow is at the boundaries, well away from where the transition occurs.
+ 
+  We are aware that PRL discourages use of ``new'' and avoid the word.
+ 
+{\it   
+   b) Sticky particles in 1d have been thoroughly investigated. The
+   literature is so large that it is difficult to give specific
+   references, but the authors may have a look at:
+  \begin{itemize}
+   \item S. F. Shandarin and Y. B. Zeldovich, Reviews of Modern Physics 61, 185 (1989)
+   \item L. Frachebourg, Phys. Rev. Lett. 82, 1502 (1999)
+   \item L. Frachebourg, P. Martin, and J. Piasecki, Phys. A. 279, 69 (2000)
+   \item E. Ben-Naim, S. Y. Chen, G. D. Doolen, and S. Redner, Phys. Rev.
+   Lett. 83, 4069 (1999)
+  \end{itemize}
+  
+   The last paper deals with a granular gas in 1d, which is shown to
+   behave (for long enough times) in a manner completely analogous to a
+   perfectly sticky gas (second and third papers). May the model proposed
+   by the authors be connected to the granular gas in some (approximate)
+   way?}
+
+These and many similar papers provide examples of simple
+driven-dissipative models which reduce to the Burgers equation in the
+mean field limit.  Their dynamics is driven by local interactions
+which do not obey detailed balance and their non-trivial behavior
+comes from the interplay between dissipation and driving. 
+Our model is of a completely different type:  locally it 
+is an equilibrium (Ising) system with non symmetry-breaking field, 
+the driving comes only from the boundaries. 
+
+  {\it 
+   2) The general presentation is definitely improvable. Some comments,
+   not trying to be exhaustive, which show that the preparation has not
+   been careful enough:
+  
+   a) $x_0$ in (5) has not been defined previously.
+  
+   b) $J_0$ in (5) is a constant to be determined or it is supposed to
+   have a specific expression at this point? In (6), I wonder whether $J$
+   should be $J_0$.
+  
+   c) Before (5), the authors say "and by integrating both sides of that
+   equation with respect to x we find that (...)"; which equation are the
+   authors referring to, the inline equation $J(x)=J_0$ or a different
+   one?
+  
+   d) In page 3, $\rho_B$ and $rho_T$ are introduced for
+   $\rho_M\pm\delta\rho$. They were called before $\rho_0$ and $\rho_L$
+   in (6), if I have not lost the thread. Why the change of notation?
+   Curiously, again $\rho_0$ and $\rho_L$ are defined in the following
+   paragraph.
+  
+   e) The term ``block'' is repeatedly used but it is not defined, for
+   example when below (6) the authors state ``We may consider applying
+   small concentration gradients across a block (\dots) Doing so, we find
+   that the effective diffusion coefficient of the block $D_{Eff}=\dots$
+   (\dots)'' Is a block the whole system (the boundary conditions are at 0
+   and L) or a part of the system?
+  }
+
+We have unified the notation and defined all quantities before use.  
+Since it caused confusion, we decided to drop the term ``blocked state''.  
+
+
+  {\it 3) After (7), can the authors comment something on the
+    expression they have just derived?  } 
+
+This equation has the same
+  negative diffusion solutions and symmetry around $\rho=2/3$ as
+  equation 4, so we have referred back to equation 4.
+  
+{\it    4) In the first paragraph of the article, after the sentence ``This is
+   unfortunate because it is precisely these nonlinearities which
+   introduce interesting behaviors such as discontinuities at the
+   oxide-metal interface or diffusion instability.'', suitable references
+   must be provided.}
+  
+   References for this are added.
+  
+{\it   5) System sizes are very small, 32, 64, 124 sites. In Fig. 2, the
+   authors say that sizes 32 and 64 give similar results. The authors
+   should include some explicit comparison of the results for different
+   sizes. Why the larger system in Fig. 4 (124 sites)?}
+  
+   - For practical purposes, the system sizes are not small and the
+   work has required millions of CPU hours. Given that the number of
+   Gillespie steps required for equilibration scales aggressively in
+   the system size (to the third power in the number of lattice
+   sites), we have to pay dearly for any increase in system size. We
+   have repeated our 64-size calculations at size 32,
+   128 and 256, and they are in agreement.  These are not shown, because the data points are sparser and the 
+larger calculations with
+   larger lambda suffer from noise because because they take longer to converge. 
+Thus, we are
+   satisfied that size 64 is the best compromise in terms of getting
+   good statistics with minimal edge-effect. 
+
+  
+{\it    6) Below Fig. 2, it is reported that ``Firstly, we should note that we
+   only have an MFT prediction for the flow rate as a function of
+   $\lambda$, since $\rho(x)$ stops being unique when $\lambda$ drops
+   below 1/4 and so the MFT lacks predictive power. For low-stickiness,
+   when $\lambda 1/4$, the MFT is in good agreement with the
+   simulations.''
+  
+   How is this conclusion drawn by the authors?}
+  
+   - One can see from the plots that the MFT is a good fit to the data
+   when lambda 0.25. The result about the density is quite quick to
+   derive, but space is extremely limited in a PRL letter so we didn’t
+   think it was interesting enough to go in.
+  
+
+{\it 
+   Minor comments:
+  
+   7) This is certainly a matter of taste, but in relation to the kinetic
+   Monte Carlo integration I would cite the following papers
+  
+   - A. B. Bortz, M. H. Kalos, J. L. Lebowitz, J. Comput. Phys. 17, 10
+   (1975).
+  
+   - A. Prados, J. J. Brey and B. Sánchez-Rey, J. Stat. Phys. 89, 709-734
+   (1997).
+  
+   Instead of (or in addition to) Gillespie's. The first one introduces
+   the n-fold way employed by KMCLIB, the second one shows that this kind
+   of KMC algorithms solve the master equation numerically.
+  }
+   We agree, these are useful background to the algorithm, so we have included them.
+  
+{\it    8) I would definitely start a new paragraph with the sentence ``We have
+   used this setup to explore three scenarios, discussed in the following
+   sections.'' in the paragraph below (7), changing ``this setup'' for ``the
+   setup above'', for example.}
+  
+   -Done.
+  
+ 
+
+
+\section{}
+
+\end{document}

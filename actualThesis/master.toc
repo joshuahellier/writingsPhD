@@ -37,8 +37,9 @@
 \contentsline {section}{\numberline {2.2}Similarities between the SPM and Established Models in 1D}{6}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Relationship with the Ising Model}{6}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Correlation Functions}{7}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Equivalence with the Misanthrope Process}{9}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}Using the Mean-Field Approximation on the SPM}{10}{section.2.3}
+\contentsline {subsection}{\numberline {2.2.3}Equivalence with the Misanthrope Process}{8}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Differences Between SEP and the SPM}{9}{subsection.2.2.4}
+\contentsline {section}{\numberline {2.3}Using the Mean-Field Approximation on the SPM}{9}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Lattice MFT Derivation}{10}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Continuum Limit MFT Derivation}{10}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}Negative Diffusion Coefficients}{10}{subsection.2.3.3}
@@ -54,7 +55,8 @@
 \contentsline {subsection}{\numberline {3.2.1}1D}{12}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}2D}{12}{subsection.3.2.2}
 \contentsline {chapter}{\numberline {4}Conclusions}{13}{chapter.4}
-\contentsline {chapter}{\numberline {A}The First Appendix}{14}{appendix.A}
+\contentsline {chapter}{\numberline {A}Code Listings}{14}{appendix.A}
+\contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{14}{section.A.1}
 \tocappendix 
-\contentsline {chapter}{Bibliography}{15}{section*.12}
+\contentsline {chapter}{Bibliography}{17}{section*.12}
 \contentsfinish 

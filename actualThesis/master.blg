@@ -9,44 +9,44 @@ A level-1 auxiliary file: appendix1/appendix1.aux
 The style file: ChicagoReedweb.bst
 Database file #1: overallBib.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 1 entry,
+You've used 2 entries,
             3202 wiz_defined-function locations,
-            1092 strings with 12461 characters,
-and the built_in function-call counts, 515 in all, are:
-= -- 39
-> -- 30
-< -- 0
-+ -- 10
-- -- 9
-* -- 40
-:= -- 93
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 7
-chr.to.int$ -- 1
-cite$ -- 1
-duplicate$ -- 34
-empty$ -- 29
-format.name$ -- 12
-if$ -- 92
+            1101 strings with 12701 characters,
+and the built_in function-call counts, 1495 in all, are:
+= -- 155
+> -- 51
+< -- 2
++ -- 23
+- -- 15
+* -- 101
+:= -- 197
+add.period$ -- 8
+call.type$ -- 2
+change.case$ -- 13
+chr.to.int$ -- 2
+cite$ -- 2
+duplicate$ -- 135
+empty$ -- 83
+format.name$ -- 23
+if$ -- 285
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 6
-newline$ -- 11
-num.names$ -- 4
-pop$ -- 17
+missing$ -- 15
+newline$ -- 17
+num.names$ -- 8
+pop$ -- 48
 preamble$ -- 1
-purify$ -- 7
+purify$ -- 13
 quote$ -- 0
-skip$ -- 12
+skip$ -- 69
 stack$ -- 0
-substring$ -- 11
-swap$ -- 15
-text.length$ -- 0
+substring$ -- 63
+swap$ -- 105
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 9
+type$ -- 18
 warning$ -- 0
-while$ -- 3
+while$ -- 8
 width$ -- 0
-write$ -- 16
+write$ -- 30

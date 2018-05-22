@@ -197,32 +197,6 @@
   {Melnik}},\ }\href {\doibase 10.1134/S0015462810050017} {\bibfield  {journal}
   {\bibinfo  {journal} {Fluid Dynamics}\ }\textbf {\bibinfo {volume} {45}},\
   \bibinfo {pages} {679} (\bibinfo {year} {2010})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Kardar}\ \emph {et~al.}(1986)\citenamefont {Kardar},
-  \citenamefont {Parisi},\ and\ \citenamefont {Zhang}}]{PhysRevLett.56.889}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
-  {Kardar}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Parisi}}, \
-  and\ \bibinfo {author} {\bibfnamefont {Y.-C.}\ \bibnamefont {Zhang}},\ }\href
-  {\doibase 10.1103/PhysRevLett.56.889} {\bibfield  {journal} {\bibinfo
-  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {56}},\ \bibinfo
-  {pages} {889} (\bibinfo {year} {1986})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Krug}\ and\ \citenamefont
-  {Spohn}(1988)}]{PhysRevA.38.4271}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
-  {Krug}}\ and\ \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Spohn}},\
-  }\href {\doibase 10.1103/PhysRevA.38.4271} {\bibfield  {journal} {\bibinfo
-  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {38}},\ \bibinfo
-  {pages} {4271} (\bibinfo {year} {1988})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Sasamoto}\ and\ \citenamefont
-  {Spohn}(2010)}]{Sasamoto2010}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
-  {Sasamoto}}\ and\ \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
-  {Spohn}},\ }\href {\doibase 10.1103/PhysRevLett.104.230602} {\bibfield
-  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo
-  {volume} {104}},\ \bibinfo {pages} {230602} (\bibinfo {year}
-  {2010})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Sugden}\ and\ \citenamefont
   {Evans}(2007)}]{sugden2007dynamically}%
   \BibitemOpen
@@ -281,6 +255,38 @@
   {\doibase 10.1103/PhysRevLett.118.160601} {\bibfield  {journal} {\bibinfo
   {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {118}},\ \bibinfo
   {pages} {160601} (\bibinfo {year} {2017})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kardar}\ \emph {et~al.}(1986)\citenamefont {Kardar},
+  \citenamefont {Parisi},\ and\ \citenamefont {Zhang}}]{PhysRevLett.56.889}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Kardar}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Parisi}}, \
+  and\ \bibinfo {author} {\bibfnamefont {Y.-C.}\ \bibnamefont {Zhang}},\ }\href
+  {\doibase 10.1103/PhysRevLett.56.889} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {56}},\ \bibinfo
+  {pages} {889} (\bibinfo {year} {1986})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Krug}\ and\ \citenamefont
+  {Spohn}(1988)}]{PhysRevA.38.4271}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Krug}}\ and\ \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Spohn}},\
+  }\href {\doibase 10.1103/PhysRevA.38.4271} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {38}},\ \bibinfo
+  {pages} {4271} (\bibinfo {year} {1988})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sasamoto}\ and\ \citenamefont
+  {Spohn}(2010)}]{Sasamoto2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Sasamoto}}\ and\ \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Spohn}},\ }\href {\doibase 10.1103/PhysRevLett.104.230602} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo
+  {volume} {104}},\ \bibinfo {pages} {230602} (\bibinfo {year}
+  {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kawasaki}(1966)}]{PhysRev.145.224}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Kawasaki}},\ }\href {\doibase 10.1103/PhysRev.145.224} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {145}},\
+  \bibinfo {pages} {224} (\bibinfo {year} {1966})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Katz}\ \emph {et~al.}(1984)\citenamefont {Katz},
   \citenamefont {Lebowitz},\ and\ \citenamefont {Spohn}}]{Katz1984}%
   \BibitemOpen
@@ -309,22 +315,6 @@
   10.1103/PhysRevE.68.035101} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
   Rev. E}\ }\textbf {\bibinfo {volume} {68}},\ \bibinfo {pages} {035101}
   (\bibinfo {year} {2003})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Kawasaki}(1966)}]{PhysRev.145.224}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
-  {Kawasaki}},\ }\href {\doibase 10.1103/PhysRev.145.224} {\bibfield  {journal}
-  {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {145}},\
-  \bibinfo {pages} {224} (\bibinfo {year} {1966})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Leetmaa}}\ and\ \citenamefont
-  {{Skorodumova}}(2014)}]{leetmaa2014kmclib}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
-  {{Leetmaa}}}\ and\ \bibinfo {author} {\bibfnamefont {N.~V.}\ \bibnamefont
-  {{Skorodumova}}},\ }\href {\doibase 10.1016/j.cpc.2014.04.017} {\bibfield
-  {journal} {\bibinfo  {journal} {Computer Physics Communications}\ }\textbf
-  {\bibinfo {volume} {185}},\ \bibinfo {pages} {2340} (\bibinfo {year}
-  {2014})},\ \Eprint {http://arxiv.org/abs/1405.1221} {arXiv:1405.1221
-  [physics.comp-ph]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Gillespie}(1977)}]{Gillespie1977}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~T.}\ \bibnamefont
@@ -353,6 +343,16 @@
   {journal} {Journal of Statistical Physics}\ }\textbf {\bibinfo {volume}
   {89}},\ \bibinfo {pages} {709} (\bibinfo {year} {1997})}\BibitemShut
   {NoStop}%
+\bibitem [{\citenamefont {{Leetmaa}}\ and\ \citenamefont
+  {{Skorodumova}}(2014)}]{leetmaa2014kmclib}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {{Leetmaa}}}\ and\ \bibinfo {author} {\bibfnamefont {N.~V.}\ \bibnamefont
+  {{Skorodumova}}},\ }\href {\doibase 10.1016/j.cpc.2014.04.017} {\bibfield
+  {journal} {\bibinfo  {journal} {Computer Physics Communications}\ }\textbf
+  {\bibinfo {volume} {185}},\ \bibinfo {pages} {2340} (\bibinfo {year}
+  {2014})},\ \Eprint {http://arxiv.org/abs/1405.1221} {arXiv:1405.1221
+  [physics.comp-ph]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Hellier}(2018)}]{jHellGitRepo}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont

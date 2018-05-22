@@ -9,12 +9,18 @@
 
 \maketitle
 
- Dear PRL Editors,
- \\
- \\
-  Thank you for the response of the referees. We feel we have
-  addressed both criticisms, and would like to resubmit.
- 
+ Dear PRL Editors, \\ 
+
+ Thank you for the response of the referees. While the responses are
+fair, we feel the referees have looked primarily at the more trivial
+responses, and that Referee A, in particular, has misunderstood the
+main result. We recognise that the failure of experts to see the key
+results means we failed to emphasize them appropriately, perhaps due
+to our overfamiliarity from working on the problem for several
+years. Consequently, we have thoroughly reworked the manuscript, and
+we would like to resubmit for consideration by PRL.
+
+\subsection*{General Comments}
   Referee A states:
 {\it  Since the main result of the paper seems to be a consequence of a ``bad'' approximation --- namely a mean-field approximation ---, rather than a description of the actual phenomenology of the model, I do not recommend to publish this manuscript in PRL.}
 
@@ -26,14 +32,19 @@
  the referee's comments seem to focus on the necessary, but less
  significant, results of the work.
  
- 
+We would like to mention that, in our opinion, the analytic derivation
+of the mean field solution (eq. 1, derived in the SM) is a significant
+achievement and the difficulty of doing it is probably why this
+apparently-obvious model has not been previously published.
+
+
 In our revised version, we have addressed their comments and the paper is enormously improved in consequence.
  
  
-\section*{Detailed response}
+\subsection*{Detailed response}
 
 
-   \subsection*{Referee A}
+   \subsubsection*{Referee A}
   
    {\it This work presents a mean-field study of a one-dimensional non
    equilibrium transport model: particles diffuse on a lattice, and
@@ -70,15 +81,16 @@ In our revised version, we have addressed their comments and the paper is enormo
   The referee asks us to clarify the main result: ``does the model have a non equilibrium phase transition?''. 
   It does.
  
-  Our simulations show the non-equilibrium transition is to a non-diffusing state.  
-This is not just an artefact of the MFT, in which the same transition manifests as negative diffusion.
+  Our simulations clear show the non-equilibrium transition is to a
+  non-diffusing state.  The existence of the transition is not just an
+  artefact of the MFT.
  
-  Clearly we failed to we emphasize this main point clearly enough.
+  We failed to make this main point clearly enough.
   Therefore we have made significant changes to the paper: in particular the
   new Fig.~1 is designed to emphasize the point, by showing the
   transition both according to MFT and simulation in the same plot.
   The previous figure, which failed to convince the referee, is
-  included as an inset.  The figure extends the range of the
+  included as an inset.  The main figure extends the range of the
   stickiness parameter to show more clearly the excellent agreement of
   MFT and simulation at the ``non-sticky'', high lambda regime, the
   transition of MFT to negative flow, and the equivalent transition to
@@ -87,6 +99,11 @@ This is not just an artefact of the MFT, in which the same transition manifests 
   As for our MFT, we never expected it particularly good predictor in the very sticky limit. However, it is the breakdown of the MFT which suggested that the transition might occur in the first place,
   and inspired us to look for the transition, which we found.
  
+
+The statement that {\it the sharp transition is not realised in the
+  simulation} was intended to refer to the general result that finite size effects {\bf
+  always} preclude sharp divergences.  We now realise how this could
+be misinterpreted and have removed it.
  
   
 {\it    Minor comments:
@@ -95,26 +112,25 @@ This is not just an artefact of the MFT, in which the same transition manifests 
   
    ``We prove that SPM is also a detailed-balance respecting,
    particle-conserving, Monte Carlo description of the Ising model.''
-  
    This sentence seems to indicate that the authors prove an outstanding problem. But, isn't the detail balance criterion an immediate consequence of the definition of the model? }
  
-   -Of course, detailed balance (or not) is always a consequence of the
-   definition of the model.  However, we did not explicitly set it up
-   to have detailed balance so, at least to us, detailed balance
+   Of course, detailed balance (or not) is always a consequence of the
+   definition of a model.  However, we did not deliberately set it up
+   to obey detailed balance so, at least to us, detailed balance
    wasn't immediately obvious. 
   
    The model is defined in terms of rates, and because we did not
    notice it at first, we feel that detailed balance is not trivial
-   and worth proving (see Referee B point 1).  Some well-known jamming
+   and worth proving (see Referee B point 1). Most well-known jamming
    models defined by rates, e.g. ASEP, do not have detailed balance.
-   It is sometimes assumed that this lack of detailed balance is
+   It is sometimes tacitly assumed that this lack of detailed balance is
    necessary for non-trivial flow behaviour.  An important aspect of
    this work is to demonstrate that obtaining non-trivial flow *can*
    be achieved in a model with detailed balance.
  
-So the referee is right to say that proving detailed balance is not an
-outstanding achievement of the paper, but it is important to establish
-it.
+So the referee is right to say that the proof of detailed balance is
+not an outstanding achievement of the paper, but it is important to
+establish it for contrast with apparently related work.
 
 {\it 
    2) ``Thus, the MFT says that the particles should diffuse with a diffusion coefficient $A(\rho)$ which depends upon the local density.''
@@ -124,7 +140,7 @@ it.
 
 The referee is correct, this typo has been corrected.
 
-\subsection*{Referee B}
+\subsubsection*{Referee B}
 {\it
    In the manuscript ``On The Diffusion of Sticky Particles in 1-D'', the
    authors look into a variant of the so-called Symmetric Exclusion
@@ -160,10 +176,19 @@ The referee is correct, this typo has been corrected.
 }
 
 We feel that the referee has missed the more important contributions
-made by the paper.  The referee states that {\it the paper is not well
+made by the paper.  In particular that the model is locally symmetric,
+homogeneous, and obeys detailed balance yet {\bf still} shows jamming
+behaviour.
+
+The referee states that {\it the paper is not well
   written and, without doubt, the results can be presented in a much
-  clearer way}.  Following this observation, we have restructured the
-paper to emphasize more clearly those contribution we felt were missed.
+  clearer way}.  
+
+This echoes the criticism of Referee A, and perhaps explains the
+referee's mixed feelings.  Perhaps we overemphasized technical details
+at the expense of the bigger picture. We have restructured the paper
+to emphasize more clearly those contributions we felt were missed by
+the referees.
 
 {\it
 
@@ -172,7 +197,11 @@ paper to emphasize more clearly those contribution we felt were missed.
    1) The authors should enhance the part of the paper devoted to the
    introduction of the model and link it with other approaches, such as
    dynamical Ising models or sticky particles in 1d.
-  
+}
+We have done this, including the connection to Kawasaki dynamics in the Ising
+model and the links to SEP, Ising, KLS, misanthrope and KPZ models.
+
+{\it  
    a) The authors state that ``It seems that space of highly-local
    exclusion models is so tightly constrained in one-dimension that there
    is no option but to comply with the detailed balance condition.''
@@ -185,53 +214,67 @@ paper to emphasize more clearly those contribution we felt were missed.
    physical/mathematical reason or delete the sentence. }
   
 
-We agree that this is a strong statement and one of our non-trivial
-results.  We are not aware of a pre-existing proof, and because it is quite technical we
-presented our proof in the SM.  In the main paper now are more specific about the class
-of models which we refer to.
-
+This strong statement not speculation: the proof is part of our work 
+and one of our non-trivial
+results.  We are not aware of a pre-existing proof, and because it is
+quite technical we presented our proof in the SM.  In the main paper
+now are more specific about the class of models which we refer to.
 
   {\it
    b) Given that detailed balance holds, a certain effective ``energy'' can
    be written for the model, which the authors state that are
    ``proportional to the number of particle-particle adjacencies in the
    system''.
-  
-   If I am getting this right, what the authors say in spin variables
+     If I am getting this right, what the authors say in spin variables
    ($n_i=(1+\sigma_i)/2$ can be rewritten as the usual Ising model with
-   nearest neighbor interactions \dots}
+   nearest neighbor interactions   in the presence of an external field. }
 
-The referee is almost correct. As we said in the abstract, the Ising
-Hamiltonian does apply to the system.  
+As we said in the abstract, the Ising Hamiltonian does apply to the
+system. However, there is no field, either in the Ising sense or
+driving the particles.
 
-{\it  in the presence of an external field. Since the proposed rates verify detailed balance, I suspect that the
+{\it
+Since the proposed rates verify detailed balance, I suspect that the
    authors are considering a variation of the Metropolis (or Glauber's)
    transition rates.}
 
 This is a particle model, not a spin one, so away from the boundaries
 the dynamics conserve particle number (i.e. they are not Glauber).
-Also, there is no term equivalent to an external field: an important
-feature of the model is that there are no symmetry-breaking local driving forces, such as a field might provide.
+The Gillespie algorithm is similar to Metropolis, but more efficient
+when there are a wide range of rates.  Also, there is no term
+equivalent to an external field: an important feature of the model is
+that there are no symmetry-breaking local driving forces, such as a
+field might provide.
 
 {\it   Is this the correct picture? If so, it seems a bit exaggerated to
    speak of a ``new'' model and it would be fairer to speak of a new
    ``interpretation'' of a previously existing model.}
   
 
-The referee is right that, in equilibrium, our dynamics must reproduce
-the Ising model because of detailed balance.  Indeed, we did verify
-the Ising-like equilibrium behaviour, but only to test the coding - we
-didn't think that result interesting enough to include in PRL.
+In equilibrium, our dynamics must reproduce the Ising model because of
+detailed balance. Indeed, we did verify the Ising-like equilibrium
+behaviour, but only to test the coding.  This test could fairly be
+described as a ``new ``interpretation'' of a previously existing
+model'', so we didn't think that result interesting enough to include
+in PRL.  To avoid confusion, we now mention it.
 
-It sounds as if the referee suspects we are simply solving the
-Ising model with novel dynamics.  Perhaps this suspicion is behind the comment: 
+
+Perhaps the suspicion the we are simply solving the
+Ising model with novel dynamics
+is behind the comment: 
  ``I would not say that this work represents a substantial advance''.  
   In fact, we do much more than this.
 
 
-  The novelty is to show that non-trivial flow behaviour does not require violating detailed balance.  Previous 1D models induce non-equilibrium behaviour by breaking detailed balance. We demonstrate that this is not necessary.
+  The novelty is to show that non-trivial flow behaviour does not
+  require violating detailed balance.  Previous 1D models have been
+  devised which induce non-equilibrium behaviour by breaking detailed
+  balance. We demonstrate that this is not necessary.
  
-  For that reason our model is not just another non-equilibrium 1D flow model: it is a wholly new class of transformation, because the only asymmetry driving the flow is at the boundaries, well away from where the transition occurs.
+  For that reason our model is not simply another non-equilibrium 1D
+  flow model.  The local physics are equilibrium dynamics; the only
+  asymmetry driving the flow is at the boundaries, well away from
+  where the transition occurs.
  
   We are aware that PRL discourages use of ``new'' and avoid the word.
  
@@ -258,9 +301,10 @@ driven-dissipative models which reduce to the Burgers equation in the
 mean field limit.  Their dynamics is driven by local interactions
 which do not obey detailed balance and their non-trivial behavior
 comes from the interplay between dissipation and driving. 
-Our model is of a completely different type:  locally it 
-is an equilibrium (Ising) system with non symmetry-breaking field, 
-the driving comes only from the boundaries. 
+
+We cite them, but emphasize that our model is of a completely
+different type: locally it is an equilibrium (Ising) system with non
+symmetry-breaking field, the driving comes only from the boundaries.
 
   {\it 
    2) The general presentation is definitely improvable. Some comments,
@@ -299,9 +343,9 @@ Since it caused confusion, we decided to drop the term ``blocked state''.
   {\it 3) After (7), can the authors comment something on the
     expression they have just derived?  } 
 
-This equation has the same
-  negative diffusion solutions and symmetry around $\rho=2/3$ as
-  equation 4, so we have referred back to equation 4.
+The main feature is that even for the weakly driven limit, the
+equation has the same negative diffusion solutions and symmetry around
+$\rho=2/3$ as equation 4, so we have referred back to equation 4.
   
 {\it    4) In the first paragraph of the article, after the sentence ``This is
    unfortunate because it is precisely these nonlinearities which
@@ -309,7 +353,9 @@ This equation has the same
    oxide-metal interface or diffusion instability.'', suitable references
    must be provided.}
   
-   References for this are added.
+   References for this are added.  It was our work on $\mathrm{TiO}_2$ interfaces
+   which motivated the current model, although this historical
+   detail may be of limited interest to the reader.
   
 {\it   5) System sizes are very small, 32, 64, 124 sites. In Fig. 2, the
    authors say that sizes 32 and 64 give similar results. The authors
@@ -317,17 +363,17 @@ This equation has the same
    sizes. Why the larger system in Fig. 4 (124 sites)?}
   
    - For practical purposes, the system sizes are not small and the
-   work has required millions of CPU hours. Given that the number of
+   work has required millions of CPU hours. Each point in Fig 1
+   involved over 100 million Gillespie steps. Given that the number of
    Gillespie steps required for equilibration scales aggressively in
    the system size (to the third power in the number of lattice
    sites), we have to pay dearly for any increase in system size. We
-   have repeated our 64-size calculations at size 32,
-   128 and 256, and they are in agreement.  These are not shown, because the data points are sparser and the 
-larger calculations with
-   larger lambda suffer from noise because because they take longer to converge. 
-Thus, we are
-   satisfied that size 64 is the best compromise in terms of getting
-   good statistics with minimal edge-effect. 
+   have repeated our 64-size calculations at size 32, 128 and 256, and
+   they are in agreement.  These are not shown, because the data
+   points are sparser and the larger calculations with larger lambda
+   suffer from noise because because they take longer to converge.
+   Thus, we are satisfied that size 64 is the best compromise in terms
+   of getting good statistics with minimal edge-effect.
 
   
 {\it    6) Below Fig. 2, it is reported that ``Firstly, we should note that we
@@ -340,9 +386,7 @@ Thus, we are
    How is this conclusion drawn by the authors?}
   
    - One can see from the plots that the MFT is a good fit to the data
-   when lambda 0.25. The result about the density is quite quick to
-   derive, but space is extremely limited in a PRL letter so we didn’t
-   think it was interesting enough to go in.
+   when $\lambda>0.25$. The result about the non-unique density follows directly from the cubic form of Eq.5, a full derivation is now added to the SM.
   
 
 {\it 
@@ -361,6 +405,7 @@ Thus, we are
    the n-fold way employed by KMCLIB, the second one shows that this kind
    of KMC algorithms solve the master equation numerically.
   }
+
    We agree, these are useful background to the algorithm, so we have included them.
   
 {\it    8) I would definitely start a new paragraph with the sentence ``We have
@@ -368,11 +413,9 @@ Thus, we are
    sections.'' in the paragraph below (7), changing ``this setup'' for ``the
    setup above'', for example.}
   
-   -Done.
+   We have done this.
   
  
 
-
-\section{}
 
 \end{document}

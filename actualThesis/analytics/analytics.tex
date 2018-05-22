@@ -55,6 +55,8 @@ Basically, why we can't analytically solve it, and so why performing mean-field 
 \section{Similarities between the SPM and Established Models in 1D}
 In the previous section we have discussed the various approaches one might use when attempted to derive properties of a nonequilibrium statistical mechanical system. We will now try to put these ideas into practise on the SPM.
 
+
+
 \subsection{Relationship with the Ising Model}
 
 If we implement the rules of the SPM on a periodic domain, we no longer have to deal with boundary conditions. In this special circumstance, we can find an isomorphism between this model and the Ising model with fixed magnetisation.
@@ -74,98 +76,10 @@ of the binding energy and temperature in the Ising model.
 
 
 \subsection{Correlation Functions}
-For relatively small systems, given a system size $L$ and a number of particles $N$, we can analytically compute the pairwise correlation function $C(l) = \left\langle \rho_i \rho_{i+l} \right\rangle$ (as the system is clearly homogeneous in $i$).
-The following \texttt{Python} code does this:
-\begin{lstlisting}[language=Python]
-import copy
-import sys
+For relatively small systems, given a system size $L$ and a number of particles $N$, we can analytically compute the pairwise correlation function $C(l) = \left\langle \rho_i \rho_{i+l} \right\rangle$, or ``the probability that site $i+l$
+is occupied given that $i$ is (the system is clearly homogeneous in $i$, so its value is irrelevant).
+A \texttt{Python} code which performs this calculations may be found in Sec.~\ref{sec:corrFnCode}
 
-def configMake(L, N, prevList, totList):
-    if L==1:
-        endList = [copy.deepcopy(prevList), N]
-        totList.append(unfold(endList))
-        return [N]
-    if N==0:
-       return configMake(L-1, 0, [copy.deepcopy(prevList), 0], totList)
-    if L==N:
-        return configMake(L-1, N-1, [copy.deepcopy(prevList), 1], totList)
-    return [configMake(L-1, N, [copy.deepcopy(prevList), 0], totList), configMake(L-1, N-1, [copy.deepcopy(prevList), 1], totList)]
-
-def adjSum(candList):
-    listLen = len(candList)
-    total = 0
-    for index in range(0, listLen):
-        total += candList[index-1]*candList[index]
-    return total
-
-def unfold(candList):
-    if isinstance(candList, list):
-        if len(candList)==2:
-            return unfold(candList[0])+unfold(candList[1])
-        if len(candList)==1:
-            return candList
-        if len(candList)==0:
-            return []
-    return [candList]
-
-def listCollate(candList):
-    maxItem = 0
-    for index in candList:
-        if index > maxItem:
-            maxItem = index
-    outPut = []
-    for size in range(0, maxItem+1):
-        numCounts = 0
-        for index in candList:
-            if index == size:
-                numCounts += 1
-        outPut.append((size, numCounts))
-    return outPut
-
-def genCorrFn(L, N):
-    totList = []
-    allStates = configMake(L, N, [], totList)
-    restStates = []
-    weightList = []
-    maxAdj = 0
-    for state in totList:
-        if state[0]==1:
-            restStates.append((state, adjSum(state)))
-            if restStates[-1][1]>maxAdj:
-                maxAdj = restStates[-1][1]
-            weightList.append(restStates[-1][1])
-    partFnList = listCollate(weightList)
-    print(partFnList)
-    partitionFn = "("
-    for pair in partFnList:
-        partitionFn += str(pair[1])+" Exp["+str(pair[0]-maxAdj)+"b] + "
-    partitionFn += "0)"
-    print(partitionFn)
-    finalOut = "{"
-    for shift in range(0, L-L/2):
-        tempList = []
-        for config in restStates:
-            if config[0][shift] == 1:
-                tempList.append(config[1])
-        stateDist = listCollate(tempList)
-        outSum = "{"+str(shift)+", ("
-        for pair in stateDist:
-            outSum += str(pair[1])+" Exp["+str(pair[0]-maxAdj)+"b] + "
-        outSum += "0)/"+partitionFn+"}"
-        finalOut += outSum
-        if shift != L-L/2-1:
-            finalOut += ", "
-    finalOut+="}"
-    return finalOut
-
-L = int(sys.argv[1])
-
-with open("corrFnResults.m", 'w') as f:
-    f.write("{")
-    for n in range(2, L-2):
-        f.write("{"+str(n)+"/"+str(L)+", "+genCorrFn(L, n)+"}, ")
-    f.write(genCorrFn(L, L-2) + "}")
-\end{lstlisting}
 
 This is quite a nice result, as we can use simple recursion to perform a calculation which would otherwise be quite difficult to code.
 Unfortunately the time complexity of the calculation grows exponentially in and $L$, so the largest $L$ I can reasonably run for is $20$. In the table below I have plotted the occupation probability of sites shifted from the origin
@@ -174,30 +88,73 @@ Unfortunately the time complexity of the calculation grows exponentially in and 
 \begin{figure}[h!]
 \caption{\label{fig:corrFns} }
 \begin{center}
- \begin{tabular}{c | c | c}
-    \includegraphics[width=0.32\linewidth]{analytics/images/exactCorrFns/lowDensLowL}  & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/midDensLowL} & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/highDensLowL} \\
+ \begin{tabular}{c  c | c | c | c}
+  & $\rho$ & $\frac{3}{20}$ & $\frac{1}{2}$ & $\frac{17}{20}$ \\
+  $\lambda$ & & & & \\
+ \hline
+    \raisebox{3 em}{ $\frac{1}{10}$ } & & \includegraphics[width=0.32\linewidth]{analytics/images/exactCorrFns/lowDensLowL}  & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/midDensLowL} & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/highDensLowL} \\
     \hline
-        \includegraphics[width=0.32\linewidth]{analytics/images/exactCorrFns/lowDensMidL}  & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/midDensMidL} & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/highDensMidL} \\
+    \raisebox{3 em}{ $1$ } & &    \includegraphics[width=0.32\linewidth]{analytics/images/exactCorrFns/lowDensMidL}  & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/midDensMidL} & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/highDensMidL} \\
     \hline
-        \includegraphics[width=0.32\linewidth]{analytics/images/exactCorrFns/lowDensHighL}  & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/midDensHighL} & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/highDensHighL} \\
+    \raisebox{3 em}{ $10$ } & &    \includegraphics[width=0.32\linewidth]{analytics/images/exactCorrFns/lowDensHighL}  & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/midDensHighL} & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/highDensHighL} \\
     \end{tabular}
 \end{center}
     \vspace{-2em}
 \end{figure}
 
-!write some more about this sometime!
+Clearly, as $l$ becomes large, the correlation function tends to the density (note that the way we have define the correlation function it does not subtract this background probability; hence why many definitions do). Very small $\lambda$-values
+cause particles to tend to cluster together, whilst large $lambda$ values cause particles and vacancies to tend to alternate. In theory we could use the equivalence with the Ising model to compute correlation lengths as a function
+of $\rho$ and $\lambda$ by using the magnetic field in the original Ising model as a Lagrange multiplier in order to fix the total magnetisation (corresponding to particle number in the SPM). However, due to the fact that we cannot
+accurately compute correlation functions to any decent accuracy using our numerics (see Chap.~\ref{}), we concluded that it was not worth the time to perform the calculation as we would have nothing to compare it to.
 
 \subsection{Equivalence with the Misanthrope Process}
-\begin{itemize}
- \item show the equivalence
- \item show lack of explosive condensation
- \item discuss limits of this (e.g. doesn't really clue us in to how flow works etc)
-\end{itemize}
+
+Keeping the SPM on a ring, there is a again a correspondence between it and the Misanthrope Process~\cite{evansWaclaw2014}. The Misanthrope Process is, like the SPM, defined by its rates. This time, however, there can be arbitrarily many particles
+on a single lattice site. We can choose to consider the symmetric version, in which particles hop in either direction. The defining feature of the process is that particles hop from sites with occupation $m$ to adjacent sites with occupation
+$n$ with some rate $u(m, n)$.
+
+The equivalence between this and the SPM is made by identifying the \textbf{number} of particles on a site in the Misanthrope Process with the \textbf{length} of the gap between two particles in the SPM. In this way, one can see that a particle
+moving, for example, one step right in the SPM corresponds to a particle moving from one stack to the adjacent one on the left in the Misanthrope Process. To complete the equivalence we set
+
+
+\[
+  u(m, n) =
+  \begin{cases}
+                                   \lambda, & n=0 \\
+                                   1, & \text{otherwise.} 
+  \end{cases}
+\]
+
+Using the result from~\cite{evansWaclaw2014}, that the probability weighting of a configuration $\{m_i\}$ may be factorised as
+\begin{equation}
+ P(\{m_i\}) \propto \prod_{i+1}^N f(m_i) \delta_{L+N, \sum_{j=1}^N m_j},
+\end{equation}
+where $f(m)$ is a weighting dependant on the occupation of a site,  we see that for the SPM $f(m) = \lambda^{-m}$. Thus, for finite $\lambda$ 
+\begin{equation}
+ \frac{f(m)}{f(m-1)} = \lambda^{-1}
+\end{equation}
+which remains bounded as $m \rightarrow \infty$, therefore this model does not exhibit explosive condensation, again by using~\cite{evansWaclaw2014}.
+
+\subsection{Differences Between SEP and the SPM}
 
 \section{Using the Mean-Field Approximation on the SPM}
+
+For the reasons discussed above, we cannot analytically solve the SPM on a nonperiodic bounded domain in the same way as SEP. It could be the case that a complete analytic solution method exists, but if it does, we do not know of it, so
+we will proceed on the assumption that the model is not analytically solvable. Therefore, it would be useful to at least possess approximate solutions, as this can help us by giving us something to test
+our numerics against, and point us in the direction of interesting behaviours which might occur. We will start by deriving the MFT on a lattice, and will then take the continuum limit (as the lattice spacing tends to zero
+relative to our scale of interest), as that should predict the dominant behaviour on the macroscopic scale.
+
+
 \subsection{Lattice MFT Derivation}
 
-From here we will be assuming that there isn't a way to solve the SPM exactly, so we will attempt to use approximation. MFT is, as always, and option.
+As usual, in an MFT approximation, we will be saying that the equal-time probability of the $(i+1)^\mathrm{th}$ site being occupied is independent of the probability that the $i\mathrm{th}$ site is occupied.
+More formally, let the probability distribution over system configurations at time $t$ be $p(\xi; t): \forall t \int_\Xi   \! \mathrm{d}  \xi \ p(\xi; t)=1 $, and let the operator $\rho_i$ have eigenvalue 1 on configurations with the $i\mathrm{th}$ site occupied and $0$ on those
+with it unoccupied. In this language, the mean occupation of site $i$ is
+\begin{equation}
+ \overline{\rho} =  \int_\Xi  \! \! \mathrm{d}  \xi \  \ \rho_i \xi(t)
+\end{equation}
+
+
 \subsection{Continuum Limit MFT Derivation}
 \subsection{Negative Diffusion Coefficients}
 When do they happen? What do they mean?
