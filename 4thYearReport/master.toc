@@ -1,0 +1,59 @@
+\contentsline {chapter}{Abstract}{i}{chapter*.2}
+\contentsline {chapter}{Contents}{ii}{section*.3}
+\contentsline {chapter}{List of Figures}{v}{section*.5}
+\contentsline {chapter}{List of Tables}{vi}{section*.7}
+\contentsline {chapter}{\numberline {1}Preliminary Work, Background and Motivation (0\% done) (Needs 3 weeks)}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}The Ti$\text {O}_\mathbf {2}$/Ti Interface System}{2}{section.1.1}
+\contentsline {section}{\numberline {1.2}Initial Attempts to Model the Ti$\text {O}_\mathbf {2}$/Ti Interface System}{2}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}The Difficulties of Nonequilibrium Statistical Mechanics}{2}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Dynamics of Ionic Crystals}{2}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Initial Work Done with MD}{2}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}The Problems with MD}{2}{subsection.1.2.4}
+\contentsline {section}{\numberline {1.3}Simple Large-Scale Models of the Ti/O/Nb Interacting System}{2}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Proposed Linear System}{2}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Attempts to create a Suitable Nonlinear System}{2}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Parametrisation from a Microscopic Model}{2}{subsection.1.3.3}
+\contentsline {section}{\numberline {1.4}The Sticky Particle Model}{2}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}Model Motivation}{2}{subsection.1.4.1}
+\contentsline {subsection}{\numberline {1.4.2}Model Definition}{2}{subsection.1.4.2}
+\contentsline {subsection}{\numberline {1.4.3}Model Properties}{2}{subsection.1.4.3}
+\contentsline {subsection}{\numberline {1.4.4}Relation to Existing Literature}{2}{subsection.1.4.4}
+\contentsline {subsection}{\numberline {1.4.5}Generalisation to Higher Dimensions}{2}{subsection.1.4.5}
+\contentsline {section}{\numberline {1.5}Implications of Initial Work for the PhD Direction}{2}{section.1.5}
+\contentsline {subsection}{\numberline {1.5.1}Why the Change of Direction?}{2}{subsection.1.5.1}
+\contentsline {subsection}{\numberline {1.5.2}Why Investigate Flow in the SPM?}{2}{subsection.1.5.2}
+\contentsline {chapter}{\numberline {2}Analytical Results about the SPM (45\% done) (Needs 2 more weeks)}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Solving Problems in Nonequlibrium Statistical Mechanics}{3}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Equilibrium Statistical Mechanics}{3}{subsection.2.1.1}
+\contentsline {subsubsection}{Exact Solutions}{3}{subsection.2.1.1}
+\contentsline {subsubsection}{Approximations}{3}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Nonequlibrium Statistical Mechanics}{4}{subsection.2.1.2}
+\contentsline {subsubsection}{Exact Solutions}{4}{subsection.2.1.2}
+\contentsline {subsubsection}{Approximations}{4}{subsection.2.1.2}
+\contentsline {subsubsection}{Similarities and Differences Between Nonequlibrium and Equilibrium Statistical Mechanics}{4}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Where does the SPM stand?}{4}{subsection.2.1.3}
+\contentsline {section}{\numberline {2.2}Similarities between the SPM and Established Models in 1D}{4}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Relationship with the Ising Model}{4}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Correlation Functions}{4}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Equivalence with the Misanthrope Process}{5}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Differences Between SEP and the SPM}{5}{subsection.2.2.4}
+\contentsline {section}{\numberline {2.3}Using the Mean-Field Approximation on the SPM}{5}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Lattice MFT Derivation}{5}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Continuum Limit MFT Derivation}{5}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Negative Diffusion Coefficients}{5}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Continuum Limit MFT Solutions}{5}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.5}Continuum MFT Breakdown}{5}{subsection.2.3.5}
+\contentsline {section}{\numberline {2.4}The SPM in Higher Dimensions}{6}{section.2.4}
+\contentsline {chapter}{\numberline {3}Numerical Results about the SPM (0\% done) (Needs 2 weeks)}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}Numerical Simulations of Continuous-Time Markov Processes}{7}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Known Methods}{7}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}\texttt {KMCLib}}{7}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Running \texttt {KMCLib} on \texttt {Eddie3}}{7}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Calculation Results }{7}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}1D}{7}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}2D}{7}{subsection.3.2.2}
+\contentsline {chapter}{\numberline {4}Conclusions (0\% done) (Needs unknown amount of time, probably 2 weeks)}{8}{chapter.4}
+\contentsline {chapter}{\numberline {A}Code Listings (25\% done) (Doesn't need much time, is done as the other chapters are made)}{9}{appendix.A}
+\contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{9}{section.A.1}
+\tocappendix 
+\contentsfinish 

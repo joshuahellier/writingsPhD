@@ -41,22 +41,22 @@
 \contentsline {subsection}{\numberline {2.2.4}Differences Between SEP and the SPM}{9}{subsection.2.2.4}
 \contentsline {section}{\numberline {2.3}Using the Mean-Field Approximation on the SPM}{9}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Lattice MFT Derivation}{10}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Continuum Limit MFT Derivation}{10}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Negative Diffusion Coefficients}{10}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Continuum Limit MFT Solutions}{10}{subsection.2.3.4}
-\contentsline {subsection}{\numberline {2.3.5}Continuum MFT Breakdown}{10}{subsection.2.3.5}
-\contentsline {section}{\numberline {2.4}The SPM in Higher Dimensions}{10}{section.2.4}
-\contentsline {chapter}{\numberline {3}Numerical Results about the SPM}{11}{chapter.3}
-\contentsline {section}{\numberline {3.1}Numerical Simulations of Continuous-Time Markov Processes}{11}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Known Methods}{11}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}\texttt {KMCLib}}{11}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Running \texttt {KMCLib} on \texttt {Eddie3}}{11}{subsection.3.1.3}
-\contentsline {section}{\numberline {3.2}Calculation Results }{12}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}1D}{12}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}2D}{12}{subsection.3.2.2}
-\contentsline {chapter}{\numberline {4}Conclusions}{13}{chapter.4}
-\contentsline {chapter}{\numberline {A}Code Listings}{14}{appendix.A}
-\contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{14}{section.A.1}
+\contentsline {subsection}{\numberline {2.3.2}Continuum Limit MFT Derivation}{11}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Negative Diffusion Coefficients}{12}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Continuum Limit MFT Solutions}{12}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.5}Continuum MFT Breakdown}{13}{subsection.2.3.5}
+\contentsline {section}{\numberline {2.4}The SPM in Higher Dimensions}{13}{section.2.4}
+\contentsline {chapter}{\numberline {3}Numerical Results about the SPM}{14}{chapter.3}
+\contentsline {section}{\numberline {3.1}Numerical Simulations of Continuous-Time Markov Processes}{14}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Known Methods}{14}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}\texttt {KMCLib}}{14}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Running \texttt {KMCLib} on \texttt {Eddie3}}{14}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Calculation Results }{15}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}1D}{15}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}2D}{15}{subsection.3.2.2}
+\contentsline {chapter}{\numberline {4}Conclusions}{16}{chapter.4}
+\contentsline {chapter}{\numberline {A}Code Listings}{17}{appendix.A}
+\contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{17}{section.A.1}
 \tocappendix 
-\contentsline {chapter}{Bibliography}{17}{section*.12}
+\contentsline {chapter}{Bibliography}{20}{section*.13}
 \contentsfinish 

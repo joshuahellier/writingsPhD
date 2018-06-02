@@ -1,0 +1,52 @@
+\BOOKMARK [0][-]{chapter*.2}{Abstract}{}% 1
+\BOOKMARK [0][-]{section*.3}{Contents}{}% 2
+\BOOKMARK [0][-]{section*.5}{List of Figures}{}% 3
+\BOOKMARK [0][-]{section*.7}{List of Tables}{}% 4
+\BOOKMARK [0][-]{chapter.1}{Preliminary Work, Background and Motivation \(0\045 done\) \(Needs 3 weeks\)}{}% 5
+\BOOKMARK [1][-]{section.1.1}{The TiO2/Ti Interface System}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.2}{Initial Attempts to Model the TiO2/Ti Interface System}{chapter.1}% 7
+\BOOKMARK [2][-]{subsection.1.2.1}{The Difficulties of Nonequilibrium Statistical Mechanics}{section.1.2}% 8
+\BOOKMARK [2][-]{subsection.1.2.2}{Dynamics of Ionic Crystals}{section.1.2}% 9
+\BOOKMARK [2][-]{subsection.1.2.3}{Initial Work Done with MD}{section.1.2}% 10
+\BOOKMARK [2][-]{subsection.1.2.4}{The Problems with MD}{section.1.2}% 11
+\BOOKMARK [1][-]{section.1.3}{Simple Large-Scale Models of the Ti/O/Nb Interacting System}{chapter.1}% 12
+\BOOKMARK [2][-]{subsection.1.3.1}{Proposed Linear System}{section.1.3}% 13
+\BOOKMARK [2][-]{subsection.1.3.2}{Attempts to create a Suitable Nonlinear System}{section.1.3}% 14
+\BOOKMARK [2][-]{subsection.1.3.3}{Parametrisation from a Microscopic Model}{section.1.3}% 15
+\BOOKMARK [1][-]{section.1.4}{The Sticky Particle Model}{chapter.1}% 16
+\BOOKMARK [2][-]{subsection.1.4.1}{Model Motivation}{section.1.4}% 17
+\BOOKMARK [2][-]{subsection.1.4.2}{Model Definition}{section.1.4}% 18
+\BOOKMARK [2][-]{subsection.1.4.3}{Model Properties}{section.1.4}% 19
+\BOOKMARK [2][-]{subsection.1.4.4}{Relation to Existing Literature}{section.1.4}% 20
+\BOOKMARK [2][-]{subsection.1.4.5}{Generalisation to Higher Dimensions}{section.1.4}% 21
+\BOOKMARK [1][-]{section.1.5}{Implications of Initial Work for the PhD Direction}{chapter.1}% 22
+\BOOKMARK [2][-]{subsection.1.5.1}{Why the Change of Direction?}{section.1.5}% 23
+\BOOKMARK [2][-]{subsection.1.5.2}{Why Investigate Flow in the SPM?}{section.1.5}% 24
+\BOOKMARK [0][-]{chapter.2}{Analytical Results about the SPM \(45\045 done\) \(Needs 2 more weeks\)}{}% 25
+\BOOKMARK [1][-]{section.2.1}{Solving Problems in Nonequlibrium Statistical Mechanics}{chapter.2}% 26
+\BOOKMARK [2][-]{subsection.2.1.1}{Equilibrium Statistical Mechanics}{section.2.1}% 27
+\BOOKMARK [2][-]{subsection.2.1.2}{Nonequlibrium Statistical Mechanics}{section.2.1}% 28
+\BOOKMARK [2][-]{subsection.2.1.3}{Where does the SPM stand?}{section.2.1}% 29
+\BOOKMARK [1][-]{section.2.2}{Similarities between the SPM and Established Models in 1D}{chapter.2}% 30
+\BOOKMARK [2][-]{subsection.2.2.1}{Relationship with the Ising Model}{section.2.2}% 31
+\BOOKMARK [2][-]{subsection.2.2.2}{Correlation Functions}{section.2.2}% 32
+\BOOKMARK [2][-]{subsection.2.2.3}{Equivalence with the Misanthrope Process}{section.2.2}% 33
+\BOOKMARK [2][-]{subsection.2.2.4}{Differences Between SEP and the SPM}{section.2.2}% 34
+\BOOKMARK [1][-]{section.2.3}{Using the Mean-Field Approximation on the SPM}{chapter.2}% 35
+\BOOKMARK [2][-]{subsection.2.3.1}{Lattice MFT Derivation}{section.2.3}% 36
+\BOOKMARK [2][-]{subsection.2.3.2}{Continuum Limit MFT Derivation}{section.2.3}% 37
+\BOOKMARK [2][-]{subsection.2.3.3}{Negative Diffusion Coefficients}{section.2.3}% 38
+\BOOKMARK [2][-]{subsection.2.3.4}{Continuum Limit MFT Solutions}{section.2.3}% 39
+\BOOKMARK [2][-]{subsection.2.3.5}{Continuum MFT Breakdown}{section.2.3}% 40
+\BOOKMARK [1][-]{section.2.4}{The SPM in Higher Dimensions}{chapter.2}% 41
+\BOOKMARK [0][-]{chapter.3}{Numerical Results about the SPM \(0\045 done\) \(Needs 2 weeks\)}{}% 42
+\BOOKMARK [1][-]{section.3.1}{Numerical Simulations of Continuous-Time Markov Processes}{chapter.3}% 43
+\BOOKMARK [2][-]{subsection.3.1.1}{Known Methods}{section.3.1}% 44
+\BOOKMARK [2][-]{subsection.3.1.2}{KMCLib}{section.3.1}% 45
+\BOOKMARK [2][-]{subsection.3.1.3}{Running KMCLib on Eddie3}{section.3.1}% 46
+\BOOKMARK [1][-]{section.3.2}{Calculation Results }{chapter.3}% 47
+\BOOKMARK [2][-]{subsection.3.2.1}{1D}{section.3.2}% 48
+\BOOKMARK [2][-]{subsection.3.2.2}{2D}{section.3.2}% 49
+\BOOKMARK [0][-]{chapter.4}{Conclusions \(0\045 done\) \(Needs unknown amount of time, probably 2 weeks\)}{}% 50
+\BOOKMARK [0][-]{appendix.A}{Code Listings \(25\045 done\) \(Doesn't need much time, is done as the other chapters are made\)}{}% 51
+\BOOKMARK [1][-]{section.A.1}{1d Ising Correlation Functions \040}{appendix.A}% 52

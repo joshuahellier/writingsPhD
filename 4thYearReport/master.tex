@@ -1,0 +1,93 @@
+% Remove the oneside option below for double sided printing (e.g. for final (post-viva) submission)
+\documentclass[a4paper,12pt,oneside,openright]{book}
+
+% Preamble commands go here
+\usepackage{customisations}
+
+%% Some of the below packages may be useful to thesis writers in Physics
+%% Googling `latex <packagename>' will usually give you some documentation
+% \usepackage[load-configurations=abbreviations]{siunitx} % siunitx typesets physical units in a consistent manner
+\usepackage{booktabs} % booktabs provides professional formatting commands for tables
+\usepackage{amsmath} % amsmath provides extra maths symbols
+\usepackage{amsfonts}
+\usepackage{textcomp} % textcomp provides extra text symbols (like a degrees celsius symbol)
+\usepackage{listings}
+% \usepackage{tikz} % tikz is a package for drawing diagrams and adding annotations to figures
+% \usepackage{threeparttable} % threeparttable allows for adding notes to tables
+% \usepackage{eps2pdf} % eps2pdf allows background transformation of eps files to pdfs so they 
+%						work seamlessly with pdflatex. If using this with the LaTeX editor Kile,
+%						you need to add --shell-escape before '%source', in
+%						Settings -> Configure Kile... -> Tools -> Build -> build_pdflatex
+
+% End preamble
+
+% REPLACE THESE with your thesis title, your name and the date of submission of the thesis
+\title{On Interacting Particles in 1D and 2D (Skeleton Edition) (Completeness and Scheduling Estimates in Contents) }
+\author{Joshua DM Hellier}
+\date{July 2018} % of submission
+
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\begin{document}
+
+% Thesis front matter - title page, abstract, acknowledgements, declaration and table of contents
+% See customisations.sty to modify the title page or declaration
+\singlespacing
+\maketitlepage
+\frontmatter
+\eighteenptleading
+\input{thesis-frontmatter/abstract}
+
+\singlespacing
+% Uncomment this line if you need to declare published work which forms part of the thesis
+%\declarationpublications{}
+%\makedeclaration
+
+%\input{thesis-frontmatter/acknowledgements}
+
+This is the skeleton of the thesis, in terms of the chapters etc planned. The Conclusions are still a little fluid, and the Results will consist of a large number of graphs, so I'll probably arrange that in a little more
+detail when I get to it. Underneath the chapter headings I have put the percentage of completion, and where I have written stuff I have broken this down by section, subsection etc. As of now I have written just under half of the
+Analytics chapter; I suspect that that chapter will constitute a little over a quarter of the finished thesis. According to my current estimates, I need a further 9 weeks to complete the thesis, which would imply
+completion in mid-August. However, this might be an underestimate and is partially dependent upon obtaining decent 2d data soon, which might not happen as my calculations keep failing. Thus, I think an extension of one month
+might be a good idea, just to make absolutely sure it's finished.
+
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\contentsname}
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+
+% Include main matter here
+\mainmatter
+\eighteenptleading
+\include{intro/intro}
+\include{analytics/analytics}
+\include{numerics/numerics}
+\include{conclusions/conclusions}
+
+\appendix
+\addtocontents{toc}{\protect\tocappendix}
+\include{appendix1/appendix1}
+
+\backmatter
+
+\singlespace
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\bibname}
+% Choose a bibliography style to suit your taste here
+% This one was downloaded from http://web.reed.edu/cis/help/latex/bibtexstyles.html (June 2012)
+%\bibliographystyle{ChicagoReedweb}
+%\bibliography{overallBib}
+
+\end{document}

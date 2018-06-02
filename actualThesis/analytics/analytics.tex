@@ -148,14 +148,109 @@ relative to our scale of interest), as that should predict the dominant behaviou
 \subsection{Lattice MFT Derivation}
 
 As usual, in an MFT approximation, we will be saying that the equal-time probability of the $(i+1)^\mathrm{th}$ site being occupied is independent of the probability that the $i\mathrm{th}$ site is occupied.
-More formally, let the probability distribution over system configurations at time $t$ be $p(\xi; t): \forall t \int_\Xi   \! \mathrm{d}  \xi \ p(\xi; t)=1 $, and let the operator $\rho_i$ have eigenvalue 1 on configurations with the $i\mathrm{th}$ site occupied and $0$ on those
-with it unoccupied. In this language, the mean occupation of site $i$ is
-\begin{equation}
- \overline{\rho} =  \int_\Xi  \! \! \mathrm{d}  \xi \  \ \rho_i \xi(t)
-\end{equation}
+More formally, let us denote the mean occupation of the $i^\mathrm{th}$ site at time $t$ by $\rho_i (t)$. When we invoke the mean-field approximation, we say that the mean occupations of sites at equal times are independent; thus,
+the probability that site $j \ne i$ occupied given that site $i$ is occupied is $\rho_j (t)$. We can use this to calculate the rate at which $\rho_i (t)$ increases and decreases, and so obtain a system of coupled ODEs for $\rho_i (t)$.
 
+Let us first consider the situation where the $i^\mathrm{th}$ site is unoccupied. The probability of this being the case is $(1-\rho_i (t))$. A particle could move from site $(i-1)$ or site $(i+1)$, but only if those sites are currently occupied.
+Assuming that site $(i-1)$ is occupied (occurring with probability $\rho_{i-1}$ in MFT), the rate at which it would jump to site $i$ would depend on the occupation of site $(i-2)$,
+as it would be $1$ if it was unoccupied and $\lambda$ if it was occupied. Phrasing this in MFT terms,
+and suppressing $t$-dependence for brevity, the rate at which $\rho_i (t)$ is increased by particles coming from the left is
+\begin{equation}
+{\tau_0}^{-1} \left(1-\rho_i \right) \rho_{i-1} \left[ \left(1-\rho_{i-2} \right) \cdot 1  +   \rho_{i-2} \cdot \lambda \right].
+\end{equation}
+By symmetry, the income of particles from the right is
+\begin{equation}
+{\tau_0}^{-1} \left(1-\rho_i \right) \rho_{i+1} \left[ \left(1-\rho_{i+2} \right) \cdot 1  +   \rho_{i+2} \cdot \lambda \right].
+\end{equation}
+Using similar logic, but shifting things around slightly, the rate at which particles leave site $i$ to go to site $i+1$ is
+\begin{equation}
+{\tau_0}^{-1} \left(1-\rho_{i+1} \right) \rho_{i} \left[ \left(1-\rho_{i-1} \right) \cdot 1  +   \rho_{i-1} \cdot \lambda \right],
+\end{equation}
+and similarly 
+\begin{equation}
+{\tau_0}^{-1} \left(1-\rho_{i-1} \right) \rho_{i} \left[ \left(1-\rho_{i+1} \right) \cdot 1  +   \rho_{i+1} \cdot \lambda \right]
+\end{equation}
+is the rate at which particles leave $i$ to go to $i-1$.
+
+At this point it becomes fairly clear why we introduced the quantity $\zeta = 1-\lambda$, as it neatens things up in general. The total rate at which particles enter site $i$ is
+\begin{equation}
+ {\tau_0}^{-1} \left(1-\rho_i \right) \left[ \left(1-\zeta \rho_{i-2} \right) \rho_{i-1} + \left(1-\zeta \rho_{i+2} \right) \rho_{i+1} \right]
+\end{equation}
+whilst they leave at rate
+\begin{equation}
+ {\tau_0}^{-1} \rho_i \left[ \left(1-\zeta \rho_{i+1} \right) \left(1 - \rho_{i-1} \right) + \left(1-\zeta \rho_{i-1} \right) \left(1 - \rho_{i+1} \right) \right]
+\end{equation}
+Combining the rates of arriving and leaving, we obtain our main result:
+\begin{align}
+\label{eq:latticeMFT}
+\begin{split}
+ \tau_0 \partDeriv{\rho_i}{t} &= \left( 1-\rho_i \right) \left[ \left(1-\zeta\rho_{i-2} \right) \rho_{i-1} + \left(1-\zeta\rho_{i+2} \right) \rho_{i+1} \right] \\
+ &- \rho_i \left[ 2 \zeta \rho_{i-1} \rho_{i+1}  - (3-\zeta)\left(\rho_{i-1} + \rho_{i+1}\right) + 2 \right].
+ \end{split}
+ \end{align}
+This is a nice result, and in theory we could stop right here and we could make a computational scheme for solving this as a sequence. However, there are a few issues. For one thing, $\rho_i (t)$ isn't the mean of a quantity
+whose variance is being suppressed by the law of large numbers, as is desired when using the MFT approximation.
+Thus, it is merely a rough sketch of what might happen, as variances and correlations between sites aren't suppressed. On the other hand, it simply relates the occupations of nearby sites,
+whereas we would find a description of the bulk flow to be much more useful. Therefore, we may as well take the continuum limit to see how flow depends on concentration gradient and local density.
 
 \subsection{Continuum Limit MFT Derivation}
+
+To take the continuum limit, let's promote $\rho_i (t)$ to $\rho(x, t)$ so that 
+\begin{equation}
+\rho_{i+m}(t)~\rightarrow~\rho(x+am,t).
+\end{equation}
+Now we can Taylor expand for $\rho_{i+m} (t)$, as
+\begin{equation}
+ \rho(x+am,t) = \rho(x, t) + ma \partDeriv{\rho(x, t)}{x} + \frac{1}{2} m^2 a^2 \partDeriv{^2\rho(x, t)}{x^2} + \mathcal{O}(a^3). 
+\end{equation}
+Preferably with the aid of a computational algebra package (in my case \texttt{Wolfram Mathematica}), one may directly substitute Taylor expansions for the required $\rho_j$ into Eq.~\ref{eq:latticeMFT}, continuing to truncate
+at $\mathcal{O}(a^3)$. Doing so, and collecting terms, we find that
+\begin{align}
+  \tau_0 \partDeriv{\rho}{t} =& a^2 \left[ 1-\zeta \rho (4-3\rho) \partDeriv{^2 \rho}{x^2}  \right]
+  2 a^2 \zeta (3\rho-2) \left(\partDeriv{\rho}{x}\right)^2 + \mathcal{O}(a^4) ,
+\end{align}
+which may be factorised into the more convenient form
+\begin{equation}
+\label{eq:contPDE}
+ \partDeriv{\rho}{t} = \frac{a^2}{\tau_0} \partDeriv{}{x} \left\{ \left[1 - \zeta \rho\left(4-3\rho\right) \right] \partDeriv{\rho}{x} \right\},
+\end{equation}
+which is a continuity equation
+\begin{equation}
+ \partDeriv{\rho}{t} = \partDeriv{J}{x} 
+\end{equation}
+with current
+\begin{equation}
+J = -\frac{a^2}{\tau_0} \left[1 - \zeta \rho\left(4-3\rho\right) \right] \partDeriv{\rho}{x}.
+\end{equation}
+
+Considering Fick's Law
+\begin{equation}
+ J = - D \partDeriv{\rho}{x},
+\end{equation}
+we see that our diffusion coefficient is
+\begin{equation}
+ D = \frac{a^2}{\tau_0} \left[1 - \zeta \rho\left(4-3\rho\right) \right].
+\end{equation}
+Setting $\zeta \rightarrow 0$ (i.e. $\lambda = 1$), we see that $D \rightarrow \frac{a^2}{\tau_0}$, which is consistent with what we would expect for the Symmetric Exclusion Process.
+
+Clearly, the diffiusion coefficient varies quadratically with $\rho$. This is easiest to see via a few graphs, as shown in Fig.~\ref{fig:analDiffCoeffs}.
+\begin{figure}[h!]
+\caption{\label{fig:analDiffCoeffs} Plots of the variation of $\frac{a^2 D}{\tau_0}$ ($y$-axis) with respect to $\rho$ ($x$-axis), evalutated with various values of $\zeta$ (above plots).}
+\begin{center}
+ \begin{tabular}{c c}
+     $\zeta = -0.15$ & $\zeta = 0$ \\ 
+     \includegraphics[width=0.49\linewidth]{analytics/images/diffCoeffs/diffCoeff-neg0-15}  & \includegraphics[width=0.49 \linewidth]{analytics/images/diffCoeffs/diffCoeff-0-0} \\
+     $\zeta = 0.25$  & $\zeta = 0.5$ \\
+     \includegraphics[width=0.49\linewidth]{analytics/images/diffCoeffs/diffCoeff-0-25}  & \includegraphics[width=0.49 \linewidth]{analytics/images/diffCoeffs/diffCoeff-0-5} \\
+     $\zeta = 0.75$  & $\zeta = 0.9$ \\
+     \includegraphics[width=0.49\linewidth]{analytics/images/diffCoeffs/diffCoeff-0-75}  & \includegraphics[width=0.49 \linewidth]{analytics/images/diffCoeffs/diffCoeff-0-9} \\
+    \end{tabular}
+\end{center}
+    \vspace{-2em}
+\end{figure}
+Note that $D$ has a symmetry in $\rho$ around $\rho = \frac{2}{3}$, in the sense that $D$ is unchanged under $\rho \mapsto \frac{4}{3} - \rho$. Why this symmetry is present in the MFT is a little unclear ($\rho \mapsto 1 - \rho$
+would be a much more obvious choice), however as you will see in the numerical simulations it does seem to be quite relevant, particularly in the high-$\lambda$ limit.
+
 \subsection{Negative Diffusion Coefficients}
 When do they happen? What do they mean?
 \subsection{Continuum Limit MFT Solutions}
