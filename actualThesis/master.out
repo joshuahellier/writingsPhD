@@ -39,7 +39,7 @@
 \BOOKMARK [2][-]{subsection.2.3.2}{Continuum Limit MFT Derivation}{section.2.3}% 39
 \BOOKMARK [2][-]{subsection.2.3.3}{Negative Diffusion Coefficients}{section.2.3}% 40
 \BOOKMARK [2][-]{subsection.2.3.4}{Continuum Limit MFT Solutions}{section.2.3}% 41
-\BOOKMARK [2][-]{subsection.2.3.5}{Continuum MFT Breakdown}{section.2.3}% 42
+\BOOKMARK [2][-]{subsection.2.3.5}{Implications of Continuum MFT Breakdown}{section.2.3}% 42
 \BOOKMARK [1][-]{section.2.4}{The SPM in Higher Dimensions}{chapter.2}% 43
 \BOOKMARK [0][-]{chapter.3}{Numerical Results about the SPM}{}% 44
 \BOOKMARK [1][-]{section.3.1}{Numerical Simulations of Continuous-Time Markov Processes}{chapter.3}% 45
@@ -52,4 +52,4 @@
 \BOOKMARK [0][-]{chapter.4}{Conclusions}{}% 52
 \BOOKMARK [0][-]{appendix.A}{Code Listings}{}% 53
 \BOOKMARK [1][-]{section.A.1}{1d Ising Correlation Functions \040}{appendix.A}% 54
-\BOOKMARK [0][-]{section*.13}{Bibliography}{}% 55
+\BOOKMARK [0][-]{section*.15}{Bibliography}{}% 55

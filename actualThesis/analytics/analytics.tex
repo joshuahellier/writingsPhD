@@ -233,9 +233,11 @@ we see that our diffusion coefficient is
 \end{equation}
 Setting $\zeta \rightarrow 0$ (i.e. $\lambda = 1$), we see that $D \rightarrow \frac{a^2}{\tau_0}$, which is consistent with what we would expect for the Symmetric Exclusion Process.
 
-Clearly, the diffiusion coefficient varies quadratically with $\rho$. This is easiest to see via a few graphs, as shown in Fig.~\ref{fig:analDiffCoeffs}.
+Clearly, the diffusion coefficient varies quadratically with $\rho$. This is easiest to see via a few graphs, as shown in Fig.~\ref{fig:analDiffCoeffs}. Note that $D \rightarrow \frac{a^2}{\tau_0}$ as $\rho \rightarrow 0$
+and $D \rightarrow \frac{a^2}{\tau_0} \lambda$ as $\rho \rightarrow 1$, so for $\zeta < 0$ ($\lambda>1$) $D$ is guaranteed to be positive for $\rho \in [0, 1]$ as the diffusion coefficient is an inverted parabola so far as its
+variation in $\rho$ is concerned.
 \begin{figure}[h!]
-\caption{\label{fig:analDiffCoeffs} Plots of the variation of $\frac{a^2 D}{\tau_0}$ ($y$-axis) with respect to $\rho$ ($x$-axis), evalutated with various values of $\zeta$ (above plots).}
+\caption{\label{fig:analDiffCoeffs} Plots of the variation of $\frac{\tau_0 D}{a^2}$ ($y$-axis) with respect to $\rho$ ($x$-axis), evaluated with various values of $\zeta$ (above plots).}
 \begin{center}
  \begin{tabular}{c c}
      $\zeta = -0.15$ & $\zeta = 0$ \\ 
@@ -248,14 +250,104 @@ Clearly, the diffiusion coefficient varies quadratically with $\rho$. This is ea
 \end{center}
     \vspace{-2em}
 \end{figure}
+
+\begin{figure}[h!]
+ \caption{\label{fig:diffCoeffDensityPlot} A contour plot of the variation of $\frac{\tau_0 D}{a^2}$ as a function of $\rho$ and $\lambda$. The region with negative diffusion (which is really critically slow or zero diffusion due
+ to our stability argument in~\ref{sec:negDiffCoeff}) has been highlighted in purple. Note how as we descend in $\lambda$ with $\lambda<\frac{1}{4}$, it grows from a single point at $ \rho = \frac{2}{3}$
+ to fill most physically realistic density values.}
+ \includegraphics[width=0.99\linewidth]{analytics/images/newAnalFlow}
+\end{figure}
+
+
 Note that $D$ has a symmetry in $\rho$ around $\rho = \frac{2}{3}$, in the sense that $D$ is unchanged under $\rho \mapsto \frac{4}{3} - \rho$. Why this symmetry is present in the MFT is a little unclear ($\rho \mapsto 1 - \rho$
 would be a much more obvious choice), however as you will see in the numerical simulations it does seem to be quite relevant, particularly in the high-$\lambda$ limit.
 
 \subsection{Negative Diffusion Coefficients}
-When do they happen? What do they mean?
+\label{sec:negDiffCoeff}
+A quick inspection of the dependence of the diffusion coefficient $D$ upon $\zeta$ reveals that it is possible for strange things to happen in this MFT. For a given value of $\zeta$, $D$ is quadratic in $\rho$; a natural question
+to ask is whether $D$ is always positive, and if not, what the physical implications of this would be. 
+
+An easy way to do this is by analysing the roots of $D$. Writing it as a standard quadratic,
+\begin{equation}
+ D = \frac{a^2}{\tau_0} \left[  3 \zeta \rho^2 - 4 \zeta \rho + 1  \right]
+\end{equation}
+which has discriminant $4 \zeta \frac{a^4}{\tau_0^2}\left[4 \zeta - 3\right]$. For a real quadratic, the discriminant changes sign when the solutions switch between being real and complex, which in our case is the difference
+between having real solutions and not having real solutions. Assuming that $\zeta > 0$ (as we know $D$ is positive for $\rho \in [0, 1]$ for $\zeta<0$),  this change occurs when $\zeta = \frac{3}{4}$ corresponding to $\lambda=\frac{1}{4}$, so there are no real solutions for $\zeta<\frac{3}{4}$ and $\lambda>\frac{1}{4}$,
+and therefore $D$ is guaranteed to be positive in these regions. Positive-$D$ is the normal situation in physics, and a solution to the MFT PDE Eq.\ref{eq:contPDE} which contains only positive-$D$ regions is at  least
+self-consistent (although of course is only as good an approximation to the SPM as the continuum MFT assumptions allow).
+
+When $\zeta > \frac{3}{4}$, $D$ is negative so long as
+\begin{equation}
+ \frac{2}{3} - \frac{\sqrt{\zeta(4\zeta-3)}}{3\zeta} < \rho < \frac{2}{3} + \frac{\sqrt{\zeta(4\zeta-3)}}{3\zeta};
+\end{equation}
+this is like a gap opening up in $\rho$ when $\zeta > \frac{3}{4}$. At its maximal extent (when $\zeta=1$), negative diffusion occurs for
+\begin{equation}
+ \frac{1}{3} < \rho < 1,
+\end{equation}
+so there is still a region where $\rho$ is sufficiently low that negative diffusion does not occur.
+
+In terms of what a negative diffusion coefficient actually means, consider a constant solution $\rho(x, t) = \rho_0$. Insertion Eq.~\ref{eq:contPDE} quickly confirms that this is indeed a solution. Now consider adding a small
+perturbation $\delta\rho (x, t)$ to $\rho_0$. The equation for the time evolution of $\delta \rho$ then reads
+\begin{equation}
+ \partDeriv{\delta\rho}{t} = \frac{a^2}{\tau_0} \left[1 - \zeta \rho_0\left(4-3\rho_0\right) \right] \partDeriv{^2 \delta \rho}{x^2}.
+\end{equation}
+This becomes a little clearer if one takes a Fourier transform with respect to $x$, so that $\hat{\delta \rho} (k, t) = \mathcal{F}(\delta \rho(x, t))$; then, the equation of motion for $\hat{\delta \rho}$ is
+\begin{equation}
+ \partDeriv{\hat{\delta \rho}}{t} = - k^2 \frac{a^2}{\tau_0} \left[1 - \zeta \rho_0\left(4-3\rho_0\right) \right] \hat{\delta \rho}.
+\end{equation}
+This shows us that so long as $\zeta<\frac{3}{4}$, small perturbations to the density are suppressed by exponential decay in time with increasing ferocity as their wavenumber increases for all wavenumbers,
+and so the solution is stable; the same applies if $\zeta>\frac{3}{4}$ so long as we do not stray into situations where
+$\frac{2}{3} - \frac{\sqrt{\zeta(4\zeta-3)}}{3\zeta} = \rho_- < \rho_0 < \rho_+ = \frac{2}{3} + \frac{\sqrt{\zeta(4\zeta-3)}}{3\zeta}$.
+If we do find ourselves in this regime, small perturbations grow exponentially with time in a situation akin to ripening <find some decent references when possible>,
+which, given that the particles are undergoing conserved flow, suggests that we will have a separation into regions with lower and higher
+densities. Of course, the positive feedback driving this separation stops if the density grows higher or lower than $\rho_\pm$, where we reenter the stable regime. This does suggest that in the MFT a system containing a negative-$D$
+region would have a tendency to self-organise itself into alternating domains, with at least the boundaries of these domains having densities of $\rho_-$ or $\rho_+$ This is very important: whilst it is no coincidence that these
+critical values of the density are those densities where our diffusion coefficient is zero, this does suggest that \textbf{a solution to the continuum MFT in the $\lambda<\frac{1}{4}$ regime  which contains values for $\rho$
+in the critical gap $[\rho_-, \rho_+]$ should admit no current}. The search for this predicted effect is in fact the main driving force behind this entire PhD project.
+
+
 \subsection{Continuum Limit MFT Solutions}
-There's a bunch of these.
-\subsection{Continuum MFT Breakdown}
+
+The continuum-limit MFT has given us a partial differential equation for $\rho(x, t)$; therefore, we should try to find some solutions to it, as these may give us clues as to what types of behaviour the SPM might exhibit.
+
+\subsubsection{Steady Flow Across a Bounded Domain}
+
+It's pretty obvious that $\rho=\rho_0=\mathrm{const.}$ is a solution to the MFT PDE, and it takes only a little thought to notice that this is in fact the only spatially homogeneous solution available. If we instead look for a
+solution which lacks time dependence (i.e. $\rho(x, t) = \rho(x)$), the PDE reduces to the ODE
+\begin{equation}
+ -\frac{a^2}{\tau_0} \frac{\mathrm{d}}{\mathrm{d}x} \left( \left[1 - \zeta \rho\left(4-3\rho\right) \right] \frac{\mathrm{d}\rho}{\mathrm{d}x} \right) = 0.
+\end{equation}
+Integrating both sides with respect to $x$, and using the fundamental theorem of calculus, we find that 
+\begin{equation}
+   -\frac{a^2}{\tau_0} \left[1 - \zeta \rho\left(4-3\rho\right) \right] \frac{\mathrm{d}\rho}{\mathrm{d}x}  = J_0 ,
+\end{equation}
+with $J_0$ an arbitrary constant, which has been labelled as such in hindsight because it represents the constant current flowing through the system in a steady state.
+Doing so again, we find that we can invoke the chain rule via
+\begin{align}
+\label{eq:steadyDeriv}
+   J_0 (x - x_0) &= -\frac{a^2}{\tau_0} \int  \! \! \mathrm{d}x  \frac{\mathrm{d}\rho}{\mathrm{d}x} \left[1 - \zeta \rho\left(4-3\rho\right) \right] \\
+       &=   -\frac{a^2}{\tau_0} \int  \! \! \mathrm{d}\rho   \left[1 - \zeta \rho\left(4-3\rho\right) \right] \\
+       &= -\frac{a^2}{\tau_0} \rho \left[1+\zeta \rho\left(\rho-2\right)\right]
+\end{align}
+Thus with a little rearrangement we have $x$ as a function of $\rho$, with $\rho$ a cubic in $x$. We can in principle invert this to obtain $\rho (x)$, but let us first consider the appropriate boundary conditions to use.
+
+Let us consider solving problems on a bounded domain; we choose to do this as opposed to an infinite one, as one can see that for our cubic $ \|x\|  \rightarrow \pm \infty \implies \|\rho\|  \rightarrow \pm \infty$ for nontrivial $J$.
+Therefore let us consider solutions on the domain $[0, L]$ for $L>0$. With a second order ODE of this kind, we must supply two boundary conditions, which may be Dirichlet, Neumann or some mixture of the two,
+and must contain at least one piece of Dirichlet information. However, our ODE does not make any special reference to $\rho$ values of $0$ or $1$, and therefore if we do not fix $\rho$ at both boundaries it is highly likely that the solution will contain
+unphysical values for $\rho$. Therefore, let us apply Dirichlet conditions at both boundaries, so that $\rho(0) = \rho_0$ and $\rho(L) = \rho_L$. Inserting this information into Eq.~\ref{eq:steadyDeriv} we can fix the constants
+$x_0$ and $J_0$; in particular we find that
+\begin{equation}
+  J_0 = \frac{a^2}{L \tau_0} \left[ \rho_0 - \rho_L + \zeta \left( \rho_0\left[\rho_0^2-2\right] - \rho_L\left[\rho_L^2-2\right] \right) \right],
+\end{equation}
+which can be reinserted to yield the desired $x_0$. An illustrative plot of $J_0(\rho_B, \rho_T)$ is shown in Fig.~\ref{fig:boundaryCurrent}.
+\begin{figure}[h!]
+ \caption{\label{fig:boundaryCurrent} A contour plot of the variation of the constant current $J_0(\rho_B, \rho_T)$ in a bounded domain with boundary densities $\rho_0$ and $\rho_L$ at $x=0$ and $L$  with $\lambda=0.2$.
+ Notice how the magnitude of $J_0$ generally grows as the difference between $\rho_0$ and $\rho_L$ increases, and how there is a region of boundary condition space in which the current takes the opposite sign one would expect.}
+ \includegraphics[width=0.99\linewidth]{analytics/images/boundaryCurrent}
+\end{figure}
+
+
+\subsection{Implications of Continuum MFT Breakdown}
 
 \section{The SPM in Higher Dimensions}
 Kinda repeat the earlier stuff in higher dimensions, particularly 2 where we actually have data. Maybe less need for elaborate sections structure here; just write freely and see how it goes.
