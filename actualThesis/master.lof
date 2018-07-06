@@ -3,10 +3,14 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {(2.1)}{\ignorespaces \relax }}{8}{figure.caption.11}
-\contentsline {figure}{\numberline {(2.2)}{\ignorespaces Plots of the variation of $\frac {\tau _0 D}{a^2}$ ($y$-axis) with respect to $\rho $ ($x$-axis), evaluated with various values of $\zeta $ (above plots).\relax }}{13}{figure.caption.12}
-\contentsline {figure}{\numberline {(2.3)}{\ignorespaces A contour plot of the variation of $\frac {\tau _0 D}{a^2}$ as a function of $\rho $ and $\lambda $. The region with negative diffusion (which is really critically slow or zero diffusion due to our stability argument in\nobreakspace {}\ref {sec:negDiffCoeff}) has been highlighted in purple. Note how as we descend in $\lambda $ with $\lambda <\frac {1}{4}$, it grows from a single point at $ \rho = \frac {2}{3}$ to fill most physically realistic density values.\relax }}{14}{figure.caption.13}
-\contentsline {figure}{\numberline {(2.4)}{\ignorespaces A contour plot of the variation of the constant current $J_0(\rho _B, \rho _T)$ in a bounded domain with boundary densities $\rho _0$ and $\rho _L$ at $x=0$ and $L$ with $\lambda =0.2$. Notice how the magnitude of $J_0$ generally grows as the difference between $\rho _0$ and $\rho _L$ increases, and how there is a region of boundary condition space in which the current takes the opposite sign one would expect.\relax }}{17}{figure.caption.14}
+\contentsline {figure}{\numberline {(2.1)}{\ignorespaces Plots of the equal-time particle density correlation function on a ring.}}{8}{figure.caption.11}
+\contentsline {figure}{\numberline {(2.2)}{\ignorespaces Some plots of the variation of the MFT diffusion coefficient with density, for some selected $\lambda $.}}{13}{figure.caption.12}
+\contentsline {figure}{\numberline {(2.3)}{\ignorespaces A contour plot of the variation of the MFT diffusion coefficient with density and stickiness.}}{14}{figure.caption.13}
+\contentsline {figure}{\numberline {(2.4)}{\ignorespaces The variation in the current at fixed $\lambda $ with respect to the boundary densities.}}{17}{figure.caption.14}
+\contentsline {figure}{\numberline {(2.5)}{\ignorespaces The variation of flow rate with respect to $\lambda $ in the MFT, with fixed boundary densities.}}{18}{figure.caption.15}
+\contentsline {figure}{\numberline {(2.6)}{\ignorespaces The dependence of the critial value of $\lambda $ required for backward diffusion on the boundary conditions.}}{19}{figure.caption.16}
+\contentsline {figure}{\numberline {(2.7)}{\ignorespaces The variation of the system-wide average density with respect to $\lambda $ in the MFT, with fixed boundary densities.}}{20}{figure.caption.17}
+\contentsline {figure}{\numberline {(2.8)}{\ignorespaces The possibe transitions which may occur in a symmetric local 2-dimensional hopping model.}}{24}{figure.caption.18}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -86,17 +86,19 @@ Unfortunately the time complexity of the calculation grows exponentially in and 
 (assuming the origin is occupied)  for a selection of $\lambda = e^{-b}$ and particle densities.
 
 \begin{figure}[h!]
-\caption{\label{fig:corrFns} }
+\caption[Plots of the equal-time particle density correlation function on a ring.]{\label{fig:corrFns} Here are some particle-particle correlation functions for the SPM on a small closed ring,
+with the density chosen by choosing how many particles to insert at the start. The system in this case has $20$ lattice sites.
+This was calculated using computer-assisted algebra and the various density and stickiness combinations should give an overall impression as to their structure.}
 \begin{center}
  \begin{tabular}{c  c | c | c | c}
   & $\rho$ & $\frac{3}{20}$ & $\frac{1}{2}$ & $\frac{17}{20}$ \\
   $\lambda$ & & & & \\
  \hline
-    \raisebox{3 em}{ $\frac{1}{10}$ } & & \includegraphics[width=0.32\linewidth]{analytics/images/exactCorrFns/lowDensLowL}  & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/midDensLowL} & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/highDensLowL} \\
+    \raisebox{3 em}{ $\frac{1}{10}$ } & & \includegraphics[width=0.25\linewidth]{analytics/images/exactCorrFns/lowDensLowL}  & \includegraphics[width=0.25 \linewidth]{analytics/images/exactCorrFns/midDensLowL} & \includegraphics[width=0.25 \linewidth]{analytics/images/exactCorrFns/highDensLowL} \\
     \hline
-    \raisebox{3 em}{ $1$ } & &    \includegraphics[width=0.32\linewidth]{analytics/images/exactCorrFns/lowDensMidL}  & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/midDensMidL} & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/highDensMidL} \\
+    \raisebox{3 em}{ $1$ } & &    \includegraphics[width=0.25\linewidth]{analytics/images/exactCorrFns/lowDensMidL}  & \includegraphics[width=0.25 \linewidth]{analytics/images/exactCorrFns/midDensMidL} & \includegraphics[width=0.25 \linewidth]{analytics/images/exactCorrFns/highDensMidL} \\
     \hline
-    \raisebox{3 em}{ $10$ } & &    \includegraphics[width=0.32\linewidth]{analytics/images/exactCorrFns/lowDensHighL}  & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/midDensHighL} & \includegraphics[width=0.32 \linewidth]{analytics/images/exactCorrFns/highDensHighL} \\
+    \raisebox{3 em}{ $10$ } & &    \includegraphics[width=0.25\linewidth]{analytics/images/exactCorrFns/lowDensHighL}  & \includegraphics[width=0.25 \linewidth]{analytics/images/exactCorrFns/midDensHighL} & \includegraphics[width=0.25 \linewidth]{analytics/images/exactCorrFns/highDensHighL} \\
     \end{tabular}
 \end{center}
     \vspace{-2em}
@@ -237,7 +239,7 @@ Clearly, the diffusion coefficient varies quadratically with $\rho$. This is eas
 and $D \rightarrow \frac{a^2}{\tau_0} \lambda$ as $\rho \rightarrow 1$, so for $\zeta < 0$ ($\lambda>1$) $D$ is guaranteed to be positive for $\rho \in [0, 1]$ as the diffusion coefficient is an inverted parabola so far as its
 variation in $\rho$ is concerned.
 \begin{figure}[h!]
-\caption{\label{fig:analDiffCoeffs} Plots of the variation of $\frac{\tau_0 D}{a^2}$ ($y$-axis) with respect to $\rho$ ($x$-axis), evaluated with various values of $\zeta$ (above plots).}
+\caption[Some plots of the variation of the MFT diffusion coefficient with density, for some selected $\lambda$.]{\label{fig:analDiffCoeffs} Plots of the variation of $\frac{\tau_0 D}{a^2}$ ($y$-axis) with respect to $\rho$ ($x$-axis), evaluated with various values of $\zeta$ (above plots).}
 \begin{center}
  \begin{tabular}{c c}
      $\zeta = -0.15$ & $\zeta = 0$ \\ 
@@ -252,7 +254,7 @@ variation in $\rho$ is concerned.
 \end{figure}
 
 \begin{figure}[h!]
- \caption{\label{fig:diffCoeffDensityPlot} A contour plot of the variation of $\frac{\tau_0 D}{a^2}$ as a function of $\rho$ and $\lambda$. The region with negative diffusion (which is really critically slow or zero diffusion due
+ \caption[A contour plot of the variation of the MFT diffusion coefficient with density and stickiness.]{\label{fig:diffCoeffDensityPlot} A contour plot of the variation of $\frac{\tau_0 D}{a^2}$ as a function of $\rho$ and $\lambda$. The region with negative diffusion (which is really critically slow or zero diffusion due
  to our stability argument in~\ref{sec:negDiffCoeff}) has been highlighted in purple. Note how as we descend in $\lambda$ with $\lambda<\frac{1}{4}$, it grows from a single point at $ \rho = \frac{2}{3}$
  to fill most physically realistic density values.}
  \includegraphics[width=0.99\linewidth]{analytics/images/newAnalFlow}
@@ -297,7 +299,10 @@ This becomes a little clearer if one takes a Fourier transform with respect to $
 \end{equation}
 This shows us that so long as $\zeta<\frac{3}{4}$, small perturbations to the density are suppressed by exponential decay in time with increasing ferocity as their wavenumber increases for all wavenumbers,
 and so the solution is stable; the same applies if $\zeta>\frac{3}{4}$ so long as we do not stray into situations where
-$\frac{2}{3} - \frac{\sqrt{\zeta(4\zeta-3)}}{3\zeta} = \rho_- < \rho_0 < \rho_+ = \frac{2}{3} + \frac{\sqrt{\zeta(4\zeta-3)}}{3\zeta}$.
+\begin{equation}
+\label{eq:rhoPmDefn}
+\frac{2}{3} - \frac{\sqrt{\zeta(4\zeta-3)}}{3\zeta} = \rho_- < \rho_0 < \rho_+ = \frac{2}{3} + \frac{\sqrt{\zeta(4\zeta-3)}}{3\zeta}.
+\end{equation}
 If we do find ourselves in this regime, small perturbations grow exponentially with time in a situation akin to ripening <find some decent references when possible>,
 which, given that the particles are undergoing conserved flow, suggests that we will have a separation into regions with lower and higher
 densities. Of course, the positive feedback driving this separation stops if the density grows higher or lower than $\rho_\pm$, where we reenter the stable regime. This does suggest that in the MFT a system containing a negative-$D$
@@ -311,6 +316,7 @@ in the critical gap $[\rho_-, \rho_+]$ should admit no current}. The search for 
 The continuum-limit MFT has given us a partial differential equation for $\rho(x, t)$; therefore, we should try to find some solutions to it, as these may give us clues as to what types of behaviour the SPM might exhibit.
 
 \subsubsection{Steady Flow Across a Bounded Domain}
+\label{sec:steadyFlowSoln}
 
 It's pretty obvious that $\rho=\rho_0=\mathrm{const.}$ is a solution to the MFT PDE, and it takes only a little thought to notice that this is in fact the only spatially homogeneous solution available. If we instead look for a
 solution which lacks time dependence (i.e. $\rho(x, t) = \rho(x)$), the PDE reduces to the ODE
@@ -337,18 +343,163 @@ and must contain at least one piece of Dirichlet information. However, our ODE d
 unphysical values for $\rho$. Therefore, let us apply Dirichlet conditions at both boundaries, so that $\rho(0) = \rho_0$ and $\rho(L) = \rho_L$. Inserting this information into Eq.~\ref{eq:steadyDeriv} we can fix the constants
 $x_0$ and $J_0$; in particular we find that
 \begin{equation}
+\label{eq:blockFlow}
   J_0 = \frac{a^2}{L \tau_0} \left[ \rho_0 - \rho_L + \zeta \left( \rho_0\left[\rho_0^2-2\right] - \rho_L\left[\rho_L^2-2\right] \right) \right],
 \end{equation}
 which can be reinserted to yield the desired $x_0$. An illustrative plot of $J_0(\rho_B, \rho_T)$ is shown in Fig.~\ref{fig:boundaryCurrent}.
 \begin{figure}[h!]
- \caption{\label{fig:boundaryCurrent} A contour plot of the variation of the constant current $J_0(\rho_B, \rho_T)$ in a bounded domain with boundary densities $\rho_0$ and $\rho_L$ at $x=0$ and $L$  with $\lambda=0.2$.
+ \caption[The variation in the current at fixed $\lambda$ with respect to the boundary densities.]{\label{fig:boundaryCurrent} A contour plot of the variation of the constant current $J_0(\rho_B, \rho_T)$ in a bounded domain with boundary densities $\rho_0$ and $\rho_L$ at $x=0$ and $L$  with $\lambda=0.2$.
  Notice how the magnitude of $J_0$ generally grows as the difference between $\rho_0$ and $\rho_L$ increases, and how there is a region of boundary condition space in which the current takes the opposite sign one would expect.}
  \includegraphics[width=0.99\linewidth]{analytics/images/boundaryCurrent}
 \end{figure}
 
+This solution in particular is extremely useful, as we can use it to predict the flow which should occur (MFT being correct) if we set up a numerical simulation of the SPM with a length of, say, $L$ lattice points. In particular,
+if we vary $\lambda$ whilst keeping the boundaries constant, the measured current should vary linearly, as depicted in Fig.~\ref{fig:lambdaScanPlots}. Thus, if we were to run simulations with, say,
+$(\rho_0, \rho_L) = (0.6, 0.4)$, we should see the transition to a backwards or critically slow flow occur.
+\begin{figure}[h!]
+ \caption[The variation of flow rate with respect to $\lambda$ in the MFT, with fixed boundary densities.]{\label{fig:lambdaScanPlots} A plot of the MFT prediction of the dedimensionalised flow rate with varying $\lambda$ for boundaries $(\rho_0, \rho_L) = \left\lbrace (0.3, 0.1), (0.6, 0.4), (0.9, 0.7) \right\rbrace$.
+ Notice how the dependence of $J$ on $\lambda$ is actually very similar for the high and medium boundary-density-average situations, but is quite different for the low density case. Note that the MFT clearly predicts
+ that the flow should start running backwards when $\lambda$ becomes sufficiently low, which means that we should be able to see backwards or critically-slow flow in our numerics if we hold the boundaries constant
+ whilst varying $\lambda$.}
+ \includegraphics[width=0.99\linewidth]{analytics/images/lambdaFlucPlots}
+\end{figure}
+We can use Eq.~\ref{eq:blockFlow} to find the critical value for $\lambda$, $\lambda_c$, at which the transition to negative diffusion should occur for given boundary conditions.
+To do this, we simply set $J_0 = 0$ and solve for $\lambda$, and find that 
+\begin{equation}
+\label{eq:critLambda}
+ \lambda_c = 1 - \frac{1}{2(\rho_0 + \rho_L) - (\rho_0 + \rho_L)^2 + \rho_0 \rho_L} .
+\end{equation}
+This is shown in Fig~\ref{fig:critLambda}.
+\begin{figure}[h!]
+ \caption[The dependence of the critial value of $\lambda$ required for backward diffusion on the boundary conditions.]{\label{fig:critLambda} A plot of the critical value $\lambda_c$, specified in Eq.~\ref{eq:critLambda}
+ which $\lambda$ must be smaller than in order to cause backward flow with boundary densities $(\rho_0, \rho_L)$. The region for which $\lambda_c$ is negative is not included and marked in white, as $\lambda>0$ for a physically
+ realistic system. This shows that there are boundary configurations for which flow should still occur for arbitrarily small values of $\lambda$.}
+ \includegraphics[width=0.99\linewidth]{analytics/images/criticalLambda}
+\end{figure}
+
+We can also obtain a prediction of the system-wide average density
+\begin{equation}
+ \bar{\rho} = \frac{1}{L} \int_0^L  \! \! \mathrm{d}x \rho(x),
+\end{equation}
+so long as we can invert $x(\rho)$ to find $\rho(x)$ uniquely. The easiest way to do this is using the main result in~\cite{laisant1905}, yielding
+\begin{equation}
+ \bar{\rho} = \frac{6 (\rho_0 + \rho_L) + \zeta \left[9 \left( \rho_0^3 + \rho_L^3\right) - 16 \left( \rho_0^2 + \rho_L^2 \right) + \rho_0\rho_L\left( 9\left[ \rho_0 + \rho_L \right] - 16  \right)  \right]}{12 \left[ 1 + 
+  \zeta \left( \rho_0^2 + \rho_L^2 + \rho_0 \rho_L - 2 \left[ \rho_0+\rho_L \right] \right) \right]}.
+\end{equation}
+The variation of the average density with $\lambda$ for selected fixed boundary conditions is plotted in Fig.~\ref{fig:mftDens}. In general, this overall density deviates very little from the average of the two boundary densities.
+\begin{figure}[h!]
+ \caption[The variation of the system-wide average density with respect to $\lambda$ in the MFT, with fixed boundary densities.]{\label{fig:mftDens} 
+ A plot of the MFT prediction of the overall system-wide density with varying $\lambda$ for boundaries $(\rho_0, \rho_L) = \left\lbrace (0.3, 0.1), (0.6, 0.4), (0.9, 0.7) \right\rbrace$.
+ We have only plotted for $\lambda>\frac{1}{4}$, as outside this regime the MFT prediction is not unique, and so the inversion formula we need to calculate the density is not valid. In each case the density rarely deviates far from
+ the average of the two boundary densities.}
+ \includegraphics[width=0.99\linewidth]{analytics/images/mftDensity1d}
+\end{figure}
+
+\subsubsection{Other Analytic Solutions}
+
+Steady flow across a bounded domain is not the only solution for the continuum-limit MFT. We can also attempt to exploit Lie symmetries in the equations to generate solutions. Using the results in~\cite{ivanova2007},
+we see that there should exist solutions of the form $\rho(x, t) = \phi(\omega)$ with $\omega = x-vt$ for some real $v$; intuitively, this corresponds to a solution which simply translates through time with velocity $v$.
+After a little rearrangement, this implies that
+\begin{equation}
+ v \frac{\mathrm{d}\phi}{\mathrm{d}\omega} = -\frac{a^2}{\tau_0} \frac{\mathrm{d}}{\mathrm{d}\omega}\left[ 1-\zeta \phi \left(4-3\phi\right) \right]
+\end{equation}
+which may be integrated and then solved as a first order ODE to obtain
+\begin{equation}
+ \omega = \frac{a^2}{\tau_0 v} \left[ \frac{1}{2} \zeta \phi \left(8-6\mu-3\phi\right) - \left(1-\zeta\left[4-3\mu\right]\mu\right) \log{\left(\phi-\mu\right)} \right] + \omega_0,
+\end{equation}
+where $\omega_0$ and $\mu$ are constants.
+
+Now we need as usual to consider what kind of boundary conditions to use. For simplicity, let us consider a wave of density travelling into an empty region; this implies that $\phi \rightarrow 0$ as $\omega \rightarrow \infty$.
+The only way to achieve this is by setting $\mu=0$, leaving us with
+\begin{equation}
+\label{eq:travWavSoln}
+ \omega(\phi) = \frac{a^2}{v\tau_0} \left[ \frac{1}{2}\zeta \phi(8-3\phi) - \log{\phi} - \frac{5}{2}\zeta \right] + \omega_0.
+\end{equation}
+As we can vary $\omega_0$ to shift solutions around in $\omega$ essentially arbitrarily, we can choose where $\phi$ takes a desired value. For convenience, let's make $\phi$ take the value $1$ at $\omega=0$, which is easily
+achievable by setting $\omega_0 = 0$. At this point, we are faced with the prospect of trying to invert Eq.~\ref{eq:travWavSoln}. This would be annoying, although one could be assisted by numerics to lighten the load.
+However, we can gather plenty of information simply by taking some limits. As $\omega \rightarrow \infty$, $\phi \rightarrow 0$ by design, and so $\phi(\omega) = \mathcal{O}(e^{-\frac{v\omega\tau_0}{a^2}})$; having an
+exponential tail at the leading edge of the wave, with a thickness proportional to the default diffusion coefficient divided by the wave speed, makes perfect sense. Meanwhile, by considering small variations in $\phi$ around $1$,
+we may derive that $\phi \sim 1-\frac{v \tau_0}{a^2 \lambda} \omega$ as $\omega \rightarrow 0$. One could see this as being a front, behind which the system is filled by a blast wave moving with velocity $v$. Notice how both
+limits suggest that the leading edge of the wave becomes thinner with increasing wavespeed, whilst close to the full region it thickens in proportion to $\lambda$.
+
+However, we are left with the problem that we have the free parameter $v$ in the solution. One might hope that we can find the preferred value for $v$ by means of a speed-selection argument as is does with the Fisher-KPP
+equation~\cite{sherrat1998}, but that does not work in this case as the wave tail thickness is monotonic in the wave speed. Therefore, the wave speed seems to be dictated by the initial conditions, which allows some rather bizarre
+behaviour. For example, in the limit $v \rightarrow +\infty$, the initial condition (in other words, setting $t=0$ and observing that $\rho(x, 0) = \phi(x)$) resembles an inverted Heaviside step function for $x>0$; thus this
+suggests that if we were to start the system with initial condition $\rho(x, 0) = 1 - H(x)$, the high-density region would advance into the low-density region with infinite velocity, regardless of $a$, $\tau_0$ or $\lambda$.
+This seems somewhat aphyical, and serves as a reminder that the MFT is a guide only, and shouldn't be expected to accurately predict the behaviour of the SPM.
+
+Using~\cite{ivanova2007} there is one last type of solution based upon symmetry. To acquire it, let us define $\xi = \frac{x}{\sqrt{t}}$ and $\rho(x, t) = \chi(\xi)$; then our PDE reduces to
+\begin{equation}
+ \xi \frac{\mathrm{d}\chi}{\mathrm{d}\xi} = -2\frac{a^2}{\tau_0} \frac{\mathrm{d}}{\mathrm{d}\xi}\left[ 1-\zeta \chi \left(4-3\chi\right) \right].
+\end{equation}
+Taking $\zeta=0$, this clearly reduces to the standard similarity solution of the diffusion equation as we would expect, so this is the nonlinear analogue of that. Unfortunately, this is a nonlinear second order ODE
+which isn't particularly amenable to solution, so after some solution attempts we decided to give up at this point and focus on numerics and other analytic avenues.
+
+
 
 \subsection{Implications of Continuum MFT Breakdown}
 
+We have already mentioned that the MFT can predict negative diffusion coefficients for $\lambda<\frac{1}{4}$, $\rho \in (\rho_-, \rho_+)$ as defined in Eq.~\ref{eq:rhoPmDefn}. However, we should investigate this in a little
+more detail, as it has testable implications for the SPM.
+
+Treating the MFT at face value, our stability analysis in~\ref{sec:negDiffCoeff} suggests that in the event that we have a region with $\rho \in (\rho_-, \rho_+)$ there should be a tendency for the medium to separate into parts which
+have $\rho \not\in (\rho_-, \rho_+)$; of course, the first $\rho$s for which $\rho \not\in (\rho_-, \rho_+)$ are $\rho_-$ and $\rho_+$ themselves, which are the values for which the diffusion coefficient, and therefore the current
+resulting from a concentration gradient is zero. So, the process of the medium separating should in general yield a mixture of regions with $\rho = \rho_-$, $\rho = \rho_+$ and other $\rho \not\in (\rho_-, \rho_+)$, mixed in
+such a way that the total number of particles is locally conserved.
+
+It is this nonuniqueness of configuration which causes us some problems if we try to accept the MFT as a good descriptor of SPM phenomenology. In reference to our steady state solution described in~\ref{sec:steadyFlowSoln},
+note that $\rho(x)$ is only unique so long as we avoid negative diffusion, otherwise, the cubic inversion we need to perform to transform $x(\rho)$ into $\rho(x)$ is multivalued. One could imagine that we could fix this
+by patching together sections which cross with $\rho=\rho_-$ or $\rho_+$, but then we have essentially unlimited choice of how large to make the sections and how many alternations to include. This means that the MFT makes no
+prediction of the system-wide average density $\bar{\rho}$
+which is unfortunate as this is a quantity which it is easy for us to measure using our numerics.
+
+
 \section{The SPM in Higher Dimensions}
-Kinda repeat the earlier stuff in higher dimensions, particularly 2 where we actually have data. Maybe less need for elaborate sections structure here; just write freely and see how it goes.
+
+We initially designed the SPM for use in one dimension, as it was originally intended to represent interacting particles moving along a periodic potential with deep, narrow wells. However, it is only natural to wonder whether a similar
+model could be constructed in higher dimensions. Recall that the SPM in one dimension was designed to have two properties:
+\begin{itemize}
+ \item Left-right symmetry, and
+ \item locality, in the sense that only the presence or absence of a particle in an adjacent lattice site may influence the transition rate.
+\end{itemize}
+In addition we also proved that (boundary conditions aside) the SPM also obeys detailed balance. This was not put into the model intentionally, but emerges naturally as the space of possible one-dimensional
+models which are local and symmetric is very small.
+Let us consider only square lattices in 2d, for simplicity. If we attempt to build a model in two dimensions which is symmetric and local, (i.e. obeys all the point group symmetries of the underlying lattice, and whose transitions
+are only influenced by the immediate environment around a particle), we find that we now have more freedom in the model construction than we did in one dimension. For example, in two dimensions a moving particle might be leaving
+any one of six possible unique local configurations, as shown in Fig.~\ref{fig:2dTransitions}, and so such a model would need to be parametrised by 5 rates, once we take time dilation symmetry into account. The number of possible
+symmetric local hopping models only grows greater in higher dimensions, and this makes it very difficult to analyse the parameter space of such models using numerics. Therefore, we have chosen to investigate most closely those models
+which in addition obey detailed balance; as it turns out, there is only one such model, regardless of the number of dimensions.
+\begin{figure}[h!]
+ \caption[The possibe transitions which may occur in a symmetric local 2-dimensional hopping model.]{\label{fig:2dTransitions} 
+ The unique available moves in a 2-dimensional symmetric local hopping model. Note that we have rescaled time so that the free particle hopping rate is $1$, for consistency with the 1-dimensional SPM.
+ Simultaneous rotations or reflections of both initial and final states are also allowed moves with the same rates. White corresponds to a lattice site occupied by a particle, black to an unoccupied site, and grey to a site
+ which has no effect on the transition rate. In each case a particle moves into an empty space to its right, with its different starting environment determining the transition rate.}
+ \includegraphics[width=0.99\linewidth]{analytics/images/2dGenericRates}
+\end{figure}
+
+
+\subsection{Symmetry + Locality + Detailed Balance = Unique 1-Parameter SPM}
+
+When investigating higher-dimensional analogues of the SPM, we initially considered a generic model as shown in Fig.~\ref{fig:2dTransitions}; however, as the parameter space is so large, we decided to attempt to impose the detailed
+balance condition and see how much freedom that gave the model. In the end, after some exceedingly tedious casework, we found that in order to obey detailed balance particles needed to move with transition rate
+specified by the following theorem, which applies in arbitrary numbers of dimensions:
+\begin{theorem}
+ Any processes defined on an $n$-dimensional square lattice in which particles swap places with vacancies and whose transition rates $\sigma(\xi_1 \rightarrow \xi_2)$
+ \begin{itemize}
+  \item are symmetric (invariant under rotations, reflections and translations of the underlying lattice),
+  \item local (rate at which a particle swaps with a vacancy only depends upon configuration of particle's immediate neighbours),
+  \item and obey detailed balance, i.e. that $\exists$ probability distribution $P$ over configurations $\xi \in \Xi$ such that $\forall \xi_1 , \xi_2 \in \Xi $,
+  \begin{equation}
+    P(\xi_1) \sigma(\xi_1 \rightarrow \xi_2) = P(\xi_2) \sigma(\xi_2 \rightarrow \xi_1)
+  \end{equation}  
+ \end{itemize}
+must have a transition rate of the form
+\begin{equation}
+ \sigma(\xi_1 \rightarrow \xi_2) = \frac{1}{\tau_0} \lambda^m ,
+\end{equation}
+where $m$ is the number of particles directly adjacent to the particle which is attempting to swap with a vacancy.
+\end{theorem}
+
+
+
 
