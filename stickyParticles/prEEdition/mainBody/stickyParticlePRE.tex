@@ -29,6 +29,7 @@ reprint, amsmath,amssymb,
 \usepackage{dcolumn}% Align table columns on decimal point
 \usepackage{bm}% bold math
 \usepackage{hyperref}
+\usepackage{float}
 
 
 \begin{document}
@@ -104,7 +105,7 @@ This situation is addressed here.
 
 In this paper we will investigate a simple one-dimensional model, the
 ``Sticky Particle Model'' or SPM, specified in the top left inset of
-Fig.~\ref{fig:lambdaScans}, which contains such an interaction, and we
+Fig.~\ref{fig:ratesDB}, which contains such an interaction, and we
 will explore the impact this has on particle behavior, in particular
 when observed in the large-scale limit.  One might contrast this
 approach (making a simple microscopic model and trying to learn from
@@ -113,12 +114,13 @@ equation~\cite{PhysRevLett.56.889, PhysRevA.38.4271, Sasamoto2010}
 (where one analyses the extreme large-scale dynamics using
 universality classes).
 
-% \begin{figure} \vspace{1em}
-%\caption{\label{fig:detailedBalance} White circles indicate particles, dark circles indicate empty sites (vacancies). Particles randomly move into adjacent vacancies with rate $1$ (having rescaled time for notational convenience), unless there is a particle behind the position they're moving from, in which case they move with rate $\lambda$; the state of the site next to the position the particle is moving into is irrelevant. Particles also move to the left, with rates such that the whole model is totally symmetric.}
-%    \includegraphics[width=\linewidth]{newRates.png}
-%    \end{figure}
+ \begin{figure} \vspace{1em}
+\caption{\label{fig:rates} White circles indicate particles, dark circles indicate empty sites (vacancies). Particles randomly move into adjacent vacancies with rate $1$ (having rescaled time for notational convenience), unless there is a particle behind the position they're moving from, in which case they move with rate $\lambda$; the state of the site next to the position the particle is moving into is irrelevant.}
+    \includegraphics[width=\linewidth]{ratesDB.pdf}
+    \end{figure}
 
 
+\iffalse
 \begin{figure}[h!]
 \vspace{1em}
 \setbox1=\hbox{\includegraphics[width=\linewidth]{logFlowRates.pdf}}
@@ -155,6 +157,7 @@ universality classes).
   power-law behavior in the range $0.04 \le \lambda \le 0.1$.
 \vspace{1em}}
 \end{figure}
+\fi
 
 \section{The sticky particle model}
 
@@ -179,7 +182,7 @@ the model, so the simpler symmetric model has received less attention.
 
 \subsection{Detailed Balance Proof} 
 The SPM is intended to study flow, so it is {\it defined} by the
-hopping rates.  In Fig.~\ref{fig:lambdaScans} we
+hopping rates.  In Fig.~\ref{fig:rates} we
 show all the possible transitions which may occur between local
 configurations. 
 
@@ -189,7 +192,7 @@ configurations by $\xi$ and let the number of adjacencies (or
 ``bonds'') between particles be $b(\xi)$. Now for our ansatz, assume
 that the probability of the system being in state $\xi$ is
 $\lambda^{-b(\xi)}$.  In the top and bottom diagrams of
-Fig.~\ref{fig:lambdaScans} we can see that the number of bonds on
+Fig.~\ref{fig:rates} we can see that the number of bonds on
 both sides is the same, as are the transition rates back and forth;
 thus our ansatz holds for these states, as it predicts the
 probabilities of the left and right configurations are the same. The
@@ -204,28 +207,32 @@ detailed balance.
 \subsection{Equivalence to Ising Model at Equilibrium}
 
 Since the model obeys detailed balance, there must be an associated
-Hamiltonian.  This is simply the number of particles stuck together
-\[ H = \sum_i p_ip_{i+1} \]
+Hamiltonian.  This is simply proportional to the number of particles stuck together
+\begin{equation}
+ H = q \sum_i p_ip_{i+1}
+\end{equation}
 where $p_i$ is 1 for a particle or zero for and empty site.  A simple
 transformation $s_i = 2p_i-1$ shows this to be equivalent to the Ising
 Hamiltonian
-\[ H = \sum_i \frac{1}{4} s_is_{i+1} + \frac{1}{2} s_i + \frac{1}{4}\]
-The final term is constant, and only hopping moves are allowed so that
+\begin{equation}
+ H = q \sum_i \left[ \frac{1}{4} s_i s_{i+1} + \left( \frac{1}{2} s_i + \frac{1}{4} \right) \right]
+\end{equation}
+The contribution from the final term is constant, and only hopping moves are allowed so that
 $\sum s_i$ is also constant. So at equilibrium the SPM samples the 1D
-Ising model with fixed magnetisation, a fact which was used to
-validate the codes.
+Ising model with fixed magnetization, a fact which was used to
+validate the codes. Compatibility between the detailed balance condition, the Boltzmann distribution at temperature $T$ and our defined rates requires that $q = k_B T\log{\lambda} $.
 
 
 \section{Simulations}
 
  In our system the bulk is perfectly symmetric, and flow is driven by
- setting $\rho$ at the boundaries, with the system self-organising to
+ setting $\rho$ at the boundaries, with the system self-organizing to
  give the steady-state density. Thus the boundary concentrations,
  $\rho_0$ and $\rho_L$ are the independent variables which drive the
- system.  The flow rate, Hamiltonian energy and particle density of the system are fully determined by  $(\rho_0, \rho_L)$ and the unsticking rate $\lambda$
+ system.  The flow rate, Hamiltonian energy and particle density of the system are fully determined by  $(\rho_0, \rho_L)$ and the unsticking rate $\lambda$.
 
 
-  We chose to calculate using the \texttt{KMCLib}\cite{leetmaa2014kmclib}
+  We chose to calculate primarily by using the \texttt{KMCLib}\cite{leetmaa2014kmclib}
  package, which implements the Kinetic Monte Carlo algorithm
  (essentially the same as the Gillespie algorithm\cite{Gillespie1977,
    Bortz1975, Prados1997}) on lattice systems. The codes used are kept
@@ -233,81 +240,156 @@ validate the codes.
 
 We are interested in flow in a bounded domain, and can simulate that
 situation using KMC. In the bulk, the transition rates are simply
-those described in Fig.~\ref{fig:lambdaScans}. At the boundaries there
+those described in Fig.~\ref{fig:rates}. At the boundaries there
 are 2 layers of lattice sites that switch between being full and empty
 with rates such that the time-averaged occupation ($\rho_0, \rho_L$)
-defines the boundary conditions; The system is therefore open, and
+defines the boundary conditions; the system is therefore open, and
 particles appear and disappear at boundary layers.  These boundaries
 are equivalent to having particle reservoirs attached to the edges of the
 domain.
 
 Independent of the KMCLib code, we wrote a simple Metropolis-Hastings
-algorithm which randomly selects single particle hops.  Except for
-extreme $\lambda$s, this has an acceptance rate of order 10\%. Results
-determined from the KMC and Metropolis-Hastings codes are
-indistinguishable.
-
-We calculated the flow from the number of particles entering and
+algorithm which randomly selects single particle hops; this is more efficient than using KMC for values of
+$\lambda$ which are relatively close to $1$ as the algorithm is simple and the acceptance rate is relatively high, so we can generate better statistics using this method in that regime.
+Using both methods we can calculate the flow from the number of particles entering and
 leaving the system at the boundaries.  Since the model is defined in
-terms of {\it rates}, the flow in ``particles per unit time'' is well
+terms of {\it rates}, the flow in ``particles per unit time'' is a well
 defined quantity.
 
-In the simulation, we can vary $\rho_0$, $\rho_L$ and $\lambda$ to
-address three questions: how does $\lambda$ affect the flow, how does
-the flowrate depend on the driving force $(\rho_0 - \rho_L)/L$, and
-how does the density of particles in the system vary.
+In addition, it is also possible
+to ``analytically'' solve the SPM on a finite domain with fixed boundary densities by analyzing the transition rate matrix which represents that system.
+Specifically, we build a sparse representation of the matrix, and then use the Python routine \texttt{scipy.sparse.linalg.eigs} to find the eigenvector corresponding to the eigenvalue closest to zero
+(which we expect to be exactly zero in the absence of numerical uncertainty). We can then retrieve the current through the system in a steady state by projecting that eigenvector using a current operator.
+Unfortunately the dimensionality of this matrix scales exponentially with the system size, which imposes upon us a memory limit restricting us to
+relatively small systems. In spite of this, we have managed to compute properties such as the steady-state flow rate for systems with sizes as large as $12$ lattice sites,
+which are large enough to produce consistent outputs comparable to our other methods.
 
-Using KMClib we studied systems of length $64$ (length $32$ gives similar
-results), running them for $400000$ Gillispie steps for equilibration
+
+In the simulations and ``analytics'', we can vary $\rho_0$, $\rho_L$ and $\lambda$ to
+address three questions: how does $\lambda$ affect the flow, how does
+the particle current depend on the driving force $(\rho_0 - \rho_L)/L$, and
+how does the density of particles in the system vary?
+
+\begin{figure}[h!]
+\vspace{0em}
+\begin{center}
+ \begin{tabular}{c}
+    \includegraphics[width=1\linewidth]{allData} \\
+    \includegraphics[width=1\linewidth]{allDataLinear}
+    \end{tabular}
+\end{center}
+\caption{\label{fig:lambdaScans} The variation of (normalized) flow rate with $\lambda$ in the SPM with fixed boundary densities, on both logarithmic and linear scales.
+Crosses indicate results from the KMC simulations, triangles those from the traditional
+Metropolis-Hastings simulations and the joined circles the current observed by finding the least dominant eigenvector in the transition rate matrix. The dashed lines are the corresponding MFT prediction for the current,
+and color indicates the boundary conditions used. The flow rate is normalized in the sense that it has been multiplied by the system size, so that we can easily compare between different system sizes.
+Discontinuities in the matrix method data generally correspond to the failure of the algorithm used to find the $0$-eigenvalue eigenvector, which can happen as the null space can be difficult to find.
+}
+    \vspace{0em}
+\end{figure}
+
+Using KMClib we studied systems of length $64$ (lengths $32$, $128$ and $256$ give similar
+results as shown in Fig.~\ref{fig:sysScaling}.), running them for $400000$ Gillespie steps for equilibration
 followed by $10000$ measurement runs of $1000$ steps interspersed with
 relaxation runs of $16000$ steps. This way we could gather statistics
 about flow rates and densities in a well-equilibrated
 system. Specifically, we generate a pool of $10000$ samples of flow
 rate and density, from which we can calculate estimates of the
 descriptive statistics of both quantities.
+These calculations were repeated using Metropolis-Hastings for a length $100$ system, and we have transition rate matrix currents
+for a system of length $10$. These are plotted on both logarithmic and linear axes in Fig.~\ref{fig:lambdaScans}.
+respectively.
 
+\begin{figure}[h!]
+\vspace{0em}
+\begin{center}
+    \includegraphics[width=1\linewidth]{allDataWide}
+\end{center}
+\caption{\label{fig:wideScans} As the logarithmic plot in Fig.~\ref{fig:lambdaScans}, but over a much wider range of $\lambda$ values. Notice how the data series from the two Monte-Carlo
+methods broaden and flatten as $\lambda$ becomes very small; this is because they cannot cope with such a low flow rate, as it corresponds to an ever weakening current signal compared to constant noise coming
+from particles entering and leaving at the boundaries. The matrix method fairs a little better, although still has problems, especially with the $(0.9, 0.7)$ boundary condition set.
+}
+    \vspace{0em}
+\end{figure}
+
+\begin{figure}[h!]
+\vspace{0em}
+\begin{center}
+ \begin{tabular}{c}
+    \includegraphics[width=1\linewidth]{lambdaScanRepeatFlows} \\
+    \includegraphics[width=1\linewidth]{lambdaScanRepeatFlowsLin}
+    \end{tabular}
+\end{center}
+\caption{\label{fig:sysScaling} The variation of the normalized  flow rate with respect to $\lambda$, computed using the KMC method. These calculations all have boundary conditions $(0.75, 0.25)$, and the flow rate has been
+normalized via multiplication by the system size (displayed on legend). The main thing to note here is that the normalized flow rate doesn't seem to vary in a nontrivial way with the system size, so we are justified in using size
+$64$ systems, which are a good compromise in terms of size and accuracy for a given amount of computational time.
+}
+\end{figure}
 
 \subsection{Transition in flow character}
 
-Fig\ref{fig:lambdaScans} shows how the flowrate varies with stickiness
-at fixed driving.  At high $\lambda$ the rate is simply proportional
+Fig.~\ref{fig:wideScans} shows how the current varies with stickiness
+at fixed driving for a very broad range of $\lambda$.  At high $\lambda$ the rate is simply proportional
 to $\lambda$ for any forcing.  This result is far from trivial - it
 means that the overall flow is determined by the {\it faster} rate
-$\lambda$, not the slower rate (1).  That the MFT averages over the
+$(\lambda$), not the slower rate $(1)$.  That the MFT averages over the
 two is unsurprising (Eq. \ref{eq:diffCoef}), but for the
 simulation to avoid having a ``rate limiting step'' requires the
 system to fill to sufficient density that there are always particles
 in contact to repel one another.
 
-At low $\lambda$ the simulation shows a transition to a different
-behavior, the flow rate remains finite.  This transition corresponds
-to a distinctive peak in the particle density fluctuations
+When $\lambda = \lambda_c\sim0.2$ the simulations show a transition to a different
+behavior, with higher or lower $\lambda_c$ depending on the boundary conditions and the strength of the driving force.
+The current and its fluctuation remains finite, but there a distinctive peak in the particle density fluctuation
 $<(\rho-\bar{\rho})^2$ (Fig.\ref{fig:DenFluc}).  The width of the peak is independent of the
 system size 
 which suggests a continuous
 phase transition from the free flowing to the ``stuck'' regime.
 
+\begin{figure}[h!]
+\vspace{0em}
+\begin{center}
+    \includegraphics[width=1\linewidth]{logDensityFluc}
+\end{center}
+    \vspace{-0em}
+\caption{\label{fig:DenFluc} The fluctuation in the overall system density with system size $100$ and boundary conditions $(0.6, 0.4)$. This was computed using the traditional Metropolis-Hastings method. }
+\end{figure}
+
 At very low
 $\lambda$ it becomes exceptionally rare for a particle or vacancy to
-traverse the whole system, the KMC is unable to generate good statistics, 
+traverse the whole system, so the two Monte-Carlo methods are unable to generate good statistics, 
 and the flow measurement is dominated by
-the noise of boundary fluctuations.
+the noise of boundary fluctuations. Another way of looking at this is that these methods begin failing
+to equilibrate properly in the time they are provided with provided, on the grounds that the equilibration time varies as $\mathcal{O}(\lambda^{-1})$ as $\lambda \rightarrow 0$ (see Fig.~\ref{fig:relaxTime}).
 However, there is a regime when $0.04 \le \lambda \le 0.1$
-where the mean flow again displays clear power-law behavior, this time
-with $\mathcal{O}~(\lambda^{4})$; between this region and the
-$\lambda^1$ region there is a bend as we switch between the power laws.
+where the mean flow clearly displays power-law behavior,
+with $\mathcal{O}(\lambda^{k})$ with $k \sim 4$; between this region and the
+$\lambda^1$ region there is a bend as we switch between the power laws. This bend,
+with its accompanying peak in the density fluctuation, is the ``smoking gun'' of the
+nonequilibrium phase transition we claim to have found.
+
+
+\begin{figure}[h!]
+\vspace{0em}
+\begin{center}
+    \includegraphics[width=1\linewidth]{relaxTime}
+\end{center}
+    \vspace{-0em}
+\caption{\label{fig:relaxTime} The characteristic time taken for a system of size $10$ with boundary conditions $(0.6, 0.4)$ to relax to its steady flow state. This is inferred by computing the smallest negative nonzero eigenvalue
+of the transition rate matrix. Aside from the kink around the transition, it has power-law dependence upon $\lambda$, so that $T \propto \lambda^{-1}$; therefore, equilibration times should diverge as $\lambda$ becomes very small,
+which helps explain why our simulations start to lose accuracy in that regime.}
+\end{figure}
 
 \subsection{Effective diffusion constant}
 
 
 Using boundary conditions $(\rho_0, \rho_L) = (\rho_M + \frac{1}{2}
 \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ we demonstrate the
-dependence of flowrate on driving and $\lambda$.  (Fig \ref{fig:constDens}).  This
+dependence of current on boundary density difference and $\lambda$ (Fig.~\ref{fig:constDens}).  This
 shows that the transition to the stuck phase is suppressed by stronger
 driving forces (large $|\delta\rho|$)
 
 We use the limit of small $\delta\rho$ to calculate the effective
-diffusion constant.  This is normalised to 1 in the case of
+diffusion constant.  This is normalized to 1 in the case of
 $\lambda=1$, which is just SEP.  The $\rho_M=0$ limit corresponds to
 free flow of particles, so the diffusion constant here does to
 1. Similarly the $\rho_M=1$ limit is flow of vacancies, so
@@ -333,56 +415,37 @@ In SEP, ($\lambda=1$) the density varies linearly across the system
 from $\rho_0$ to $\rho_L$, as one expects for a diffusion process.
 However, for sticky particles, $\lambda<1$, the density rises sharply
 near to the boundary, then has a linear profile about a value higher
-than $\rho_M$  (Fig.\ref{fig:flowStats}d). 
+than $\rho_M$  (Fig.~\ref{fig:densProfiles}). 
 One might view this as particles being sucked into the
 system to lower their Hamiltonian Energy, but such a notion can be
 dismissed since the internal density {\it also rises for repelling
-  particles}, $\lambda>1$.  The asymptotic values for the density at
-high and low $\sigma$ appear to be 1 and $\frac{2}{3}$, regardless of the 
-mean boundary density $\rho_M$.
-Fig \ref{fig:DenProfile} 
-
-
+  particles}, $\lambda>1$.  The asymptotic values for the bulk density at
+high and low $\lambda$ appear to be 1 and $\frac{2}{3}$ respectively, regardless of the 
+mean boundary density $\rho_M$ (see Fig.~\ref{fig:wideDensities}). 
 
 \begin{figure}[h!]
-\vspace{1em}
+\vspace{0em}
 \begin{center}
-    \includegraphics[width=0.5\linewidth]{densityFluct.jpg}
+ \begin{tabular}{c}
+    \includegraphics[width=1\linewidth]{densityInstances} \\
+    \includegraphics[width=1\linewidth]{graemeDensityProfile.pdf}
+ \end{tabular}
 \end{center}
     \vspace{-0em}
-\caption{\label{fig:DenFluc} [Placeholder] Density fluctuation 
-as a function of $\lambda$
- for a  range of system sizes 
- with boundary conditions
-  (0.6, 0.4) }
+\caption{\label{fig:densProfiles}  The variation of the time-averaged density profile with respect to $\lambda$. The top panel shows this profile for a selection of values for
+  $\lambda$ in a system of size $100$, with boundary conditions $(0.6, 0.4)$; the bottom panel displays this variation in the form of a colored density plot.
+  Again, we have used the traditional Metropolis-Hastings method for these calculations. }
 \end{figure}
 
 \begin{figure}[h!]
-\vspace{1em}
+\vspace{0em}
 \begin{center}
-    \includegraphics[width=0.5\linewidth]{profile.jpg}
+    \includegraphics[width=1\linewidth]{wideDensProfiles}
 \end{center}
     \vspace{-0em}
-\caption{\label{fig:DenProfile} [Placeholder] Density profile for
-  range of $\lambda$ from 0-100, with boundary conditions (0.5, 0.4) }
+\caption{\label{fig:wideDensities} The overall average density of a system of size $64$, computed using KMC, with boundary conditions as specified in the plot. Notice how the density converges to $1$ and $\sim \frac{2}{3}$
+for extreme low and high $\lambda$ respectively.}
 \end{figure}
-
-\begin{figure}[h!]
-\vspace{1em}
-\begin{center}
-% \begin{tabular}{c|c}
-%    \includegraphics[width=0.5\linewidth]{newFlowMean.pdf} & \includegraphics[width=0.5\linewidth]{newFlowVar.pdf} \\
-%    \hline
-%    \includegraphics[width=0.5\linewidth]{newFlowSkew.pdf} & 
-\includegraphics[width=0.5\linewidth]{graemeDensityProfile.pdf}
-% \\
-%    \end{tabular}
-\end{center}
-    \vspace{-0em}
-\caption{\label{fig:flowStats} [Placeholder] Mean density within the flowing system as a function of stickiness for various boundary conditions.   
-}
-\end{figure}
-
 
 \subsection{Review of the simulations}
 
@@ -391,15 +454,15 @@ and unexpected features which have no equivalent in either SEP or the
 1D Ising model.
 
 \begin{itemize} \item 
-A transition in flow character from $\lambda$ to $\lambda^4$.  
+A transition in the dependence of the current on $\lambda$ from $\propto \lambda$ to $\propto \lambda^4$.  
 \item
-The mean density of the system  has complicated variation with  $\lambda^4$.  
+The mean density of the system  has complicated variation with  $\lambda$.  
 \item 
-The effective diffusion constant has an extremum value at
+The effective diffusion constant has an extremal value at
   intermediate boundary density.
 \end{itemize}
 
-To get further understanding of these behaviours, we tackle the system
+To get further understanding of these behaviors, we tackle the system
 analytically.
 
 \section{Mean Field Theory for Flow}
@@ -410,7 +473,7 @@ the time-averaged (or ensemble-averaged, assuming ergodicity)
 occupation probability of the $i^{\mathrm{th}}$ lattice site be
 $\rho_i$.  We will introduce $\zeta = 1 - \lambda $ here for convenience.
 
-\subsubsection{Fokker-Planck Equation} Let the ensemble-averaged occupation
+\subsubsection{Lattice Mean Field Theory} Let the ensemble-averaged occupation
 probability of the $i^\mathrm{th}$ site at time $t$ be $\rho_i
 (t)$. In the mean-field approximation this is assumed to be
 independent of $\rho_j(t)$ for $j \neq i $ at equal times. Therefore,
@@ -435,9 +498,8 @@ respectively. Therefore, an unoccupied $i^\mathrm{th}$ site fills with rate
 \end{equation}
 
 If we now multiply the filling/emptying rates of site $i$ by the
-probablity of being empty/full respectively, we obtain the
-final Fokker-Planck equation for the site occupaution 
-
+probability of being empty/full respectively, we obtain the
+final equation for the site occupation 
 \begin{align}
 \label{eq:latticeMFT}
 \begin{split}
@@ -445,7 +507,6 @@ final Fokker-Planck equation for the site occupaution
  &- \rho_i \left[ 2 \zeta \rho_{i-1} \rho_{i+1}  - (3-\zeta)\left(\rho_{i-1} + \rho_{i+1}\right) + 2 \right].
  \end{split}
  \end{align}
-
 
 \subsubsection{Diffusion Equation: MFT Continuum Limit}
  To obtain the continuum limit of the MFT we substitute $\rho_i(t)
@@ -473,11 +534,11 @@ diffusion constant (see Fig.\ref{fig:diffCoef}):
 
 We note that the MFT diffusion constant can become negative. 
 The density at
-which this occurs is given by solving Eq.\ref{eq:diffCoef}:
-
-\[\rho_c=\frac{2}{3} \pm \frac{1}{3} \sqrt(4-3/\zeta)\]
-
-This has no real solution for $\zeta<0.75$.  So in the limit
+which this occurs is given by finding the roots $\rho_c$ of the RHS of Eq.~\ref{eq:diffCoef}:
+\begin{equation}
+\rho_c=\frac{2}{3} \pm \frac{1}{3} \sqrt(4-3/\zeta). 
+\end{equation}
+The possible values for $\rho_c$ are only real (and therefore physically possible) for $\zeta<0.75$.  So in the limit
 of very sticky particles ($\lambda<0.25$) the MFT predicts a
 transition between forward and backwards diffusion at some densities.  
 
@@ -521,15 +582,13 @@ build-up of particles $\partDeriv{\rho}{t}=0$, so the flow is constant through t
 
 Using the constant-flow requirement for continuity
 $J(x)=J_0=\mathrm{const.}$, and by integrating both sides of
-equation\ref{eq:contPDE} with respect to $x$ we find that:
-
+Eq.~\ref{eq:contPDE} with respect to $x$ we find that
 \begin{eqnarray}
  \int_{x_0}^x J(x')dx' &=& -\frac{a^2}{\tau_0} \int \! \! \mathrm{d} \rho \left[1 - \zeta
    \rho\left(4-3\rho\right) \right]\\ (x-x_0)J_0 & = & -\frac{a^2}{\tau_0}\left[ \rho + \zeta (\rho -
- 2) \rho^2 \right ]
+ 2) \rho^2 \right ].
 \label{eq:rho_x}
 \end{eqnarray}
-
 The density profile across the system is given by solving for
 $\rho(x)$.  Since Eq.\ref{eq:rho_x} is cubic, the solution for density
 $\rho(x)$ is non-unique for cases of high $\zeta$.  Thus in the limit of
@@ -540,7 +599,7 @@ will not vary linearly across the system.
 \subsubsection{Dirichlet Boundary Conditions}
 
 The constants $x_0$ and $J_0$ are the boundary conditions for the
-flow, but they need not correspond to a physically-realisable
+flow, but they need not correspond to a physically-realizable
 situation.  For driven systems it is more convenient to consider fixing
 the density at each end. 
 
@@ -551,13 +610,13 @@ $\rho(0)=\rho_0$ and $\rho(L)=\rho_L$, we find that
 \end{equation}
 
 This equation can be used for direct comparison with the simulations
-(Figs.\ref{fig:constDens},\ref{fig:diffCoef}.  In general, the agreement is
+(Fig.~\ref{fig:constDens} and Fig.~\ref{fig:diffCoef}).  In general, the agreement is
 good, except for the region where the MFT predicts negative flow.
 
 
 \subsubsection{Interpretation of MFT}
 
-The mean field theory enables us to predict flow behaviour of the MFT.
+The mean field theory enables us to predict flow behavior of the MFT.
 It recovers well-known limiting cases such as SEP ($\lambda=0$),
 however at high stickiness ($\lambda<0.25$) it predicts its own
 demise, with unphysical negative diffusion constants and by having
@@ -593,24 +652,24 @@ thousands, where the mean flow varies as $\mathcal{O}(\lambda^1)$.
 
 
 \begin{figure}[h!]
-\vspace{1em}
+\vspace{0em}
 \begin{center}
  \begin{tabular}{c}
-    \includegraphics[width=0.48\linewidth]{newMftPred} 
-    \includegraphics[width=0.48\linewidth]{newFlow}
+    \includegraphics[width=1\linewidth]{newMftPred} \\
+    \includegraphics[width=1\linewidth]{newFlow}
     \end{tabular}
 \end{center}
-    \vspace{-2.5em}
+    \vspace{0em}
 \caption{\label{fig:constDens} Flow rate mean observed when varying the difference $\delta\rho$ between the boundary concentrations
 $(\rho_0, \rho_L) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ and $\lambda$ (The top panel is the MFT prediction
 for the flow rate, whilst bottom shows the observed mean flow rate).
 We chose $\rho_M=\frac{1}{2}$, as this gives us the biggest range of $\delta\rho$ to investigate.
-These calculations were performed with the same run parameters (system length etc) as above.
-The MFT prediction (Fig.\ref{fig:constDens}a) shows a region of
-negative flow - this occurs at $\zeta > \frac{4}{5}$ for the weakest
+These calculations were performed with the same run parameters (system length etc) as described in Fig.~\ref{fig:diffCoeff}.
+The MFT prediction (top) shows a region of
+negative flow - this occurs at $\zeta > \frac{4}{5}$ ($\lambda < 0.2$) for the weakest
 driving force, with additional stickiness required when the driving
 force increases. The simulation exhibits close to zero flow in that
-region (Fig.\ref{fig:constDens}b).  Away from this region, the MFT and
+region (bottom).  Away from this region, the MFT and
 the simulation are in good agreement.
 }
 \end{figure}
@@ -626,8 +685,8 @@ Computing this for different $(\rho_M, \lambda)$ combinations yields results tha
 \vspace{1em}
 \begin{center}
  \begin{tabular}{c}
-    \includegraphics[width=0.48\linewidth]{newAnalFlow}
-    \includegraphics[width=0.48\linewidth]{newDataFlow}
+    \includegraphics[width=1\linewidth]{newAnalFlow} \\
+    \includegraphics[width=1\linewidth]{newDataFlow}
     \end{tabular}
 \end{center}
 \caption{\label{fig:diffCoef}
