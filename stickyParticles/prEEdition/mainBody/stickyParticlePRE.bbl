@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{33}%
+\begin{thebibliography}{34}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -358,4 +358,15 @@
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
   {Hellier}},\ }\href {\doibase 10.5281/zenodo.1162818} {\  (\bibinfo {year}
   {2018}),\ 10.5281/zenodo.1162818}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Robert}(2015)}]{metHastAlg}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~P.}\ \bibnamefont
+  {Robert}},\ }\enquote {\bibinfo {title} {The metropolis–hastings
+  algorithm},}\ in\ \href {\doibase 10.1002/9781118445112.stat07834} {\emph
+  {\bibinfo {booktitle} {Wiley StatsRef: Statistics Reference Online}}}\
+  (\bibinfo  {publisher} {American Cancer Society},\ \bibinfo {year} {2015})\
+  pp.\ \bibinfo {pages} {1--15},\ \Eprint
+  {http://arxiv.org/abs/https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781118445112.stat07834}
+  {https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781118445112.stat07834}
+  \BibitemShut {NoStop}%
 \end{thebibliography}%

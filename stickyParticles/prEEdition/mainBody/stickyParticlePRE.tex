@@ -245,15 +245,11 @@ how does the density of particles in the system vary?
 
 In the SPM the bulk dynamics are perfectly symmetric, and flow is driven by
 setting $\rho$ at the boundaries, with the system self-organizing to
-give the steady-state density. Thus the boundary concentrations,
-$\rho_0$ and $\rho_L$ are the independent variables which drive the
-system.  The flow rate, Hamiltonian energy and particle density of the system are fully determined by  $(\rho_0, \rho_L)$ and the unsticking rate $\lambda$.
+give the steady-state density. We hypothesise that the flow rate, Hamiltonian energy and particle density of the system are fully determined by  $(\rho_0, \rho_L)$ and the unsticking rate $\lambda$;
+this has been so far confirmed in our ``analytics'' by the existence and uniqueness of the steady flow state in every instance we have tried.
 
 
-
-
-We are most interested in flow in a bounded domain, and can simulate that
-situation numerically. In the bulk, the transition rates are simply
+We can simulate flow in a bounded domain using Monte Carlo methods. In the bulk, the transition rates are simply
 those described in Fig.~\ref{fig:rates}. At the boundaries there
 are 2 layers of lattice sites that switch between being full and empty
 with rates such that the time-averaged occupation ($\rho_0, \rho_L$)
@@ -268,7 +264,7 @@ package, which implements the Kinetic Monte Carlo algorithm
  Bortz1975, Prados1997}) on lattice systems. The codes used are kept
 here~\cite{jHellGitRepo}.
 Independent of the KMCLib code, we wrote a simple Metropolis-Hastings
-algorithm which randomly selects single particle hops; this is more efficient than using KMC for values of
+algorithm~\cite{metHastAlg} which randomly selects single particle hops; this is more efficient than using KMC for values of
 $\lambda$ which are relatively close to $1$ as the algorithm is simple and the acceptance rate is relatively high, so we can generate better statistics using this method in that regime.
 We calculate the flow from the number of particles entering and
 leaving the system at the boundaries.  Since the model is defined in
@@ -300,7 +296,7 @@ about flow rates and densities in a well-equilibrated
 system. Specifically, we generate a pool of $10000$ samples of flow
 rate and density, from which we can calculate estimates of the
 descriptive statistics of both quantities.
-These calculations were repeated using Metropolis-Hastings for a length $100$ system, and we have transition rate matrix currents
+These calculations, in which we held the boundary densities constant whilst varying $\lambda$, were repeated using Metropolis-Hastings for a length $100$ system, and we have transition rate matrix currents
 for a system of length $10$. These are plotted on both logarithmic and linear axes in Fig.~\ref{fig:lambdaScans}.
 respectively.
 
@@ -315,7 +311,8 @@ methods broaden and flatten as $\lambda$ becomes very small; this is because of 
     \vspace{0em}
 \end{figure}
 
-We compare the MFT prediction and the actual numerical results for the
+\subsection{Diffusion Coefficient}
+We compare an MFT prediction (see~\ref{sec:mftPred}) and the KMC numerical results for the
 diffusion constant in Fig.~\ref{fig:diffCoef}. We see that MFT and
 simulation agree well for low stickiness, and both show the symmetry
 about $\rho_M = \frac{2}{3}$. For high stickiness, where the MFT
@@ -323,6 +320,7 @@ prediction gives negative diffusion constant, we actually see low
 positive values for the current.  It should be noted that the MFT
 assumes that $\rho = \rho_M$ throughout, whereas in the simulations $\rho$ tends to be much higher.
 
+\subsection{Particle Motion During Flow}
 It is instructive to get an overview of how the particles move during
 flow. Fig.~\ref{fig:flowPatterns} show a plot of the flow structure in
 the slow-flow regime.  In very short time averages the ``striped''
@@ -419,7 +417,8 @@ nonequilibrium transition we claim to have found.
 They are all negative real to within numerical precision,
 except the very smallest, which is numerically $0$ (and therefore not displayed). Notice the general trend, whereby they scale roughly linearly with $\lambda$. As these eigenvalues correspond to the decay rates
 of the dominant unsteady states in the system, this implies that the time taken for a simulated system to relax
-to its equilibrium state scales inversely proportional with $\lambda$, which helps explain the poor convergence of our Monte Carlo simulations in that regime.}
+to its equilibrium state scales inversely proportional with $\lambda$, which helps explain the poor convergence of our Monte Carlo simulations in that regime.
+Observe also that for intermediate $\lambda$ eigenvalues often merge or cross; this implies the existence of rich behavior, and suggests that finding a  full analytic solution to for this model might be difficult.}
 \end{figure}
 
 \subsection{Effective diffusion constant}
@@ -508,7 +507,7 @@ The effective diffusion constant has an extremal value at
 To get further understanding of these behaviors, we tackle the system
 analytically, using mean field theory and transition rate matrices.
 
-\section{Mean Field Theory for Flow}
+\section{Mean Field Theory for Flow} \label{sec:mftPred}
   
 Let the spacing between lattice
 sites be $a$, let $\tau_0$ be the free-particle hopping timescale, and
@@ -516,7 +515,7 @@ the time-averaged (or ensemble-averaged, assuming ergodicity)
 occupation probability of the $i^{\mathrm{th}}$ lattice site be
 $\rho_i$.  We will introduce $\zeta = 1 - \lambda $ here for convenience.
 
-\subsubsection{Lattice Mean Field Theory} Let the ensemble-averaged occupation
+\subsection{Lattice Mean Field Theory} Let the ensemble-averaged occupation
 probability of the $i^\mathrm{th}$ site at time $t$ be $\rho_i
 (t)$. In the mean-field approximation this is assumed to be
 independent of $\rho_j(t)$ for $j \neq i $ at equal times. Therefore,
@@ -551,7 +550,7 @@ final equation for the site occupation
  \end{split}
  \end{align}
 
-\subsubsection{Diffusion Equation: MFT Continuum Limit}
+\subsection{Diffusion Equation: MFT Continuum Limit}
  To obtain the continuum limit of the MFT we substitute $\rho_i(t)
  \rightarrow \rho(x, t)$, $\rho_{i+m}(t) \rightarrow \rho(x + am, t)$
  into Eq.~\ref{eq:latticeMFT}.  Then, using a Taylor expansion around $x$ for
@@ -586,7 +585,7 @@ of very sticky particles ($\lambda<0.25$) the MFT predicts a
 transition between forward and backwards diffusion at some densities.  
 
 
-\subsubsection{Limiting Cases}
+\subsection{Limiting Cases}
 
 In order to understand the implications of the MFT, let us consider
 some limits. As $\zeta \rightarrow 0$ (i.e. as the model becomes a
@@ -617,7 +616,7 @@ medium should gravitate towards one of the two densities for which $D(\rho)\sim
 0$. Instead of observing ``backwards diffusion'' we would see an
 extremely slow flow or no flow at all. 
 
-\subsubsection{Steady State Flow}
+\subsection{Steady State Flow}
 
 It is possible to solve the continuum MFT in a steady state on a
 finite domain, say $x\in(0, L)$. Steady state implies that there is no
@@ -639,7 +638,7 @@ high stickiness, the MFT is unable to make a unique prediction for the
 density.  Furthermore, except in the SEP case $\zeta=0$, the density
 will not vary linearly across the system.
 
-\subsubsection{Dirichlet Boundary Conditions}
+\subsection{Dirichlet Boundary Conditions}
 
 The constants $x_0$ and $J_0$ are the boundary conditions for the
 flow, but they need not correspond to a physically-realizable
@@ -657,7 +656,7 @@ This equation can be used for direct comparison with the simulations
 good, except for the region where the MFT predicts negative flow.
 
 
-\subsubsection{Interpretation of MFT}
+\subsection{Interpretation of MFT}
 
 The mean field theory enables us to predict flow behavior of the MFT.
 It recovers well-known limiting cases such as SEP ($\lambda=0$),
@@ -707,7 +706,7 @@ thousands, where the mean flow varies as $\mathcal{O}(\lambda^1)$.
 $(\rho_0, \rho_L) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ and $\lambda$ (The top panel is the MFT prediction
 for the flow rate, whilst bottom shows the observed mean flow rate).
 We chose $\rho_M=\frac{1}{2}$, as this gives us the biggest range of $\delta\rho$ to investigate.
-These calculations were performed with the same run parameters (system length etc) as described in Fig.~\ref{fig:diffCoeff}.
+These calculations were performed with the same run parameters (system length etc) as described in Fig.~\ref{fig:diffCoef}.
 The MFT prediction (top) shows a region of
 negative flow - this occurs at $\zeta > \frac{4}{5}$ ($\lambda < 0.2$) for the weakest
 driving force, with additional stickiness required when the driving
@@ -760,7 +759,7 @@ assumption of homogeneous density break down: thus the MFT predicts
 its own demise, and this agrees well with our numerics.
 
 Above a certain level of stickiness, the model exhibits a
-nonequilibrium phase transition to a slow-flowing phase.  The require
+nonequilibrium phase transition to a slow-flowing phase.  The required
 stickiness for the transition is dependent on the strength of the
 driving force - a strongly driven system inhibits the flow.  Mean field
 analysis, together with visualization of the flowing system, suggest
