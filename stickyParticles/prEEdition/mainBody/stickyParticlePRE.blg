@@ -26,37 +26,37 @@ Control: production of eprint (0) enabled
 Warning--missing journal in jHellGitRepo
 You've used 36 entries,
             5847 wiz_defined-function locations,
-            1912 strings with 22421 characters,
-and the built_in function-call counts, 32922 in all, are:
-= -- 2183
+            1910 strings with 22277 characters,
+and the built_in function-call counts, 32871 in all, are:
+= -- 2179
 > -- 768
 < -- 234
 + -- 257
 - -- 191
-* -- 4969
-:= -- 3287
+* -- 4954
+:= -- 3284
 add.period$ -- 35
 call.type$ -- 36
 change.case$ -- 137
 chr.to.int$ -- 44
 cite$ -- 37
-duplicate$ -- 3115
-empty$ -- 2437
+duplicate$ -- 3109
+empty$ -- 2433
 format.name$ -- 448
-if$ -- 6504
+if$ -- 6496
 int.to.chr$ -- 1
 int.to.str$ -- 43
 missing$ -- 418
 newline$ -- 154
 num.names$ -- 102
-pop$ -- 1323
+pop$ -- 1321
 preamble$ -- 1
 purify$ -- 170
 quote$ -- 0
-skip$ -- 1227
+skip$ -- 1226
 stack$ -- 0
 substring$ -- 905
-swap$ -- 2890
+swap$ -- 2883
 text.length$ -- 87
 text.prefix$ -- 0
 top$ -- 10
@@ -64,5 +64,5 @@ type$ -- 470
 warning$ -- 2
 while$ -- 110
 width$ -- 0
-write$ -- 327
+write$ -- 326
 (There were 2 warnings)

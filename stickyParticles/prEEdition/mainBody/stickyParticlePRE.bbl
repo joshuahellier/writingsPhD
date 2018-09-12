@@ -361,12 +361,9 @@
 \bibitem [{\citenamefont {Robert}(2015)}]{metHastAlg}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~P.}\ \bibnamefont
-  {Robert}},\ }\enquote {\bibinfo {title} {The metropolis–hastings
+  {Robert}},\ }\enquote {\bibinfo {title} {The metropolis-hastings
   algorithm},}\ in\ \href {\doibase 10.1002/9781118445112.stat07834} {\emph
   {\bibinfo {booktitle} {Wiley StatsRef: Statistics Reference Online}}}\
   (\bibinfo  {publisher} {American Cancer Society},\ \bibinfo {year} {2015})\
-  pp.\ \bibinfo {pages} {1--15},\ \Eprint
-  {http://arxiv.org/abs/https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781118445112.stat07834}
-  {https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781118445112.stat07834}
-  \BibitemShut {NoStop}%
+  pp.\ \bibinfo {pages} {1--15}\BibitemShut {NoStop}%
 \end{thebibliography}%

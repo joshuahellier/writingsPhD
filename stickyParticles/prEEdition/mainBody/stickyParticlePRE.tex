@@ -222,19 +222,76 @@ $\sum s_i$ is constant. So at equilibrium the SPM samples the 1D
 Ising model with fixed magnetization, a fact which was used to
 validate the codes. Compatibility between the detailed balance condition, the standard Boltzmann distribution at temperature $T$ and our defined rates requires that $q = k_B T\ln{\lambda} $.
 
-\subsection{Flow Rate Calculations}
-
-The SPM, just like the KLS model and ASEP, can exhibit flow. In this Letter we will be principally concerned with the computation of the flow that results when an SPM system of $L$ sites
+\section{Transition Rate Matrix Calculations}
+\label{sec:transMatrix}
+The SPM, just like the KLS model and ASEP, can exhibit flow. In this paper we will be principally concerned with the computation of the flow that results when an SPM system of $L$ sites
 is connected to (unequal) particle reservoirs at either end.
+
 It is actually possible
 to ``analytically'' solve the SPM on a finite domain with fixed boundary densities by analyzing the transition rate matrix which represents that system.
-Specifically, we build a sparse representation of the matrix, and then use the Python routine \texttt{scipy.sparse.linalg.eigs} to find the eigenvector corresponding to the eigenvalue closest to zero
-(which we expect to be exactly zero in the absence of numerical uncertainty). We can then retrieve the current through the system in a steady state by projecting that eigenvector using a current operator.
-Unfortunately the dimensionality of this matrix scales exponentially with the system size, which imposes upon us a memory limit restricting us to
-relatively small systems. In spite of this, we have managed to compute properties such as the steady-state flow rate for systems with sizes as large as $12$ lattice sites,
-which are large enough to produce consistent outputs comparable to our other methods, whilst being computationally cheap enough to compute en masse.
-In addition, we have also performed Monte Carlo simulations using a couple of different methods, which allows us to better probe the large-system regime.
+To do this, we wrote a Python code, in  which specific configurations of a system of length $L+4$ are represented by strings of binary numbers.
+For example, the configuration ``\texttt{00101011}'' corresponds to a system
+with $L=4$ where there is a particle in sites with a ``\texttt{1}'' and a vacancy in sites with a ``\texttt{0}''. As there is a clear correspondence between binary strings and positive integers, in our code we loop over
+the configurations; in each configuration, we can loop over the particles, see which moves they can make and with what rates, and which configurations these moves would take us to. Doing this allows us to add
+entries to a sparse matrix representation of the SPM with boundary conditions.
 
+There are a pair of additional sites at each boundary in order to simulate the
+particle reservoirs, hence why the overall system size is $L+4$. We do this by allowing particles in these boundary layers to rapidly pop in and out of existence, with rates such that the mean occupation should be the desired boundary density.
+The choice of how to achieve this is not unique, but in our computations the rate at which particles appear in empty spaces at the left boundary is
+\begin{equation}
+C_0 (1+\lambda)\sqrt{\lambda\frac{\rho_0}{1-\rho_0}},
+\end{equation}
+and the rate at which particles disappear is
+\begin{equation}
+C_0 (1+\lambda)\sqrt{\lambda\frac{1-\rho_0}{\rho_0}}.
+\end{equation}
+In isolation, the above rates would ensure that the average occupation was always $\rho_0$. In our overall SPM system, we attempt to ensure that both of these rates are larger than, or at the very least not smaller than,
+the other rates in the system ($1$ and $\lambda$); this should ensure that the occupation of the boundary sites is always approximately $\rho_0$, regardless of what is happening internally.
+Thus, $C_0$ is chosen to be quite large, and the $\lambda$-dependence exists primarily in order to ensure that $\lambda$ does not dominate the boundary rates when it becomes large.
+An analogous set of rates are used at the right boundary. It is worth noting that with the addition of these boundary conditions, the model as a whole no longer obeys detailed balance, even though the bulk still does in terms of
+local behavior.
+
+Once we have built the correct transition rate matrix, we then use the Python routine \texttt{scipy.sparse.linalg.eigs} to find the eigenvector and associated eigenvalue with the largest real part.
+As it is a matrix whose exponential corresponds to an irreducible stochastic matrix, it is guaranteed to have a unique zero eigenvalue, corresponding to the long-term steady state.
+All other eigenvalues have negative real part, and are either purely real
+or arranged into conjugate pairs (as the matrix is real).
+The stationary state contains most of the key information we desire about the system's behavior during steady flow, including the flow rate and particle density profile, which may be accessed
+by the application of occupation and current operators (constructed along with the transition rate matrix). The next least-negative eigenpairs dominate the approach to equilibrium, and determine the timescale over which it
+is achieved.
+
+\begin{figure}[h!]
+\vspace{0em}
+\begin{center}
+    \includegraphics[width=1\linewidth]{reallyExtremeEigs}
+\end{center}
+    \vspace{-0em}
+\caption{\label{fig:eigenspec} The moduli of the $1024$ most positive eigenvalues of the the transition rate matrix for the SPM for a system of size $8$ as a function of $\lambda$, computed using sparse numerical linear algebra.
+We have divided the modulus by $\lambda$ before plotting, as this makes the $\mathcal{O}(\lambda)$ trend in the low-lying eigenvalues much more apparent; as these eigenvalues correspond to the decay rates
+of the dominant unsteady states in the system, this implies that the time taken for a simulated system to relax
+to its equilibrium state scales inversely proportional with $\lambda$, which helps explain the poor convergence of our Monte Carlo simulations in that regime.
+Observe also that for intermediate $\lambda$ eigenvalues often merge or cross; this implies the existence of rich behavior, and suggests that finding a  full analytic solution to for this model might be difficult.}
+\end{figure}
+
+The near-zero eigenspectrum of the transition rate operator, and its dependence upon $\lambda$ for fixed boundary conditions, is extremely interesting in its own right, as shown in Fig.~\ref{fig:eigenspec}.
+The structure is rich, with eigenvalues frequently crossing over each other, as well the appearance and disappearance of ``bands'', similar to those which one would see in electronic structure theory.
+Repeat calculations show that large changes in $C_0$ cause very small changes in the low-lying eigenspectrum of the transition rate matrix, so in this sense the parameter is ``irrelevant'', as desired. It does have quite an impact
+on the group of eigenvalues of larger magnitude, which form a u-shape towards the top of Fig.~\ref{fig:eigenspec}, suggesting that the group is associated with rapid changes in configuration due to the blinking effect at 
+the boundaries.
+One of the most notable
+features of the eigenspectrum is the presence of a relatively small number of low-lying eigenvalues which seem to split off from the main sequence as $\lambda$ becomes much smaller than $1$; they have $\mathcal{O}(\lambda)$ scaling,
+whilst the main sequence
+has $\mathcal{O}(1)$ scaling. This split may coincide with, and be related to, a suspected transition, which we will discuss in more detail in Section~\ref{sec:transition}. System size variations suggest that the number of
+eigenvalues which belong to this grouping scale as $\mathcal{O}(2^{\sim 0.8L})$, and so slower than the total number of eigenvalues, $2^{L+4}$, suggesting that this ``band'' is unusually thin.
+
+%This is where to put a bunch of results and explanation about them
+
+Unfortunately the the space complexity of the sparse transition rate matrix scales as $\mathcal{O}(2^L L)$
+(although the matrix density scales as $\mathcal{O}(2^{-L} L)$, so the sparse format is definitely worth it). The overall time complexity for this process is $\mathcal{O}(2^{2L}L)$, although many parts of the calculation could
+be parallelized efficiently if so desired.
+In spite of this, we have managed to compute properties such as the steady-state flow rate for systems with sizes as large as $10$ internal lattice sites,
+which are large enough to produce consistent outputs comparable to our other methods, whilst being computationally cheap enough to compute en masse.
+
+In addition, we have also performed Monte Carlo simulations using a couple of different methods, which allows us to better probe the large-system regime.
 In the simulations and ``analytics'', we can vary $\rho_0$, $\rho_L$ and $\lambda$ to
 address three questions: how does $\lambda$ affect the flow, how does
 the particle current depend on the driving force $(\rho_0 - \rho_L)/L$, and
@@ -245,18 +302,22 @@ how does the density of particles in the system vary?
 
 In the SPM the bulk dynamics are perfectly symmetric, and flow is driven by
 setting $\rho$ at the boundaries, with the system self-organizing to
-give the steady-state density. We hypothesise that the flow rate, Hamiltonian energy and particle density of the system are fully determined by  $(\rho_0, \rho_L)$ and the unsticking rate $\lambda$;
+give the steady-state density. The flow rate, Hamiltonian energy and particle density of the system are fully determined by  $(\rho_0, \rho_L)$ and the unsticking rate $\lambda$;
 this has been so far confirmed in our ``analytics'' by the existence and uniqueness of the steady flow state in every instance we have tried.
 
 
 We can simulate flow in a bounded domain using Monte Carlo methods. In the bulk, the transition rates are simply
-those described in Fig.~\ref{fig:rates}. At the boundaries there
-are 2 layers of lattice sites that switch between being full and empty
-with rates such that the time-averaged occupation ($\rho_0, \rho_L$)
-defines the boundary conditions; the system is therefore open, and
-particles appear and disappear at boundary layers.  These boundaries
-are equivalent to having particle reservoirs attached to the edges of the
-domain.
+those described in Fig.~\ref{fig:rates}. At the boundaries we used a similar two-layer boundary trick to that described in Sec.\ref{sec:transMatrix}, only this time the particle appearance
+and disappearance have rates
+\begin{equation}
+\sqrt{\lambda\frac{\rho_0}{1-\rho_0}},
+\end{equation}
+and
+\begin{equation}
+\sqrt{\lambda\frac{1-\rho_0}{\rho_0}}.
+\end{equation}
+respectively. Whilst it would be nice for these rates to be large in order to force the boundaries to maintain the correct density more accurately, we choose to simply keep them proportional to the geometric mean of $1$ and $\lambda$,
+otherwise they tend to either happen too rarely or far too frequently, causing the KMC algorithm to be inefficient.
 
 We chose to calculate primarily by using the \texttt{KMCLib}\cite{leetmaa2014kmclib}
 package, which implements the Kinetic Monte Carlo algorithm
@@ -363,7 +424,7 @@ $64$ systems are a good compromise in terms of size and accuracy for a given amo
 \end{figure}
 
 \subsection{Transition in flow character}
-
+\label{sec:transition}
 Fig.~\ref{fig:wideScans} shows how the current varies with stickiness
 at fixed driving for a very broad range of $\lambda$.  At high $\lambda$ the rate is simply proportional
 to $\lambda$ for any forcing.  This result is far from trivial - it
@@ -393,33 +454,14 @@ This was computed using the traditional Metropolis-Hastings method. The normaliz
 that the fluctuation is of the normal Gaussian type, and not the kind of anomalously-scaling fluctuation associated with equilibrium phase transitions.}
 \end{figure}
 
-At very low
-$\lambda$ it becomes exceptionally rare for a particle or vacancy to
-traverse the whole system, so the two Monte-Carlo methods are unable to generate good statistics, 
-and the flow measurement is dominated by
-the noise of boundary fluctuations. Another way of looking at this is that these methods begin failing
-to equilibrate properly in the time they are provided with provided, on the grounds that the equilibration time varies as $\mathcal{O}(\lambda^{-1})$ as $\lambda \rightarrow 0$ (see Fig.~\ref{fig:eigenspec}).
-However, there is a regime when $0.04 \le \lambda \le 0.1$
-where the mean flow clearly displays power-law behavior,
-with $\mathcal{O}(\lambda^{k})$ with $k \sim 4$; between this region and the
-$\lambda^1$ region there is a bend as we switch between the power laws. This bend,
-with its accompanying peak in the density fluctuation, is the ``smoking gun'' of the
-nonequilibrium transition we claim to have found.
+Figs.~\ref{fig:lambdaScans} and \ref{fig:wideScans} reveal that in the $(0.3, 0.1)$ and $(0.75, 0.25)$ boundary
+configurations the current switches from being $\mathcal{O}(\lambda)$ at high $\lambda$ to being
+$\mathcal{O}(\lambda^k)$, $k\sim4$ for low $\lambda$. In the high-density case, with boundary densities $(0.9, 0.7)$,
+the current actually starts flowing backwards for low $\lambda$ in the transition rate matrix calculation. Therefore, we propose that the
+peak in the density fluctuation and the odd behavior in the current suggest the existence of a nonequilibrium
+phase transition in the SPM.
 
 
-\begin{figure}[h!]
-\vspace{0em}
-\begin{center}
-    \includegraphics[width=1\linewidth]{eigenspectrumGoodRange}
-\end{center}
-    \vspace{-0em}
-\caption{\label{fig:eigenspec} The moduli of the $5$ smallest eigenvalues of the the transition rate matrix for the SPM for a system of size $10$ as a function of $\lambda$, computed using sparse numerical linear algebra.
-They are all negative real to within numerical precision,
-except the very smallest, which is numerically $0$ (and therefore not displayed). Notice the general trend, whereby they scale roughly linearly with $\lambda$. As these eigenvalues correspond to the decay rates
-of the dominant unsteady states in the system, this implies that the time taken for a simulated system to relax
-to its equilibrium state scales inversely proportional with $\lambda$, which helps explain the poor convergence of our Monte Carlo simulations in that regime.
-Observe also that for intermediate $\lambda$ eigenvalues often merge or cross; this implies the existence of rich behavior, and suggests that finding a  full analytic solution to for this model might be difficult.}
-\end{figure}
 
 \subsection{Effective diffusion constant}
 
