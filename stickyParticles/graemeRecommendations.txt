@@ -1,0 +1,75 @@
+Dear Joshua,
+
+I think its looking good.  Throughout, when you talk of "analytics", you now need to say if its TRM or MFT (I think its always MFT).  We need to say something about the TRM in the conclusions.  Did you get anywhere with the projected flow rate from the TRM eigenvector?  We need to address the question of how the transition manifests in the TRM .
+
+
+Need to update the abstract...
+
+The 1D Ising model is the simplest Hamiltonian-based model in statistical mechanics. The sim-
+plest interacting particle process is the Symmetric Exclusion Process (SEP), a 1D lattice gas of
+particles that hop symmetrically and cannot overlap. Combining the two gives a model for sticky
+particle diffusion, SPM, which is described here. SPM dynamics are based on SEP with short-range
+interaction, allowing flow due to non-equilibrium boundary conditions. We prove that SPM is also
+a detailed-balance respecting, particle-conserving, Monte Carlo (MC) description of the Ising model. Neither the Ising model nor SEP have a phase transition in 1D, but the SPM exhibits a non-equilibrium
+transition from a diffusing to a blocked state as stickiness increases.  This transition manifests in peaks in the MC fluctuation spectra, an a change in the dependency of flow-rate on stickiness.   We derive and solve a fully non-linear, analytic, mean-field solution, which has a crossover from a positive to a negative diffusion constant where the MC shows the transition.  The negative diffusion constant in fact indicates a breakdown of the mean-field approximation, with close to zero flow and breaking into a two-phase mixture, and thus the mean field theory successfully predicts its own demise. We also present an analytic solution for the flow using transition rate matrix theory.  The
+simplicity of the model suggest a wide range of possible applications.
+
+
+
+
+For the TRANSITION RATE MATRIX CALCULATIONS section, I'd say a bit more about the theory, maybe less about the specific sparse solver (though that level of detail is good for the thesis)
+
+e.g.
+
+It is possible to “analytically” solve the SPM on a finite domain with fixed boundary densities by analyzing the transition rate matrix which represents that system. For a system of length L+4 this is a sparse matrix of size $2^L+4$ x $2^L+4$.  In the bulk the non-zero matrix elements are lambda or 1 while the boundary values are given by (3) and (4).  The matrix represents a finite irreducible continuous time Markov process, so it is guaranteed to have a unique zero eigenvalue, whose eigenvector represents the long-term steady state flow. All other eigenvalues have negative real part and represent fluctuations.
+In addition to the SPM moves in the bulk,  there are a pair of additional sites at each boundary
+representing the particle reservoirs, hence we wrote  the overall system size as L + 4. We do this by allowing particles in these boundary layers to rapidly pop in and out of existence, with rates such that the mean occupation should be the desired boundary density. The choice of how to achieve this is not unique, but in our computations the rate at which particles appear in empty spaces
+at the boundary is...
+
+ I found the use of right-left confusing, especially with \rho_L being referred to as the right boundary, when its actually the L-2 and L-1th site.
+
+
+Fig 2 (and other figures) needs some work on axes, labels,text size to conform to PhysRev norms.  Are there actually 1024 lines in the figure?  What does "most positive eigenvalues" mean when none of them have positive real parts?
+
+delete
+"is definitely worth it" - too informal
+"although many parts of the calculation could be parallelized efficiently if so desired." - unnecessary
+
+
+"system of size 10"  Do you mean L=10 or L=6  ?
+
+delete
+"similar to those which one would see in electronic structure theory."
+You aren't plotting against wavevectors, but you are inviting the referee to ask you to project the eigenvectors onto wavevectors, which you probably don't want to do...   The huge gap in the eigenvalue spectrum is worth commenting on though.
+
+typo "Unfortunately the the"
+missing angle bracket near "distinctive peak in the particle density fluctuation"
+
+In spite of this, we have managed to compute properties
+such as the steady-state flow rate for systems with sizes as
+large as 10 internal lattice sites,
+Need to show these flow rates on a figure.
+
+This is relatively quick, and useful if we want to perform calculations
+with many different parameter configurations.
+
+This enabled us to perform calculations with many different parameter configurations.
+
+"We have also performed ... vary?":  move this para to introduction and give the reader an outline of what's coming
+
+In this paper we ...classes)
+
+In Section II we define the model, prove it obeys detailed balance with a Hamiltionian equivalent to the Ising model away from the boundaries. In section III we present an analytical solution for small system sizes based on the transition rate matrix.  In section IV we describe Monte Carlo simulations
+which allows us to probe the large-system regime, and in section V we present the mean field analysis for the flow. Throughout the simulations and analytics, we to address three kinds of questions: how does stickiness affect the flow, how does the
+particle current depend on the driving force, and what determines the density of particles in the system?
+
+FIG 3
+The flow rate is normalized in the sense that it has
+been multiplied by the system size, so that we can easily com-
+pare between different system sizes. We do have estimates of
+the standard error in the flow rate, but as we have an abundance of data points we feel that the spread of the points on
+the graph illustrates it well enough.  
+
+Too informal. 
+
+The flow rate is normalized to the driving force, so that we can easily compare between different system sizes. The standard error in the flow rate is evident from  the spread of the points on the graph. 
