@@ -3,22 +3,23 @@
 \BOOKMARK [1][-]{section*.3}{Introduction}{section*.2}% 3
 \BOOKMARK [1][-]{section*.4}{The sticky particle model}{section*.2}% 4
 \BOOKMARK [2][-]{section*.5}{Detailed Balance Proof}{section*.4}% 5
-\BOOKMARK [2][-]{section*.6}{Equivalence to Ising Model at Equilibrium}{section*.4}% 6
-\BOOKMARK [1][-]{section*.7}{Transition Rate Matrix Calculations}{section*.2}% 7
-\BOOKMARK [1][-]{section*.8}{Simulations}{section*.2}% 8
-\BOOKMARK [2][-]{section*.9}{Diffusion Coefficient}{section*.8}% 9
-\BOOKMARK [2][-]{section*.10}{Particle Motion During Flow}{section*.8}% 10
-\BOOKMARK [2][-]{section*.11}{Transition in flow character}{section*.8}% 11
-\BOOKMARK [2][-]{section*.12}{Effective diffusion constant}{section*.8}% 12
-\BOOKMARK [2][-]{section*.13}{Self-organized density}{section*.8}% 13
-\BOOKMARK [2][-]{section*.14}{Review of the simulations}{section*.8}% 14
-\BOOKMARK [1][-]{section*.15}{Mean Field Theory for Flow}{section*.2}% 15
-\BOOKMARK [2][-]{section*.16}{Lattice Mean Field Theory}{section*.15}% 16
-\BOOKMARK [2][-]{section*.17}{Diffusion Equation: MFT Continuum Limit}{section*.15}% 17
-\BOOKMARK [2][-]{section*.18}{Limiting Cases}{section*.15}% 18
-\BOOKMARK [2][-]{section*.19}{Steady State Flow}{section*.15}% 19
-\BOOKMARK [2][-]{section*.20}{Dirichlet Boundary Conditions}{section*.15}% 20
-\BOOKMARK [2][-]{section*.21}{Interpretation of MFT}{section*.15}% 21
-\BOOKMARK [1][-]{section*.22}{Discussion and conclusions}{section*.2}% 22
-\BOOKMARK [1][-]{section*.23}{Acknowledgements}{section*.2}% 23
-\BOOKMARK [1][-]{section*.24}{References}{section*.2}% 24
+\BOOKMARK [2][-]{section*.6}{Equivalence to Ising Model in Equilibrium}{section*.4}% 6
+\BOOKMARK [2][-]{section*.7}{Nonequilibrium Calculations}{section*.4}% 7
+\BOOKMARK [1][-]{section*.8}{Transition Rate Matrix Calculations}{section*.2}% 8
+\BOOKMARK [1][-]{section*.9}{Simulations}{section*.2}% 9
+\BOOKMARK [2][-]{section*.10}{Diffusion Coefficient}{section*.9}% 10
+\BOOKMARK [2][-]{section*.11}{Particle Motion During Flow}{section*.9}% 11
+\BOOKMARK [2][-]{section*.12}{Transition in flow character}{section*.9}% 12
+\BOOKMARK [2][-]{section*.13}{Effective diffusion constant}{section*.9}% 13
+\BOOKMARK [2][-]{section*.14}{Self-organized density}{section*.9}% 14
+\BOOKMARK [2][-]{section*.15}{Review of the simulations}{section*.9}% 15
+\BOOKMARK [1][-]{section*.16}{Mean Field Theory for Flow}{section*.2}% 16
+\BOOKMARK [2][-]{section*.17}{Lattice Mean Field Theory}{section*.16}% 17
+\BOOKMARK [2][-]{section*.18}{Diffusion Equation: MFT Continuum Limit}{section*.16}% 18
+\BOOKMARK [2][-]{section*.19}{Limiting Cases}{section*.16}% 19
+\BOOKMARK [2][-]{section*.20}{Steady State Flow}{section*.16}% 20
+\BOOKMARK [2][-]{section*.21}{Dirichlet Boundary Conditions}{section*.16}% 21
+\BOOKMARK [2][-]{section*.22}{Interpretation of MFT}{section*.16}% 22
+\BOOKMARK [1][-]{section*.23}{Discussion and conclusions}{section*.2}% 23
+\BOOKMARK [1][-]{section*.24}{Acknowledgements}{section*.2}% 24
+\BOOKMARK [1][-]{section*.25}{References}{section*.2}% 25

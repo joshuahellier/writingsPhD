@@ -3,14 +3,17 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {(2.1)}{\ignorespaces Plots of the equal-time particle density correlation function on a ring.}}{8}{figure.caption.11}
-\contentsline {figure}{\numberline {(2.2)}{\ignorespaces Some plots of the variation of the MFT diffusion coefficient with density, for some selected $\lambda $.}}{13}{figure.caption.12}
-\contentsline {figure}{\numberline {(2.3)}{\ignorespaces A contour plot of the variation of the MFT diffusion coefficient with density and stickiness.}}{14}{figure.caption.13}
-\contentsline {figure}{\numberline {(2.4)}{\ignorespaces The variation in the current at fixed $\lambda $ with respect to the boundary densities.}}{17}{figure.caption.14}
-\contentsline {figure}{\numberline {(2.5)}{\ignorespaces The variation of flow rate with respect to $\lambda $ in the MFT, with fixed boundary densities.}}{18}{figure.caption.15}
-\contentsline {figure}{\numberline {(2.6)}{\ignorespaces The dependence of the critial value of $\lambda $ required for backward diffusion on the boundary conditions.}}{19}{figure.caption.16}
-\contentsline {figure}{\numberline {(2.7)}{\ignorespaces The variation of the system-wide average density with respect to $\lambda $ in the MFT, with fixed boundary densities.}}{20}{figure.caption.17}
-\contentsline {figure}{\numberline {(2.8)}{\ignorespaces The possibe transitions which may occur in a symmetric local 2-dimensional hopping model.}}{24}{figure.caption.18}
+\contentsline {figure}{\numberline {(2.1)}{\ignorespaces Plots of the equal-time particle density correlation function on a ring.}}{9}{figure.caption.11}
+\contentsline {figure}{\numberline {(2.2)}{\ignorespaces Some plots of the variation of the MFT diffusion coefficient with density, for some selected $\lambda $.}}{14}{figure.caption.12}
+\contentsline {figure}{\numberline {(2.3)}{\ignorespaces A contour plot of the variation of the MFT diffusion coefficient with density and stickiness.}}{15}{figure.caption.13}
+\contentsline {figure}{\numberline {(2.4)}{\ignorespaces The variation in the current at fixed $\lambda $ with respect to the boundary densities.}}{19}{figure.caption.14}
+\contentsline {figure}{\numberline {(2.5)}{\ignorespaces The variation of flow rate with respect to $\lambda $ in the MFT, with fixed boundary densities.}}{20}{figure.caption.15}
+\contentsline {figure}{\numberline {(2.6)}{\ignorespaces The dependence of the critial value of $\lambda $ required for backward diffusion on the boundary conditions.}}{21}{figure.caption.16}
+\contentsline {figure}{\numberline {(2.7)}{\ignorespaces The variation of the system-wide average density with respect to $\lambda $ in the MFT, with fixed boundary densities.}}{22}{figure.caption.17}
+\contentsline {figure}{\numberline {(2.8)}{\ignorespaces The possibe transitions which may occur in a symmetric local 2-dimensional hopping model.}}{25}{figure.caption.18}
+\contentsline {figure}{\numberline {(2.9)}{\ignorespaces Figure demonstrating that a local system obeying detailed balance and symmetry cannot have interesting local configuration-dependent dynamics.}}{27}{figure.caption.19}
+\contentsline {figure}{\numberline {(2.10)}{\ignorespaces Figure demonstrating that particle motion out of a hyperplane with $m$ adjacent particles away from an empty space moves with rate $\lambda ^m$.}}{29}{figure.caption.20}
+\contentsline {figure}{\numberline {(2.11)}{\ignorespaces Figure demonstrating that particle motion out of a hyperplane with $m$ adjacent particles away from an empty space moves with rate $\lambda ^m$.}}{29}{figure.caption.21}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

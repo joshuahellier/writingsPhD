@@ -24,42 +24,42 @@
 \contentsline {section}{\numberline {1.5}Implications of Initial Work for the PhD Direction}{3}{section.1.5}
 \contentsline {subsection}{\numberline {1.5.1}Why the Change of Direction?}{3}{subsection.1.5.1}
 \contentsline {subsection}{\numberline {1.5.2}Why Investigate Flow in the SPM?}{3}{subsection.1.5.2}
-\contentsline {chapter}{\numberline {2}Analytical Results about the SPM}{4}{chapter.2}
-\contentsline {section}{\numberline {2.1}Solving Problems in Nonequlibrium Statistical Mechanics}{4}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Equilibrium Statistical Mechanics}{5}{subsection.2.1.1}
-\contentsline {subsubsection}{Exact Solutions}{5}{subsection.2.1.1}
-\contentsline {subsubsection}{Approximations}{6}{equation.2.1.2}
-\contentsline {subsection}{\numberline {2.1.2}Nonequlibrium Statistical Mechanics}{6}{subsection.2.1.2}
-\contentsline {subsubsection}{Exact Solutions}{6}{subsection.2.1.2}
-\contentsline {subsubsection}{Approximations}{6}{subsection.2.1.2}
-\contentsline {subsubsection}{Similarities and Differences Between Nonequlibrium and Equilibrium Statistical Mechanics}{6}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Where does the SPM stand?}{6}{subsection.2.1.3}
-\contentsline {section}{\numberline {2.2}Similarities between the SPM and Established Models in 1D}{6}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Relationship with the Ising Model}{6}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Correlation Functions}{7}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Equivalence with the Misanthrope Process}{8}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Differences Between SEP and the SPM}{9}{subsection.2.2.4}
-\contentsline {section}{\numberline {2.3}Using the Mean-Field Approximation on the SPM}{9}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Lattice MFT Derivation}{10}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Continuum Limit MFT Derivation}{11}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Negative Diffusion Coefficients}{12}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Continuum Limit MFT Solutions}{16}{subsection.2.3.4}
-\contentsline {subsubsection}{Steady Flow Across a Bounded Domain}{16}{subsection.2.3.4}
+\contentsline {chapter}{\numberline {2}Analytical Results about the SPM}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Solving Problems in Nonequlibrium Statistical Mechanics}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Equilibrium Statistical Mechanics}{6}{subsection.2.1.1}
+\contentsline {subsubsection}{Exact Solutions}{6}{subsection.2.1.1}
+\contentsline {subsubsection}{Approximations}{7}{equation.2.1.2}
+\contentsline {subsection}{\numberline {2.1.2}Nonequlibrium Statistical Mechanics}{7}{subsection.2.1.2}
+\contentsline {subsubsection}{Exact Solutions}{7}{subsection.2.1.2}
+\contentsline {subsubsection}{Approximations}{7}{subsection.2.1.2}
+\contentsline {subsubsection}{Similarities and Differences Between Nonequlibrium and Equilibrium Statistical Mechanics}{7}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Where does the SPM stand?}{7}{subsection.2.1.3}
+\contentsline {section}{\numberline {2.2}Similarities between the SPM and Established Models in 1D}{7}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Relationship with the Ising Model}{7}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Correlation Functions}{8}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Equivalence with the Misanthrope Process}{9}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Differences Between SEP and the SPM}{10}{subsection.2.2.4}
+\contentsline {section}{\numberline {2.3}Using the Mean-Field Approximation on the SPM}{10}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Lattice MFT Derivation}{11}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Continuum Limit MFT Derivation}{12}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Negative Diffusion Coefficients}{14}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Continuum Limit MFT Solutions}{17}{subsection.2.3.4}
+\contentsline {subsubsection}{Steady Flow Across a Bounded Domain}{17}{subsection.2.3.4}
 \contentsline {subsubsection}{Other Analytic Solutions}{20}{figure.caption.17}
-\contentsline {subsection}{\numberline {2.3.5}Implications of Continuum MFT Breakdown}{22}{subsection.2.3.5}
-\contentsline {section}{\numberline {2.4}The SPM in Higher Dimensions}{22}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Symmetry + Locality + Detailed Balance = Unique 1-Parameter SPM}{23}{subsection.2.4.1}
-\contentsline {chapter}{\numberline {3}Numerical Results about the SPM}{26}{chapter.3}
-\contentsline {section}{\numberline {3.1}Numerical Simulations of Continuous-Time Markov Processes}{26}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Known Methods}{26}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}\texttt {KMCLib}}{26}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Running \texttt {KMCLib} on \texttt {Eddie3}}{26}{subsection.3.1.3}
-\contentsline {section}{\numberline {3.2}Calculation Results }{27}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}1D}{27}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}2D}{27}{subsection.3.2.2}
-\contentsline {chapter}{\numberline {4}Conclusions}{28}{chapter.4}
-\contentsline {chapter}{\numberline {A}Code Listings}{29}{appendix.A}
-\contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{29}{section.A.1}
+\contentsline {subsection}{\numberline {2.3.5}Implications of Continuum MFT Breakdown}{23}{subsection.2.3.5}
+\contentsline {section}{\numberline {2.4}The SPM in Higher Dimensions}{24}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Symmetry + Locality + Detailed Balance = Unique 1-Parameter SPM}{26}{subsection.2.4.1}
+\contentsline {chapter}{\numberline {3}Numerical Results about the SPM}{30}{chapter.3}
+\contentsline {section}{\numberline {3.1}Numerical Simulations of Continuous-Time Markov Processes}{30}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Known Methods}{30}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}\texttt {KMCLib}}{30}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Running \texttt {KMCLib} on \texttt {Eddie3}}{30}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Calculation Results }{31}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}1D}{31}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}2D}{31}{subsection.3.2.2}
+\contentsline {chapter}{\numberline {4}Conclusions}{32}{chapter.4}
+\contentsline {chapter}{\numberline {A}Code Listings}{33}{appendix.A}
+\contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{33}{section.A.1}
 \tocappendix 
-\contentsline {chapter}{Bibliography}{32}{section*.19}
+\contentsline {chapter}{Bibliography}{36}{section*.22}
 \contentsfinish 

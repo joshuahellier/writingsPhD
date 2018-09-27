@@ -497,9 +497,75 @@ must have a transition rate of the form
 \begin{equation}
  \sigma(\xi_1 \rightarrow \xi_2) = \frac{1}{\tau_0} \lambda^m ,
 \end{equation}
-where $m$ is the number of particles directly adjacent to the particle which is attempting to swap with a vacancy.
+where $m$ is the number of particles directly adjacent to the particle which is attempting to swap with a vacancy and $\tau_0$ is an arbitrary constant.
 \end{theorem}
 
+\begin{proof}
+We have already shown that the theorem applies in 1-dimension, as there the space of possible models is so constrained <reference in introduction> that there is only one symmetric local model, which is the SPM. This model, as we showed, obeys detailed balance anyway, so we're done for $n=1$.
+
+\begin{figure}[h!]
+ \caption[Figure demonstrating that a local system obeying detailed balance and symmetry cannot have interesting local configuration-dependent dynamics.]{\label{fig:configInvar} 
+ I and II represent two local configurations of $m$ particles, centred around a single site, which may or may not be occupied, in an $(n-1)$-dimensional hyperplane intersecting the central site. The dotted lines dashed arrows represent configurational transitions which require multiple steps, all with the same
+ rate (in this case, $\lambda$) as indicated. The grey particle slot represents a slot whose occupation is irrelevant for this calculation, although it must be constant throughout.
+ The expressions in the top right corners of the configurations are the probabilities of our finding the system in that configuration.
+
+ }
+  \begin{center}
+ \includegraphics[width=0.66\linewidth]{analytics/images/ndParticleConfigInv}
+  \end{center}
+\end{figure}
+
+We will proceed with the proof via induction. Let us assume that the result is true in $(n-1)$ dimensions. Firstly, we need to show that the actual configuration
+of the particles in contact with a particle does not affect its rate of motion into an adjacent free space. Fig.~\ref{fig:configInvar} shows just such a situation: there are $m$ particles clustered around the central particle in an $(n-1)$-dimensional hyperplane, but in two different local configurations, I and II. Because the model in $(n-1)$-d obeys detailed balance, we can consider a reversible chain of moves from one configuration to the other.
+We do this by moving each particle adjacent to the central particle outwards, with rate $\lambda$. Once they are all separated from the central
+particle, we can them move them around at leisure, with each move having rate $1$ so long as we keep them separate; luckily, there is plenty of room to do this, as we can simply move the particles further away using only rate $1$ moves. We can then rebuild the particles from, say, configuration I into
+their exact state in configuration II. Furthermore, we can do exactly the same thing going from configuration II to configuration I, again using only
+$m$ rate $\lambda$ moves and the rest with rate $1$.  Importantly, if a system obeys detailed balance, then if we can move from
+one state to another and back again with the same rate, they must have the same equilibrium occupation; therefore, the probability of finding the system in configuration I and and the probability of
+finding it in configuration II must be equal, otherwise the system would violate detailed balance (which the model which we are assuming the system obeys
+in $(n-1)$-d satisfies).
+However, there is another way to go from state I to state II: we can move the central particle, which we will say occurs with rates $\lambda_1$ and
+$\lambda_2$ respectively. Once the central particle is moved, we now have a ``gas'' of free particles, which we can once again move as we like using only moves of rate $1$, in order to deform the system into configuration II. As the probability of our system being in state II is the same as it being in state
+I, the only way detailed balance can be obeyed is if $\lambda_1 = \lambda_2$. Therefore, the rate at which a particle moves into an adjacent empty space
+cannot depend upon the configuration of its adjacent particles in a given $(n-1)$-dimensional hyperplane, only their number.
+
+Now we need to consider two cases, as the slot directly behind the central particle's proposed direction of motion can be either
+empty or full. Firstly, the empty case is considered in Fig.~\ref{fig:emptyMotion}. This time, we are highlighting the fact that if we move the central particle out of a hyperplane configuration of $m$ particles, which occurs with rate $u_m$, this results in a gas of free particles;
+ equivalently we could've produced a gas by moving the adjacent particles one by one as before, which requires $m$ steps with each with rate $\lambda$. As the two gases are equivalent, in detailed balance terms, they must have the same realisation probability. If the
+ probability of our being in the initial configuration (top left) was $p$, then by detailed balance the probability of our being in
+ a free particle state is simulatneously both $p u_m$ and $p \lambda^m$, and so
+ $p u_m = p \lambda^m $ implying that
+ \begin{equation}
+  \lambda^m = u_m .
+ \end{equation}
+ 
+ \begin{figure}[h!]
+ \caption[Figure demonstrating that particle motion out of a hyperplane with $m$ adjacent particles away from an empty space moves with rate $\lambda^m$.]{\label{fig:emptyMotion} 
+ Here we've used the same diagram rules as in Fig.~\ref{fig:configInvar}. 
+ }
+  \begin{center}
+ \includegraphics[width=0.66\linewidth]{analytics/images/ndDBuCycle}
+  \end{center}
+\end{figure}
+
+In Fig.~\ref{fig:fullMotion}, we show exactly the same thing, only this time there is a particle behind the central particle, and so an
+additional move must be made in order to create a gas of free particles. This means that the equivalence is now between $p u_m$ and
+$p \lambda^{m+1}$, and so
+ \begin{equation}
+  \lambda^{m+1} = w_m .
+ \end{equation}
+ With the constraints that detailed balance imposes upon $u_m$ and $w_m$, we find that the original proposition for dimension $n$ is true so long as it is for dimension $(n-1)$ for $n>1$, and as we know it is true for $n=1$, the theorem is proved.
+
+ \begin{figure}[h!]
+ \caption[Figure demonstrating that particle motion out of a hyperplane with $m$ adjacent particles away from an empty space moves with rate $\lambda^m$.]{\label{fig:fullMotion} 
+ As Fig.~\ref{fig:emptyMotion}, but now with a particle behind the central one. 
+ }
+  \begin{center}
+ \includegraphics[width=0.66\linewidth]{analytics/images/ndDBwCycle}
+  \end{center}
+\end{figure}
+
+\end{proof}
 
 
 

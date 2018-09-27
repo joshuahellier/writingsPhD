@@ -54,7 +54,7 @@ particles that hop symmetrically and cannot overlap. Combining the two gives a m
 particle diffusion, SPM, which is described here. SPM dynamics are based on SEP with short-range
 interaction, allowing flow due to non-equilibrium boundary conditions. We prove that SPM is also
 a detailed-balance respecting, particle-conserving, Monte Carlo (MC) description of the Ising model. Neither the Ising model nor SEP have a phase transition in 1D, but the SPM exhibits a non-equilibrium
-transition from a diffusing to a blocked state as stickiness increases.  This transition manifests in peaks in the MC fluctuation spectra, and a change in the dependency of flow-rate on stickiness. 
+transition from a diffusing to a blocked state as stickiness increases.  This transition manifests in peaks in the MC density fluctuation, a change in the dependency of flow-rate on stickiness, and odd structure in the eigenspectrum of the transition rate matrix.
 We derive and solve a fully non-linear, analytic, mean-field solution, which has a crossover from a positive to a negative diffusion constant where the MC shows the transition.
 The negative diffusion constant in fact indicates a breakdown of the mean-field approximation, with close to zero flow and breaking into a two-phase mixture, and thus the mean field theory successfully predicts its own demise.
 We also present an analytic solution for the flow via direct analysis of the transition rate matrix.  The
@@ -67,6 +67,10 @@ simplicity of the model suggest a wide range of possible applications.
                               %display desired
 \maketitle
 
+ \begin{figure} \vspace{1em}
+\caption{\label{fig:rates} White circles indicate particles, dark circles indicate empty sites (vacancies). Particles randomly move into adjacent vacancies with rate $1$ (having rescaled time for notational convenience), unless there is a particle behind the position they're moving from, in which case they move with rate $\lambda$; the state of the site next to the position the particle is moving into is irrelevant.}
+    \includegraphics[width=\linewidth]{ratesDB.pdf}
+    \end{figure}
 
 \section{Introduction}
 
@@ -78,39 +82,37 @@ non-interacting or excluding particles~\cite{ladd1988application,
   liggett1985interacting, BenNaim1999, Shandarin1989, Frachebourg1999,
   Frachebourg2000}, but in any real system of interest the moving
 objects interact. Many models tackle the situation where the diffusing
-object interact with the substrate, but despite the clear
+objects interact with the substrate, but despite clear
 application-relevance there is surprisingly little work considering
 interactions between the moving particles themselves.  One reason for
 this is that the interactions introduce nonlinearities in analytical
 models, which makes them challenging to solve, at least outside of
 limits in which they can be linearized. This is unfortunate because it
 is precisely these nonlinearities which introduce interesting
-behaviors such as discontinuities at the oxide-metal interface or
+behaviors such as discontinuities at interfaces or
 diffusion instability~\cite{Obukhovsky2017, Gorokhova2010}.
 
 Another feature of previous models is that the flow is driven by
-either asymmetry in the dynamics (e.g. ASEP) or an external field
-which permeates the system (e.g. KLS).  In either case, the particles
+either asymmetry in the dynamics (e.g. the Asymmetric Simple Exclusion Process, ASEP) or an external field
+which permeates the system (e.g. the Katz-Lebowitz-Spohn model, KLS).  In either case, the particles
 always see a local asymmetry.  However in many systems the flow is
 driven by a pressure or chemical potential difference applied at the
 boundaries, so that any local asymmetry arises from self-organization.
-This situation is addressed here.
+This is the situation that is addressed here.
 
-In this paper we will investigate what we believe ito be the simplest such one-dimensional model, the
-``Sticky Particle Model'' or SPM, specified in the top left inset of
-Fig.~\ref{fig:rates}, which contains such an interaction, and we
+In this paper we will investigate what we believe to be the simplest interacting one-dimensional exclusion model, the
+``Sticky Particle Model'' or SPM, which is specified in Fig.~\ref{fig:rates}. We
 will explore the impact this has on particle behavior, in particular
-when observed in the large-scale limit.  One might contrast this
-approach (making a simple microscopic model and trying to learn from
-it about large-scale interface growth) with approaches such as the KPZ
+when observed in the large-scale limit. The model will be fully defined in Section~\ref{sec:modelDefn}, and we will show that it obeys detailed balance away from boundaries. We will then discuss a method to solve the system exactly for small systems in Section~\ref{sec:transMatrix}, and Monte-Carlo techniques for larger systems in Section~\ref{sec:simulations}. In Section~\ref{sec:mftPred} we will attempt to understand our results by means of a simple MFT approximation.  One might contrast this
+approach (making a simple microscopic model and trying to learn about large-scale properties) with approaches such as the KPZ
 equation~\cite{PhysRevLett.56.889, PhysRevA.38.4271, Sasamoto2010}
 (where one analyses the extreme large-scale dynamics using
 universality classes).
+Throughout the simulations and analytics, we aim to address three kinds of questions: how does stickiness affect the flow, how does the
+particle current depend on the driving force, and what determines the density of particles in the system?
 
- \begin{figure} \vspace{1em}
-\caption{\label{fig:rates} White circles indicate particles, dark circles indicate empty sites (vacancies). Particles randomly move into adjacent vacancies with rate $1$ (having rescaled time for notational convenience), unless there is a particle behind the position they're moving from, in which case they move with rate $\lambda$; the state of the site next to the position the particle is moving into is irrelevant.}
-    \includegraphics[width=\linewidth]{ratesDB.pdf}
-    \end{figure}
+
+
 
 
 \iffalse
@@ -152,7 +154,9 @@ universality classes).
 \end{figure}
 \fi
 
-\section{The sticky particle model}
+
+
+\section{The sticky particle model} \label{sec:modelDefn}
 
 The SPM is an excluded-particle model in which adjacent particles
 separate with rate $\lambda$ and single particles move at rate $1$.
@@ -160,21 +164,21 @@ separate with rate $\lambda$ and single particles move at rate $1$.
 
 It differs from the symmetric exclusion
 process~\cite{sugden2007dynamically, Kollmann2003, Lin2005,
-  Hegde2014,Krapivsky2014, Imamura2017}; in that particles ``unstick''
+  Hegde2014,Krapivsky2014, Imamura2017} in that particles ``unstick''
 with rate $\lambda$ instead of their normal hopping rate, $1$.  Low
 $\lambda$ corresponds to sticky particles, high $\lambda$ to repelling
 particles.
 It could be regarded as a version of the KLS model~\cite{Katz1984,
   Zia2010, Kafri2003} in 1-dimension without an applied field, which
 is itself similar to the dynamics used to analyze the Ising model by
-Kawasaki~\cite{PhysRev.145.224}.  The KLS model has a field which
-introduces an asymmetry which drives a flow.  It is tacitly assumed
+Kawasaki~\cite{PhysRev.145.224}.  The KLS model has a field that
+introduces an asymmetry which in turn drives a flow.  It is tacitly assumed
 that this field is required for the nontrivial flow behavior seen in
 the model, so the simpler symmetric model has received less attention.
 
 
 \subsection{Detailed Balance Proof} 
-The SPM is intended to study flow, so it is {\it defined} by the
+The SPM is intended to study flow, so it is {\bf defined} by the
 hopping rates.  In Fig.~\ref{fig:rates} we
 show all the possible transitions which may occur between local
 configurations. 
@@ -195,34 +199,42 @@ left, so the probability of being in the left state is $\lambda$ times
 that of being in the right state. This is again in agreement with the
 detailed balance criterion. As these are the only types of transition
 that may occur on a ring, we have proven that the closed system obeys
-detailed balance, with an energy proportional to $b(\xi) \ln {\lambda}$
+detailed balance, with an energy proportional to $b(\xi) \ln {\lambda}$.
 
-\subsection{Equivalence to Ising Model at Equilibrium}
+\subsection{Equivalence to Ising Model in Equilibrium}
 
 Since the model obeys detailed balance, there must be an associated
 Hamiltonian.  This is simply proportional to the number of particles stuck together:
 \begin{equation}
  H = q \sum_i p_ip_{i+1} = q b(\xi)
 \end{equation}
-where $p_i$ is 1 for a particle or zero for and empty site.  A simple
+where $p_i$ is 1 for a particle or zero for an empty site.  A simple
 transformation $s_i = 2p_i-1$ shows this to be equivalent to the Ising
 Hamiltonian
 \begin{equation}
- H = q \sum_i \left[ \frac{1}{4} s_i s_{i+1} + \left( \frac{1}{2} s_i + \frac{1}{4} \right) \right]
+ H = q \sum_i \left[ \frac{1}{4} s_i s_{i+1} + \left( \frac{1}{2} s_i + \frac{1}{4} \right) \right].
 \end{equation}
 The contribution from the final term is constant, as only hopping moves are allowed so 
-$\sum s_i$ is constant. So at equilibrium the SPM samples the 1D
+$\sum s_i$ is constant. Therefore in equilibrium the SPM samples the 1D
 Ising model with fixed magnetization, a fact which was used to
 validate the codes. Compatibility between the detailed balance condition, the standard Boltzmann distribution at temperature $T$ and our defined rates requires that $q = k_B T\ln{\lambda} $.
+
+\subsection{Nonequilibrium Calculations}
+
+Of course, the real point of our research into the SPM is to see how it behaves out of equilibrium. We drive a system of length $L$ out of equilibrium by attaching it to
+reservoirs with densities $\rho_0$ and $\rho_L$ at the $x=0$ and $x=L$ ends respectively,
+with a single fixed value for $\lambda$ throughout the system.
+We have computed the main properties of this system (principally the current and the average density of particles) by using three methods: numerical analysis of the transition rate matrix (TRM) for a small system, Monte Carlo (MC) methods for somewhat larger systems and a mean-field
+approximation for large systems in the continuum limit. These methods and their results are discussed in Sections~\ref{sec:transMatrix}, \ref{sec:simulations} and \ref{sec:mftPred}. respectively.
 
 \section{Transition Rate Matrix Calculations}
 \label{sec:transMatrix}
 The SPM, just like the KLS model and ASEP, can exhibit flow. In this paper we will be principally concerned with the computation of the properties of the steady state of an SPM system of $L$ sites
-is connected to (unequal) particle reservoirs at either end.
+connected to (unequal) particle reservoirs at either end.
 
 It is possible to ``analytically'' solve the SPM on a finite domain with fixed boundary densities by analyzing the transition rate matrix which represents that system. For a system of length $L+4$ this is a sparse matrix with dimension 
 $2^{L+4} \times 2^{L+4}$.
-The non-zero matrix elements relating to bulk motion are $\lambda$ or $1$ while those relating to the boundary conditions are given by Eqs.~\ref{eq:appRate} and~\label{eq:disRate}. 
+The non-zero matrix elements relating to bulk motion are $\lambda$ or $1$ while those relating to the boundary conditions are given by Eqs.~\ref{eq:appRate} and~\ref{eq:disRate}. 
 The matrix represents a finite irreducible continuous time Markov process, so it is guaranteed to have a unique zero eigenvalue,
 whose eigenvector represents the long-term steady state flow. All other eigenvalues have negative real part and represent fluctuations.
 \iffalse
@@ -248,7 +260,7 @@ and the rate at which particles disappear is
 C_0 (1+\lambda)\sqrt{\lambda\frac{1-\rho_0}{\rho_0}}.
 \end{equation}
 
-In isolation, the above rates would ensure that the average occupation was always $\rho_0$. In our overall SPM system, we attempt to ensure that both of these rates are larger than, or at the very least not smaller than,
+In isolation, the above rates would ensure that the average occupation was always $\rho_0$. We have an equivalent set of creation and annihilation rates at the other boundary attempting to maintain the density at $\rho_L$. In our overall SPM system, we attempt to ensure that all of these rates are larger than, or at the very least not smaller than,
 the other rates in the system ($1$ and $\lambda$); this should ensure that the occupation of the boundary sites is always approximately $\rho_0$, regardless of what is happening internally.
 Thus, $C_0$ is chosen to be quite large, and the $\lambda$-dependence exists primarily in order to ensure that $\lambda$ does not dominate the boundary rates when it becomes large.
 It is worth noting that with the addition of these boundary conditions, the model as a whole no longer obeys detailed balance, even though the bulk still does in terms of
@@ -268,7 +280,7 @@ is achieved.
     \includegraphics[width=1\linewidth]{bigAccSpectrum}
 \end{center}
     \vspace{-0em}
-\caption{\label{fig:eigenspec} The moduli of the $1024$ eigenvalues of the the transition rate matrix with smallest negative real part, for the SPM for a system of size $8$ as a function of $\lambda$.
+\caption{\label{fig:eigenspec} The moduli of the $1024$ eigenvalues of the transition rate matrix with smallest negative real part, for the SPM defined on a system of size $L=8$, as a function of $\lambda$.
 We have divided the modulus by $\lambda$ before plotting, as this makes the $\mathcal{O}(\lambda)$ trend in the low-lying eigenvalues much more apparent. These eigenvalues correspond to the decay rates
 of the dominant transient states in the system, implying that the time taken for a simulated system to relax
 to its equilibrium state scales as $\lambda^{-1}$. This helps explain the poor convergence of our Monte Carlo simulations the small-$\lambda$ regime.}
@@ -290,22 +302,18 @@ eigenvalues which belong to this grouping scale as $\mathcal{O}(2^{\sim 0.8L})$,
 Unfortunately the space complexity of the sparse transition rate matrix scales as $\mathcal{O}(2^L L)$, whilst the matrix density scales as $\mathcal{O}(2^{-L} L)$.
 This makes computations rapidly become unfeasible for large $L$. The overall time complexity for this process is $\mathcal{O}(2^{2L}L)$.
 In spite of this, we have managed to compute properties such as the steady-state flow rate for systems with sizes as large as $10$ internal lattice sites,
-which are large enough to produce consistent outputs comparable to our other methods, whilst being computationally cheap enough to compute en masse. For example, using a single core on our hardware it typically takes twenty minutes
-to obtain the zero eigenvector for a system with $L=10$. This is relatively quick, and useful if we want to perform calculations with many different parameter configurations.
+which are large enough to produce consistent outputs comparable to our other methods (as shown in Figures~\ref{fig:lambdaScans} and \ref{fig:wideScans}), whilst being computationally cheap enough to compute en masse. For example, using a single core on our hardware it typically takes twenty minutes
+to obtain the zero eigenvector for a system with $L=10$. This allowed us to perform calculations with many different parameter configurations.
 
-We have also performed Monte Carlo simulations using a couple of different methods, which allows us to better probe the large-system regime.
-In the simulations and ``analytics'', we vary $\rho_0$, $\rho_L$ and $\lambda$ to
-address three kinds of questions: how does $\lambda$ affect the flow, how does
-the particle current depend on the driving force $(\rho_0 - \rho_L)/L$, and
-how does the density of particles in the system vary?
+
 
 
 \section{Simulations}
-
+\label{sec:simulations}
 Given access to large-scale computational hardware, it is relatively straightforward to perform Monte Carlo simulations of the SPM, with a little adjustment to the precise implementation of the model. 
-We chose to calculate primarily by using the \texttt{KMCLib}\cite{leetmaa2014kmclib}
+We chose to calculate primarily by using the \texttt{KMCLib}~\cite{leetmaa2014kmclib}
 package, which implements the Kinetic Monte Carlo algorithm
-(essentially the same as the Gillespie algorithm\cite{Gillespie1977,
+(essentially the same as the Gillespie algorithm~\cite{Gillespie1977,
  Bortz1975, Prados1997}) on lattice systems. The codes used are kept
 here~\cite{jHellGitRepo}.
 
@@ -341,9 +349,8 @@ defined quantity.
 \end{center}
 \caption{\label{fig:lambdaScans} The variation of (normalized) flow rate with $\lambda$ in the SPM with fixed boundary densities, on both logarithmic and linear scales.
 Crosses indicate results from the KMC simulations, triangles those from the traditional
-Metropolis-Hastings simulations and the joined circles the current observed by finding the least dominant eigenvector in the transition rate matrix. The dashed lines are the corresponding MFT prediction for the current,
-and color indicates the boundary conditions used. The flow rate is normalized in the sense that it has been multiplied by the system size, so that we can easily compare between different system sizes.
-We do have estimates of the standard error in the flow rate, but as we have an abundance of data points we feel that the spread of the points on the graph illustrates it well enough.
+Metropolis-Hastings simulations and the joined circles the current observed the TRM method. The dashed lines are the corresponding MFT predictions for the current,
+and color indicates the boundary conditions $(\rho_0, \rho_L)$ used. Flow rates are normalized to the driving force, so that we can easily compare different system sizes. The standard error in the flow rate is evident from  the spread of the points on the graph. 
 }
     \vspace{0em}
 \end{figure}
@@ -366,7 +373,7 @@ respectively.
     \includegraphics[width=1\linewidth]{allDataWide}
 \end{center}
 \caption{\label{fig:wideScans} As the logarithmic plot in Fig.~\ref{fig:lambdaScans}, but over a much wider range of $\lambda$ values. Notice how the data series from the two Monte-Carlo
-methods broaden and flatten as $\lambda$ becomes very small; this is because of poor statistics due to the low flow rate.
+methods broaden and flatten as $\lambda$ becomes very small; this is because of poor statistics due to the discrete nature of the particles and the extremely low flow rate.
 }
     \vspace{0em}
 \end{figure}
@@ -376,9 +383,9 @@ We compare an MFT prediction (see~\ref{sec:mftPred}) and the KMC numerical resul
 diffusion constant in Fig.~\ref{fig:diffCoef}. We see that MFT and
 simulation agree well for low stickiness, and both show the symmetry
 about $\rho_M = \frac{2}{3}$. For high stickiness, where the MFT
-prediction gives negative diffusion constant, we actually see low
+prediction gives a negative diffusion constant, we actually see low
 positive values for the current.  It should be noted that the MFT
-assumes that $\rho = \rho_M$ throughout, whereas in the simulations $\rho$ tends to be much higher.
+assumes that $\left\langle \rho \right\rangle = \rho_M$ throughout, whereas in the simulations $\left\langle \rho \right\rangle$ tends to be much higher.
 
 \subsection{Particle Motion During Flow}
 It is instructive to get an overview of how the particles move during
@@ -403,7 +410,7 @@ Time runs along the x-axis, space (1 pixel=1 site) along the y-axis, with graysc
     \vspace{-0em}
 \end{figure}
 
-Interesting structure is visible, the dynamics appearing as a random walk with
+Interesting structure is visible. The dynamics look like a random walk with
 some tendency for particles to clump; over longer timescales the
 diffusive behavior is more evident, with a textured structure
 suggesting characteristic velocity of particles or vacancies through
@@ -432,12 +439,12 @@ $(\lambda$), not the slower rate $(1)$.  That the MFT averages over the
 two is unsurprising (Eq.~\ref{eq:diffCoef}), but for the
 simulation to avoid having a ``rate limiting step'' requires the
 system to fill to sufficient density that there are always particles
-in contact to repel one another.
+in contact to repel one another, which suggests that the system is performing some kind of self-organization.
 
 When $\lambda = \lambda_c\sim0.2$ the simulations show a transition to a different
 behavior, with higher or lower $\lambda_c$ depending on the boundary conditions and the strength of the driving force.
 The current and its fluctuation remains finite, but there a distinctive peak in the particle density fluctuation
-$<(\rho-\bar{\rho})^2$ (Fig.~\ref{fig:DenFluc}).  The width of the peak is independent of the
+$\left \langle (\rho-\bar{\rho})^2 \right \rangle$ (Fig.~\ref{fig:DenFluc}).  The width of the peak is independent of the
 system size 
 which suggests a continuous
 phase transition from the free flowing to the ``stuck'' regime.
@@ -465,12 +472,36 @@ phase transition in the SPM.
 \subsection{Effective diffusion constant}
 
 
-Using boundary conditions $(\rho_0, \rho_L) = (\rho_M + \frac{1}{2}
-\delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ we demonstrate the
+Using boundary conditions
+\begin{equation}
+(\rho_0,\rho_L)=(\rho_M+\frac{1}{2}\delta\rho, \rho_M-\frac{1}{2}\delta\rho) 
+\end{equation}
+we demonstrate the
 dependence of current on boundary density difference and $\lambda$ (Fig.~\ref{fig:constDens}).  This
 shows that the transition to the stuck phase is suppressed by stronger
-driving forces (large $|\delta\rho|$)
-
+driving forces (large $|\delta\rho|$).
+\begin{figure}[h!]
+\vspace{0em}
+\begin{center}
+ \begin{tabular}{c}
+    \includegraphics[width=1\linewidth]{newMftPred} \\
+    \includegraphics[width=1\linewidth]{newFlow}
+    \end{tabular}
+\end{center}
+    \vspace{0em}
+\caption{\label{fig:constDens} Flow rate mean observed when varying the difference $\delta\rho$ between the boundary concentrations
+$(\rho_0, \rho_L) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ and $\lambda$ (The top panel is the MFT prediction
+for the flow rate, whilst bottom shows the observed mean flow rate).
+We chose $\rho_M=\frac{1}{2}$, as this gives us the biggest range of $\delta\rho$ to investigate.
+These calculations were performed with the same run parameters (system length etc) as described in Fig.~\ref{fig:diffCoef}.
+The MFT prediction (top) shows a region of
+negative flow - this occurs at $\zeta > \frac{4}{5}$ ($\lambda < 0.2$) for the weakest
+driving force, with additional stickiness required when the driving
+force increases. The simulation exhibits close to zero flow in that
+region (bottom).  Away from this region, the MFT and
+the simulation are in good agreement.
+}
+\end{figure}
 We use the limit of small $\delta\rho$ to calculate the effective
 diffusion constant (Fig.~\ref{fig:diffCoef}).  This is normalized to 1 in the case of
 $\lambda=1$, which is just SEP.  The $\rho_M=0$ limit corresponds to
@@ -479,7 +510,21 @@ free flow of particles, so the diffusion constant here does to
 $D\rightarrow\lambda$.  One might expect a monotonic variation between
 these limits, but surprisingly the simulations show that there is
 always an extremal value for $D$ close to $\rho_M=2/3$: this is a
-minimum for $\lambda<1$ and a maximum for $\lambda>1$
+minimum for $\lambda<1$ and a maximum for $\lambda>1$.
+\begin{figure}[h!]
+\vspace{1em}
+\begin{center}
+ \begin{tabular}{c}
+    \includegraphics[width=1\linewidth]{newAnalFlow} \\
+    \includegraphics[width=1\linewidth]{newDataFlow}
+    \end{tabular}
+\end{center}
+\caption{\label{fig:diffCoef}
+Comparison of effective diffusion coefficient $D$ in the MFT (top) and in direct simulation (bottom) as a function of density and stickiness.
+The white region is where the MFT gives negative diffusion. The simulations used 124 sites averaged over $\sim 10^9$ steps at each of $12 \times 24 \times 16 $ $(\lambda, \rho_M, \delta \rho)$ combinations.  
+Full details in the supplementary materials.}
+    \vspace{-2em}
+\end{figure}
 
 
 \subsection{Self-organized density}
@@ -497,7 +542,7 @@ transients.
 In SEP, ($\lambda=1$) the density varies linearly across the system
 from $\rho_0$ to $\rho_L$, as one expects for a diffusion process.
 However, for sticky particles, $\lambda<1$, the density rises sharply
-near to the boundary, then has a linear profile about a value higher
+near to the boundary, then has a linear profile anchored about a value higher
 than $\rho_M$  (Fig.~\ref{fig:densProfiles}). 
 One might view this as particles being sucked into the
 system to lower their Hamiltonian Energy, but such a notion can be
@@ -532,7 +577,7 @@ for extreme low and high $\lambda$ respectively.}
 
 \subsection{Review of the simulations}
 
-Simulation of the sticky particle model reveals a number of curious
+MC simulation and TRM analysis of the sticky particle model reveals a number of curious
 and unexpected features which have no equivalent in either SEP or the
 1D Ising model.
 
@@ -545,8 +590,9 @@ The effective diffusion constant has an extremal value at
   intermediate boundary density.
 \end{itemize}
 
-To get further understanding of these behaviors, we tackle the system
-analytically, using mean field theory and transition rate matrices.
+To obtain further understanding of these behaviors, we tackle the system
+analytically, using mean field theory. Although MFT isn't a particularly
+sophisticated technique, it does give us a benchmark which we can compare to our other methods.
 
 \section{Mean Field Theory for Flow} \label{sec:mftPred}
   
@@ -613,7 +659,7 @@ having dropped the higher-order terms.  From this we can identify the
 flow $J(x)$ as the term in the curly brackets, and define a mean field
 diffusion constant (see Fig.\ref{fig:diffCoef}):
 
-\begin{equation} D_{MFT}(\zeta,\rho) =  \frac{a^2}{\tau_0} \left[ 1 - \zeta \rho\left(4-3\rho\right) \right ] \label{eq:diffCoef} \end{equation}
+\begin{equation} D(\zeta,\rho) =  \frac{a^2}{\tau_0} \left[ 1 - \zeta \rho\left(4-3\rho\right) \right ] \label{eq:diffCoef} \end{equation}
 
 We note that the MFT diffusion constant can become negative. 
 The density at
@@ -681,7 +727,7 @@ will not vary linearly across the system.
 
 \subsection{Dirichlet Boundary Conditions}
 
-The constants $x_0$ and $J_0$ are the boundary conditions for the
+The constants $x_0$ and $J_0$ relate to the boundary conditions for the
 flow, but they need not correspond to a physically-realizable
 situation.  For driven systems it is more convenient to consider fixing
 the density at each end. 
@@ -699,7 +745,7 @@ good, except for the region where the MFT predicts negative flow.
 
 \subsection{Interpretation of MFT}
 
-The mean field theory enables us to predict flow behavior of the MFT.
+The mean field theory enables us to predict flow behavior of the SPM.
 It recovers well-known limiting cases such as SEP ($\lambda=0$),
 however at high stickiness ($\lambda<0.25$) it predicts its own
 demise, with unphysical negative diffusion constants and by having
@@ -708,12 +754,13 @@ meaning that the MFT does not give a unique density
 profile.  This breakdown of the MFT corresponds to the transition to
 slow flow observed in the simulation.
 
+
 In some
 conditions MFT predicts densities greater than 1.  One might guess that when the
 MFT offers two possible values for the density, it will correspond to
 a phase separation in the actual system. Furthermore,
 the MFT prediction of a maximum diffusion constant at a density of
-$\rho=2/3$ suggests that this value of $\rho$ might be favoured for
+$\rho=2/3$ suggests that this value of $\rho$ might be favored for
 strongly driven flows.
 
 A curious feature of the MFT diffusion (Fig.~\ref{fig:diffCoef}) is
@@ -725,60 +772,19 @@ simulation (Fig.\ref{fig:flowPatterns}) where blocks of high and low
 density are evident, as well as the oscillatory behavior near the boundaries at high $\lambda$ (Fig.~\ref{fig:densProfiles}). 
 
 Regarding the phase transition, we should note that we only have an
-MFT prediction for the flow rate as a function of $\lambda$, since
-$\rho(x)$ stops being unique when $\lambda$ drops below $\frac{1}{4}$,
-and so the MFT lacks predictive power. For low-stickiness, when
-$\lambda>\frac{1}{4}$, the MFT is in very good agreement with the
+MFT prediction for the flow rate for $\lambda>\frac{1}{4}$, since
+$\rho(x)$ stops being unique when $\lambda$ drops below $\frac{1}{4}$. For higher $\lambda$, the MFT is broadly in good agreement with the
 simulations, and this continues as $\lambda$ stretches into the
 thousands, where the mean flow varies as $\mathcal{O}(\lambda^1)$.
 
 
-
-\begin{figure}[h!]
-\vspace{0em}
-\begin{center}
- \begin{tabular}{c}
-    \includegraphics[width=1\linewidth]{newMftPred} \\
-    \includegraphics[width=1\linewidth]{newFlow}
-    \end{tabular}
-\end{center}
-    \vspace{0em}
-\caption{\label{fig:constDens} Flow rate mean observed when varying the difference $\delta\rho$ between the boundary concentrations
-$(\rho_0, \rho_L) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ and $\lambda$ (The top panel is the MFT prediction
-for the flow rate, whilst bottom shows the observed mean flow rate).
-We chose $\rho_M=\frac{1}{2}$, as this gives us the biggest range of $\delta\rho$ to investigate.
-These calculations were performed with the same run parameters (system length etc) as described in Fig.~\ref{fig:diffCoef}.
-The MFT prediction (top) shows a region of
-negative flow - this occurs at $\zeta > \frac{4}{5}$ ($\lambda < 0.2$) for the weakest
-driving force, with additional stickiness required when the driving
-force increases. The simulation exhibits close to zero flow in that
-region (bottom).  Away from this region, the MFT and
-the simulation are in good agreement.
-}
-\end{figure}
-
-The MFT prediction for the mean flow is again a good fit until $\lambda$ becomes sufficiently small,
-when the simulation show no evidence of negative diffusion; rather the flow becomes critically slow for very sticky particles.
+The MFT prediction for the mean flow continues to be a good fit until $\lambda$ becomes sufficiently small,
+when the simulations show no evidence of negative diffusion; rather the flow becomes critically slow for very sticky particles.
 The higher moments of the simulated flow (e.g. variance) do not show peaks, indicating that hard transitions are not occurring.
 Finally, the  simulated density is very close to the average of the boundary densities until $\lambda$ drops below 1/4, at which point the system fills.
 
-Continuing to specify the boundary densities to be $(\rho_0, \rho_L) = (\rho_M + \frac{1}{2} \delta\rho, \rho_M - \frac{1}{2} \delta\rho)$ for some given $\rho_M$, we can keep $\delta\rho$ relatively small, so that $J$ varies approximately
-linearly with $\delta\rho$; thus if we calculate $J$ for a series of small $\delta \rho$, we can perform linear regression to find $D_\mathrm{Eff}=\partDeriv{J}{\delta\rho}\big|_{\delta\rho=0}$, the effective diffusion coefficient.
-Computing this for different $(\rho_M, \lambda)$ combinations yields results that can be compared with Eq.~\ref{eq:MFTflow}.
-\begin{figure}[h!]
-\vspace{1em}
-\begin{center}
- \begin{tabular}{c}
-    \includegraphics[width=1\linewidth]{newAnalFlow} \\
-    \includegraphics[width=1\linewidth]{newDataFlow}
-    \end{tabular}
-\end{center}
-\caption{\label{fig:diffCoef}
-Comparison of effective diffusion coefficient $D$ in the MFT (top) and in direct simulation (bottom) as a function of density and stickiness.
-The white region is where the MFT gives negative diffusion. The simulations used 124 sites averaged over $\sim 10^9$ steps at each of $12 \times 24 \times 16 $ $(\lambda, \rho_M, \delta \rho)$ combinations.  
-Full details in the supplementary materials.}
-    \vspace{-2em}
-\end{figure}
+
+
 
 
 
@@ -787,24 +793,23 @@ Full details in the supplementary materials.}
 
 The sticky particle model is the combination of the Ising model with
 symmetric exclusion process.  It arguably represents the simplest
-possible flow model for interacting particles is a homogeneous medium.
+possible flow model for interacting particles in a homogeneous medium.
 
 Although only the particles exhibit
-stickiness, the analytics suggest a symmetry between vacancy-type and
+stickiness, the MFT suggests a symmetry between vacancy-type and
 particle-type flow at density of $\frac{2}{3}$, which is observed in
-the simulation.  The flow exhibits a foamy pattern with intermediate
-time-and-space correlations.  The continuum solution MFT is a good
-predictor of the bulk flow behavior of the SPM.  The negative
+the MC simulations and TRM calculations.  The flow exhibits a foamy pattern with time-and-space correlations of intermediate size.  The continuum limit solution to the MFT is a good
+predictor of the bulk flow behavior of the SPM for high $\lambda$.  The negative
 diffusion constant found in MFT at high stickiness indicates that the
-assumption of homogeneous density break down: thus the MFT predicts
+assumption of homogeneous density breaks down: thus the MFT predicts
 its own demise, and this agrees well with our numerics.
 
 Above a certain level of stickiness, the model exhibits a
 nonequilibrium phase transition to a slow-flowing phase.  The required
 stickiness for the transition is dependent on the strength of the
-driving force - a strongly driven system inhibits the flow.  Mean field
+driving force - large differences between the boundary densities push the transition down to lower $\lambda$.  Mean field
 analysis, together with visualization of the flowing system, suggest
-that the transition comes when the density becomes inhomogeneous.
+that the transition occurs when the density becomes inhomogeneous.
 
 A number of questions remain open. Is there a physical principle which
 determines the density?  Why does the strongly repelling system
