@@ -147,7 +147,8 @@ our numerics against, and point us in the direction of interesting behaviours wh
 relative to our scale of interest), as that should predict the dominant behaviour on the macroscopic scale.
 
 
-\subsection{Lattice MFT Derivation}
+\subsection{Lattice MFT Derivation} 
+\label{sec:latticeMFT}
 
 As usual, in an MFT approximation, we will be saying that the equal-time probability of the $(i+1)^\mathrm{th}$ site being occupied is independent of the probability that the $i\mathrm{th}$ site is occupied.
 More formally, let us denote the mean occupation of the $i^\mathrm{th}$ site at time $t$ by $\rho_i (t)$. When we invoke the mean-field approximation, we say that the mean occupations of sites at equal times are independent; thus,
@@ -464,7 +465,7 @@ model could be constructed in higher dimensions. Recall that the SPM in one dime
 \end{itemize}
 In addition we also proved that (boundary conditions aside) the SPM also obeys detailed balance. This was not put into the model intentionally, but emerges naturally as the space of possible one-dimensional
 models which are local and symmetric is very small.
-Let us consider only square lattices in 2d, for simplicity. If we attempt to build a model in two dimensions which is symmetric and local, (i.e. obeys all the point group symmetries of the underlying lattice, and whose transitions
+Let us consider only square lattices in $n$ dimensions, for simplicity. If we attempt to build a model in two dimensions which is symmetric and local, (i.e. obeys all the point group symmetries of the underlying lattice, and whose transitions
 are only influenced by the immediate environment around a particle), we find that we now have more freedom in the model construction than we did in one dimension. For example, in two dimensions a moving particle might be leaving
 any one of six possible unique local configurations, as shown in Fig.~\ref{fig:2dTransitions}, and so such a model would need to be parametrised by 5 rates, once we take time dilation symmetry into account. The number of possible
 symmetric local hopping models only grows greater in higher dimensions, and this makes it very difficult to analyse the parameter space of such models using numerics. Therefore, we have chosen to investigate most closely those models
@@ -484,6 +485,7 @@ When investigating higher-dimensional analogues of the SPM, we initially conside
 balance condition and see how much freedom that gave the model. In the end, after some exceedingly tedious casework, we found that in order to obey detailed balance particles needed to move with transition rate
 specified by the following theorem, which applies in arbitrary numbers of dimensions:
 \begin{theorem}
+\label{thm:ndSPM}
  Any processes defined on an $n$-dimensional square lattice in which particles swap places with vacancies and whose transition rates $\sigma(\xi_1 \rightarrow \xi_2)$
  \begin{itemize}
   \item are symmetric (invariant under rotations, reflections and translations of the underlying lattice),
@@ -567,5 +569,27 @@ $p \lambda^{m+1}$, and so
 
 \end{proof}
 
+Theorem~\ref{thm:ndSPM} implies that an $n$-dimensional exclusion model which is symmetric, local and obeys detailed balance must have an energy (defining the equilibrium distribution)
+which is proportional to the number of particle-particle adjacencies in the system; this
+therefore limits energy to being contained in the ``bond'' between adjacent particles, leaving us only with the option of a simple additive bond energy. This means that in order to have a more complicated energy, our only option is to either break symmetry or have a
+system of rates which considers more than the immediate environment of a particle which is
+attempting to move, for example considering the environment to which the particle is going.
 
+The advantage of possessing this result is that it highlights that in $n$-dimensions
+there is again a special, simple one-parameter model which has many symmetry properties and
+is therefore a good first target for study. As such, we will perform a mean-field analysis
+of the $n$-dimensional SPM, to give us analytical results to compare to later Monte-Carlo numerics.
+
+\subsubsection{MFT of the $n$-Dimensional SPM}
+
+In the same manner as in Sec.~\ref{sec:latticeMFT}, we will let $\rho_\chi (t)$ be the mean occupation of the $\chi^\mathrm{th}$ site
+at time $t$, where $\chi \in \mathbb{Z}^n$. Let the unit vector in the $i^\mathrm{th}$
+direction be $e_i \in \mathbb{Z}^n$, so that $\rho_{\chi+e_i}$ refers to a lattice site adjacent to the $\chi^\mathrm{th}$ and offset in the $i^\mathrm{th}$ direction. Then,
+making the normal MFT assumption (that means of products are products of means),
+we can say that the rate at which a particle moves from site $\chi$ to site $\chi+e_i$ is
+\begin{align}
+ \sigma_{\chi \rightarrow \chi + e_i} = &\rho_\chi (1 - \rho_{\chi+e_i}) \left[ \left( 1- \rho_{\chi-e_i} \right) + \lambda \rho_{\chi-e_i} \right] \\
+ \times &\prod_{j \ne i} \left[  (1-\rho_{\chi+e_j})(1-\rho_{\chi-e_j}) + \lambda\rho_{\chi+e_j}(1-\rho_{\chi-e_j}) + \lambda \rho_{\chi-e_j}(1-\rho_{\chi+e_j}) + \lambda^2 \rho_{\chi+e_j}\rho_{\chi-e_j}
+   \right]
+\end{align}
 
