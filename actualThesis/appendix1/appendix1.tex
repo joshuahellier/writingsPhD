@@ -96,3 +96,34 @@ with open("corrFnResults.m", 'w') as f:
         f.write("{"+str(n)+"/"+str(L)+", "+genCorrFn(L, n)+"}, ")
     f.write(genCorrFn(L, L-2) + "}")
 \end{lstlisting}
+
+\section{$n$-Dimensional Continuum-Limit MFT \label{sec:mftCode}}
+
+This Mathematica script computes the current which flows between two adjacent sites
+(offset in the $e_1$ direction) in the MFT of the $n$-dimensional SPM; due to symmetry, this tells us
+what happens in an arbitrary direction. In this case $n$ is set to $3$,
+but it still works if changed to any positive number.
+
+\begin{lstlisting}[language=Mathematica]
+n = 3;
+i = 1;
+zero = 0*UnitVector[n, 1];
+e[i_] := UnitVector[n, i];
+Hess = Table[
+   Piecewise[{{d2p[j, i], j > i}}, d2p[i, j]], {i, 1, n}, {j, 1, n}];
+Jacob = Table[dp[i], {i, 1, n}];
+p[x_] := p0 + Jacob.x + 1/2 x.(Hess.x);
+rightJ = 1/
+    t0 (1 - p[1/2 a e[i]]) p[-(1/2) a e[i]] (1 - 
+     z p[-(3/2) a e[i]]) Product[
+    Piecewise[{{(1 - z p[-a e[j] - 1/2 a e[i]]) (1 - 
+          z p[a e[j] - 1/2 a e[i]]), j != i}}, 1], {j, 1, n}];
+leftJ = 1/t0 (1 - p[-(1/2) a e[i]]) p[
+    1/2 a e[i]] (1 - z p[3/2 a e[i]]) Product[
+    Piecewise[{{(1 - z p[-a e[j] + 1/2 a e[i]]) (1 - 
+          z p[a e[j] + 1/2 a e[i]]), j != i}}, 1], {j, 1, n}];
+fullJ = rightJ - leftJ + O[a]^3;
+FullSimplify[fullJ]
+\end{lstlisting}
+
+

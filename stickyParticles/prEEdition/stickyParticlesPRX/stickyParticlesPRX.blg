@@ -1,0 +1,69 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: stickyParticlesPRX.aux
+The style file: apsrev4-1.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: stickyParticlesPRXNotes.bib
+Database file #2: stickyBib.bib
+control{REVTEX41Control}, control.key{N/A}, control.author{N/A}, control.editor{N/A}, control.title{N/A}, control.pages{N/A}, control.year{N/A}, control.eprint{N/A}, 
+control{apsrev41Control}, control.key{N/A}, control.author{00}, control.editor{1}, control.title{0}, control.pages{1}, control.year{0}, control.eprint{N/A}, 
+Warning--jnrlst (dependency: not reversed) set 1
+Warning--dotless (dependency: not initials) set 1
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+merlin.mbs apsrev4-1.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
+Control: key (0) 
+Control: author (0) dotless jnrlst
+Control: editor formatted (1) identically to author
+Control: production of article title (0) allowed
+Control: page (1) range
+Control: year (0) verbatim
+Control: production of eprint (0) enabled
+Warning--missing journal in jHellGitRepo
+You've used 38 entries,
+            5847 wiz_defined-function locations,
+            1923 strings with 22694 characters,
+and the built_in function-call counts, 37917 in all, are:
+= -- 2631
+> -- 849
+< -- 247
++ -- 272
+- -- 202
+* -- 5790
+:= -- 3790
+add.period$ -- 71
+call.type$ -- 38
+change.case$ -- 179
+chr.to.int$ -- 48
+cite$ -- 39
+duplicate$ -- 3611
+empty$ -- 2877
+format.name$ -- 476
+if$ -- 7372
+int.to.chr$ -- 1
+int.to.str$ -- 46
+missing$ -- 472
+newline$ -- 160
+num.names$ -- 108
+pop$ -- 1405
+preamble$ -- 1
+purify$ -- 144
+quote$ -- 0
+skip$ -- 1367
+stack$ -- 0
+substring$ -- 1214
+swap$ -- 3401
+text.length$ -- 92
+text.prefix$ -- 0
+top$ -- 10
+type$ -- 497
+warning$ -- 3
+while$ -- 131
+width$ -- 0
+write$ -- 373
+(There were 3 warnings)
