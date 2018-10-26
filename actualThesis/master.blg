@@ -3,6 +3,7 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: master.aux
 A level-1 auxiliary file: intro/intro.aux
 A level-1 auxiliary file: analytics/analytics.aux
+A level-1 auxiliary file: TRM/TRM.aux
 A level-1 auxiliary file: numerics/numerics.aux
 A level-1 auxiliary file: conclusions/conclusions.aux
 A level-1 auxiliary file: appendix1/appendix1.aux
@@ -11,7 +12,7 @@ Database file #1: overallBib.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 You've used 5 entries,
             3202 wiz_defined-function locations,
-            1124 strings with 13285 characters,
+            1125 strings with 13296 characters,
 and the built_in function-call counts, 3759 in all, are:
 = -- 431
 > -- 84

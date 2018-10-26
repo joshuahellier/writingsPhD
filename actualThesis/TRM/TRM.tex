@@ -1,0 +1,50 @@
+\chapter{Transition Rate Matrix Analysis} 
+\label{sec:transRateChapter}
+Now that we have MFT predictions about the relationship between density difference and
+current in the SPM, it would be good to try to investigate their validity. In Chapter~\ref{sec:numerics} we will use Monte-Carlo methods to do this in $1$d and $2$d, but in this chapter we will restrict our attention to $1$d.
+
+\section{The Transition Rate Operator for the SPM}
+The SPM is a continuous-time Markov Process, which describes continual transitions between states
+with transition rates depending only upon the current state. As such, if we call the total space of
+states $\Xi$ then the probability distribution $P: \Xi \times \mathbb{R} \rightarrow  \mathbb{R}$ should obey a \textbf{master equation}
+\begin{equation}
+ \partDeriv{P(\xi, t)}{t} = \mathcal{A} P(\xi, t),
+\end{equation}
+where $\mathcal{A}:\Xi \rightarrow \Xi$ is the \textbf{transition rate operator}
+or TRO. Parametrising $\mathcal{A}$ via 
+\begin{equation}
+ (\mathcal{A}f)(u) = \int_\Xi \! \! \mathrm{d}  \xi \ \sigma (u, \xi) f(\xi)
+\end{equation}
+puts it in a more familiar, cross-section notation. To conserve finite probability mass
+we demand that $\sigma$ satisfies
+\begin{equation}
+ \forall \xi \in \Xi, \sigma (\xi , \xi) \le 0 
+\end{equation}
+and
+\begin{equation}
+ \forall \xi_1 , \xi_2 \in \Xi : \xi_1 \ne \xi_2 \sigma (\xi_1 , \xi_2) \ge 0 ,
+\end{equation}
+as well as the constraint
+\begin{equation}
+ 
+\end{equation}
+
+
+\section{Forming the TRM for Finite Systems}
+About the algorithm to construct the sparse TRM; how it's formed and all that stuff.
+
+\section{The Eigenspectrum of the TRM}
+
+\subsection{The Computation of the TRM Eigenspectrum}
+
+\subsection{The Structure of the TRM Eigenspectrum}
+
+\subsection{Current and Density in the Steady State}
+
+\section{Time-Dependent Properties of Small SPM Systems}
+
+\subsection{The Relaxation Time for the SPM}
+
+\subsection{Autocorrelation Functions for the TRM}
+
+\section{Conclusions}
