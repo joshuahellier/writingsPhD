@@ -4,38 +4,274 @@ Now that we have MFT predictions about the relationship between density differen
 current in the SPM, it would be good to try to investigate their validity. In Chapter~\ref{sec:numerics} we will use Monte-Carlo methods to do this in $1$d and $2$d, but in this chapter we will restrict our attention to $1$d.
 
 \section{The Transition Rate Operator for the SPM}
-The SPM is a continuous-time Markov Process, which describes continual transitions between states
+The SPM is an autonomous continuous-time Markov Process, which describes continual transitions between states
 with transition rates depending only upon the current state. As such, if we call the total space of
 states $\Xi$ then the probability distribution $P: \Xi \times \mathbb{R} \rightarrow  \mathbb{R}$ should obey a \textbf{master equation}
-\begin{equation}
+\begin{equation} \label{eq:masterEq}
  \partDeriv{P(\xi, t)}{t} = \mathcal{A} P(\xi, t),
 \end{equation}
 where $\mathcal{A}:\Xi \rightarrow \Xi$ is the \textbf{transition rate operator}
-or TRO. Parametrising $\mathcal{A}$ via 
+or TRO. Note that I am going to be using column vectors for probabilities rather than
+row vectors (as many in the probability community do) because it is what I am used to.
+Parametrising $\mathcal{A}$ via 
 \begin{equation}
  (\mathcal{A}f)(u) = \int_\Xi \! \! \mathrm{d}  \xi \ \sigma (u, \xi) f(\xi)
 \end{equation}
-puts it in a more familiar, cross-section notation. To conserve finite probability mass
-we demand that $\sigma$ satisfies
+puts it in a more familiar, transport equation-style notation:
 \begin{equation}
- \forall \xi \in \Xi, \sigma (\xi , \xi) \le 0 
+ \partDeriv{P(\xi, t)}{t} = \int_\Xi \! \! \mathrm{d}  u \ \sigma (\xi, u) P(u, t)
+\end{equation}
+
+We demand that $\sigma$ satisfies
+\begin{equation}
+ \forall \xi \in \Xi, \ \sigma (\xi , \xi) \le 0 
 \end{equation}
 and
 \begin{equation}
- \forall \xi_1 , \xi_2 \in \Xi : \xi_1 \ne \xi_2 \sigma (\xi_1 , \xi_2) \ge 0 ,
+ \forall \xi_1 , \xi_2 \in \Xi : \xi_1 \ne \xi_2 , \ \sigma (\xi_1 , \xi_2) \ge 0 ,
 \end{equation}
 as well as the constraint
 \begin{equation}
- 
+ \forall u \in \Xi , \ \int_\Xi \! \! \mathrm{d}  \xi \ \sigma (\xi, u) = 0.
+\end{equation}
+The last constraint implies that
+\begin{equation}
+ \int_\Xi \! \! \mathrm{d}  \xi \partDeriv{P(\xi, t)}{t} = \int_\Xi \! \! \mathrm{d}  u \ P(u, t) \left[ \int_\Xi \! \! \mathrm{d}  \xi \ \sigma (\xi, u) \right] = 0
+\end{equation}
+regardless of the structure of $P$, which is our probability conservation equation.
+
+The formal (forward-time) solution to Eq.~\ref{eq:masterEq} is given by
+\begin{equation}
+ P(\xi, t) = e^{(t-t_0)\mathcal{A}}P_0,
+\end{equation}
+where $t_0$ is some initial time, $P_0$ is the starting distribution, and the operator
+exponential is defined by its Taylor expansion, which should converge fine for bounded
+$\mathcal{A}$, satisfied for the finite-system SPM. As 
+$e^{(t-t_0)\mathcal{A}}$ and $\mathcal{A}$ share eigenvectors, we see that the
+eigenstructure of $\mathcal{A}$ is something well worth investigating, as it should
+give us information about the time-evolution of the system. An important thing to point
+out is that $\mathcal{A}$ does not in general have orthogonal eigenvectors because it is
+not in general symmetric,
+and so we cannot normally diagonalise it using orthogonal transformations. This means that modes do not ``decouple'' in the way that states do in the 
+Schr\"{o}dinger equation, and we instead have to deal with an \textbf{adjoint system}.
+
+Luckily, when it comes to the analysis of steady states, there are a few results that
+can help us. If we consider the operator $\mathcal{G}_T = e^{T\mathcal{A}}$ (in other words, the 
+\textbf{propagator} for a period of time $T$), it is pretty easy to see that this is
+a standard Markov Operator, as we are essentially reversing the limiting process
+we would perform in order to define a continuous time Markov process as a limit of
+a discrete time one. If we assume that $\Xi$ is finite and $\mathcal{G}_T$ is irreducible then as
+a Markov operator it must have a  a unique eigenvector with corresponding eigenvalue $1$.
+All other eigenvalues must have modulus between $0$ and $1$. Therefore, $\mathcal{A}$
+must share that same unique eigenvector with associated eigenvalue $0$, and its other
+eigenvectors must have negative real part. In other words, the system must have a single
+steady state probability distribution, which it always relaxes towards exponentially
+quickly, with a rate determined by the nonzero eigenvalue of $\mathcal{A}$ with real
+part closest to $0$.
+
+Of course, for such finite-state systems (such as the SPM on a finite domain) the integrals become sums, and $\sigma$ a matrix, $Q$. In such systems, we can arrange to have some labelling scheme which uniquely relates system states to natural numbers, and therefore
+relates states to basis vectors in a vector space. In the SPM, a site is either full or empty, which means that there is a natural mapping between states and natural numbers based upon binary representation;
+a string of $1$s and $0$s can be associated with a natural number as well as a configuration of particles and vacancies.
+
+\subsection{A Small Worked Example}
+
+As a concrete example, let us consider the SPM on a cyclic domain of length $3$. There
+are $2^3$ possible combinations, and so $8$ possible states: $000$, $001$, and so forth.
+The transition rate matrix describing this system is:
+\begin{equation}
+ Q =
+ \begin{bmatrix}
+0  &   &   &           &   &   &   &   \\
+   &-2 & 1 &           & 1 &   &   &   \\
+   & 1 &-2 &           & 1 &   &   &   \\
+   &   &   & -2\lambda &   &  \lambda &  \lambda &   \\
+   & 1 & 1 &           & -2&   &   &   \\
+   &   &   &  \lambda    &   &  -2\lambda & \lambda  &   \\
+   &   &   &  \lambda  &    & \lambda  & -2 \lambda &   \\
+   &   &   &           &   &   &   & 0  \\
+\end{bmatrix},
+\end{equation}
+where we have omitted most of the zero entries for clarity.
+An alert observer will note that $Q$ is reducible, and so by permuting the basis vectors
+we can rearrange the matrix into block form:
+\begin{equation}
+ Q ' = 
+ \begin{bmatrix}
+-2  & 1 & 1 &           &   &   &   &   \\
+ 1 &-2 & 1 &           &  &   &   &   \\
+ 1 & 1 &-2 &           &  &   &   &   \\
+   &   &   & -2\lambda & \lambda &  \lambda &   &    \\
+   &   &   &      \lambda& -2\lambda   &  \lambda &   \\
+   &   &   &  \lambda   &   -2\lambda & \lambda & &   \\
+   &   &   &       &  &  & 0 &  \\
+   &   &   &           &   &   &   & 0  \\
+\end{bmatrix}.
 \end{equation}
 
+According to our recipe, to learn about the solutions to Eq.~\ref{eq:masterEq} 
+in this case, we need to know about the eigendecomposition of $Q$. 
+The block structure of $Q'$ means that there are $4$ 
+distinct parts of the state space, between which there are no transitions; this 
+partitioning corresponds to the fact that particle number is conserved on the ring.
+Two of these
+sectors correspond to the full and empty states, and their dynamics are completely
+trivial, in the sense that the state space is $1$d and there are no dynamics, as the
+particles/vacancies have nowhere to go!
+The remaining sectors correspond to the situation where there is one particle or one 
+vacancy. The matrix is symmetric, meaning that its eigenvalues are real,
+and we find that both nontrivial blocks can be diagonalised to form a multiple of
+\begin{equation}
+ \begin{bmatrix}
+  0  &  &  \\
+     &-3&  \\
+     &  &-3\\
+ \end{bmatrix},
+\end{equation}
+with eigenvectors $[1, 1, 1]^{\mathrm{T}}$, $[-1, 0, 1]^{\mathrm{T}}$ and
+$[-1, 1, 0]^{\mathrm{T}}$ respectively, the latter two forming a degenerate eigenspace.
 
-\section{Forming the TRM for Finite Systems}
-About the algorithm to construct the sparse TRM; how it's formed and all that stuff.
+In this particular example then, we find that there $4$ steady states:
+\begin{itemize}
+ \item All slots full,
+ \item All slots empty,
+ \item One particle present, with equal chance to be in any particular position,
+ \item The same but with a vacancy instead of a particle.
+\end{itemize}
+Whilst the first 2 cases are trivial (one-dimensional probability spaces), in the other
+two cases we relax towards the steady state with rates $3$ and $3\lambda$ respectively.
+In this example, the TRM was actually symmetric, and so all the eigenvalues were real.
+It was also highly reducible, due to the strict constraints imposed by the particle
+conservation law. When we have boundary conditions which permit the creation and
+destruction of particles, that will change; we will consider that situation now.
+
+\section{Forming the TRM for Systems with Dirichlet Boundary Conditions}
+
+\subsection{Dirichlet Boundary Conditions}
+In Chap.~\ref{sec:analChap} we made an MFT for the SPM in $1$-dimension, and when 
+investigating steady states used Dirichlet boundary conditions when we needed them.
+In particular, we had a system of length $L$ and sought solutions in which the system
+density was pinned at $\rho_0$ at $x=0$ and $\rho_L$ at $x=L$. 
+
+We would like to do a similar thing for the non-MFT SPM. An exact analogue of the situation
+does not exist, as occupation number is not defined \textit{a priori} in a Markov process, but merely emerges as a result of the rate prescribed.The closest imitation to it
+we can get is by allowing particles to be created and destroyed in boundary regions at
+either end of a chain, and then try to set these rates so that the time-averaged occupation probability in the end sites are $\rho_0$ and $\rho_L$ respectively. Note
+that this is a little more involved than simply loading and unloading particles as
+one does in ASEP, as
+\begin{itemize}
+ \item loading and unloading really doesn't simulate the boundary condition we are looking for, and
+ \item we actually need to consider a two-site boundary layer attached to each end, because the internal dynamics of the particles depend upon their immediate environment.
+\end{itemize}
+To simulate a boundary which is attached to a reservoir with occupation $\rho$, we allow
+particles to appear in empty boundary sites with rate $B_0 \sqrt{\frac{\rho}{1-\rho}}$
+and to disappear from full ones with rate $B_0 \sqrt{\frac{1-\rho}{\rho}}$,
+for some positive $B_0$. If we switch
+off all other dynamics and consider this in isolation, we would have a bunch of
+decoupled two-state systems. Writing a TRM for this with the first basis vector being
+the empty state and the second the full one, we get
+\begin{equation}
+ Q = 
+ \begin{bmatrix}
+  - B_0 \sqrt{\frac{\rho}{1-\rho}} & B_0 \sqrt{\frac{1-\rho}{\rho}} \\
+  B_0 \sqrt{\frac{\rho}{1-\rho}} & -B_0 \sqrt{\frac{1-\rho}{\rho}} \\
+ \end{bmatrix}.
+\end{equation}
+There is of course a zero eigenvalue, which corresponds to a stationary distribution
+$ [1-\rho, \rho]^\mathrm{T} $, precisely as desired.
+
+In order to simulate attaching a reservoir with particle density $\rho$, we apply
+the creation and annihilation rates above to the outermost two sites in our lattice.
+The outermost site only performs these operations. The inner boundary site undergoes
+these creation and annihilation processes, as well as the normal dynamics of the SPM;
+thus, particles will move in and out of it as normal, and when the outermost site's
+occupation is required to determine the transition rate for a particle moving inward,
+that information is available. One could possibly eliminate the need for the outermost
+boundary site by averaging over occupations, however we have chosen not to do this for
+consistency with out Monte-Carlo calculations in Chap.~\ref{sec:numerics}.
+
+Observant readers will notice that by using these creation and annihilation rates we
+are left with a free variable, $B_0$. This controls the ratio of the creation and
+annihilation rates to the internal dynamical rates $1$ and $\lambda$. In general
+when we're trying to simulate an adjacent reservoir we want the boundary motion to be
+``fast'' compared to the internal dynamics, and so $B_0$ may be regarded as a
+regularisation parameter; any choice of $B_0$ should be good so long as
+the creation and annihilation rates sufficiently dominate both $1$ and $\lambda$.
+In practise, in our larger-scale calculations we  used
+\begin{equation}
+ B_0 = b(1+\lambda),
+\end{equation}
+with $b$ set to, $100$ or $1000$.
+
+\subsection{Formation of the TRM in Sparse Format}
+
+The smallest SPM system with boundary conditions implemented using the above method is
+of size $L=4$, and so has a state space of dimension $2^4=16$. This already a bit too large for us to seriously consider solving analytically. Instead, let us try to develop
+a method for the numerical analysis of TRMs of arbitrary size.
+
+The important thing to note about transition rate matrices for local lattice models
+such as the SPM is that whilst the TRM itself grows very aggressively with system size, the TRM is generally extremely sparse.
+The state space dimension grows as $2^L$, and the TRM dimension therefore grows as
+$2^L \times 2^L$. However, a state containing $N$ particles only has transitions to
+\begin{itemize}
+ \item states which differ from the current state by one particle move, of which there
+ are $\mathcal{O}(N)$, and
+ \item states which differ from the current state by a single particle creation or
+ annihilation, of which there are $\mathcal{O}(4)$.
+\end{itemize}
+Thus, as $N \le L$ the number of nonzero entries in the matrix is 
+$\mathcal{O}(2^{L}L)$,
+which is not a particularly tight bound. Therefore, the overall density of the TRM
+is $\mathcal{O}(2^{-L}L)$. Given that there already exist a great many efficient
+numerical routines for sparse linear algebra operations, there exists the possibility
+that we could use this to solve the SPM on a finite domain for small systems
+``exactly'' (or at least, up to some nominated numerical tolerance).
+
+To make use of this, we need to assemble the TRM in a suitable sparse format.
+We have written a Python code which does this. The script itself is stored <decide how 
+precisely>, but the gist of the algorithm is to simply run through all possible states,
+document all the transitions they can perform, and store the resulting entries in
+a sparse matrix element by element. During construction, the matrix should be stored in
+coordinate list format, i.e. a list of elements of the form $(\mathrm{row}, 
+\mathrm{column}, \mathrm{value})$, as this is trivial to update as we only inspect
+each matrix entry once. We can then convert the matrix to a compressed format such
+as CSC (Compressed Sparse Column) or CSR (Compressed Sparse Row). We used CSC, but in
+hindsight CSR would probably have been a better choice as it tends to make
+matrix-vector multiplication a little more efficient. Once we have the TRM in this
+format, it is ready for sparse linear algebra operations. Note that these whilst
+these operations generally happen ``in place'', this part of the process is the
+memory-intensive bit, as of course the memory usage scales with the number of nonzero
+matrix elements, which is $\mathcal{O}(2^{L}L)$.
+In terms of actual numbers, we found
+that 4G of memory was more than adequate to solve a system of $16$ sites in total;
+as the memory required to represent the TRM is the main limiting factor in this kind of
+calculation, we would recommend computing on machines with large working memories,
+e.g. DiRAC.
 
 \section{The Eigenspectrum of the TRM}
 
 \subsection{The Computation of the TRM Eigenspectrum}
+Once we have the TRM $Q$ in CSC or CSR format, we can then use sparse linear algebra. 
+In our code we called the Python routine \texttt{scipy.sparse.linalg.eigs} upon it,
+which itself is a wrapper for C codes which find eigenpairs according to desired
+criteria; precisely which algorithm to used is determined during runtime, and it may
+try different methods if it doesn't initially succeed.
+
+In our computations, we typically performed two types of calculation. In the first we merely sought to
+find the steady state, so which we requested only the eigenvector $x_0$
+associated to the
+eigenvalue $q_0$ with smallest absolute value, which should always be numerically zero.
+We requested that the eigenpair be found to an accuracy of $1$ part in $10^{12}$,
+which amounts to saying that
+\begin{equation}
+ \frac{\| Q x_0 - q_0 x_0 \|}{\| x_0 \|} \le 10^{-12}
+\end{equation}
+where $\| \cdot \|$ is some reasonable subordinate matrix norm (in our case, the $1$ norm). Because we requested the eigenvalue closest to $0$, \texttt{eigs} used the
+shift-invert method <find article>, leading to greater accuracy in the computation of
+eigenvalues near to $0$ which is exactly what we wanted. For the other type of
+computation, we instead requested the $k$ eigenpairs with largest real part, which
+most likely provoked the code to use a Implicitly Restarted Arnoldi Method (IRAM).
+This is not as accurate for computing the steady state, but yields vastly superior
+results compared to the first method when computing the other eigenpairs. 
 
 \subsection{The Structure of the TRM Eigenspectrum}
 

@@ -50,27 +50,30 @@
 \contentsline {section}{\numberline {2.5}Conclusions About the SPM MFT}{36}{section.2.5}
 \contentsline {chapter}{\numberline {3}Transition Rate Matrix Analysis}{37}{chapter.3}
 \contentsline {section}{\numberline {3.1}The Transition Rate Operator for the SPM}{37}{section.3.1}
-\contentsline {section}{\numberline {3.2}Forming the TRM for Finite Systems}{38}{section.3.2}
-\contentsline {section}{\numberline {3.3}The Eigenspectrum of the TRM}{38}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}The Computation of the TRM Eigenspectrum}{38}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}The Structure of the TRM Eigenspectrum}{38}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Current and Density in the Steady State}{38}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}Time-Dependent Properties of Small SPM Systems}{38}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}The Relaxation Time for the SPM}{38}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Autocorrelation Functions for the TRM}{38}{subsection.3.4.2}
-\contentsline {section}{\numberline {3.5}Conclusions}{38}{section.3.5}
-\contentsline {chapter}{\numberline {4}Monte-Carlo Simulations of the SPM}{39}{chapter.4}
-\contentsline {section}{\numberline {4.1}Numerical Simulations of Continuous-Time Markov Processes}{39}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Known Methods}{39}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}\texttt {KMCLib}}{39}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Running \texttt {KMCLib} on \texttt {Eddie3}}{39}{subsection.4.1.3}
-\contentsline {section}{\numberline {4.2}Calculation Results }{40}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}1D}{40}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}2D}{40}{subsection.4.2.2}
-\contentsline {chapter}{\numberline {5}Conclusions}{41}{chapter.5}
-\contentsline {chapter}{\numberline {A}Code Listings}{42}{appendix.A}
-\contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{42}{section.A.1}
-\contentsline {section}{\numberline {A.2}$n$-Dimensional Continuum-Limit MFT }{44}{section.A.2}
+\contentsline {subsection}{\numberline {3.1.1}A Small Worked Example}{39}{subsection.3.1.1}
+\contentsline {section}{\numberline {3.2}Forming the TRM for Systems with Dirichlet Boundary Conditions}{41}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Dirichlet Boundary Conditions}{41}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Formation of the TRM in Sparse Format}{42}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}The Eigenspectrum of the TRM}{44}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}The Computation of the TRM Eigenspectrum}{44}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}The Structure of the TRM Eigenspectrum}{45}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Current and Density in the Steady State}{45}{subsection.3.3.3}
+\contentsline {section}{\numberline {3.4}Time-Dependent Properties of Small SPM Systems}{45}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}The Relaxation Time for the SPM}{45}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Autocorrelation Functions for the TRM}{45}{subsection.3.4.2}
+\contentsline {section}{\numberline {3.5}Conclusions}{45}{section.3.5}
+\contentsline {chapter}{\numberline {4}Monte-Carlo Simulations of the SPM}{46}{chapter.4}
+\contentsline {section}{\numberline {4.1}Numerical Simulations of Continuous-Time Markov Processes}{46}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Known Methods}{46}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}\texttt {KMCLib}}{46}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Running \texttt {KMCLib} on \texttt {Eddie3}}{46}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Calculation Results }{47}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}1D}{47}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}2D}{47}{subsection.4.2.2}
+\contentsline {chapter}{\numberline {5}Conclusions}{48}{chapter.5}
+\contentsline {chapter}{\numberline {A}Code Listings}{49}{appendix.A}
+\contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{49}{section.A.1}
+\contentsline {section}{\numberline {A.2}$n$-Dimensional Continuum-Limit MFT }{51}{section.A.2}
 \tocappendix 
-\contentsline {chapter}{Bibliography}{45}{section*.26}
+\contentsline {chapter}{Bibliography}{52}{section*.26}
 \contentsfinish 
