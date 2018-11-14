@@ -3,7 +3,7 @@
 Now that we have MFT predictions about the relationship between density difference and
 current in the SPM, it would be good to try to investigate their validity. In Chapter~\ref{sec:numerics} we will use Monte-Carlo methods to do this in $1$d and $2$d, but in this chapter we will restrict our attention to $1$d.
 
-\section{The Transition Rate Operator for the SPM}
+\section{The Transition Rate Operator for the SPM} \label{sec:TRMGeneralResults}
 The SPM is an autonomous continuous-time Markov Process, which describes continual transitions between states
 with transition rates depending only upon the current state. As such, if we call the total space of
 states $\Xi$ then the probability distribution $P: \Xi \times \mathbb{R} \rightarrow  \mathbb{R}$ should obey a \textbf{master equation}
@@ -260,20 +260,180 @@ In our computations, we typically performed two types of calculation. In the fir
 find the steady state, so which we requested only the eigenvector $x_0$
 associated to the
 eigenvalue $q_0$ with smallest absolute value, which should always be numerically zero.
-We requested that the eigenpair be found to an accuracy of $1$ part in $10^{12}$,
+We requested that the eigenpair be found to a relative accuracy $\epsilon$ accuracy of $1$ part in $10^{12}$,
 which amounts to saying that
-\begin{equation}
- \frac{\| Q x_0 - q_0 x_0 \|}{\| x_0 \|} \le 10^{-12}
+\begin{equation} \label{eq:linAlgRelAcc}
+ \frac{\| Q x_0 - q_0 x_0 \|}{\| x_0 \|} \le 10^{-12} = \epsilon
 \end{equation}
 where $\| \cdot \|$ is some reasonable subordinate matrix norm (in our case, the $1$ norm). Because we requested the eigenvalue closest to $0$, \texttt{eigs} used the
 shift-invert method <find article>, leading to greater accuracy in the computation of
 eigenvalues near to $0$ which is exactly what we wanted. For the other type of
 computation, we instead requested the $k$ eigenpairs with largest real part, which
 most likely provoked the code to use a Implicitly Restarted Arnoldi Method (IRAM).
-This is not as accurate for computing the steady state, but yields vastly superior
-results compared to the first method when computing the other eigenpairs. 
+This is not as accurate for computing the steady state, but yields vastly more accurate
+results when computing the other eigenpairs compared to the first method. 
 
 \subsection{The Structure of the TRM Eigenspectrum}
+
+Using the code listed at <place>, we can compute the eigenspectrum of an SPM system
+with boundary densities connected at both ends. Such a computation requires the
+following parameters to be specified:
+\begin{itemize}
+ \item $\rho_0 \in (0, 1)$, the density of the reservoir connected to the left end of the domain.
+ \item $\rho_L \in (0, 1)$, the density of the reservoir connected to the right end of the domain.
+ \item $L \in \mathbb{N}$, the system size. The way we have defined things in the code, we do not
+ count the two sets of two particles representing the boundary; thus, $L=1$ actually
+ refers to a system which contains $5$ lattice sites, of which $4$ are busy doing
+ boundary duties.
+ \item $b>0$, the variable which controls the separation of timescales between the 
+ flickering motion on the boundaries and the internal motion within the bulk of the
+ system. This should be set to something large, and compared to other values of it
+ to ensure that it is working as a regularisation parameter
+ (i.e. large changes to $b$ have minimal impact on the relevant internal
+ dynamics of the system, even if they have a great impact on the boundary dynamics).
+ \item $\lambda>0$, the internal anomalous movement rate in the SPM.
+ \item $\epsilon$, the relative accuracy the calculation aims for in the sense of Eq.~\ref{eq:linAlgRelAcc}.
+ \item $1 \le k < 2^{L+4}$, the number of eigenvalues to compute.
+ \end{itemize}
+
+ For consistency we kept $L$, $b$, $\epsilon$ and $k$ constant during runs of 
+ calculations. This leaves $\rho_0$, $\rho_L$ and $\lambda$ to be varied. In terms of what to vary and how to display the data, we decided to
+ allow the spectrum to depend upon only one variable, and picked $\lambda$ to be that
+ variable. We generally chose $\rho_0 =0.6$ and $\rho_L =0.4$ in order to study a system in which,
+ at least for $\lambda=1$, the density is middling and a current flows.
+ We then computed the resulting eigenspectrum in a couple different ways.
+ First, we performed a relatively small calculation, in terms of the number of eigenvalues demanded and the number of $\lambda$ used. We altered the values of $L$
+ and $b$ between runs, so that we can see what impact they have on the eigenspectrum. We then performed a very
+ large calculation, in order to get a good look at the eigenstructure as a whole.
+ In Chap.~\ref{sec:analChap} our MFT suggested that a transition might occur around
+ $\lambda=\frac{1}{4}$, so we should look out for odd behaviour in that regime.
+
+ \subsubsection{Small Calculations}
+ First, we performed a calculation with $L=5$, $b=1000$ in which we computed the
+ negative real part of the $32$ eigenvalues with real part closest to zero for a wide range of $\lambda$ with fixed
+ boundary conditions. The resulting eigenspectrum is displayed in
+ Fig.~\ref{fig:eigsL5B1000}.
+ \begin{figure}[!ht]
+ \caption[The TRM eigenspectrum for a system with $L=5$, $b=1000$.]{\label{fig:eigsL5B1000} 
+ The TRM eigenspectrum, computed for a system with $\rho_0 = 0.6$, $\rho_L = 0.4$,
+ $L=5$, $b=1000$.
+ }
+  \begin{center}
+ \includegraphics[width=0.9\textheight, angle=270]{TRM/images/singleMultEigB1000L5}
+  \end{center}
+\end{figure}
+Of course, for such a system we expect that all eigenvalues have negative real part,
+as we discussed in~\ref{sec:TRMGeneralResults}, so we have chosen to plot the
+negative real part divided by $\lambda$ as a function of $\lambda$; the zero eigenvalue,
+which we expect to exist and is generally found to exist in numerical terms, has been ignored, as its magnitude is simply an artefact of the numerical calculation and
+is therefore meaningless except possibly as a check on the numerics. The decision 
+to divide by $\lambda$ was taken because the eigenvalue closest to $0$ (which dominates
+approach to equilibrium) mostly scales as $\mathcal{O}(\lambda)$, so plotting without division
+uses graph space poorly.
+
+There are a several things to note about this spectrum:
+\begin{itemize}
+ \item It would appear that, for all $\lambda$, there is a single eigenvalue which
+ is closest to $0$ and undergoes no crossing as $\lambda$ varies. At both extremes of
+ $\lambda$, it clearly scales as $\mathcal{O}(\lambda)$, but is unusually low in an intermediate regime of $\lambda \in (0.03, 10)$, reaching a minimum at $\lambda \sim 0.3$. This is
+ important, as the eigenvalue with smallest negative real part is the one that controls
+ the approach to equilibrium; thus, we can see that around $0.3$ the system should taken unusually long to relax from an arbitrary prepared state to equilibrium.
+ \item All eigenvalues tend to scale as $\mathcal{O}(\lambda)$ as $\lambda \rightarrow \infty$.
+ \item Eigenvalues other than the bottom one tend to scale as $\mathcal{O}(1)$ at small
+ $\lambda$. Thus, whilst the overall approach to equilibrium occurs with rate 
+ $\mathcal{O}(\lambda)$, there are still plenty of (probably more localised) processes 
+ occurring over much quicker timescales, whilst the whole system is sluggish to 
+ equilibrate.
+ \item The eigenvalues tend to retain their order at the extremes of $\lambda$, 
+ but they frequently cross, merge and separate again in the intermediate regime. This suggests that something complicated is occurring; an analytic solution to this dynamical model would need to describe these crossings in detail, as they are important as
+ eigenvalue crossing implies the appearance of degenerate eigenspaces in the decay modes
+ which the associated eigenvectors refer to. This makes it look rather 
+ unfeasible that such an analytic solution could be constructed in the first place.
+\end{itemize}
+Of course, this is only the $32$ lowest eigenvalues; there could be different behaviour
+in the higher ones. Before we perform a larger calculation however, let us turn our
+attention to the dependence of the eigenspectrum upon $b$ and $L$, which we have studied
+by repeating our calculation with different values for those parameters, as shown in
+Fig~\ref{fig:eigsVarBVarL}.
+ \begin{figure}[h!]
+ \caption[The TRM eigenspectrum for a system with $L=\{5, 10\}, $, $b=\{100, 1000\}$.]{\label{fig:eigsVarBVarL} 
+ The TRM eigenspectrum, computed for a system with $\rho_0 = 0.6$, $\rho_L = 0.4$,
+ with all combinations of
+ $L=\{5, 10\}$, $b=\{100, 1000\}$. Missing computations, visible via the vertical gaps in
+ the data, are due to computational issues, rather than being numerically meaningful.
+ }
+  \begin{center}
+ \includegraphics[width=1.0\textheight, angle=270]{TRM/images/repeatRepeatMultEig}
+  \end{center}
+\end{figure}
+Again, there's a lot going on in this image, so let's break it down.
+\begin{itemize}
+ \item Firstly, let us note that keeping $L$ constant and switching $b$ between $100$
+ and $1000$ seems to have very little impact on the eigenspectrum, as we can see by the fact that the points corresponding to the same system sizes are
+ more or less lying on top of each other unless we delve into the low-$\lambda$ limit
+ of the $L=5$ system. In the same limit, we see that the discrepancy is vastly reduced
+ in the $L=10$ system, suggesting that it is less bad for large systems, and is in some sense a small-size effect. Regardless, it would appear to be the case that adjusting $b$
+ doesn't affect these low-lying eigenvalues very much, so it seems to be playing its
+ role as a regularisation parameter as intended. Thus, we're simply going to use $b=100$
+ from now on, unless explicitly specified otherwise.
+ \item The bottom eigenvalue, which controls relaxation to equilibrium, is generally
+ several orders of magnitude lower for the $L=10$ system than for the $L=5$ one;
+ this effect is particularly extreme in the limit of small $\lambda$.
+ This makes sense; the larger system should take much longer to equilibrate than the
+ smaller one, as so many more fluctuations need to occur to make it change its global
+ state. This is something we should remember for later, as it suggests that equilibration time might scale
+ pretty aggressively with system size, which is bad news for our attempts to simulate
+ the system using Monte-Carlo methods (Chap.~\ref{sec:numerics}).
+ \item The big, obvious difference between the spectra of different system size is
+ the behaviour at small $\lambda$. For $L=5$ there is only $1$ eigenvalue which scales
+ as $\mathcal{O}(\lambda)$ as $\lambda \rightarrow 0$, whereas for $L=10$, it would
+ appear that they all do!
+\end{itemize}
+The last point begs the following question: how does the number of eigenvalues
+corresponding to ``slow modes'' at small-$\lambda$ scale with the system size? This is 
+important,
+because it determines how many of the available decay modes would tend to persist for any 
+meaningful amount of time during the relaxation towards equilibrium. We will attempt to
+address this in the next subsection.
+
+\subsubsection{The Scaling of the Number of Slow Modes at Low $\lambda$}
+To find out how the number of nonzero eigenvalues in the $\mathcal{O}(\lambda)$-scaling
+band (as observed in Fig.~\ref{fig:eigsVarBVarL}) scales with system size,
+we can simply fix $\lambda$ to be sufficiently low (say, $\lambda=0.0001$)and repeat
+computations of the low-lying eigenspectrum for different $L$. Here, due to the
+computational limitations we are up against, we only compute up to $L=13$. The number
+of slow modes as a function of $L$ is displayed in Tab.~\ref{tab:bandThickness}.
+\begin{table} \caption[Tabulated values for the variation of the width of the slow band with
+system size.]{A table of the number of slow modes occurring at low $\lambda$ for given 
+$L$.}
+\begin{tabular}{r || r | r | r | r | r | r | r | r | r | r | r | r} \label{tab:bandThickness}
+ $L$ & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 \\
+ \hline
+ Bandwidth & 1 & 3 & 6 & 11 & 20 & 36 & 64 & 113 & 199 \\
+\end{tabular}
+\end{table}
+If we plot the number of slow modes as a function of system size on a plot with a 
+logarithmic $y$-axis, as we have done in Fig.~\ref{fig:bandWidthScaling},
+it is rather obvious that the bandwidth scales exponentially with system size.
+However, the number of slow modes seems to scale as $\mathcal{O}(2^{\sim 0.84 L})$,
+whereas the number of possible states, and therefore the total number of eigenvalues of
+the TRM, scales as $2^L$. Thus, one can see that although the number of slow modes grows
+very aggressively with the system size, it would appear to eventually become 
+outpaced by the growth in the total number of eigenvalues; in this way, we can say that
+the slow band carries increasingly less of the total eigenvalue density as system size
+becomes large.
+ \begin{figure}[h!]
+ \caption[A graph of the scaling of the number of slow modes with system size.]{\label{fig:bandWidthScaling} 
+ A plot of the scaling of the number of slow modes in the eigenspectrum of the TRM of
+ an SPM system of size $L$. The trendline displayed has equation
+ $ \mathrm{Bandwidth} = 2^{a(L+b)}$, with $a=0.84$, $b=-3.9$.
+ }
+  \begin{center}
+ \includegraphics[width=1.0\textwidth]{TRM/images/bandWidth}
+  \end{center}
+\end{figure}
+
+\subsubsection{Large Calculation}
 
 \subsection{Current and Density in the Steady State}
 
