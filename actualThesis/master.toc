@@ -57,26 +57,29 @@
 \contentsline {section}{\numberline {3.3}The Eigenspectrum of the TRM}{44}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}The Computation of the TRM Eigenspectrum}{44}{subsection.3.3.1}
 \contentsline {subsection}{\numberline {3.3.2}The Structure of the TRM Eigenspectrum}{44}{subsection.3.3.2}
-\contentsline {subsubsection}{Small Calculations}{46}{subsection.3.3.2}
-\contentsline {subsubsection}{The Scaling of the Number of Slow Modes at Low $\lambda $}{48}{figure.caption.27}
-\contentsline {subsubsection}{Large Calculation}{49}{figure.caption.29}
-\contentsline {subsection}{\numberline {3.3.3}Current and Density in the Steady State}{49}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}Time-Dependent Properties of Small SPM Systems}{49}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}The Relaxation Time for the SPM}{49}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Autocorrelation Functions for the TRM}{49}{subsection.3.4.2}
-\contentsline {section}{\numberline {3.5}Conclusions}{49}{section.3.5}
-\contentsline {chapter}{\numberline {4}Monte-Carlo Simulations of the SPM}{53}{chapter.4}
-\contentsline {section}{\numberline {4.1}Numerical Simulations of Continuous-Time Markov Processes}{53}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Known Methods}{53}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}\texttt {KMCLib}}{53}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Running \texttt {KMCLib} on \texttt {Eddie3}}{53}{subsection.4.1.3}
-\contentsline {section}{\numberline {4.2}Calculation Results }{54}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}1D}{54}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}2D}{54}{subsection.4.2.2}
-\contentsline {chapter}{\numberline {5}Conclusions}{55}{chapter.5}
-\contentsline {chapter}{\numberline {A}Code Listings}{56}{appendix.A}
-\contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{56}{section.A.1}
-\contentsline {section}{\numberline {A.2}$n$-Dimensional Continuum-Limit MFT }{58}{section.A.2}
+\contentsline {subsubsection}{Small Calculations}{47}{subsection.3.3.2}
+\contentsline {subsubsection}{The Scaling of the Number of Slow Modes at Low $\lambda $}{50}{figure.caption.27}
+\contentsline {subsubsection}{The Upper Part of the Spectrum}{50}{figure.caption.29}
+\contentsline {subsubsection}{Large Calculation}{52}{figure.caption.30}
+\contentsline {subsection}{\numberline {3.3.3}Current and Density in the Steady State}{55}{subsection.3.3.3}
+\contentsline {subsubsection}{TRM-Computed Density Profile}{55}{figure.caption.31}
+\contentsline {subsubsection}{TRM-Computed Current}{57}{figure.caption.32}
+\contentsline {section}{\numberline {3.4}Time-Dependent Properties of Small SPM Systems}{57}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}The Relaxation Time for the SPM}{57}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Autocorrelation Functions for the TRM}{57}{subsection.3.4.2}
+\contentsline {section}{\numberline {3.5}Conclusions}{57}{section.3.5}
+\contentsline {chapter}{\numberline {4}Monte-Carlo Simulations of the SPM}{59}{chapter.4}
+\contentsline {section}{\numberline {4.1}Numerical Simulations of Continuous-Time Markov Processes}{59}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Known Methods}{59}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}\texttt {KMCLib}}{59}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Running \texttt {KMCLib} on \texttt {Eddie3}}{59}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Calculation Results }{60}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}1D}{60}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}2D}{60}{subsection.4.2.2}
+\contentsline {chapter}{\numberline {5}Conclusions}{61}{chapter.5}
+\contentsline {chapter}{\numberline {A}Code Listings}{62}{appendix.A}
+\contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{62}{section.A.1}
+\contentsline {section}{\numberline {A.2}$n$-Dimensional Continuum-Limit MFT }{64}{section.A.2}
 \tocappendix 
-\contentsline {chapter}{Bibliography}{59}{section*.30}
+\contentsline {chapter}{Bibliography}{65}{section*.34}
 \contentsfinish 

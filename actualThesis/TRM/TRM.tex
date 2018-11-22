@@ -249,7 +249,7 @@ e.g. DiRAC.
 
 \section{The Eigenspectrum of the TRM}
 
-\subsection{The Computation of the TRM Eigenspectrum}
+\subsection{The Computation of the TRM Eigenspectrum} \label{sec:eigenFind}
 Once we have the TRM $Q$ in CSC or CSR format, we can then use sparse linear algebra. 
 In our code we called the Python routine \texttt{scipy.sparse.linalg.eigs} upon it,
 which itself is a wrapper for C codes which find eigenpairs according to desired
@@ -313,6 +313,7 @@ following parameters to be specified:
  negative real part of the $32$ eigenvalues with real part closest to zero for a wide range of $\lambda$ with fixed
  boundary conditions. The resulting eigenspectrum is displayed in
  Fig.~\ref{fig:eigsL5B1000}.
+ \afterpage{
  \begin{figure}[!ht]
  \caption[The TRM eigenspectrum for a system with $L=5$, $b=1000$.]{\label{fig:eigsL5B1000} 
  The TRM eigenspectrum, computed for a system with $\rho_0 = 0.6$, $\rho_L = 0.4$,
@@ -322,6 +323,8 @@ following parameters to be specified:
  \includegraphics[width=0.9\textheight, angle=270]{TRM/images/singleMultEigB1000L5}
   \end{center}
 \end{figure}
+\clearpage
+}
 Of course, for such a system we expect that all eigenvalues have negative real part,
 as we discussed in~\ref{sec:TRMGeneralResults}, so we have chosen to plot the
 negative real part divided by $\lambda$ as a function of $\lambda$; the zero eigenvalue,
@@ -355,9 +358,10 @@ in the higher ones. Before we perform a larger calculation however, let us turn 
 attention to the dependence of the eigenspectrum upon $b$ and $L$, which we have studied
 by repeating our calculation with different values for those parameters, as shown in
 Fig~\ref{fig:eigsVarBVarL}.
+\afterpage{
  \begin{figure}[h!]
- \caption[The TRM eigenspectrum for a system with $L=\{5, 10\}, $, $b=\{100, 1000\}$.]{\label{fig:eigsVarBVarL} 
- The TRM eigenspectrum, computed for a system with $\rho_0 = 0.6$, $\rho_L = 0.4$,
+ \caption[The lower part of the TRM eigenspectrum for a system with $L=\{5, 10\}, $, $b=\{100, 1000\}$.]{\label{fig:eigsVarBVarL} 
+ The lower TRM eigenspectrum, computed for a system with $\rho_0 = 0.6$, $\rho_L = 0.4$,
  with all combinations of
  $L=\{5, 10\}$, $b=\{100, 1000\}$. Missing computations, visible via the vertical gaps in
  the data, are due to computational issues, rather than being numerically meaningful.
@@ -366,6 +370,8 @@ Fig~\ref{fig:eigsVarBVarL}.
  \includegraphics[width=1.0\textheight, angle=270]{TRM/images/repeatRepeatMultEig}
   \end{center}
 \end{figure}
+\clearpage
+}
 Again, there's a lot going on in this image, so let's break it down.
 \begin{itemize}
  \item Firstly, let us note that keeping $L$ constant and switching $b$ between $100$
@@ -374,7 +380,7 @@ Again, there's a lot going on in this image, so let's break it down.
  of the $L=5$ system. In the same limit, we see that the discrepancy is vastly reduced
  in the $L=10$ system, suggesting that it is less bad for large systems, and is in some sense a small-size effect. Regardless, it would appear to be the case that adjusting $b$
  doesn't affect these low-lying eigenvalues very much, so it seems to be playing its
- role as a regularisation parameter as intended. Thus, we're simply going to use $b=100$
+ role as a regularisation parameter as intended. Thus, we're simply going to use $b=1000$
  from now on, unless explicitly specified otherwise.
  \item The bottom eigenvalue, which controls relaxation to equilibrium, is generally
  several orders of magnitude lower for the $L=10$ system than for the $L=5$ one;
@@ -406,11 +412,13 @@ of slow modes as a function of $L$ is displayed in Tab.~\ref{tab:bandThickness}.
 \begin{table} \caption[Tabulated values for the variation of the width of the slow band with
 system size.]{A table of the number of slow modes occurring at low $\lambda$ for given 
 $L$.}
+\begin{center}
 \begin{tabular}{r || r | r | r | r | r | r | r | r | r | r | r | r} \label{tab:bandThickness}
  $L$ & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 \\
  \hline
  Bandwidth & 1 & 3 & 6 & 11 & 20 & 36 & 64 & 113 & 199 \\
 \end{tabular}
+\end{center}
 \end{table}
 If we plot the number of slow modes as a function of system size on a plot with a 
 logarithmic $y$-axis, as we have done in Fig.~\ref{fig:bandWidthScaling},
@@ -433,9 +441,173 @@ becomes large.
   \end{center}
 \end{figure}
 
+\subsubsection{The Upper Part of the Spectrum}
+
+By varying $L$ and $b$ and analysing the lower (more physically relevant) part of the
+TRM eigenspectrum, we concluded that $b$ has very little impact and essentially
+acts as a regularisation parameter, whilst $L$, the system size, has a large impact,
+particularly on the approach to equilibrium. However, both $b$ and $L$ contribute to
+the actual numbers contained within the TRM, so it stands to reason that they must
+impact the eigenspectrum in some way. Therefore, we have done an additional check,
+by varying $b$ and $L$ and 
+performing a calculation in which the $64$ eigenvalues with largest negative real
+part were calculated. The negative real parts of these eigenvalues are displayed in
+Fig.~\ref{fig:eigsVarBVarLUpper}.
+ \begin{figure}[h!]
+ \caption[The upper TRM eigenspectrum for a system with $L=\{5, 10\}, $, $b=\{100, 1000\}$.]{\label{fig:eigsVarBVarLUpper} 
+ The upper TRM eigenspectrum, computed for a system with $\rho_0 = 0.6$, $\rho_L = 0.4$,
+ with all combinations of
+ $L=\{5, 10\}$, $b=\{100, 1000\}$.
+ }
+  \begin{center}
+ \includegraphics[width=1.0\textheight, angle=270]{TRM/images/topEigs}
+  \end{center}
+\end{figure}
+We see that now the tables are indeed turned. Altering $L$ does have a small effect on
+the upper band, as we can see by how the red/black and blue/green points lie on top
+of each other. On this graph, we see that for the $L=5$ datasets there are apparently
+two bands, whilst for $L=10$ there is only one; however, recall that we have produced
+this by plotting the negative real parts of the $64$ eigenvalues with largest negative
+real part; thus, as the $L=10$ systems have $2^5 = 32$ times as many eigenvalues in 
+total, it makes sense that we may not have finished the very top band in the $L=10$
+case yet whilst we have moved on to the second band in the $L=5$ case; thus, I think
+we can conclude that system size has little effect on the top of the eigenspectrum.
+
+The value of $b$, however, has a huge impact, as it determines the overall magnitude
+of these larger eigenvalues. The eigenmodes associated with them almost certainly
+relate to fluctuations at the boundary, and then the ensuing joint fluctuations 
+travelling a little into the bulk. As these are boundary effects, it again makes sense
+that $L$ has little impact. The value of $b$ directly controls the speed of the 
+fluctuations at the boundary, thus the large shift in magnitude observed should be 
+expected.
+
 \subsubsection{Large Calculation}
+Now that we are more or less satisfied that the value of $b$ doesn't matter so long as
+it's quite large, let's perform a similar calculation (sweeping through $\lambda$ with
+constant boundary conditions), but this time compute a lot of eigenvalues in order to
+get a general overview of the TRM. 
+\afterpage{
+ \begin{figure}[h!]
+ \caption[The ``full'' TRM eigenspectrum for a system with $L=8, $, $b=1000$.]{\label{fig:bigEigSpec} 
+ The ``full'' TRM eigenspectrum, computed for a system with $\rho_0 = 0.6$, $\rho_L = 0.4$,
+ with $L=8$, $b=1000$. Missing computations, visible via the vertical gaps in
+ the data, are due to computational issues, rather than being numerically meaningful.
+ }
+  \begin{center}
+ \includegraphics[width=0.9\textheight, angle=270]{TRM/images/bigEigSpec}
+  \end{center}
+\end{figure}
+\clearpage
+}
+Plotted in Fig.~\ref{fig:bigEigSpec} are the negative real components of the $1024$ eigenvalues with smallest negative
+ real part, for the TRM of an SPM system of length $L=8$ and regularisation parameter 
+ $b=1000$. We say that this is the ``full'' eigenspectrum not because
+ we have computed all of the eigenvalues (we have not, as there are $2^{12} = 4096$ in
+ total), but because the eigenvalues with very large negative real part seem to converge
+ upon each other, forming the hyperbola-shaped entity towards the top of the graph.
+ We believe that this is because the relevant dynamical modes correspond to extremely
+ rapid changes in state due to the boundary conditions.
+ 
+This large computation continues the themes we have seen in the small ones:
+\begin{itemize}
+ \item For large $\lambda$ there is a thick band of eigenvalues spread over a couple
+ of orders of magnitude which scale as $\mathcal{O}(\lambda)$.
+ \item For intermediate $\lambda$ the bottom eigenvalue becomes unusually small, whilst
+ the higher ones in the thick band are constantly crossing over each other.
+ \item As we go to small $\lambda$ a thin band of $\mathcal{O}(\lambda)$-scaling
+ eigenvalues split off from the main sequence, which scales as $\mathcal{O}(1)$.
+ \item For all $\lambda$ there is the hyperbola-shaped band of eigenvalues with highly
+ negative real part, which are many orders of magnitude different to the main sequence;
+ thus, their dynamics operate over an extremely short timescale, and they are almost
+ certainly attributable to the flickering motion at the boundaries.
+\end{itemize}
+
+
 
 \subsection{Current and Density in the Steady State}
+The eigenvectors of the TRM correspond to decay modes, and in general contain both 
+positive and negative components; thus, they do not in general correspond to a
+particular distribution, only to a time-dependent part of a sum of vectors on their
+way to equilibrium. The exception to this is the $0$-eigenvalue eigenvector, which
+\textbf{does} correspond to a physical state, if properly normalised.
+
+Given a vector corresponding to a normalised probability distribution, we can extract
+the mean occupation of its $i^\mathrm{th}$ site by taking the inner product of the
+distribution vector with a vector which has component $1$ on states in which the
+$i^\mathrm{th}$ sites is occupied and $0$ otherwise. Thus, we can construct an operator
+$\mathrm{P} : \Xi \rightarrow \mathbb{R}^{L+4}$ which can tell us the density profile of
+the system given its ground state, which we can have found using the linear algebraic
+methods discussed in Sec~\ref{sec:eigenFind}. We can create a similar operator
+$J : \Xi \rightarrow \mathbb{R}^{L+3}$ which gives the current; however, if used on a 
+steady state, it simply gives a constant result internal to the system, due the the
+existing constraint that particle number is conserved. We can of course extract
+the homogeneous current through the system by using this operator and then simply
+keeping one of the current components.
+
+\subsubsection{TRM-Computed Density Profile}
+By way of example, we computed the density profile for a system with $L=10$, $b=1000$,
+again sweeping through a wide range of scales of $\lambda$ as in the previous section.
+We kept the boundaries constant with our usual $\rho_0 = 0.6$, $\rho_L = 0.4$
+configuration. A density plot of the data is shown in Fig.~\ref{fig:analDensProf},
+and the current is shown in Fig.~\ref{fig:analCurr}
+ \begin{figure}[h!]
+ \caption[The variation of the density profile with $\lambda$ for a system of size
+ $L=12$ and boundaries $(\rho_0 = 0.6, \rho_L = 0.4)$.]{\label{fig:analDensProf} 
+A coloured plot showing the variation of the density profile with $\lambda$ in steady state for a 
+system with boundary conditions $(\rho_0 = 0.6, \rho_L = 0.4)$ of size $L=10$. Note 
+that the indices of the internal sites are $3$-$12$ inclusive, as $1$-$2$ and 
+$13$-$14$ are reserved for the boundaries, whose densities are already prescribed and therefore aren't plotted here.
+ }
+  
+  \begin{center}
+ \includegraphics[width=1.0\textwidth]{TRM/images/analMidDensProfile}
+  \end{center}
+\end{figure}
+ Looking at $\lambda=1$, we see that there is a roughly constant gradient for the density profile between the
+ boundaries, which makes sense as this is the simple exclusion limit, so it's essentially just normal
+ diffusion.
+ As we go to smaller $\lambda$, we see that the system in general is quite full. Presumably this is because
+ material has been sucked into the system due to the attraction implied by the small $\lambda$; this
+ indicates that the boundaries used are a bit odd in this limit, as the system might not naturally form
+ a homogeneous phase for such a $\lambda$ and could instead wish to form a mixture of lower and 
+ higher density clumps, we will discuss this at greater length in Chap.~\ref{sec:numerics}.
+ 
+ Our theory about why this occurs is as follows.
+ At large 
+ $\lambda$, we see that the density profile defaults to $\rho\sim\frac{2}{3}$ plus oscillations on the 
+ boundaries which decay as we go towards the interior. This is suspiciously close to the critical density
+ of the MFT (Chap.~\ref{sec:analChap}) which permits a maximal flow; therefore, we suggest that the system
+ self-organises at high $\lambda$ to favour configurations that permit high current. It is fairly simple to
+ see why such a configuration would have bulk configuration $\frac{2}{3}$; in such a configuration,
+ any particular particle should on average be in contact with an adjacent particle, with a free space to move into, so the dynamics of the system should be dominated by $\lambda$ rather than $1$. If the density were
+ higher, some particles don't have spaces to move into, so that will slow things down; if the density were 
+ lower, particles aren't receiving the speed benefit of being a neighbour.
+ If a boundary fills or empties the system away from $\rho=\frac{2}{3}$, that boundary will have less impact
+ on the local density as it cannot adjust it as quickly as it can around $\frac{2}{3}$, and so the particles from the rest of the system will tend to fill or empty the boundary region. Thus, the only density which 
+ permits steady flow is $\rho=\sim\frac{2}{3}$ in the bulk, with relatively rapid matching at the boundaries.
+ In this way, a bulk density of $\frac{2}{3}$ is naturally selected by virtue of its stability.
+ This also explains the oscillations observed at the boundaries; in alternating site, particles will tend to
+ linger sites where they are alone, rapidly leaving when they are prompted by the arrival of a new particle in 
+ the  space next to them.
+ 
+ \subsubsection{TRM-Computed Current}
+
+\afterpage{
+ \begin{figure}[h!]
+ \caption[The variation of the current (measured flowing from high density boundary to
+ low) with $\lambda$ for a system of size
+ $L=10$ and boundaries $(\rho_0 = 0.6, \rho_L = 0.4)$.]{\label{fig:analCurr} 
+A logarithmic plot showing the variation of current with $\lambda$ in steady state for a system with boundary conditions $(\rho_0 , \rho_L )$ as indicated with system size $L=10$. 
+The current measurement is oriented so that positive current corresponds to flow
+from high density to low (the normal case). The relevant MFT prediction is shown via a dashed line in each
+case.
+ }
+  \begin{center}
+ \includegraphics[width=0.9\textheight, angle=270]{TRM/images/TRMMFTCurrCombPlot}
+  \end{center}
+\end{figure}
+\clearpage
+}
 
 \section{Time-Dependent Properties of Small SPM Systems}
 

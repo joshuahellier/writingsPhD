@@ -18,9 +18,13 @@
 \contentsline {figure}{\numberline {(2.13)}{\ignorespaces $2$d SPM MFT current flow due to boundaries, for a selection of $\lambda $.}}{35}{figure.caption.24}
 \contentsline {figure}{\numberline {(2.14)}{\ignorespaces $2$d SPM MFT current flow as a function of $\lambda $, with fixed boundaries.}}{36}{figure.caption.25}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {(3.1)}{\ignorespaces The TRM eigenspectrum for a system with $L=5$, $b=1000$.}}{50}{figure.caption.26}
-\contentsline {figure}{\numberline {(3.2)}{\ignorespaces The TRM eigenspectrum for a system with $L=\{5, 10\}, $, $b=\{100, 1000\}$.}}{51}{figure.caption.27}
-\contentsline {figure}{\numberline {(3.3)}{\ignorespaces A graph of the scaling of the number of slow modes with system size.}}{52}{figure.caption.29}
+\contentsline {figure}{\numberline {(3.1)}{\ignorespaces The TRM eigenspectrum for a system with $L=5$, $b=1000$.}}{46}{figure.caption.26}
+\contentsline {figure}{\numberline {(3.2)}{\ignorespaces The lower part of the TRM eigenspectrum for a system with $L=\{5, 10\}, $, $b=\{100, 1000\}$.}}{49}{figure.caption.27}
+\contentsline {figure}{\numberline {(3.3)}{\ignorespaces A graph of the scaling of the number of slow modes with system size.}}{51}{figure.caption.29}
+\contentsline {figure}{\numberline {(3.4)}{\ignorespaces The upper TRM eigenspectrum for a system with $L=\{5, 10\}, $, $b=\{100, 1000\}$.}}{53}{figure.caption.30}
+\contentsline {figure}{\numberline {(3.5)}{\ignorespaces The ``full'' TRM eigenspectrum for a system with $L=8, $, $b=1000$.}}{54}{figure.caption.31}
+\contentsline {figure}{\numberline {(3.6)}{\ignorespaces The variation of the density profile with $\lambda $ for a system of size $L=12$ and boundaries $(\rho _0 = 0.6, \rho _L = 0.4)$.}}{56}{figure.caption.32}
+\contentsline {figure}{\numberline {(3.7)}{\ignorespaces The variation of the current (measured flowing from high density boundary to low) with $\lambda $ for a system of size $L=10$ and boundaries $(\rho _0 = 0.6, \rho _L = 0.4)$.}}{58}{figure.caption.33}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
