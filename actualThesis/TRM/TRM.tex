@@ -548,8 +548,7 @@ keeping one of the current components.
 By way of example, we computed the density profile for a system with $L=10$, $b=1000$,
 again sweeping through a wide range of scales of $\lambda$ as in the previous section.
 We kept the boundaries constant with our usual $\rho_0 = 0.6$, $\rho_L = 0.4$
-configuration. A density plot of the data is shown in Fig.~\ref{fig:analDensProf},
-and the current is shown in Fig.~\ref{fig:analCurr}
+configuration. A density plot of the data is shown in Fig.~\ref{fig:analDensProf}.
  \begin{figure}[h!]
  \caption[The variation of the density profile with $\lambda$ for a system of size
  $L=12$ and boundaries $(\rho_0 = 0.6, \rho_L = 0.4)$.]{\label{fig:analDensProf} 
@@ -586,12 +585,19 @@ $13$-$14$ are reserved for the boundaries, whose densities are already prescribe
  on the local density as it cannot adjust it as quickly as it can around $\frac{2}{3}$, and so the particles from the rest of the system will tend to fill or empty the boundary region. Thus, the only density which 
  permits steady flow is $\rho=\sim\frac{2}{3}$ in the bulk, with relatively rapid matching at the boundaries.
  In this way, a bulk density of $\frac{2}{3}$ is naturally selected by virtue of its stability.
- This also explains the oscillations observed at the boundaries; in alternating site, particles will tend to
- linger sites where they are alone, rapidly leaving when they are prompted by the arrival of a new particle in 
+ This also explains the oscillations observed at the boundaries; in alternating sites, particles will tend to
+ linger in sites where they are alone, rapidly leaving when they are prompted by the arrival of a new particle in 
  the  space next to them.
  
  \subsubsection{TRM-Computed Current}
 
+ Whilst we computed the density profile, we also measured the steady state current. We also performed the
+ same computation for different boundary conditions, and the results are displayed in Fig.\ref{fig:analCurr},
+ along with the corresponding MFT prediction. Note that some of these calculations failed, in the sense that
+ we were expecting the output to always put the $0$-eigenvalue and its associated eigenvector in the
+ first output slot, whereas in reality this did not necessarily happen, even though it had always been the
+ case during testing. in the failed case, we simply haven't plotted any data, although luckily this did not
+ occur in critical places, mainly just for the $(0.3, 0.1)$ calculations for $\lambda>0$.
 \afterpage{
  \begin{figure}[h!]
  \caption[The variation of the current (measured flowing from high density boundary to
@@ -608,6 +614,105 @@ case.
 \end{figure}
 \clearpage
 }
+There's a lot going on here, so let's break it down.
+\begin{itemize}
+ \item At large $\lambda$, we see that the scaling ($\mathcal{O}(\lambda)$) is the same for both the MFT
+ and the TRM numerics. The actual values predicted by the MFT and the TRM calculations differ slightly,
+ but not by a great deal until we have $\lambda < 1$. It is to be expected that there is a discrepancy,
+ as the MFT is in the continuum-limit whereas the TRM system is only of size $L=10$. Furthermore, there
+ should be a discrepancy anyway as the TRM system is not mean-field; it just doesn't seem to be so relevant
+ in this regime.
+ \item At $\lambda=1$, both MFT and TRM calculations all coincide, because the boundary conditions all differ
+ by the same amount and $\lambda=1$ is the trivial case of simple exclusion.
+ \item As we explore very small values of $\lambda$, we find that the MFT and the TRM have very little 
+ resemblance. For boundary conditions $(0.3, 0.1)$ and $(0.9, 0.7)$ the MFT predicts that the flow should
+ start running backwards or at the very least be pinned at zero,
+ whilst for $(0.6, 0.4)$ it suggests that the current should tend to a constant
+ as $\lambda \rightarrow 0$. 
+ Instead of the flow crashing to zero, the TRM results show a more gradual reduction of the current.
+ Measurement by comparison with a trendline shows that the current varies as $\mathcal{O}(\lambda^3)$ as 
+ $\lambda$ becomes small.
+ \item There is an intermediate regime in which the dependence of the current upon $\lambda$ transitions
+ between $\mathcal{O}(\lambda^3)$ and $\mathcal{O}(\lambda)$. This is the situation for $\lambda \in (0.03, 0.5)$.
+ \item There is also some slightly odd behaviour on display in terms of the apparent ``poles'' in the 
+ current for
+the $(0.6, 0.4)$ and $(0.9, 0.7)$-boundaried systems. This could be due to a close-approach of eigenvalues,
+causing the algorithm to pick the wrong one under certain circumstances. We have filtered the results by
+imposing the inequality $\| q_0 \| \le \lambda K$ for $K=10^{-9}$ with $q_0$ being the ``zero'' eigenvalue,
+but some results may have slipped through this net. We think this is the most likely explanation we have to
+hand.
+\end{itemize}
+So, it seems that whilst we don't see a transition to zero flow as predicted by the MFT, we do see
+a big change in the way the flow depends upon $\lambda$ as we pass between the large-$\lambda$ to 
+small-$\lambda$ regimes.
+
+
+\subsubsection{TRM-Computed Diffusion Coefficient}
+It is also possible for us to compute an approximation to the effective diffusion coefficient.
+Recall that the diffusion coefficient $D$ should satisfy
+\begin{equation}
+ \mathbf{J} = -D \mathbf{\nabla} \rho ;
+\end{equation}
+thus, we should be able to compute the diffusion coefficient using the TRM by computing the current $J$
+with boundary conditions $(\rho_0, \rho_L) = (\rho+\frac{1}{2}\delta\rho, \rho-\frac{1}{2}\delta\rho)$,
+and then evaluating the quantity
+\begin{equation}
+ D(\rho, \lambda) = \frac{L}{\delta \rho} J.
+\end{equation}
+We performed such a calculation, in which we picked $\delta \rho$ to be $0.001$ and $L=10$. We tabulated
+$D$ for a range of $\lambda$ and $\rho$, and a contour plot of the data is displayed in 
+Fig.~\ref{fig:TRMDiffCoeff}.
+ \begin{figure}[h!]
+ \caption[The variation of the diffusion coefficient of a system of size $L=10$ with respect to $\lambda$
+ and $\rho$.]{\label{fig:TRMDiffCoeff} 
+A coloured plot showing the variation of the diffusion coefficient with $\lambda$ and $\rho$
+in steady state for a 
+system of size $L=10$.
+ }
+  \begin{center}
+ \includegraphics[width=1.0\textwidth]{TRM/images/TRMDiffCoeff}
+  \end{center}
+\end{figure}
+In general, for given $\lambda$ we see that the variation with $\rho$ is usually pretty mild, with the more
+extreme diffusion coefficients tending to occur for intermediate $\rho$. The exception to this occurs
+primarily at small-$\lambda$, low density, where the diffusion 
+coefficient is unusually high. This is presumably because the density
+of particles is so low that the small value of $\lambda$ has little impact on the diffusion coefficient.
+There is also some odd behaviour, in particular for extremely low $\lambda$ and low $\rho$. We probably
+shouldn't trust those the results. As $\lambda \rightarrow 0$, the space of vectors with eigenvalue zero
+switches from being $1$-dimensional to being very high-dimensional, because any state containing adjacent
+particles becomes a steady state (and in fact an absorbing state). Thus, we should expect that at some
+as we go to smaller and smaller $\lambda$ our calculations should start behaving badly because the lower
+nonzero  eigenvalues become numerically indistinguishable from the actual zeros, and that is probably what
+is happening here.
+
+The trend in terms of $\lambda$ is that the gradient of the diffusion coefficient as it varies with 
+$\lambda$ and $\rho$ is generally low for large $\lambda$ and high for small $\lambda$. In light
+of our results in Fig.~\ref{fig:analCurr}, this makes sense as the power law seems to change as we switch
+between low and high $\lambda$. This suggests that an order parameter of the form
+\begin{equation}
+ \chi(\rho, \lambda) = \left(\partDeriv{\ln{D}}{\ln{\lambda}}\right)_\rho
+\end{equation}
+should reveal the power-law structure. We can compute this from our existing data in Fig.
+\ref{fig:TRMDiffCoeff}, and it is displayed in Fig.~\ref{fig:TRMOrderParam}.
+ \begin{figure}[h!]
+ \caption[The variation of the order parameter $\chi$ for a system of size $L=10$ with respect to $\lambda$
+ and $\rho$.]{\label{fig:TRMOrderParam} 
+A coloured plot showing the variation of the order parameter $\chi$ with $\lambda$ and $\rho$
+in steady state for a 
+system of size $L=10$.
+ }
+  \begin{center}
+ \includegraphics[width=1.0\textwidth]{TRM/images/TRMOrderParam}
+  \end{center}
+\end{figure}
+As you can see, this order parameter does seem to nicely partition $(\rho, \lambda)$ space into two
+components, divided by a region of extremely rapid change. The order parameter $\chi$ could be regarded as
+some kind of susceptibility. An issue here is that it is hard to see how $\chi$'s apparent transition
+will vary with system size, as $L=10$ is a very small system, and transitions only become sharp in the
+limit of large systems. We could of course use it in a Monte-Carlo calculation in a larger system, but
+then we have the problem that it's difficult to take meaningful derivatives of noisy data. We will leave
+it, then, as a curiosity.
 
 \section{Time-Dependent Properties of Small SPM Systems}
 
