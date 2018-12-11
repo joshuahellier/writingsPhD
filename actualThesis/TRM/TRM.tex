@@ -41,7 +41,7 @@ The last constraint implies that
 regardless of the structure of $P$, which is our probability conservation equation.
 
 The formal (forward-time) solution to Eq.~\ref{eq:masterEq} is given by
-\begin{equation}
+\begin{equation} \label{eqn:formalSoln}
  P(\xi, t) = e^{(t-t_0)\mathcal{A}}P_0,
 \end{equation}
 where $t_0$ is some initial time, $P_0$ is the starting distribution, and the operator
@@ -715,9 +715,100 @@ then we have the problem that it's difficult to take meaningful derivatives of n
 it, then, as a curiosity.
 
 \section{Time-Dependent Properties of Small SPM Systems}
+Although we have mostly concentrated on calculating steady state properties of the SPM, it is also possible to calculate some dynamical properties. 
+\subsection{The Relaxation Time for the SPM} \label{sec:relaxTime}
+As we have seen, the eigenvalue with least negative real
+part effectively controls the rate at which a generically-prepared system equilibrates, by acting as a
+lower bound on the rate of relaxation towards equilibrium. We have computed this relaxation time for
+our three standard boundary conditions in Fig.~\ref{fig:TRMRelaxTime}.
+ \begin{figure}[h!]
+ \caption[The dependence of the relaxation time on $\lambda$ for three sets of boundary conditions.]{\label{fig:TRMRelaxTime} 
+A plot showing the dependence of the relaxation time upon $\lambda$ for a system of size $L=10$ with
+boundary densities $(0.3, 0.1)$, $(0.6, 0.4)$ and $(0.9, 0.7)$.
+ }
+  \begin{center}
+ \includegraphics[width=1.0\textwidth]{TRM/images/TRMRelaxTime}
+  \end{center}
+\end{figure}
+Notice first that we have plotted the relaxation time multiplied by $\lambda$, as the relaxation time
+generally scales as $\mathcal{O}(\lambda^{-1})$. One can see why we made this choice by looking at the
+extremes, where the lines are generally quite flat.
 
-\subsection{The Relaxation Time for the SPM}
+Observe that the relaxation times for large $\lambda$ are generally a little higher than for low 
+$\lambda$ once the $\mathcal{O}(\lambda^{-1})$ dependence is taken into account. In particular, the
+system with low densities at the boundary is much slower to relax to equilibrium than the system with high boundary densities, which in turn is slow compared to the system with medium densities. This is
+presumably because the system is attempting to reach the maximal flow density we observed, $\rho = \frac{2}{3}$, and it finds it more awkward to do that the further away the furthest boundary is from
+$\frac{2}{3}$.
 
-\subsection{Autocorrelation Functions for the TRM}
+For very low $\lambda$, the difference between boundary configurations isn't so great, and we believe
+that the differences between the boundaries occur for the same reason as for the high-$\lambda$
+situation, only now the system is trying to fill instead of hold at $\rho=\frac{2}{3}$. For intermediate
+$\lambda$, things are less clear. At $\lambda=1$, all systems equilibrate at the same rate; other than
+that, behaviour varies pretty wildly. Equilibration time is generally on the high side for
+$\lambda \in (0.03, 1)$, which is where the current looks like its undergoing some kind of
+transition, so this increase in relative equilibration time could be interpreted as an accumulation of
+fluctuations in that regime.
+\subsection{Time-Evolution of States}
+Recall from Sec.~\ref{sec:TRMGeneralResults} that the Master Equation (Eq.~\ref{eq:masterEq}) has
+a formal solution given by Eq.~\ref{eqn:formalSoln}, in which we premultiply the initial state
+by a matrix exponential of the TRM. Throughout this chapter we have been making use of the fact that
+the TRM is sparse in order to perform our computations. Thus, it would seem that we couldn't
+investigate the time evolution of systems, as $e^A$ is in general not sparse even if $A$ is sparse,
+and thus we would instantly run out of memory if we tried to compute anything.
+
+However, the premultiplication of a vector by a sparse matrix can be performed \textit{in place},
+and this is implemented by Python's routine \texttt{scipy.sparse.linalg.expm\_multiply}. Therefore
+we have been able to calculate the time-evolution of arbitrary initial distributions. By way of an
+example we prepared three systems with initial uniform distributions, in which all possible 
+configurations are equally likely, and then monitored how their spatial occupations varied as they
+relaxed towards equilibrium (which should always occur, as discussed in 
+Sec.~\ref{sec:TRMGeneralResults}). The results are displayed in Fig.~\ref{fig:TRMTimeDep}.
+\begin{figure}
+\caption[The time-evolution of uniform distributions to equilibrium.]{Plots of the time-evolution
+of the density profiles of systems prepared with uniform distributions. These systems are of
+size $L=10$, with boundary densities $(0.9, 0.1)$, $b_0=100.0$ and $\lambda= \{ 0.1, 1.0, 2.0 \}$,
+going from top to bottom, respectively. The total time intervals have been adjusted to suit the 
+equilibration time.} \label{fig:TRMTimeDep}
+\begin{center}
+ \begin{tabular}{c}
+    \includegraphics[width=0.6\linewidth]{TRM/images/timeSeriesl0_1}  \\ 
+    \includegraphics[width=0.6\linewidth]{TRM/images/timeSeriesl1_0}  \\
+    \includegraphics[width=0.6\linewidth]{TRM/images/timeSeriesl2_0}  \\
+    \end{tabular}
+\end{center}
+    \vspace{-2em}
+\end{figure}
+In the plots we have included the innermost site in the boundary layer; notice that it switches to the 
+``correct''
+mean occupation almost instantly, which is exactly what is supposed to happen as it represents a highly
+responsive reservoir. The system then gradually makes its ways toward equilibrium, starting at the 
+boundaries and working inward, and the characteristic timescale over which this occurs seems to be in
+line with our results from \ref{sec:relaxTime}.
+
+Of course, this is more of a demonstration of what this method could achieve than actually useful
+results. We are quite sure that with a little effort one could use it to calculate time-dependent
+spatial correlation functions,
+for example, but we simply worked out how to perform TRM calculations too late in the project to be
+able to use it to full effect.
+
 
 \section{Conclusions}
+
+Numerically approximating the eigenpairs of the transition rate matrix is a convenient
+alternative to the use of
+Monte Carlo methods for the computation of the properties of a Markovian statistical mechanics system.
+When using the TRM, we sacrifice system size for accuracy, as the memory requirement for TRM
+calculations scales exponentially with system size, whilst similar Monte Carlo calculations scale 
+linearly. However, the TRM method avoids the
+sampling issues which often emerge when attempting Monte Carlo simulations, and can yield the relevant
+statistics with relative ease once the matrix computations are completed. Furthermore, we can also
+investigate time-dependent properties at our convenience, which can be awkward in Monte-Carlo 
+calculations as there we don't usually work with normal time.
+
+The main reason we performed these calculations, however, is to investigate the current flowing due
+to the boundary conditions. We found that the MFT prediction that the currents drops to zero or becomes 
+negative below a critical $\lambda$ (depending upon boundary conditions) does not seem to be correct;
+however, we have found that the scaling of the current does seem to undergo some kind of transition,
+from  $J \propto \lambda$ for high $\lambda$ to $J \propto \lambda^3$. This is something which we can
+investigate further using Monte-Carlo methods on larger-scale systems, and we will do this in the next
+chapter.
