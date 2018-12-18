@@ -73,7 +73,7 @@ Of course, for such finite-state systems (such as the SPM on a finite domain) th
 relates states to basis vectors in a vector space. In the SPM, a site is either full or empty, which means that there is a natural mapping between states and natural numbers based upon binary representation;
 a string of $1$s and $0$s can be associated with a natural number as well as a configuration of particles and vacancies.
 
-\subsection{A Small Worked Example}
+\subsection{A Small Worked Example: Closed System} \label{sec:workedExampleClosed}
 
 As a concrete example, let us consider the SPM on a cyclic domain of length $3$. There
 are $2^3$ possible combinations, and so $8$ possible states: $000$, $001$, and so forth.
@@ -202,10 +202,96 @@ In practise, in our larger-scale calculations we  used
 \end{equation}
 with $b$ set to, $100$ or $1000$.
 
+\subsection{Another Small Worked Example: Open System}
+
+Using full boundary conditions, the smallest system we can consider consists of adjacent boundary
+layers, in which particles pass directly from the inner layer of one boundary to the inner layer
+of the other boundary. Unfortunately the state space of such a system is $2^4=16$-dimensional, and
+so it would be cumbersome to consider such a system as an example here.
+
+However, in the special case in which one boundary has density $\rho_0=1$ and the other has
+$\rho_L=0$, the outer boundary layers become nondynamical, and the system simplifies considerably;
+particles can only enter at the full end with rate $\lambda$, and can only leave at the empty end.
+Therefore, we can consider a system consisting of single boundary layers attached to a single internal
+slot without needing to consider a state space larger than $2^3=8$. Using the same state-labelling
+convention as in Sec.~\ref{sec:workedExampleClosed}, the TRM for this new open system is
+\begin{equation}
+Q = 
+\begin{bmatrix}
+ -\lambda  & 1 &   &   &   &   &   &   \\
+   & -\lambda -2 & 1 &   &   &   &   &   \\
+   & 1 & -\lambda -2 & 1 & \lambda  &   &   &   \\
+   &   &   & -2 \lambda -1 &   & \lambda  &   &   \\
+ \lambda  &   & 1 &   & -\lambda  & 1 &   &   \\
+   & \lambda  &   & \lambda  &   & -\lambda -2 & \lambda  &   \\
+   &   & \lambda  &   &   & 1 & -\lambda  & \lambda  \\
+   &   &   & \lambda  &   &   &   & -\lambda  \\
+\end{bmatrix}.
+\end{equation}
+This time the matrix is not symmetric, and there does not exist a basis permutation which puts the
+TRM into block form. If we calculate the characteristic polynomial $p(q) = |Q - q I|$, we find that
+\begin{equation}
+\begin{split}
+ &p(q) = q \left[ q^7+(9 \lambda +7) q^6+\left(34 \lambda ^2+53 \lambda +17\right) q^5+\left(71 \lambda ^3+165 \lambda ^2+103 \lambda +17\right) q^4+ \right. \\
+ &+\left(89 \lambda
+   ^4+274 \lambda ^3+247 \lambda ^2+76 \lambda +6\right) q^3+\left(67 \lambda ^5+256 \lambda ^4+294 \lambda ^3+126 \lambda ^2+17 \lambda \right) q^2 \\
+  &\left. +\left(28 \lambda ^6+127 \lambda ^5+171 \lambda ^4+91 \lambda ^3+15
+   \lambda ^2\right) q + \left(5 \lambda ^7+26 \lambda ^6+37 \lambda ^5+24 \lambda ^4+4 \lambda ^3 \right) \right].
+\end{split}
+\end{equation}
+Of course, the roots of $p(q)$ are the eigenvalues of $Q$. Clearly one of the eigenvalues is $q=0$,
+and the others could be found by finding the root of the $7^\mathrm{th}$ order polynomial, which we
+will not be doing because it is extremely tedious and besides the point of this example. The
+$0$-eigenvector, and therefore the steady-state probability distribution over the possible
+configurations, can be computed with a little care, and turns out to be
+\begin{equation}
+ q_0 = D^{-1}
+ \begin{bmatrix}
+  3 \lambda +1,\lambda  (3 \lambda +1) \\
+  \lambda  (\lambda +2) (3 \lambda +1) \\
+  \lambda ^3 (\lambda +3) \\
+  (\lambda +3) (2 \lambda  (\lambda +2)+1) \\
+  \lambda ^2 (\lambda +3) (2 \lambda +1) \\
+  \lambda  (\lambda  (\lambda (\lambda +8)+14)+5) \\
+  \lambda ^3 (\lambda +3) \\
+ \end{bmatrix},
+\end{equation}
+where
+\begin{equation}
+ D = \lambda  (\lambda  (\lambda  (5 \lambda +26)+37)+24)+4.
+\end{equation}
+The variation of the occupation probabilities with $\lambda$ is displayed in
+Fig.~\ref{fig:smallOccProbs}.
+ \begin{figure}[h!]
+ \caption[The variation of configuration probabilities with $\lambda$ for a small open system.]{\label{fig:smallOccProbs} 
+ The variation of the steady-state configuration probability distribution with $\lambda$ for our
+ open system. The coloured curves correspond to specific configurations, as indicated in the legend.
+ }
+  \begin{center}
+ \includegraphics[width=1.0\textwidth]{TRM/images/smallOpenOcc}
+  \end{center}
+\end{figure}
+Notice that at extremely small $\lambda$ the system either empties or a single particle gets stuck to
+the full boundary, 
+essentially preventing further flow by blocking it. Meanwhile, at large $\lambda$ there are
+a few fairly popular states, with the most dominant being one with alternating particles and 
+vacancies, as one might expect. The steady-state current from left to right in this system can be
+calculated analytically once we have the steady state probability distribution, and turns out to be
+\begin{equation}
+ J = \lambda \left[ \frac{1}{4} + \frac{(1-\lambda)(3+\lambda)\lambda^2}{4+
+ \lambda\left(24+\lambda\left[37+\lambda\left(26+5\right)\right]\right)}  \right].
+\end{equation}
+The second term in the bracket is generally dominated by the first, so we can say to an excellent
+approximation that $J \sim \frac{1}{4} \lambda$. Thus, at least for this tiny example with very
+extreme boundary conditions, there does not appear to be any change in the scaling of the current
+with $\lambda$.
+
+
 \subsection{Formation of the TRM in Sparse Format}
 
-The smallest SPM system with boundary conditions implemented using the above method is
-of size $L=4$, and so has a state space of dimension $2^4=16$. This already a bit too large for us to seriously consider solving analytically. Instead, let us try to develop
+As we have seen, it is possible to find the eigendecomposition of the TRM analytically for extremely
+small systems with special boundary conditions. However, we'd really like to see what happens for
+somewhat larger systems, with more diverse boundary conditions. Thus, let us try to develop
 a method for the numerical analysis of TRMs of arbitrary size.
 
 The important thing to note about transition rate matrices for local lattice models
@@ -281,7 +367,7 @@ following parameters to be specified:
 \begin{itemize}
  \item $\rho_0 \in (0, 1)$, the density of the reservoir connected to the left end of the domain.
  \item $\rho_L \in (0, 1)$, the density of the reservoir connected to the right end of the domain.
- \item $L \in \mathbb{N}$, the system size. The way we have defined things in the code, we do not
+ \item $L \in \mathbb{N}$, the system size.  The way we have defined things in the code, we do not
  count the two sets of two particles representing the boundary; thus, $L=1$ actually
  refers to a system which contains $5$ lattice sites, of which $4$ are busy doing
  boundary duties.

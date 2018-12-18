@@ -1,14 +1,47 @@
 \chapter{Monte-Carlo Simulations of the SPM} 
 \label{sec:numerics}
-
+We now have numerical results for SPM systems using TRM analysis; however, this only allows us to study
+relatively small systems. In order to study larger ones, we have used Monte-Carlo methods. In this
+chapter, we will discuss the methods we used, the results they yielded and their meaning, with 
+particular emphasis on what they tell us about the suspected transition between low and high-$\lambda$
+behaviours.
 \section{Numerical Simulations of Continuous-Time Markov Processes}
-\subsection{Known Methods}
-Discuss commonly-used methods, and how they work. Eventually, talk about why we are using the n-fold way.
+\subsection{Purpose of Monte-Carlo Methods}
+We should first really describe what we mean by a Monte-Carlo method. In essence, Monte-Carlo methods
+refer to numerical routines in which we attempt to characterise an unknown distribution by using
+pseudorandom numbers in order to produce sample data which is hopefully faithful to the original 
+distribution, at least in terms of the statistics we are trying to calculate. A good example of a
+commonly-used Monte-Carlo method in Physics is the Metropolis-Hastings algorithm, which in its original
+for is used to calculate statistics for equilibrium statistical mechanics systems.
+
+In our situation, we wish to be able to mimic a continuous-time discrete-state Markov process.
+As we saw in Chap.~\ref{sec:TRM}, the state space for a TRM system of size $L$ scales as
+$\mathcal{O}(2^L$); thus we quickly run out of size if we try to consider exactly probability distributions, which correspond to
+vectors in $\mathbb{R}^{L^2}$. We can, however, store individual configurations, which only occupy
+$\mathcal{O}(L)$ space. Therefore, we need to find a way to produce trajectories through the discrete
+state space which sample the actual space of system trajectories well enough to allow us to access the
+statistics we want. Of course, there isn't a unique ``best'' way to do this. We have considered two
+contrasting methods, which differ primarily in the way in which they convert the original continuous 
+time into discrete steps which we can use in an algorithm.
+
+\subsection{Evenly-Spaced Timesteps}
+\subsection{The N-Fold Way, or Gillespie Algorithm}
+\section{Implementation of Monte Carlo Methods}
+\subsection{Our Implementation of a Metropolis-Hastings}
 \subsection{\texttt{KMCLib}}
 Talk about how it works, why I picked it over other implementations.
-\subsection{Running \texttt{KMCLib} on \texttt{Eddie3}}
+\subsection{Running our Monte-Carlo Calculations}
 How calculations are managed day-to-day.
 
-\section{Calculation Results }
-\subsection{1D}
-\subsection{2D}
+\section{1D Calculation Results}
+\subsection{Calculational Choices}
+\subsection{Flow Patterns}
+\subsection{Current}
+\subsection{Density}
+\subsection{Diffusion Coefficient}
+
+\section{2D Calculation Results}
+\subsection{Calculational Choices}
+\subsection{Results}
+
+\section{Conclusions}

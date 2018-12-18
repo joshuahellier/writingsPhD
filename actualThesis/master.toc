@@ -3,7 +3,7 @@
 \contentsline {chapter}{Acknowledgements}{iii}{chapter*.4}
 \contentsline {chapter}{Contents}{iv}{section*.5}
 \contentsline {chapter}{List of Figures}{viii}{section*.7}
-\contentsline {chapter}{List of Tables}{x}{section*.9}
+\contentsline {chapter}{List of Tables}{ix}{section*.9}
 \contentsline {chapter}{\numberline {1}Preliminary Work, Background and Motivation}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}The Ti$\text {O}_\mathbf {2}$/Ti Interface System}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Initial Attempts to Model the Ti$\text {O}_\mathbf {2}$/Ti Interface System}{1}{section.1.2}
@@ -21,66 +21,51 @@
 \contentsline {section}{\numberline {1.5}Implications of Initial Work for the PhD Direction}{3}{section.1.5}
 \contentsline {subsection}{\numberline {1.5.1}Why the Change of Direction?}{3}{subsection.1.5.1}
 \contentsline {subsection}{\numberline {1.5.2}Why Investigate Flow in the SPM?}{3}{subsection.1.5.2}
-\contentsline {chapter}{\numberline {2}Analytical Results about the SPM}{4}{chapter.2}
-\contentsline {section}{\numberline {2.1}Solving Problems in Nonequlibrium Statistical Mechanics}{4}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Equilibrium Statistical Mechanics}{5}{subsection.2.1.1}
-\contentsline {subsubsection}{Exact Solutions}{5}{subsection.2.1.1}
-\contentsline {subsubsection}{Approximate Methods for Analysing Equilibrium Statmech Systems}{6}{equation.2.1.2}
-\contentsline {subsection}{\numberline {2.1.2}Nonequlibrium Statistical Mechanics}{6}{subsection.2.1.2}
-\contentsline {subsubsection}{Exact Solutions}{7}{subsection.2.1.2}
-\contentsline {subsubsection}{Approximations}{8}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Where does the SPM stand?}{8}{subsection.2.1.3}
-\contentsline {section}{\numberline {2.2}Similarities between the SPM and Established Models in 1D}{9}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Relationship with the Ising Model}{9}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Correlation Functions}{10}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Equivalence with the Misanthrope Process}{11}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}Using the Mean-Field Approximation on the SPM}{12}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Lattice MFT Derivation}{12}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Continuum Limit MFT Derivation}{14}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Negative Diffusion Coefficients}{15}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Continuum Limit MFT Solutions}{18}{subsection.2.3.4}
-\contentsline {subsubsection}{Steady Flow Across a Bounded Domain}{19}{subsection.2.3.4}
-\contentsline {subsubsection}{Other Analytic Solutions}{22}{figure.caption.17}
-\contentsline {subsection}{\numberline {2.3.5}Implications of Continuum MFT Breakdown}{25}{subsection.2.3.5}
-\contentsline {section}{\numberline {2.4}The SPM in Higher Dimensions}{25}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Symmetry + Locality + Detailed Balance = Unique 1-Parameter SPM}{26}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}MFT of the $n$-Dimensional SPM}{31}{subsection.2.4.2}
-\contentsline {subsubsection}{Limiting and Symmetry Properties of the $n$-Dimensional MFT}{33}{equation.2.4.51}
-\contentsline {subsubsection}{The SPM MFT in $2$-Dimensions}{35}{equation.2.4.57}
-\contentsline {section}{\numberline {2.5}Conclusions About the SPM MFT}{36}{section.2.5}
-\contentsline {chapter}{\numberline {3}Transition Rate Matrix Analysis}{37}{chapter.3}
-\contentsline {section}{\numberline {3.1}The Transition Rate Operator for the SPM}{37}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}A Small Worked Example}{39}{subsection.3.1.1}
-\contentsline {section}{\numberline {3.2}Forming the TRM for Systems with Dirichlet Boundary Conditions}{41}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Dirichlet Boundary Conditions}{41}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Formation of the TRM in Sparse Format}{42}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}The Eigenspectrum of the TRM}{44}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}The Computation of the TRM Eigenspectrum}{44}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}The Structure of the TRM Eigenspectrum}{44}{subsection.3.3.2}
-\contentsline {subsubsection}{Small Calculations}{47}{subsection.3.3.2}
-\contentsline {subsubsection}{The Scaling of the Number of Slow Modes at Low $\lambda $}{50}{figure.caption.27}
-\contentsline {subsubsection}{The Upper Part of the Spectrum}{50}{figure.caption.29}
-\contentsline {subsubsection}{Large Calculation}{52}{figure.caption.30}
-\contentsline {subsection}{\numberline {3.3.3}Current and Density in the Steady State}{55}{subsection.3.3.3}
-\contentsline {subsubsection}{TRM-Computed Density Profile}{55}{figure.caption.31}
-\contentsline {subsubsection}{TRM-Computed Current}{57}{figure.caption.32}
-\contentsline {subsubsection}{TRM-Computed Diffusion Coefficient}{59}{figure.caption.33}
-\contentsline {section}{\numberline {3.4}Time-Dependent Properties of Small SPM Systems}{62}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}The Relaxation Time for the SPM}{62}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Time-Evolution of States}{63}{subsection.3.4.2}
-\contentsline {section}{\numberline {3.5}Conclusions}{64}{section.3.5}
-\contentsline {chapter}{\numberline {4}Monte-Carlo Simulations of the SPM}{66}{chapter.4}
-\contentsline {section}{\numberline {4.1}Numerical Simulations of Continuous-Time Markov Processes}{66}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Known Methods}{66}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}\texttt {KMCLib}}{66}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Running \texttt {KMCLib} on \texttt {Eddie3}}{66}{subsection.4.1.3}
-\contentsline {section}{\numberline {4.2}Calculation Results }{67}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}1D}{67}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}2D}{67}{subsection.4.2.2}
-\contentsline {chapter}{\numberline {5}Conclusions}{68}{chapter.5}
-\contentsline {chapter}{\numberline {A}Code Listings}{69}{appendix.A}
-\contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{69}{section.A.1}
-\contentsline {section}{\numberline {A.2}$n$-Dimensional Continuum-Limit MFT }{71}{section.A.2}
+\contentsline {chapter}{\numberline {2}Transition Rate Matrix Analysis}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}The Transition Rate Operator for the SPM}{4}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}A Small Worked Example: Closed System}{6}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}Forming the TRM for Systems with Dirichlet Boundary Conditions}{8}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Dirichlet Boundary Conditions}{8}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Another Small Worked Example: Open System}{9}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Formation of the TRM in Sparse Format}{12}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}The Eigenspectrum of the TRM}{13}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}The Computation of the TRM Eigenspectrum}{13}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}The Structure of the TRM Eigenspectrum}{14}{subsection.2.3.2}
+\contentsline {subsubsection}{Small Calculations}{15}{subsection.2.3.2}
+\contentsline {subsubsection}{The Scaling of the Number of Slow Modes at Low $\lambda $}{19}{figure.caption.13}
+\contentsline {subsubsection}{The Upper Part of the Spectrum}{20}{figure.caption.15}
+\contentsline {subsubsection}{Large Calculation}{21}{figure.caption.16}
+\contentsline {subsection}{\numberline {2.3.3}Current and Density in the Steady State}{24}{subsection.2.3.3}
+\contentsline {subsubsection}{TRM-Computed Density Profile}{24}{subsection.2.3.3}
+\contentsline {subsubsection}{TRM-Computed Current}{26}{figure.caption.18}
+\contentsline {subsubsection}{TRM-Computed Diffusion Coefficient}{28}{figure.caption.19}
+\contentsline {section}{\numberline {2.4}Time-Dependent Properties of Small SPM Systems}{30}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}The Relaxation Time for the SPM}{30}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Time-Evolution of States}{32}{subsection.2.4.2}
+\contentsline {section}{\numberline {2.5}Conclusions}{33}{section.2.5}
+\contentsline {chapter}{\numberline {3}Monte-Carlo Simulations of the SPM}{36}{chapter.3}
+\contentsline {section}{\numberline {3.1}Numerical Simulations of Continuous-Time Markov Processes}{36}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Purpose of Monte-Carlo Methods}{36}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Evenly-Spaced Timesteps}{37}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}The N-Fold Way, or Gillespie Algorithm}{37}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Implementation of Monte Carlo Methods}{37}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Our Implementation of a Metropolis-Hastings}{37}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}\texttt {KMCLib}}{37}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Running our Monte-Carlo Calculations}{37}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}1D Calculation Results}{38}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Calculational Choices}{38}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Flow Patterns}{38}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Current}{38}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Density}{38}{subsection.3.3.4}
+\contentsline {subsection}{\numberline {3.3.5}Diffusion Coefficient}{38}{subsection.3.3.5}
+\contentsline {section}{\numberline {3.4}2D Calculation Results}{38}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Calculational Choices}{38}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Results}{38}{subsection.3.4.2}
+\contentsline {section}{\numberline {3.5}Conclusions}{38}{section.3.5}
+\contentsline {chapter}{\numberline {4}Conclusions}{39}{chapter.4}
+\contentsline {chapter}{\numberline {A}Code Listings}{40}{appendix.A}
+\contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{40}{section.A.1}
+\contentsline {section}{\numberline {A.2}$n$-Dimensional Continuum-Limit MFT }{42}{section.A.2}
 \tocappendix 
-\contentsline {chapter}{Bibliography}{72}{section*.38}
+\contentsline {chapter}{Bibliography}{43}{section*.24}
 \contentsfinish 
