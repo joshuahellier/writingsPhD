@@ -203,11 +203,126 @@ Using the result from~\cite{evansWaclaw2014}, that the probability weighting of 
 \begin{equation}
  P(\{m_i\}) \propto \prod_{i+1}^N f(m_i) \delta_{L+N, \sum_{j=1}^N m_j},
 \end{equation}
-where $f(m)$ is a weighting dependant on the occupation of a site,  we see that for the SPM $f(m) = \lambda^{-m}$. Thus, for finite $\lambda$ 
+where $f(m)$ is a weighting dependant on the occupation of a site,  we see that for the SPM 
 \begin{equation}
- \frac{f(m)}{f(m-1)} = \lambda^{-1}
+ f(m) = 
+ \begin{cases}
+ \lambda, & n=0 \\
+ 1, & \text{otherwise}
+ \end{cases}.
+\end{equation}
+Thus, for finite $\lambda$ 
+\begin{equation}
+ \frac{f(m)}{f(m-1)} = 1, \forall m>2, 
 \end{equation}
 which remains bounded as $m \rightarrow \infty$, therefore this model does not exhibit explosive condensation, again by using~\cite{evansWaclaw2014}.
+
+\subsection{Calculation of the Partition Function of the SPM on a Closed Ring}
+
+Whilst we are on the subject of the duality between the SPM and the Misanthrope Process, we
+can observe that the probability weighting of any configuration is proportional to $\lambda^{-k}$,
+where $k$ is the number of particle-particle adjacencies in the SPM and the number of empty slots
+in the Misanthrope Process. This begs the question: if we know the weightings, can we calculate the
+partition function, and therefore other quantities such as the free energy or chemical potential,
+for the SPM on a closed ring with particle density $\rho$?
+
+In order to attempt this, we must first make two observations from the field of combinatorics:
+\begin{itemize}
+ \item The number of possible ways to select, without ordering or replacement, $M$ objects from $N$
+ is
+ \begin{equation}
+  \begin{pmatrix}
+   M \\
+   N \\
+  \end{pmatrix}
+  = \frac{N!}{M!(N-M)!}.
+ \end{equation}
+\item The number of ways to insert $M$ unlabelled balls into $N$ boxes is
+\begin{equation}
+ \begin{pmatrix}
+  N+M-1 \\
+  M-1 \\
+ \end{pmatrix}
+ = \frac{(N+M-1)!}{N!(M-1)!}.
+\end{equation}
+ \end{itemize}
+Now let us consider a Misanthrope Process on a closed ring of $N$ slots, into which we wish to
+distribute $L-N$ particles; this corresponds to the SPM on a ring with $L$ slots containing $N$
+particles. Say we wish to distribute the particles so that only $M$ of the slots
+contain any particles at all; then the above two combinatorial results suggest that there are
+$\frac{N!}{M!(N-M)!}$ ways to choose which $M$ slots, into which we insert one particle each,
+leaving $\frac{(L-N-1)!}{(L-N)!(M-1)!}$ ways to insert the remainder. Thus, the overall number of
+possible ways to distribute the particles so that only $M$ slots contain any at all is
+\begin{equation}
+ C_M = \frac{N!(L-N-1)!}{M!(N-M)!(L-N)!(M-1)!}.
+\end{equation}
+As we know, the weighting of a configuration in which only $M$ of the slots are nonempty is
+$\lambda^{-(N-M)}$; therefore, the partition function $Z_L (\lambda, N)$ for a system of size $L$ is
+\begin{equation}
+ Z_L (\lambda, N) = \sum_{M=1}^{M=\min{ \{ N-1, L-N \} }} \left[ \frac{N!(L-N-1)!}{M!(N-M)!(L-N)!(M-1)!}
+ \lambda^{-(N-M)} \right].
+\end{equation}
+For statistical mechanics, we are really interested in the situation where the system size is very
+large. Therefore, let us define $\rho$, $m \in (0, 1)$ so that $N = \rho L$ and $M = mL$, and invoke
+the Stirling approximation $\log{x!} \sim x \log{x}$ for large $x$. Regarding $L$ as a large 
+constant, and keeping only leading order behaviour in $L$, we find that 
+\begin{equation}
+\begin{split}
+ Z_L (\lambda, \rho) &\sim \int_{0}^{\min{\{ \rho, 1-\rho \}}} \! \mathrm{d}m \
+ \exp{L \left[-2m \log{m} + (1-\rho)\log{(1-\rho)} + \rho \log{\rho} \right.} \\
+ & \left. -(1-\rho-m)\log{(1-\rho-m)}
+ -(\rho-m)\log{(\rho-m)} - (\rho-m)\log \lambda \right]
+ \end{split}.
+\end{equation}
+This integral looks quite intractable, but recall that in the limit $L \rightarrow \infty$ we can
+evaluate it asymptotically using the Laplace's Method. This requires finding the location of
+extrema of the exponentiated term as a function of $m$; these occur when
+\begin{equation}
+ \lambda(1-m-\rho)(\rho-m) = m^2 .
+\end{equation}
+One of the solutions occurs in $(0, \min{\{\rho, 1-\rho\}})$, at 
+\begin{equation}
+ m_+ = \frac{\lambda+\sqrt{\lambda^2 + 4\lambda(1-\lambda)\rho(1-\rho)}}{2(1-\lambda)},
+\end{equation}
+and a little analysis reveals that
+it is indeed a maximum, as required for the use of Laplace's Method. Therefore, we find that
+\begin{equation}
+\begin{split}
+\sqrt[L]{Z_L (\lambda, \rho)} \sim &\sqrt{2 \pi } \frac{  (1-\rho )^{1-\rho } \rho ^{\rho }}{
+m_+^{2 m_+} \left(\rho -m_+\right)^{\rho-m_+} \left(1-m_+-\rho
+   \right)^{1 - m_+ - \rho}}  \\ 
+   & \times \sqrt{\frac{m_+
+   \left(\rho -m_+\right) \left(1- m_+ -\rho\right)}{ 2 (1-\rho) \rho - m_+}} \lambda
+   ^{m_+-\rho }
+   \end{split}.
+\end{equation}
+From here one can use computer algebra to obtain the free energy density
+$
+ F(\rho, \lambda) = - \frac{\log{Z_L}}{L}
+$
+(Fig.~\ref{fig:spmFreeEnergy} and chemical potential $\mu (\rho, \lambda) = \partDeriv{F}{\rho}$
+(Fig~\ref{fig:spmChemPot}) of the SPM system. 
+\begin{figure}[h!]
+ \caption[The free energy density of the SPM on a closed ring, as a function of density
+ and $\lambda$.]{\label{fig:spmFreeEnergy} 
+ The variation of the SPM free energy density on a large closed ring as a function of particle 
+ density and stickiness parameter $\lambda$.
+ }
+  \begin{center}
+ \includegraphics[width=1.0\textwidth]{analytics/images/spmFreeEnergy}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+ \caption[The chemical potential of the SPM on a closed ring, as a function of density
+ and $\lambda$.]{\label{fig:spmChemPot} 
+ The variation of the SPM chemical potential on a large closed ring as a function of particle 
+ density and stickiness parameter $\lambda$.
+ }
+  \begin{center}
+ \includegraphics[width=1.0\textwidth]{analytics/images/spmChemPot}
+  \end{center}
+\end{figure}
 
 
 \section{Using the Mean-Field Approximation on the SPM}
