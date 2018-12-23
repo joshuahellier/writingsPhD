@@ -300,13 +300,16 @@ From here one can use computer algebra to obtain the free energy density
 $
  F(\rho, \lambda) = - \frac{\log{Z_L}}{L}
 $
-(Fig.~\ref{fig:spmFreeEnergy} and chemical potential $\mu (\rho, \lambda) = \partDeriv{F}{\rho}$
+(Fig.~\ref{fig:spmFreeEnergy}) and chemical potential $\mu (\rho, \lambda) = \partDeriv{F}{\rho}$
 (Fig~\ref{fig:spmChemPot}) of the SPM system. 
 \begin{figure}[h!]
  \caption[The free energy density of the SPM on a closed ring, as a function of density
  and $\lambda$.]{\label{fig:spmFreeEnergy} 
  The variation of the SPM free energy density on a large closed ring as a function of particle 
- density and stickiness parameter $\lambda$.
+ density and stickiness parameter $\lambda$. The patches on the line $\lambda=1$ are
+ due to the way that $m_+$ is calculated; although a little analysis reveals that it is in fact a
+ well-behaved removable singularity, numerical errors cause the plotting numerics to behave
+ badly in places.
  }
   \begin{center}
  \includegraphics[width=1.0\textwidth]{analytics/images/spmFreeEnergy}
@@ -317,13 +320,26 @@ $
  \caption[The chemical potential of the SPM on a closed ring, as a function of density
  and $\lambda$.]{\label{fig:spmChemPot} 
  The variation of the SPM chemical potential on a large closed ring as a function of particle 
- density and stickiness parameter $\lambda$.
+ density and stickiness parameter $\lambda$. Again, we see some bad behaviour at $\lambda=1$,
+ for the same reasons as before.
  }
   \begin{center}
  \includegraphics[width=1.0\textwidth]{analytics/images/spmChemPot}
   \end{center}
 \end{figure}
-
+Of course, in thermodynamic equilibrium a system generally attempts to lower its total free energy
+to the lowest value allowed by the constraints. If we hold $\lambda$ constant whilst allowing $\rho$
+to vary, this corresponds to the curve $\mu(\rho, \lambda)=0$, which one can follow on
+Fig.~\ref{fig:spmChemPot}; a glance at Fig.~\ref{fig:spmFreeEnergy} confirms that this is indeed
+a minimum. Thus we should expect that a very large system connected to a particle reservoir would
+tend towards having a total density such that $\mu = 0$, regardless of the particle density
+in the reservoir, as the particle density in the system would only be pinned to that of the
+reservoir near to the boundary. Therefore, at large $\lambda$ we would see systems tend towards a
+density of $\rho=\frac{1}{2}$, whereas for small $\lambda$ the system would tend to fill.
+Of course, if we were to hook a system up to two different boundaries and cause a current to flow,
+as we have done many times in the course of this project,
+that might change things, as now the system would be in a nonequilibrium steady state as opposed
+to a thermodynamic equilibrium, and those are not quite the same beast.
 
 \section{Using the Mean-Field Approximation on the SPM}
 For the reasons discussed in Sec.~\ref{sec:mftStatus}, we do not possess an analytic solution for the SPM on a nonperiodic bounded domain. Such a solution might exist, but
