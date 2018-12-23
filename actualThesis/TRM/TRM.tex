@@ -246,7 +246,8 @@ TRM into block form. If we calculate the characteristic polynomial $p(q) = |Q - 
 \end{equation}
 Of course, the roots of $p(q)$ are the eigenvalues of $Q$. Clearly one of the eigenvalues is $q=0$,
 and the others could be found by finding the root of the $7^\mathrm{th}$ order polynomial, which we
-will not be doing because it is extremely tedious and besides the point of this example. The
+will not be doing analytically because it is extremely tedious and besides the point of this
+example. The
 $0$-eigenvector, and therefore the steady-state probability distribution over the possible
 configurations, can be computed with a little care, and turns out to be
 \begin{equation}
@@ -291,6 +292,18 @@ approximation that $J \sim \frac{1}{4} \lambda$. Thus, at least for this tiny ex
 extreme boundary conditions, there does not appear to be any change in the scaling of the current
 with $\lambda$.
 
+We can also compute the negative real part of the eigenspectrum of the TRM for this small system;
+this is displayed in Fig.~\ref{fig:smallEigSpec}.
+ \begin{figure}[h!]
+ \caption[The variation of the eigenspectrum of the TRM with $\lambda$ for a small open system.]{\label{fig:smallEigSpec} 
+ The variation of the negative real part of the eigenspectrum of the TRM for our small open system
+ with $\lambda$.
+ }
+  \begin{center}
+ \includegraphics[width=1.0\textwidth]{TRM/images/smallOpenEigSpec}
+  \end{center}
+\end{figure}
+It is in many ways rather similar to the eigenspectra we find for larger systems, so we see Sec.~\ref{sec:trmEigenspec} for our comments on those.
 
 \subsection{Formation of the TRM in Sparse Format}
 
@@ -364,7 +377,7 @@ most likely provoked the code to use a Implicitly Restarted Arnoldi Method (IRAM
 This is not as accurate for computing the steady state, but yields vastly more accurate
 results when computing the other eigenpairs compared to the first method. 
 
-\subsection{The Structure of the TRM Eigenspectrum}
+\subsection{The Structure of the TRM Eigenspectrum} \label{sec:trmEigenspec}
 
 Using the code listed at <place>, we can compute the eigenspectrum of an SPM system
 with boundary densities connected at both ends. Such a computation requires the
