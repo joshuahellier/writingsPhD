@@ -1,8 +1,16 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{9}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{}
+
+\bibitem[{Bortz et~al.(1975)Bortz, Kalos, and Lebowitz}]{Bortz1975}
+Bortz, A., M.~Kalos, and J.~Lebowitz.
+\newblock \enquote{A new algorithm for Monte Carlo simulation of Ising spin
+  systems.}
+\newblock \emph{Journal of Computational Physics} 17, ~1: (1975) 10 -- 18.
+\newblock
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/0021999175900601}.
 
 \bibitem[{Evans and Waclaw(2014)}]{evansWaclaw2014}
 Evans, M.~R., and B.~Waclaw.
@@ -20,15 +28,28 @@ Ivanova, N.~M.
 
 \bibitem[{Laisant(1905)}]{laisant1905}
 Laisant, C.-A.
-\newblock \enquote{Intégration des fonctions inverses.}
-\newblock \emph{Nouvelles annales de mathématiques : journal des candidats aux
-  écoles polytechnique et normale} 5: (1905) 253--257.
+\newblock \enquote{Int\'egration des fonctions inverses.}
+\newblock \emph{Nouvelles annales de math\'ematiques : journal des candidats
+  aux \'ecoles polytechnique et normale} 5: (1905) 253--257.
 \newblock \urlprefix\url{http://eudml.org/doc/101975}.
 
 \bibitem[{Landau et~al.(1980)Landau, Lifshitz, and
   Pitaevskii}]{landauLifshitzStatmech}
 Landau, L.~D., E.~M. Lifshitz, and L.~Pitaevskii.
-\newblock \enquote{Statistical physics, part I.}, 1980.
+\newblock \emph{Statistical physics, part I}.
+\newblock pergamon, Oxford, 1980.
+
+\bibitem[{Martynov(2012)}]{martynovStatmech}
+Martynov, G.~A.
+\newblock \emph{Classical Statistical Mechanics}, volume~89.
+\newblock Springer Science \& Business Media, 2012.
+
+\bibitem[{Prados et~al.(1997)Prados, Brey, and S{\'a}nchez-Rey}]{Prados1997}
+Prados, A., J.~J. Brey, and B.~S{\'a}nchez-Rey.
+\newblock \enquote{A dynamical monte carlo algorithm for master equations with
+  time-dependent transition rates.}
+\newblock \emph{Journal of Statistical Physics} 89, ~3: (1997) 709--734.
+\newblock \urlprefix\url{https://doi.org/10.1007/BF02765541}.
 
 \bibitem[{Sherratt(1998)}]{sherrat1998}
 Sherratt, J.~A.
@@ -36,5 +57,11 @@ Sherratt, J.~A.
   the Fisher-KPP equation.}
 \newblock \emph{Dynamics and Stability of Systems} 13, ~2: (1998) 167--174.
 \newblock \urlprefix\url{https://doi.org/10.1080/02681119808806258}.
+
+\bibitem[{Voter(2005)}]{voterKMC}
+Voter, A.
+\newblock \emph{Radiation Effects in Solids edited by KE Sickafus and EA
+  Kotomin}.
+\newblock Springer, NATO Publishing Unit, 2005.
 
 \end{thebibliography}
