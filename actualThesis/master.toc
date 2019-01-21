@@ -77,23 +77,23 @@
 \contentsline {subsection}{\numberline {4.1.2}Evenly-Spaced Timesteps}{75}{subsection.4.1.2}
 \contentsline {subsection}{\numberline {4.1.3}The N-Fold Way, or Gillespie Algorithm}{77}{subsection.4.1.3}
 \contentsline {section}{\numberline {4.2}Implementation of Monte Carlo Methods}{79}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Our Implementation of a Metropolis-Hastings}{79}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}\texttt {KMCLib}}{79}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Running our Monte-Carlo Calculations}{79}{subsection.4.2.3}
-\contentsline {section}{\numberline {4.3}1D Calculation Results}{80}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Calculational Choices}{80}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Flow Patterns}{80}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Current}{80}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Density}{80}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Diffusion Coefficient}{80}{subsection.4.3.5}
-\contentsline {section}{\numberline {4.4}2D Calculation Results}{80}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Calculational Choices}{80}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Results}{80}{subsection.4.4.2}
-\contentsline {section}{\numberline {4.5}Conclusions}{80}{section.4.5}
-\contentsline {chapter}{\numberline {5}Conclusions}{81}{chapter.5}
-\contentsline {chapter}{\numberline {A}Code Listings}{82}{appendix.A}
-\contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{82}{section.A.1}
-\contentsline {section}{\numberline {A.2}$n$-Dimensional Continuum-Limit MFT }{84}{section.A.2}
+\contentsline {subsection}{\numberline {4.2.1}Our Implementation of a Metropolis-Hastings Algorithm with Evenly-Space Timesteps}{79}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}\texttt {KMCLib}}{80}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Managing \texttt {KMCLib} Calculations in Parallel}{83}{subsection.4.2.3}
+\contentsline {section}{\numberline {4.3}1D Calculation Results}{85}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Calculational Choices}{85}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Flow Patterns}{85}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Current}{85}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Density}{85}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Diffusion Coefficient}{85}{subsection.4.3.5}
+\contentsline {section}{\numberline {4.4}2D Calculation Results}{85}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Calculational Choices}{85}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Results}{85}{subsection.4.4.2}
+\contentsline {section}{\numberline {4.5}Conclusions}{85}{section.4.5}
+\contentsline {chapter}{\numberline {5}Conclusions}{86}{chapter.5}
+\contentsline {chapter}{\numberline {A}Code Listings}{87}{appendix.A}
+\contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{87}{section.A.1}
+\contentsline {section}{\numberline {A.2}$n$-Dimensional Continuum-Limit MFT }{89}{section.A.2}
 \tocappendix 
-\contentsline {chapter}{Bibliography}{85}{section*.43}
+\contentsline {chapter}{Bibliography}{90}{section*.43}
 \contentsfinish 
