@@ -1,53 +1,49 @@
 This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: master.aux
-A level-1 auxiliary file: intro/intro.aux
-A level-1 auxiliary file: analytics/analytics.aux
-A level-1 auxiliary file: TRM/TRM.aux
 A level-1 auxiliary file: numerics/numerics.aux
-A level-1 auxiliary file: conclusions/conclusions.aux
 A level-1 auxiliary file: appendix1/appendix1.aux
 The style file: ChicagoReedweb.bst
 Database file #1: overallBib.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 12 entries,
+You've used 6 entries,
             3202 wiz_defined-function locations,
-            1171 strings with 14577 characters,
-and the built_in function-call counts, 10227 in all, are:
-= -- 1129
-> -- 318
-< -- 13
-+ -- 156
-- -- 96
-* -- 601
-:= -- 1220
-add.period$ -- 50
-call.type$ -- 12
-change.case$ -- 79
-chr.to.int$ -- 12
-cite$ -- 12
-duplicate$ -- 999
-empty$ -- 581
-format.name$ -- 126
-if$ -- 2018
+            1124 strings with 13403 characters,
+and the built_in function-call counts, 6036 in all, are:
+= -- 670
+> -- 223
+< -- 5
++ -- 105
+- -- 69
+* -- 368
+:= -- 699
+add.period$ -- 25
+call.type$ -- 6
+change.case$ -- 46
+chr.to.int$ -- 6
+cite$ -- 6
+duplicate$ -- 589
+empty$ -- 311
+format.name$ -- 87
+if$ -- 1181
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 109
-newline$ -- 72
-num.names$ -- 48
-pop$ -- 364
+missing$ -- 61
+newline$ -- 39
+num.names$ -- 24
+pop$ -- 208
 preamble$ -- 1
-purify$ -- 79
+purify$ -- 46
 quote$ -- 0
-skip$ -- 547
+skip$ -- 331
 stack$ -- 0
-substring$ -- 467
-swap$ -- 802
-text.length$ -- 6
+substring$ -- 276
+swap$ -- 490
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 99
+type$ -- 51
 warning$ -- 0
-while$ -- 52
+while$ -- 28
 width$ -- 0
-write$ -- 157
+write$ -- 80
