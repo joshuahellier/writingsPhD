@@ -483,6 +483,63 @@ of transport in this regime.
  
  
 \subsection{Scans Through $\lambda$ with Constant Boundary Densities} \label{sec:lambdaScans}
+We can perform calculations in which we hold all things constant except $\lambda$, analogous to our 
+existing calculations done using our TRM and MFT results. In these calculations, we computed the properties of systems with boundary densities $(\rho_0 , \rho_L )=(0.3, 0.1)$, $(0.75, 0.25)$ and 
+$(0.9, 0.7)$, using both the evenly-timestepped Monte Carlo method and KMC. In this case, our KMC calculations used systems of size $L = 64$, whilst our other method used systems of size $L=100$.
+To account for the different system sizes used, we have rescaled the current and its moments, whilst
+leaving most other quantities such as particle density as they are. In the case of current, we have
+multiplied by $L$ in order to achieve this normalisation; this is because a normal diffusive current is
+driven by concentration gradient, therefore if we use the same concentration difference we should expect 
+the resulting current to vary as $J \sim L^{-1}$.
+
+\subsubsection{Mean Current}
+\begin{figure} \caption[The current flowing through systems as we vary $\lambda$ with constant boundaries,
+$1$D]{The mean current observed to flow from a boundary with greater particle density to lesser particle 
+density in $1$D. Here the boundary densities are held constant throughout, whilst $\lambda$ is varied.
+The lower plot is the same data as the upper one, but with logarithmic axes instead of linear ones.} 
+\label{fig:1DlambdaScans}
+\begin{center}
+\begin{tabular}{c} 
+\includegraphics[width=1.1\linewidth]{numerics/images/lambdaScan/allDataLinear} \\
+\includegraphics[width=1.1\linewidth]{numerics/images/lambdaScan/allData} \\
+\end{tabular}
+\end{center}
+\end{figure}
+Fig.~\ref{fig:1DlambdaScans} displays the variation of the current with $\lambda$. Here, the dashed lines
+correspond to the MFT predictions, the joined circles to TRM-computed results, the triangles to results
+computed using evenly-timestepped Monte Carlo and the crosses to KMC calculations.
+Fig.~\ref{fig:1DlambdaScansLogged} displays the same data, but over a wider range of $\lambda$ values.
+We have already discussed the TRM results and their relation to the MFT results back in 
+Sec.~\ref{sec:TRMLambdaScan}. Our main observations about the current are as follows:
+\begin{itemize}
+ \item At large $\lambda$ the current seems to vary in proportion to $\lambda$, in agreement with our
+ TRM and MFT results. The actual constants of proportionality don't quite match, which is a common issue
+ in all of these results. We have seen in Sec.~\ref{sec:flowPatternVis} that there is usually a boundary
+ layer of excess particles or vacancies next to both boundaries, thus it is possible that this issue
+ arises from this boundary layer causing the current to not scale with $\lambda$ in quite the way we
+ expect.
+ \item For $\lambda \in (0.01, 0.3)$, the current undergoes power law variation with $\lambda$, again in 
+ agreement with our TRM calculations, with $J \propto \lambda^{3}$.
+ \item For smaller values of $\lambda$, the observed mean current starts to become noisy, at least in the
+ logarithmic plots, and essentially saturates to a low value. Our interpretation of this is that for these
+ extreme low values of $\lambda$ the current signal becomes extremely weak, as it begins to depend on the
+ motions of extremely small overall numbers of particles during the measurement period; thus, in that 
+ regime the current is dominated by a form of shot noise, and so it becomes difficult to measure the current accurately in this regime.
+\end{itemize}
+
+\begin{figure} \caption[As Fig.~\ref{fig:1DlambdaScans} but over a much wider range of $\lambda$-values.]{As the logarithmic plot in Fig.~\ref{fig:1DlambdaScans} but over a  much wider range of $\lambda$-values.} 
+\label{fig:1DlambdaScansLogged}
+\begin{center}
+\includegraphics[width=1.0\textheight, angle=270]{numerics/images/lambdaScan/allDataWide}
+\end{center}
+\end{figure}
+
+
+\subsubsection{Current Higher Moments}
+
+\subsubsection{Overall Density}
+
+\subsubsection{Block Size Distribution}
 
 \subsection{Varying $\lambda$ and Boundary Density Difference Together}
 \subsection{Varying the Boundary Densities with Constant $\lambda$}
