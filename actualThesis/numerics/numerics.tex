@@ -490,7 +490,12 @@ To account for the different system sizes used, we have rescaled the current and
 leaving most other quantities such as particle density as they are. In the case of current, we have
 multiplied by $L$ in order to achieve this normalisation; this is because a normal diffusive current is
 driven by concentration gradient, therefore if we use the same concentration difference we should expect 
-the resulting current to vary as $J \sim L^{-1}$.
+the resulting current to vary as $J \sim L^{-1}$. Note that for our KMC calculations we performed initial
+equilibration runs of $4000000$ steps, followed by $1000$ of our alternating analysis/relaxation passes
+of $16000$ steps each way; thus, this should provide us with decent quality data, at least until $\lambda$
+becomes so small that particles can barely move through the system. Our evenly-timestepped calculations
+were performed with $10000$ equilibration steps followed by a single measurement run of $100000000$ steps,
+so we aren't calculating the other moments of the current using that method.
 
 \subsubsection{Mean Current}
 \begin{figure} \caption[The current flowing through systems as we vary $\lambda$ with constant boundaries,
@@ -517,7 +522,8 @@ Sec.~\ref{sec:TRMLambdaScan}. Our main observations about the current are as fol
  in all of these results. We have seen in Sec.~\ref{sec:flowPatternVis} that there is usually a boundary
  layer of excess particles or vacancies next to both boundaries, thus it is possible that this issue
  arises from this boundary layer causing the current to not scale with $\lambda$ in quite the way we
- expect.
+ expect. However, this is something we can check by varying the system size and checking the current
+ variation with $\lambda$, as we have done in Fig.\ref{fig:lambdaScanRepeats}.
  \item For $\lambda \in (0.01, 0.3)$, the current undergoes power law variation with $\lambda$, again in 
  agreement with our TRM calculations, with $J \propto \lambda^{3}$.
  \item For smaller values of $\lambda$, the observed mean current starts to become noisy, at least in the
@@ -533,13 +539,137 @@ Sec.~\ref{sec:TRMLambdaScan}. Our main observations about the current are as fol
 \includegraphics[width=1.0\textheight, angle=270]{numerics/images/lambdaScan/allDataWide}
 \end{center}
 \end{figure}
-
+Thus, we still seem to see the same ``transition'' we saw when analysing TRM results. To ensure that this
+behaviour in the current isn't just an artefact of system size, we can vary the system size whilst
+measuring the current, as we have done in Fig.~\ref{fig:lambdaScanRepeats}.
+\begin{figure} \caption[Calculations of the dependence of current upon $\lambda$, repeated with different system sizes.]{Calculations of the dependence of current upon $\lambda$, repeated with different system sizes as indicated. Here we have focussed on the boundary setup 
+$(\rho_0, \rho_L) = (0.75, 0.25)$ and region $\lambda \in (0.04, 0.25)$, which constitutes the
+bend in our supposed transition. Standard errors in the current were computed using observed current 
+variances.} 
+\label{fig:lambdaScanRepeats}
+\begin{center}
+\includegraphics[width=0.95\textheight, angle=270]{numerics/images/lambdaScan/lambdaScanRepeatFlows}
+\end{center}
+\end{figure}
+Here we see that our method for normalising currents for different system sizes actually seems
+to work quite well, at least over the system sizes we are looking at. It also indicates that our choice of
+$L=64$ behaves well until $\lambda < 0.05$, at which point the fluctuations start to become very large 
+compared to the observed mean current.
 
 \subsubsection{Current Higher Moments}
+Using our KMC calculations, we can also compute the higher moments of the current. As we do not have any 
+particular theory which predicts these higher moments, we do not have very much to say about these
+results, other than simply stating what we see. It is worth noting that we don't detect divergences
+in these moments around the bend of our ``transition'', therefore it does not seem to be a transition
+in the traditional phase transition sense, as there we would expect to see discontinuities in observables,
+and here current is the kind of observable we should expect to manifest that kind of behaviour.
+These moments, up to and including the current kurtosis, are displayed in 
+Fig.~\ref{fig:lambdaScanHigherMoments}.
+\afterpage{
+\begin{figure} \caption[Higher moments of the current, in 1$D$]{The higher moments of the current, 
+measured in the same setup as used in Fig.~\ref{fig:1DlambdaScans}.} 
+\label{fig:lambdaScanHigherMoments}
+\begin{center}
+\begin{tabular}{c} 
+\includegraphics[width=1.0\linewidth]{numerics/images/lambdaScan/lambdaScanVar} \\
+\includegraphics[width=1.0\linewidth]{numerics/images/lambdaScan/lambdaScanSkew} \\
+\includegraphics[width=1.0\linewidth]{numerics/images/lambdaScan/lambdaScanKurt} \\
+\end{tabular}
+\end{center}
+\end{figure}
+\clearpage
+}
+There's a little bit of a bend in the variance as we go through the transition, but nothing major.
+Skewness is typically positive but fluctuates a lot, and goes negative past certain thresholds at
+large $\lambda$. Kurtosis is bounded and possibly negative for $\lambda$ above the transition threshold,
+then decides to start growing large and positive as we go through the suspected transition.
+Thus, we have several different pieces of weak evidence of something happening in the transition region,
+but nothing clear and conclusive like a spike or discontinuity.
+
 
 \subsubsection{Overall Density}
 
+In addition to measuring current and its moments, we can measure the mean overall density of particles in
+the system. We did this using the same system parameters as in Fig.~\ref{fig:1DlambdaScans}; the 
+variation in this mean density with $\lambda$ for different boundary conditions is displayed in 
+Fig.~\ref{fig:lambdaScanDensityMean}.
+\afterpage{
+\begin{figure} \caption[The variation of the overall mean density of the SPM system with $\lambda$ for different boundary conditions, in $1$D.]{The variation of the overall mean density of the SPM system with $\lambda$ for different boundary conditions, in $1$D.} 
+\label{fig:lambdaScanDensityMean}
+\begin{center}
+\includegraphics[width=0.95\textheight, angle=270]{numerics/images/lambdaScan/wideDensProfiles}
+\end{center}
+\end{figure}
+\clearpage
+}
+The most striking feature here is how the densities converge for extreme values of $\lambda$
+regardless of the actual boundary conditions used, converging to $1$ for extremely small $\lambda$ and to
+around $\frac{2}{3}$ for extremely large $\lambda$. The behaviour seen here is in accordance with our 
+existing computations as seen in \ref{sec:TRMDensityCurrent}, and our theory about this is as expressed 
+there: in short, that at small $\lambda$, high density is favoured for ``energetic'' reasons (the
+attempted minimisation of equilibrium  free energy), whilst at very large $\lambda$  our system self-
+organises to have a density of $\sim \frac{2}{3}$ in order to enable maximal flow to occur due to a
+stability argument.
+
+We can also measure the variance of the densities we observed, and use this to gauge the size of the
+density fluctuation. In the results displayed in Fig.~\ref{fig:lambdaScanDensityFluc}, we have
+computed the density fluctuation in our $1$D SPM system with boundary conditions
+$(\rho_0, \rho_L) = (0.6, 0.4)$, using the evenly-timestepped Monte Caro method. Here we have
+calculated this fluctuation for systems of various different sizes, and then normalised the fluctuation
+via multiplication by system size. Note that we have two datasets for $L=400$ as we used two different
+numbers of timesteps to see what impact it had.
+\afterpage{
+\begin{figure} \caption[The variation of the fluctuation of the  density of the SPM system with 
+$\lambda$ for different boundary conditions, in $1$D.]{The variation of the fluctuation of the density
+observed in the SPM system with $\lambda$ for different boundary conditions, in $1$D.} 
+\label{fig:lambdaScanDensityFluc}
+\begin{center}
+\includegraphics[width=0.95\textheight, angle=270]{numerics/images/lambdaScan/normDenFluc}
+\end{center}
+\end{figure}
+\clearpage
+}
+As this causes the points to generally align for $\lambda>0.3$, this suggests that in that regime the 
+dependence of $L \times \mathrm{fluctuation}$ upon $L$ is pretty weak; therefore,
+the density fluctuation scales as $\mathcal{O}(L^{-1})$, implying that the number of particles in the
+system fluctuates as $\mathcal{O}(1)$, which makes perfect sense when you consider that the system
+allows particles to enter and leave the system only at the two boundaries, which do not change with the
+system in any sense. We also observe that there is a visible bump as we pass through the suspected
+transition, but as with our higher current moments it is not a spike or discontinuity. We also
+observe that for the smaller systems the fluctuation comes back under control as $\lambda$ keeps getting
+smaller, whilst for larger ones the fluctuations remain large. We suggest that this is due to the fact
+that we have observed the fluctuations over some timescale; thus if the system is undergoing long, slow
+fluctuations over timescales longer than our observation frame, we will overestimate these fluctuations.
+This is in essence a ``time to equilibration'' error, in the sense that the system's equilibration
+timescale is longer than our observation timescale, and this informs us that we should be dubious about
+our larger-$L$ results once we get into the extremely small $\lambda$ regime.
+
 \subsubsection{Block Size Distribution}
+The final type of measurement we have recorded in this ``$\lambda$-scan'' series of calculations is
+the distribution of block sizes. By this we mean that we observe how many contiguous runs of $1$, $2$ 
+and so on particles and add these to a time-weighted histogram, as per our method outlined in
+Sec.~\ref{sec:kmcLib}. If we do this, again using our run parameters from
+Fig.~\ref{fig:lambdaScanDensityFluc}, we find that the mean block size and its standard error vary
+as shown in Fig.~\ref{fig:blockSizeDistn}.
+\begin{figure} \caption[The mean block size and its standard error.]{The mean block size and associated
+standard error, using the same run parameters as we did for Fig.~\ref{fig:1DlambdaScans}.} 
+\label{fig:blockSizeDistn}
+\begin{center}
+\begin{tabular}{c} 
+\includegraphics[width=1.0\linewidth]{numerics/images/lambdaScan/blockSizeMeans} \\
+\includegraphics[width=1.0\linewidth]{numerics/images/lambdaScan/blockSizeStdErr} \\
+\end{tabular}
+\end{center}
+\end{figure}
+Here we once again see that we have convergence in the large-$\lambda$ limit, to an average block
+size very close to $2$ which is in line with our ideas about maximal transport with a density of 
+$\frac{2}{3}$. As we go towards $\lambda=1$, we find that the block size distribution reverts to
+that which we'd expect by just randomly arranging particles with given densities, which is essentially
+what is happening in SEP. As we go through the transition, the mean block size suddenly takes off,
+whilst the fluctuation in the block size peaks, before once again starting to reduce. Once we get to 
+very small $\lambda$, we lose the signal in noise, in a similar way to how we see all our results become
+noise-dominated in the extremely small $\lambda$ regime.
+
 
 \subsection{Varying $\lambda$ and Boundary Density Difference Together}
 \subsection{Varying the Boundary Densities with Constant $\lambda$}

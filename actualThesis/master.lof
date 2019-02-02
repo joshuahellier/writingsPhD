@@ -5,7 +5,12 @@
 \contentsline {figure}{\numberline {(1.1)}{\ignorespaces Illustration of the method for choosing successor states in the n-fold way.}}{6}{figure.caption.11}
 \contentsline {figure}{\numberline {(1.2)}{\ignorespaces The flow pattern of sticky particles in $1$D}}{14}{figure.caption.12}
 \contentsline {figure}{\numberline {(1.3)}{\ignorespaces The flow pattern of repulsive particles in $1$D}}{17}{figure.caption.13}
-\contentsline {figure}{\numberline {(1.4)}{\ignorespaces The current flowing through systems as we vary $\lambda $ with constant boundaries, $1$D}}{18}{figure.caption.14}
+\contentsline {figure}{\numberline {(1.4)}{\ignorespaces The current flowing through systems as we vary $\lambda $ with constant boundaries, $1$D}}{19}{figure.caption.14}
 \contentsline {figure}{\numberline {(1.5)}{\ignorespaces As Fig.\nobreakspace {}\ref {fig:1DlambdaScans} but over a much wider range of $\lambda $-values.}}{20}{figure.caption.15}
+\contentsline {figure}{\numberline {(1.6)}{\ignorespaces Calculations of the dependence of current upon $\lambda $, repeated with different system sizes.}}{22}{figure.caption.16}
+\contentsline {figure}{\numberline {(1.7)}{\ignorespaces Higher moments of the current, in 1$D$}}{23}{figure.caption.17}
+\contentsline {figure}{\numberline {(1.8)}{\ignorespaces The variation of the overall mean density of the SPM system with $\lambda $ for different boundary conditions, in $1$D.}}{24}{figure.caption.18}
+\contentsline {figure}{\numberline {(1.9)}{\ignorespaces The mean block size and its standard error.}}{26}{figure.caption.19}
+\contentsline {figure}{\numberline {(1.10)}{\ignorespaces The variation of the fluctuation of the density of the SPM system with $\lambda $ for different boundary conditions, in $1$D.}}{27}{figure.caption.20}
 \addvspace {10\p@ }
 \contentsfinish 
