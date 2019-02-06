@@ -671,12 +671,173 @@ very small $\lambda$, we lose the signal in noise, in a similar way to how we se
 noise-dominated in the extremely small $\lambda$ regime.
 
 
-\subsection{Varying $\lambda$ and Boundary Density Difference Together}
+\subsection{Varying $\lambda$ and Boundary Density Difference Together} \label{sec:constDens}
+Another type of calculation we can perform is one in which we hold the average of the boundary 
+densities constant, whilst varying their difference and $\lambda$; we can do this by using boundary
+conditions $(\rho_0, \rho_L)=(\rho + \frac{1}{2} \delta \rho , \rho - \frac{1}{2} \delta \rho)$ and 
+varying $\delta \rho$ whilst keeping $\rho$ constant. In our calculations
+of this style, we set $\rho=\frac{1}{2}$, $L=64$, performed $400000$ 
+equilibration steps and then $1000$ alternating measurement and relaxation
+runs of $16000$ and $1000$ steps respectively. From this we calculated
+the same kinds of quantities as in Sec.~\ref{sec:lambdaScans}; the 
+principle results are displayed in Fig~\ref{fig:constDens}.
+\begin{figure} \caption[Results obtained by fixing the average of the boundary densities and varying their difference and $\lambda$]{The main results. obtained by having boundary densities 
+$(\rho_0, \rho_L)=(\rho + \frac{1}{2} \delta \rho , \rho - \frac{1}{2} \delta \rho)$. 
+Here $\rho=\frac{1}{2}$. Clockwise from top left, we have: The mean current, the current variance,
+the mean block size, and the mean overall system density.} 
+\label{fig:constDens}
+\begin{center}
+\begin{tabular}{c c} 
+\includegraphics[width=0.49\linewidth]{numerics/images/lambdaConcDiff/current} & \includegraphics[width=0.49\linewidth]{numerics/images/lambdaConcDiff/currentVar} \\
+\includegraphics[width=0.49\linewidth]{numerics/images/lambdaConcDiff/density} &
+\includegraphics[width=0.49\linewidth]{numerics/images/lambdaConcDiff/blockSize} \\
+\end{tabular}
+\end{center}
+\end{figure}
+In each of these results, we see that we have effectively partition the domain into two regimes:
+small $\lambda$ with small $\delta \rho$, and another regime where $\lambda$ is larger, or 
+$\delta \rho$ is bigger. In other words, when $\lambda$ becomes small the system gains density,
+block size, and flow slows; however, a large boundary difference can still force through current
+and keep density and block size lower, so there is a tradeoff between these competing forces.
 \subsection{Varying the Boundary Densities with Constant $\lambda$}
+Instead of varying $\lambda$, we can instead choose to hold it constant whilst we vary the two
+boundary densities. We have done this with a series of different $\lambda$; the mean current results
+are displayed in Fig.~\ref{fig:boundaryVarDens}, and the mean densities displayed in 
+Fig.~\ref{fig:boundaryVarDens}. Here we used $L=124$, with $160000000$ equilibration steps and then
+$1000$ sets of analysis runs of $1600000$ KMC steps interspersed with relaxation runs of 
+$1000$ steps.
+\begin{figure} \caption[Mean currents observed when varying the boundary densities, fixing $\lambda$,
+for different $\lambda$]{Here we have varied $\rho_0$ and $\rho_L$ separately for several different 
+values of $\lambda$, and measured the resulting mean current. Note that here we have plotted the 
+absolute value of the current, as it should be antisymmetric about $\rho_0 = \rho_L$, which would
+not take kindly to having its logarithm taken.} 
+\label{fig:boundaryVarCurr}
+\begin{center}
+\begin{tabular}{c c} 
+\includegraphics[width=0.49\linewidth]{numerics/images/concFrames/concDataCurr0p05.png} &
+\includegraphics[width=0.49\linewidth]{numerics/images/concFrames/concDataCurr0p09.png} \\
+\includegraphics[width=0.49\linewidth]{numerics/images/concFrames/concDataCurr0p13.png} & 
+\includegraphics[width=0.49\linewidth]{numerics/images/concFrames/concDataCurr0p17.png} \\
+\includegraphics[width=0.49\linewidth]{numerics/images/concFrames/concDataCurr0p21.png} &
+\includegraphics[width=0.49\linewidth]{numerics/images/concFrames/concDataCurr0p25.png} \\
+\end{tabular}
+\end{center}
+\end{figure}
+\begin{figure} \caption[Mean densities observed when varying the boundary densities, fixing $\lambda$,
+for different $\lambda$]{As Fig.~\ref{fig:boundaryVarCurr}, only this time we have plotted the mean 
+densities instead of the currents.} 
+\label{fig:boundaryVarDens}
+\begin{center}
+\begin{tabular}{c c} 
+\includegraphics[width=0.49\linewidth]{numerics/images/concFrames/concDataDens0p05.png} &
+\includegraphics[width=0.49\linewidth]{numerics/images/concFrames/concDataDens0p09.png} \\
+\includegraphics[width=0.49\linewidth]{numerics/images/concFrames/concDataDens0p13.png} & 
+\includegraphics[width=0.49\linewidth]{numerics/images/concFrames/concDataDens0p17.png} \\
+\includegraphics[width=0.49\linewidth]{numerics/images/concFrames/concDataDens0p21.png} &
+\includegraphics[width=0.49\linewidth]{numerics/images/concFrames/concDataDens0p25.png} \\
+\end{tabular}
+\end{center}
+\end{figure}
+We see a similar picture to the one we saw in Sec.~\ref{sec:constDens}; the system naturally 
+wishes to relax to a high-density, low-current regime at small $\lambda$ regardless of boundary 
+conditions, (probably primarily due to attempts to minimise free energy), but this is suppressed by
+large boundary density differences.
+
 \subsection{Diffusion Coefficient}
+Wrapping up our calculations in $1$D, we can compute the effective diffusion coefficient, which
+can be compared with our existing calculation in Sec.~\ref{sec:TRMDensityCurrent} (see 
+Fig.~\ref{fig:TRMDiffCoeff} specifically for graphical comparison). To do this, we perform
+calculations with boundary densities $(\rho_0, \rho_L)=(\rho + \frac{1}{2} \delta \rho , \rho -
+\frac{1}{2} \delta \rho)$, where we vary $\rho$, $\lambda$ and $\delta \rho$ simultaneously, where
+we deliberately keep $\delta \rho$ small, in the hope that the dependency of the current upon $\delta
+\rho$ is roughly linear in that regime, so that $J = \frac{\delta \rho}{L} D(\rho, \lambda)
++ \mathcal{O}(\delta \rho^2)$. Given that we have an error estimate for $J$ due to repeat runs,
+we can use weighted least squares fitting to estimate the value of $D(\rho, \lambda)$, and also
+its error. We did this, using $16$ values of $\delta \rho$ for each $(\rho, \lambda)$ pair we
+computed (arranged in a $24 \times 12$ grid); each computation consisted of a $160000000$ KMC step
+equilibration run, followed by $10$ alternating $80000000$ step measurement run and $16000000$ step
+relaxation run pairs. The system size used in this case was $L=124$. Our estimate for $D$ and its
+standard error are displayed in
+Fig.~\ref{fig:KMCDiffCoeff}.
+\begin{figure} \caption[The variation of the KMC-calculated diffusion coefficient with $\rho$ and 
+$\lambda$.]{The variation of the KMC-calculated diffusion coefficient with $\rho$ and 
+$\lambda$. The top panel is the estimate of $D(\rho, \lambda)$, and the bottom panel is the associated
+standard error.} 
+\label{fig:KMCDiffCoeff}
+\begin{center}
+\begin{tabular}{c}
+\includegraphics[width=0.95\textwidth]{numerics/images/diffCoeff/numDiffCoeff} \\
+\includegraphics[width=0.95\textwidth]{numerics/images/diffCoeff/newFlowErr} \\
+\end{tabular}
+\end{center}
+\end{figure}
+Please note that whilst this is probably the largest single calculation we have performed during the 
+course of this research, it is also the earliest chronologically; thus, there are many issues
+with it:
+\begin{itemize}
+ \item We probably used a system that was too large. A size $64$ system proved to be quite adequate
+ later on, and equilibrates much faster.
+ \item We should have performed a larger number of shorter analysis runs; that was we would
+ probably obtain a more robust estimate for $D$, which wouldn't be so susceptible to being
+ kicked around by individual rogue measurements.
+ \item We only hit upon the idea of scanning in $\log \lambda$ instead of $\lambda$ later on
+ in the research; thus, the format here does not allow for easy direct comparison with our TRM
+ results which do use $\log \lambda$. 
+\end{itemize}
+That said, these results do compare nicely with our MFT calculations, displayed in 
+Fig.~\ref{fig:diffCoeffDensityPlot}. The qualitative features are very similar, although the
+MFT-predicted ``transition'' doesn't occur quite where it suggests, which we have seen  
+more clearly in our scans in Sec.~\ref{sec:lambdaScans}.
 
 \section{2D Calculation Results}
-\subsection{Calculational Choices}
+As we saw in Sec.~\ref{sec:highDimSPM}, it is possible to define a logical extension of the SPM
+to dimensions higher than $1$D. Whilst it is not viable to perform TRM calculations in higher 
+dimensions (as the scaling with system size is already very bad), it is relatively easy to adapt
+our $1$D KMC codes to perform SPM calculations in $2$D or $3$D. Such a KMC input script may be found
+here<insert code>. One thing that does need considering in this case is that a 2-dimensional square
+lattice-based domain would normally have $4$ boundaries instead of $2$, which would mean $2$ extra
+boundary conditions which would need to be prescribed in addition to $\rho_0$ and $\rho_L$.
+However, we have avoided this difficult by making one of the coordinates cyclic; therefore, in our
+$2$D calculations we are really considering flow down a tube, with circumference $W$. We still
+use the same double-layered boundary technique as in $1$D, thus for a system of length $L$
+we have $W \times (L+4)$ lattice sites in play.
+
+\subsection{Aspect Ratio Considerations}
+Given that we now have two system size variables to play with, a natural question to ask would be
+how the system's behaviour changes as we adjust $W$ and $L$, and in particular their aspect ratio.
+We would expect that total current with given boundary conditions would usually scale inversely with
+$L$ and in proportion to $W$ (as more current can flow across a wider cyclic surface); thus, the
+total current should scale as $\frac{W}{L}$, the aspect ratio of the system. We can test this, and
+also check how system convergence scales with system size, by performing calculations of the current
+with several different $(L, W)$ pairs. We have maintained the boundary conditions to be 
+$(\rho_0, \rho_L) = (0.75, 0.25)$ throughout, and in each case used an initial equilibration run of
+$1600000$
+KMC steps followed by $4096$ runs consisting of alternating $16000$-step and $320000$-step
+analysis and relaxation runs respectively; then, we have varied $\lambda$ and measured the mean
+current. The results are displayed in Fig~\ref{fig:aspectRatios}.
+\begin{figure} \caption[The variation of the current in a $2$D SPM system with $\lambda$,
+for a variety of different system sizes and aspect ratios.]{The variation of the current in a $2$D SPM
+system with $\lambda$, for a variety of different system sizes and aspect ratios. The dotted
+line indicates the relevant MFT prediction.} 
+\label{fig:aspectRatios}
+\begin{center}
+\includegraphics[width=0.95\textheight, angle=270]{numerics/images/2d/sizeCompLambdaScan}
+\end{center}
+\end{figure}
+Firstly, note that our supposition about the aspect ratio does appear to be true; the
+data points for which the aspect ratio is $1$ line up quite nicely, and the situations
+where it is $\frac{1}{2}$ or $2$ yield currents which are halved or doubled accordingly.
+Notice also that the MFT prediction, whilst overestimating the actual $\lambda$ for 
+which the transition occurs, is actually much better reproduced here than in $1$D, as here the
+currents do indeed crash to zero much more clearly, in line with the idea that there should be a 
+hard transition. It is also worth noting that the spread of the data, generally indicative
+of both convergence quality as well as the actual current fluctuation, is very large for the 
+larger system sizes. Thus, we can conclude that it is probably pointless trying to measure with
+system sizes of $32\times 32$ or higher, as we just cannot achieve the calculational stability
+required to say anything of consequence. On the other hand, whilst the system of size $8 \times 8$
+gives nicely grouped data, it is also conceptually probably too small to be useful
+to us (after all, in $1$D we can perform TRM calculations with length $8$). Thus, in our
+next batch of calculations we decided to use systems of size $16 \times 16$.
 \subsection{Results}
 
 \section{Conclusions}
