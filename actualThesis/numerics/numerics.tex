@@ -2,11 +2,11 @@
 \label{sec:numerics}
 We now have numerical results for SPM systems using TRM analysis; however, this only allows us to study
 relatively small systems. In order to study larger ones, we have used Monte-Carlo methods. In this
-chapter, we will discuss the methods we used, the results they yielded and their meaning, with 
+chapter, we will discuss the methods we used, the results they yielded, and their meaning, with 
 particular emphasis on what they tell us about the suspected transition between low and high-$\lambda$
 behaviours.
 \section{Numerical Simulations of Continuous-Time Markov Processes}
-Here we will discuss the theory behind the Monte-Carlo methods used to simulated continuous-time Markov
+Here we will discuss the theory behind the Monte-Carlo methods used to simulate continuous-time Markov
 processes. We will assume throughout that we have the computational means to produce pseudorandom
 floating-point numbers in a way which which closely approximates the uniform real distribution over $(0, 1)$.
 \subsection{Purpose of Monte-Carlo Methods}
@@ -16,11 +16,12 @@ via known rules, by using
 pseudorandom numbers in order to produce sample data which is hopefully faithful to the original 
 distribution, at least in terms of the statistics we are trying to calculate. A good example of a
 commonly-used Monte-Carlo method in Physics is the Metropolis-Hastings algorithm, which in its original
-for is used to calculate statistics for equilibrium statistical mechanics systems.
+form is used to calculate statistics for equilibrium statistical mechanics systems.
 
 In our situation, we wish to be able to mimic a continuous-time discrete-state Markov process.
-As we saw in Chap.~\ref{sec:TRM}, the state space for a TRM system of size $L$ scales as
-$\mathcal{O}(2^L$); thus we quickly run out of size if we try to consider exactly probability distributions, which correspond to
+As we saw in Chap.~\ref{sec:transRateChapter}, the state space for a TRM system of size $L$
+scales as
+$\mathcal{O}(2^L$); thus we quickly run out of size if we try to consider exact probability distributions, which correspond to
 vectors in $\mathbb{R}^{L^2}$. We can, however, store individual configurations, which only occupy
 $\mathcal{O}(L)$ space. Therefore, we need to find a way to produce trajectories through the discrete
 state space which sample the actual space of system trajectories well enough to allow us to access the
@@ -101,8 +102,8 @@ around this issue by advancing time in a variable fashion, although this comes a
 a little more computation per iteration.
 
 \subsection{The N-Fold Way, or Gillespie Algorithm} \label{sec:nFoldWay}
-A popular way to produce trajectories for a continuous-time Markov process is the N-Fold Way, also known as
-BKL, or Gillespie Algorithm~\cite{Bortz1975, Prados1997, voterKMC}. It evolves us through time as follows:
+A popular way to produce trajectories for a continuous-time Markov process is the N-Fold Way, also known as the
+BKL or Gillespie Algorithm~\cite{Bortz1975, Prados1997, voterKMC}. It evolves us through time as follows:
 \begin{enumerate}
  \item \textbf{START}: Make a list of all states which can be transitioned to in a single move from the 
  current state, and the associated rates at which this occurs.
@@ -127,13 +128,15 @@ on $(0, 1)$, $U(0, 1)$:
 \begin{itemize}
  \item We can randomly choose the successor state required in step~\ref{weightingChoose} by
  creating a list of weighted partial sums. If the transition rate from the current state the $i^\mathrm{th}$
- potential successor state is $k_i$, then let us define $k_\mathrm{Tot.} = \sum_{i}^n$, where $n$ is the
+ potential successor state is $k_i$, then let us define $k_\mathrm{Tot.} = \sum_{i}^n k_i$, 
+ where $n$ is the
  number of potential successors. Create the list of partial sums via $s_i = \sum_j^i k_j$, then generate
  the random number $u = r k_\mathrm{tot}$ where $r$ is drawn from $U(0, 1)$. We can then use a binary
  search to find $i: s_{i-1} \le u \le s_i$, and then this $i$ indicates the successor state which has been
  chosen. This process is illustrated more visually in Fig.~\ref{fig:weightChoice}.
  \item In step~\ref{timestepChoose}, we need to generate random numbers in an exponential distribution
- with decay rate $k_\mathrm{tot}$. We can do this by generating $r$ from $U(0, 1)$, and then $w = -\frac{1}{k_\mathrm{tot}} \log{r}$
+ with decay rate $k_\mathrm{tot}$. We can do this by generating $r$ from $U(0, 1)$, and then 
+ $w = -\frac{1}{k_\mathrm{tot}} \log{r}$
  follows the desired distribution.
 \end{itemize}
 \begin{figure}[h!]
@@ -146,7 +149,7 @@ on $(0, 1)$, $U(0, 1)$:
   \end{center}
 \end{figure}
 
-I will defer to Voter (see in particular Sec. 5 of~\cite{voterKMC} for the ``proof of correctness'' of the
+I will defer to Voter (see in particular Sec. 5 of~\cite{voterKMC}) for the ``proof of correctness'' of the
 method. The primary advantage of this method is that we are certain to advance time every step, so we are
 not potentially
 ``wasting'' steps as
@@ -222,15 +225,15 @@ command line inputs:
  \item The total number of passes, $N_{\mathrm{pass}}$, which give separate
  sets of observations, performed during this calculation.
  \item A timescale, $\delta t$, which indicates how often to evaluate,
- and to what accuracy to record times, when measuring the number of 
- particles in the system. This should probably be small compared to the expected KMC timestep size.
+ and to what accuracy to record, times, when measuring the number of 
+ particles in the system. We recommend that this be small compared to the expected KMC timestep size.
 \end{enumerate}
 
 In terms of the output of the code, it produces a short file summarising the input parameters,
 some trajectory dump information (usually redirected to \texttt{/dev/null} in order to save hard
 memory, which is often in short supply), as well as data taken by measurement routines. We nominate,
 from a suite of possible routines, which measurements we would like it to take during analysis phases.
-Note that in our calculations, we do not consider any quantity's value on during particular KMC steps;
+Note that in our calculations, we do not use any quantity's value during particular KMC steps;
 rather, we always average our quantities over some amount of time. This is partly because some of the
 quantities we are interested in do not really have any value during a single timestep (e.g. the flux of
 particles through one of the boundaries), and also because the amount of time spent in particular
@@ -239,7 +242,7 @@ particular configuration in the n-fold way is drawn from an exponential distribu
 $k_{\mathrm{tot}}$, as we saw in Sec.~\ref{sec:nFoldWay}; thus, one could easily imagine a
 situation in which the transition time varies wildly. For example, say we have a system with very low 
 $\lambda$. If this system was quite full, there would be few transitions possible, and those possible
-transitions would likely occur with low rates, therefore the kmc timesteps would tend to be very long.
+transitions would likely occur with low rates, therefore the KMC timesteps would tend to be very long.
 However, later during the same simulation we could find ourselves in a situation where the system is
 less full, and so more transitions can occur, and generally with much higher rates, leading to much
 shorter timesteps. Thus, we shouldn't really treat particular quantities derived from these 
@@ -261,11 +264,11 @@ should be a good estimate of the total current through the system during that ti
 \item \textbf{Block Size Distribution} In one dimension, we can look at a configuration and count how
 many contiguous runs (``blocks'') of particles there are of different sizes (e.g. size 1 means a single
 particle sandwiched between adjacent vacancies). We can find the distribution of block sizes, weight it
-by the length of the associated kmc timestep, and then add this to a running total. If we do this over
+by the length of the associated KMC timestep, and then add this to a running total. If we do this over
 our $N_\mathrm{meas}$ analysis steps and then normalise, we can build a histogram of the block sizes
 during that time period.
 \item \textbf{Particle Density} Similarly, we can count the total number of particles in the system,
-weight it by the length of the kmc timestep, and then use this to build another histogram of the
+weight it by the length of the KMC timestep, and then use this to build another histogram of the
 system particle density. By keeping track of particles entering and leaving the system, it would be
 possible to code this very efficiently to take $\mathcal{O}(1)$ time; however, as our routine to detect
 block sizes scans through the system and counts as it goes along, we have just opted for a simple
@@ -298,28 +301,28 @@ thesis.
 In order to set up a batch of calculations, we use the following procedure, implemented by the codes
 stored in \texttt{kmc/1d/} within <location>:
 \begin{enumerate}
- \item Created a batch of input files, in the subdirectory \texttt{jobInputs/}. In our setup, we
+ \item Create a batch of input files, in the subdirectory \texttt{jobInputs/}. In our setup, we
  require that files titled
  \texttt{testInput.}$i$ are generated, with $i \in [1, n]$ where $n$ is the total number of 
  calculations to be performed. These input files are typically generated by a code such as 
- \texttt{lambdaFlucCreator.py}, and typically the parameters which determine the overall structure
- of the system (e.g. $L$, the system size) will be held constant across calculations, whilst
- parameters such as the stickiness or the boundary densities will be varied between them. These input files contain a single line of code, which will be appended to $python $ and called in the command line.
+ \texttt{lambdaFlucCreator.py}; parameters which determine the overall structure
+ of the system (e.g. $L$, the system size) will usually be held constant across calculations, whilst
+ parameters such as the stickiness or the boundary densities will be varied between them. These input files contain a single line of code, which will be appended to \texttt{python } and called in the command line.
  \item In order to actually perform the calculations, we submit them as \texttt{gridengine} batch
- jobs. We then run the script \texttt{kmcSubmit.sh}, which submits the nominated tasks whose input
+ jobs. We  run the script \texttt{kmcSubmit.sh}, which submits the nominated tasks whose input
  files are in \texttt{jobInputs/}, using the scripts \texttt{kmcJobArray.sh} and 
  \texttt{initKmc.sh} for intermediate steps. \texttt{kmcSubmit} is also the place where we specify
  calculational parameters, such as maximum memory usage, maximum runtime, etc; these will be taken
  into consideration by \texttt{gridengine} when it comes to scheduling these calculations, so it
  is important that the maxima be relatively tight upper bounds, otherwise the calculation priority
- will be extremely low, assuming that the cluster in question is being simultaneously for many other
+ will be extremely low, assuming that the cluster in question is being simultaneously used for many other
  calculations.
  \item The jobs will then be executed, in their own time. The results will be placed in the location
  nominated by the input files.
  \item Once the run is complete, and the data has been saved, we are then ready to process it into a
  more useful format, in our case a data file which can be interpreted by Mathematica, the programme
  we used for most of our analysis and graphing. This is done using a script such a 
- \texttt{lambdaPostProc}. Note that such
+ \texttt{lambdaPostProc.py}. Note that such
  a script needs to be able to handle the fact that data may not be produced for some of the 
  calculations (around 5\% in our experience). The most likely source of the
  problem seems to be an issue with type conversion between Python and C++, which only seems to 
@@ -329,13 +332,13 @@ Note that throughout our calculations, we have stored data in a human-readable f
 in a more compressed binary format. This is because we believe that the benefit of having a 
 human-readable format, and therefore a much greater ability to look through data and check the 
 output, outweighs the associated memory cost (around a factor of $10$ or so), 
-especially given that any memory reduction attained due to such a format change wouldn't change
+especially given that any memory reduction attained due to such a format change wouldn't alter
 what was feasible in terms of what we can afford to store.
 
 
 \section{1D Calculation Results}
 Most of the calculations we have performed are for the $1$-dimensional version of the SPM. As we 
-have already performed calculations relating to the behaviour in Chaps.~\ref{sec:analytics}
+have already performed calculations relating to $1$D behaviour in Chaps.~\ref{sec:analChap}
 and~\ref{sec:transRateChapter}, we already have results which can be compared directly to our
 Monte Carlo calculations; thus, we will be plotting them together wherever we feel it is
 appropriate.
@@ -354,8 +357,8 @@ the visualisation of flow using the KMC calculations. This is because the n-fold
 a more ``realistic'' trajectory for the SPM, in the sense that the trajectory is an exact 
 reproduction of the behaviour of the continuous-time Markov system; our other method, the simpler
 accept-reject algorithm, should reproduce correct behaviour when long-term time averages are taken,
-but might behave badly over small times. For example, in this method, there is a minimum timescale
-over which ANY particle can move, which is not the case for KMC, with it's random timestepping.
+but might behave badly over small times. For example, in this method, there is a \textbf{minimum} timescale
+over which \textbf{any} particle can move, which is not the case for KMC, with its random timestepping.
 
 Whilst this random timestepping makes for a more formally correct trajectory, it does make it a
 little more difficult to produce visualisations of particle trajectories. Our method for overcoming
@@ -365,7 +368,7 @@ this is as follows:
  condensed way to do this in terms of hard memory during calculation runs is to keep track of which
  slots' occupancies change state at each 
  timestep, and retaining the timestamp of each timestep.
- \item We from this occupancy data, we can use linear interpolation in order to assign a continuous
+ \item From this occupancy data, we can use linear interpolation in order to assign a continuous
  occupancy variable to all sites at all times. Between timesteps, all sites not directly involved
  with a transition would have an occupancy of $1$ or $0$, and those involved in the transition
  would smoothly switch from occupancies of $0$ to $1$ and vice-versa.
@@ -383,14 +386,15 @@ this calm is punctuated by transitions.
 We have performed calculations which illustrate the behaviour of an SPM system in $1$ dimension, displayed
 in Fig.~\ref{fig:1DStickyPlots}. These plots were generated by simulating SPM systems with $L=512$
 and boundary conditions $(\rho_0 , \rho_L) = (0.75, 0.25)$, with $\lambda \in \{ 0.05, 0.15, 0.35 \}$.
-We simulated over differing numbers of kmc steps, $N_\mathrm{steps}$, in the end performing
+We simulated over differing numbers of KMC steps, $N_\mathrm{steps}$, in the end performing
 $N_\mathrm{steps} \in \{ 8192, 262144, 2097152, 8388608 \}$ steps respectively. Once the data was collected,
 we could lookup the total elapsed time in each simulation, $T$, and then divide that time by $512$ in order
 to obtain a discretization timescale $\delta t$, as required by our method for visualising flow patterns
-as described above in~\ref{sec:flowPatternVis}. In this way, we can visualise what the flow looks like over
-different timescales for different values of $\lambda$. Note that the average size of a KMC step does depend
+described above in~\ref{sec:flowPatternVis}. In this way, we can visualise what the flow looks like over
+different timescales for different values of $\lambda$. Note that the average size of a KMC step \textbf{does}
+depend
 implicitly on the value of $\lambda$; thus, the timescales portrayed in Fig.~\ref{fig:1DStickyPlots}
-are not consistent between the plots, as the timesteps are of lengths 
+are not consistent between the plots, as the timesteps are multiples of lengths 
 $\sim \{ 6, 2, 1 \}\times 10^{-2} \mathrm{s}$ for $\lambda \in \{ 0.05, 0.15, 0.35 \} $ respectively. In
 all of these plots, dark tones represent low time-averaged particle occupation, whilst light tones
 represent high time-averaged particle occupation.
@@ -419,17 +423,19 @@ and the $y$-axis space. The higher-density boundary is the one at the top of eac
 \end{tabular}
 \end{center}
  \end{figure}
+ 
 Each of the systems here show the behaviour of particles with low-$\lambda$, so we are in the sticky regime;
 however, all of our previous results indicate that there should be rather large differences in behaviour
 as we switch from relatively weak stickiness (here embodied by $\lambda=0.35$) to strong stickiness
 (portrayed by the $\lambda = 0.05$ situation). The images used to create Fig~\ref{fig:1DStickyPlots} are
-relatively high-definition, which should readers using the digital copy to zoom in order to see the fine 
+relatively high-definition, which should enable readers using the digital copy to zoom in order to see the fine 
 details. Our principle observations are as follows:
 \begin{itemize}
  \item At the shortest timescale, one can quite clearly see the motions of individual particles. As one
  might expect, they are less likely to be seen unbound from neighbours in the lower-$\lambda$ systems than
  the higher-$\lambda$ ones. In the low-$\lambda$ regime, we are much more like to see big blocks of 
- particles, possibly containing a low concentration of mobile vacancies.
+ particles, possibly containing a low concentration of mobile vacancies. Between these blocks we have a dilute
+ ``gas'' of usually individual particles.
  \item Focussing now on the $32\times$ longer intermediate timeframe, we can see that in the extremely 
  low-$\lambda$
  situation we have blocks of particles separated by voids of vacancies. These voids contain a dilute gas
@@ -463,7 +469,7 @@ displayed in Fig~\ref{fig:1DRepulsePlots}, with a system
 of length $L=1024$, $\lambda = 10^6$ and $(\rho_0 , \rho_L) = (0.99, 0.01)$, for which we performed $40960$
 KMC steps. The time slices used in the plot are of size  $2 \times 10^{-7} \mathrm{s}$.
 \begin{figure} \caption[The flow pattern of repulsive particles in $1$D]{Spacetime plot for a system of 
-repulsive particles, as described in Sec.~\ref{sec:1DRepulsePlots}.} 
+repulsive particles.} 
 \label{fig:1DRepulsePlots}
 \begin{center}
 \begin{tabular}{c} 
@@ -472,6 +478,7 @@ repulsive particles, as described in Sec.~\ref{sec:1DRepulsePlots}.}
 \end{tabular}
 \end{center}
  \end{figure}
+ 
 As before, time goes from left to right, space from top to bottom. 
 The top plot displays the time-averaged density shaded the normal way (light being dense, dark being empty).
 The bottom plot displays the same information, only this time we have applied the function $f(x) = 1-x$
@@ -510,6 +517,7 @@ The lower plot is the same data as the upper one, but with logarithmic axes inst
 \end{tabular}
 \end{center}
 \end{figure}
+
 Fig.~\ref{fig:1DlambdaScans} displays the variation of the current with $\lambda$. Here, the dashed lines
 correspond to the MFT predictions, the joined circles to TRM-computed results, the triangles to results
 computed using evenly-timestepped Monte Carlo and the crosses to KMC calculations.
@@ -539,6 +547,7 @@ Sec.~\ref{sec:TRMLambdaScan}. Our main observations about the current are as fol
 \includegraphics[width=1.0\textheight, angle=270]{numerics/images/lambdaScan/allDataWide}
 \end{center}
 \end{figure}
+
 Thus, we still seem to see the same ``transition'' we saw when analysing TRM results. To ensure that this
 behaviour in the current isn't just an artefact of system size, we can vary the system size whilst
 measuring the current, as we have done in Fig.~\ref{fig:lambdaScanRepeats}.
@@ -551,6 +560,7 @@ variances.}
 \includegraphics[width=0.95\textheight, angle=270]{numerics/images/lambdaScan/lambdaScanRepeatFlows}
 \end{center}
 \end{figure}
+
 Here we see that our method for normalising currents for different system sizes actually seems
 to work quite well, at least over the system sizes we are looking at. It also indicates that our choice of
 $L=64$ behaves well until $\lambda < 0.05$, at which point the fluctuations start to become very large 
@@ -564,7 +574,8 @@ in these moments around the bend of our ``transition'', therefore it does not se
 in the traditional phase transition sense, as there we would expect to see discontinuities in observables,
 and here current is the kind of observable we should expect to manifest that kind of behaviour.
 These moments, up to and including the current kurtosis, are displayed in 
-Fig.~\ref{fig:lambdaScanHigherMoments}.
+Fig.~\ref{fig:lambdaScanHigherMoments}. Note that no units for skewness and kurtosis are listed
+as they have already been normalised using the scale set by the variance.
 \afterpage{
 \begin{figure} \caption[Higher moments of the current, in 1$D$]{The higher moments of the current, 
 measured in the same setup as used in Fig.~\ref{fig:1DlambdaScans}.} 
@@ -579,6 +590,7 @@ measured in the same setup as used in Fig.~\ref{fig:1DlambdaScans}.}
 \end{figure}
 \clearpage
 }
+
 There's a little bit of a bend in the variance as we go through the transition, but nothing major.
 Skewness is typically positive but fluctuates a lot, and goes negative past certain thresholds at
 large $\lambda$. Kurtosis is bounded and possibly negative for $\lambda$ above the transition threshold,
@@ -602,6 +614,7 @@ Fig.~\ref{fig:lambdaScanDensityMean}.
 \end{figure}
 \clearpage
 }
+
 The most striking feature here is how the densities converge for extreme values of $\lambda$
 regardless of the actual boundary conditions used, converging to $1$ for extremely small $\lambda$ and to
 around $\frac{2}{3}$ for extremely large $\lambda$. The behaviour seen here is in accordance with our 
@@ -612,13 +625,12 @@ organises to have a density of $\sim \frac{2}{3}$ in order to enable maximal flo
 stability argument.
 
 We can also measure the variance of the densities we observed, and use this to gauge the size of the
-density fluctuation. In the results displayed in Fig.~\ref{fig:lambdaScanDensityFluc}, we have
+density fluctuation, $\Var(\rho)$. In the results displayed in Fig.~\ref{fig:lambdaScanDensityFluc}, we have
 computed the density fluctuation in our $1$D SPM system with boundary conditions
 $(\rho_0, \rho_L) = (0.6, 0.4)$, using the evenly-timestepped Monte Caro method. Here we have
 calculated this fluctuation for systems of various different sizes, and then normalised the fluctuation
 via multiplication by system size. Note that we have two datasets for $L=400$ as we used two different
 numbers of timesteps to see what impact it had.
-\afterpage{
 \begin{figure} \caption[The variation of the fluctuation of the  density of the SPM system with 
 $\lambda$ for different boundary conditions, in $1$D.]{The variation of the fluctuation of the density
 observed in the SPM system with $\lambda$ for different boundary conditions, in $1$D.} 
@@ -627,19 +639,18 @@ observed in the SPM system with $\lambda$ for different boundary conditions, in 
 \includegraphics[width=0.95\textheight, angle=270]{numerics/images/lambdaScan/normDenFluc}
 \end{center}
 \end{figure}
-\clearpage
-}
+
 As this causes the points to generally align for $\lambda>0.3$, this suggests that in that regime the 
-dependence of $L \times \mathrm{fluctuation}$ upon $L$ is pretty weak; therefore,
+dependence of $L \Var (\rho)$ upon $L$ is pretty weak; therefore,
 the density fluctuation scales as $\mathcal{O}(L^{-1})$, implying that the number of particles in the
 system fluctuates as $\mathcal{O}(1)$, which makes perfect sense when you consider that the system
 allows particles to enter and leave the system only at the two boundaries, which do not change with the
-system in any sense. We also observe that there is a visible bump as we pass through the suspected
+system size in any sense. We also observe that there is a visible bump as we pass through the suspected
 transition, but as with our higher current moments it is not a spike or discontinuity. We also
 observe that for the smaller systems the fluctuation comes back under control as $\lambda$ keeps getting
 smaller, whilst for larger ones the fluctuations remain large. We suggest that this is due to the fact
 that we have observed the fluctuations over some timescale; thus if the system is undergoing long, slow
-fluctuations over timescales longer than our observation frame, we will overestimate these fluctuations.
+fluctuations over timescales longer than our observation frame, we will underestimate these fluctuations.
 This is in essence a ``time to equilibration'' error, in the sense that the system's equilibration
 timescale is longer than our observation timescale, and this informs us that we should be dubious about
 our larger-$L$ results once we get into the extremely small $\lambda$ regime.
@@ -647,7 +658,7 @@ our larger-$L$ results once we get into the extremely small $\lambda$ regime.
 \subsubsection{Block Size Distribution}
 The final type of measurement we have recorded in this ``$\lambda$-scan'' series of calculations is
 the distribution of block sizes. By this we mean that we observe how many contiguous runs of $1$, $2$ 
-and so on particles and add these to a time-weighted histogram, as per our method outlined in
+and so on particles there are and add these to a time-weighted histogram, as per our method outlined in
 Sec.~\ref{sec:kmcLib}. If we do this, again using our run parameters from
 Fig.~\ref{fig:lambdaScanDensityFluc}, we find that the mean block size and its standard error vary
 as shown in Fig.~\ref{fig:blockSizeDistn}.
@@ -661,6 +672,7 @@ standard error, using the same run parameters as we did for Fig.~\ref{fig:1Dlamb
 \end{tabular}
 \end{center}
 \end{figure}
+
 Here we once again see that we have convergence in the large-$\lambda$ limit, to an average block
 size very close to $2$ which is in line with our ideas about maximal transport with a density of 
 $\frac{2}{3}$. As we go towards $\lambda=1$, we find that the block size distribution reverts to
@@ -694,7 +706,8 @@ the mean block size, and the mean overall system density.}
 \end{tabular}
 \end{center}
 \end{figure}
-In each of these results, we see that we have effectively partition the domain into two regimes:
+
+In each of these results, we see that we essentially partition the domain into two regimes:
 small $\lambda$ with small $\delta \rho$, and another regime where $\lambda$ is larger, or 
 $\delta \rho$ is bigger. In other words, when $\lambda$ becomes small the system gains density,
 block size, and flow slows; however, a large boundary difference can still force through current
@@ -702,7 +715,7 @@ and keep density and block size lower, so there is a tradeoff between these comp
 \subsection{Varying the Boundary Densities with Constant $\lambda$}
 Instead of varying $\lambda$, we can instead choose to hold it constant whilst we vary the two
 boundary densities. We have done this with a series of different $\lambda$; the mean current results
-are displayed in Fig.~\ref{fig:boundaryVarDens}, and the mean densities displayed in 
+are displayed in Fig.~\ref{fig:boundaryVarCurr}, and the mean densities displayed in 
 Fig.~\ref{fig:boundaryVarDens}. Here we used $L=124$, with $160000000$ equilibration steps and then
 $1000$ sets of analysis runs of $1600000$ KMC steps interspersed with relaxation runs of 
 $1000$ steps.
@@ -738,6 +751,7 @@ densities instead of the currents.}
 \end{tabular}
 \end{center}
 \end{figure}
+
 We see a similar picture to the one we saw in Sec.~\ref{sec:constDens}; the system naturally 
 wishes to relax to a high-density, low-current regime at small $\lambda$ regardless of boundary 
 conditions, (probably primarily due to attempts to minimise free energy), but this is suppressed by
@@ -748,7 +762,7 @@ Wrapping up our calculations in $1$D, we can compute the effective diffusion coe
 can be compared with our existing calculation in Sec.~\ref{sec:TRMDensityCurrent} (see 
 Fig.~\ref{fig:TRMDiffCoeff} specifically for graphical comparison). To do this, we perform
 calculations with boundary densities $(\rho_0, \rho_L)=(\rho + \frac{1}{2} \delta \rho , \rho -
-\frac{1}{2} \delta \rho)$, where we vary $\rho$, $\lambda$ and $\delta \rho$ simultaneously, where
+\frac{1}{2} \delta \rho)$, where we vary $\rho$, $\lambda$ and $\delta \rho$ simultaneously, and
 we deliberately keep $\delta \rho$ small, in the hope that the dependency of the current upon $\delta
 \rho$ is roughly linear in that regime, so that $J = \frac{\delta \rho}{L} D(\rho, \lambda)
 + \mathcal{O}(\delta \rho^2)$. Given that we have an error estimate for $J$ due to repeat runs,
@@ -771,13 +785,14 @@ standard error.}
 \end{tabular}
 \end{center}
 \end{figure}
+
 Please note that whilst this is probably the largest single calculation we have performed during the 
 course of this research, it is also the earliest chronologically; thus, there are many issues
 with it:
 \begin{itemize}
  \item We probably used a system that was too large. A size $64$ system proved to be quite adequate
  later on, and equilibrates much faster.
- \item We should have performed a larger number of shorter analysis runs; that was we would
+ \item We should have performed a larger number of shorter analysis runs; that way we would
  probably obtain a more robust estimate for $D$, which wouldn't be so susceptible to being
  kicked around by individual rogue measurements.
  \item We only hit upon the idea of scanning in $\log \lambda$ instead of $\lambda$ later on
@@ -802,7 +817,7 @@ $2$D calculations we are really considering flow down a tube, with circumference
 use the same double-layered boundary technique as in $1$D, thus for a system of length $L$
 we have $W \times (L+4)$ lattice sites in play.
 
-\subsection{Aspect Ratio Considerations}
+\subsection{Aspect Ratio Considerations} \label{sec:aspectRatio}
 Given that we now have two system size variables to play with, a natural question to ask would be
 how the system's behaviour changes as we adjust $W$ and $L$, and in particular their aspect ratio.
 We would expect that total current with given boundary conditions would usually scale inversely with
@@ -824,6 +839,7 @@ line indicates the relevant MFT prediction.}
 \includegraphics[width=0.95\textheight, angle=270]{numerics/images/2d/sizeCompLambdaScan}
 \end{center}
 \end{figure}
+
 Firstly, note that our supposition about the aspect ratio does appear to be true; the
 data points for which the aspect ratio is $1$ line up quite nicely, and the situations
 where it is $\frac{1}{2}$ or $2$ yield currents which are halved or doubled accordingly.
@@ -838,6 +854,100 @@ required to say anything of consequence. On the other hand, whilst the system of
 gives nicely grouped data, it is also conceptually probably too small to be useful
 to us (after all, in $1$D we can perform TRM calculations with length $8$). Thus, in our
 next batch of calculations we decided to use systems of size $16 \times 16$.
-\subsection{Results}
+
+\subsection{Varying $\lambda$ with Constant Boundary Conditions}
+We intended to perform a systematic battery of calculations in $2$D just as we have done in $1$D.
+However, due to the bigger issues with equilibration and overall computational time which occur in $2$D we found that performing decent calculations was much more difficult than we anticipated; thus, due to time constraints, we only managed to perform one high-quality calculation.
+This is a scan through values of $\lambda$ with fixed boundary conditions, similar to our work
+in Sec.~\ref{sec:lambdaScans}. Here we used $L \times W = 16 \times 16$, allowed $16000000$ KMC
+steps for equilibration time, and then did $4096$ measurement cycles of alternating $16000$-step
+and $320000$-step analysis and relaxation runs, just like in Sec.\ref{sec:aspectRatio}.
+Our results for the overall system density are displayed in Fig.\ref{fig:2dSysDens}, and
+our measurements of current and its variance are shown in Fig.\ref{fig:2dSysCurr}.
+\begin{figure} \caption[The variation of the overall density in a $2$D SPM system with 
+$\lambda$.]{The variation of the overall density in a $2$D SPM system with $\lambda$, with
+$3$ sets of boundary conditions as indicated.} 
+\label{fig:2dSysDens}
+\begin{center}
+\includegraphics[width=0.95\textheight, angle=270]{numerics/images/2d/2dDensity}
+\end{center}
+\end{figure}
+\begin{figure} \caption[The variation of the mean current and its variance in a $2$D SPM system
+with $\lambda$.]{The variation of the mean current and its variance in a $2$D SPM system
+with $\lambda$, with boundary conditions as indicated. The mean current is the top panel,
+and the current variance is the bottom panel.} 
+\label{fig:2dSysCurr}
+\begin{center}
+\begin{tabular}{c}
+\includegraphics[width=0.95\textwidth]{numerics/images/2d/2dCurrentMeans} \\
+\includegraphics[width=0.95\textwidth]{numerics/images/2d/2dCurrentVars} \\
+\end{tabular}
+\end{center}
+\end{figure}
+
+Let us discuss the density results first, as without those the current results don't make as
+much sense. The density changes with $\lambda$ are similar to our $1$D results in the sense
+that the density attempts to converge to $1$ for extremely small values of $\lambda$ regardless
+of the actual boundary conditions used, and the density has an inflection or minimum in each case for some
+$\lambda$ a little below $1$.
+
+However, there are some big differences:
+\begin{itemize}
+ \item The density does \textbf{not} appear to be converging to some common value regardless of
+ boundaries in the large-$\lambda$ regime like it did in $1$D. A possible explanation for this
+ is that there is not a straightforward family of bulk maximal-flow configurations which are
+ inherently more stable than their rivals like there seems to be in $1$D; instead, due to the
+ larger space of possible configurations available in $2$D, it may be the case that there are many
+ different ways of realising fast rapid flow, which have different densities. An easy way to test
+ this would be to perform similar calculations to these, but with a greater variety of boundary
+ conditions; then, one should be able to observe whether the spectrum of densities in
+ the large-$\lambda$ (repulsive) limit is continuous or discrete.
+ \item For our low-density choice of boundary conditions $(\rho_0, \rho_L) = (0.3, 0.1)$,
+ it would appear that the mean overall system density splits into two separate branches,
+ forming a curve reminiscent of the hysteresis curves exhibited by ferromagnets <ref>. This
+ is perhaps not so surprising, as there is a relationship between the $2$D SPM and the $2$D Ising
+ Model with fixed magnetisation. Our interpretation of this is that in this regime there are
+ two flow-permitting configurations which both satisfy the desired boundary conditions
+ and are both fairly stable, at least over the timescale of our measurements. Looking at it in 
+ this way, this appears to be another example which illustrates the possibility that there can
+ be competing stable/metastable states in $2$D which cannot occur in $1$D because there is
+ insufficient freedom.
+\end{itemize}
+So far as the current is concerned, we see broadly the same behaviour as in our (linear) plot
+in Fig~\ref{fig:aspectRatios}; the current has roughly power-law dependence on $\lambda$ for
+large $\lambda$, partially agreeing with the MFT prediction, before dissolving into noise
+below a threshold in $\lambda$. The mean current for our low density boundary choice exhibits branching just
+like
+the density does, suggesting that the effective diffusion coefficients of the competing 
+configurations are different. The current variance is broadly power-law with $\lambda$,
+with kinks around the transitions and again some exhibition of the ``hysteresis''-like branching.
+
+Another way to look at this branching is to consider the fact that researchers have observed 
+``stripes'' in the KLS model <ref>. In that particular context the model contains asymmetric
+bulk dynamics, and stripes of low and high density spontaneously form and spiral around the 
+system, transmitting current as they do so. It could be the case that our $16 \times 16$ system
+tries to generate such stripes, but is too small to support more than one stripe; thus, instead
+different stripes are realised in different simulations. Of course, as this system is ergodic, we
+should in the long-term limit see both stripe types manifest in any given simulation; however,
+the switching time, if both stripe types are quite stable, might be so long that we would never
+actually observe this happening.
 
 \section{Conclusions}
+The primary conclusions from our work with Monte-Carlo methods is as follows:
+\begin{itemize}
+ \item Our Monte-Carlo work with $1$D systems yields results very similar to those we 
+ have already observed using our Transition-Rate Matrix method; thus, our fears that the small
+ systems we investigated using TRM were too small to properly portray the properties of larger
+ systems seem to have gone unrealised.
+ \item These results appear to confirm our observation that a \textit{power law 
+ switching} phenomenon does indeed occur in $1$D. Likewise they support our hypothesis that
+ $1$D systems with large $\lambda$ self-organise to yield similar system configurations
+ regarless of boundary conditions, in an effort to maximise flow (or more directly, system
+ stability).
+ \item Our foray in $2$D has been brief, but suggests that there is much more interesting material to study there, in particular the limiting behaviours with extreme $\lambda$
+ and the hysteresis-curve effect we see in the density for low-density boundary configurations.
+\end{itemize}
+
+
+
+

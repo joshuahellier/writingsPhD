@@ -4,26 +4,79 @@
 \BOOKMARK [0][-]{section*.5}{Contents}{}% 4
 \BOOKMARK [0][-]{section*.7}{List of Figures}{}% 5
 \BOOKMARK [0][-]{section*.9}{List of Tables}{}% 6
-\BOOKMARK [0][-]{chapter.1}{Monte-Carlo Simulations of the SPM}{}% 7
-\BOOKMARK [1][-]{section.1.1}{Numerical Simulations of Continuous-Time Markov Processes}{chapter.1}% 8
-\BOOKMARK [2][-]{subsection.1.1.1}{Purpose of Monte-Carlo Methods}{section.1.1}% 9
-\BOOKMARK [2][-]{subsection.1.1.2}{Evenly-Spaced Timesteps}{section.1.1}% 10
-\BOOKMARK [2][-]{subsection.1.1.3}{The N-Fold Way, or Gillespie Algorithm}{section.1.1}% 11
-\BOOKMARK [1][-]{section.1.2}{Implementation of Monte Carlo Methods}{chapter.1}% 12
-\BOOKMARK [2][-]{subsection.1.2.1}{Our Implementation of a Metropolis-Hastings Algorithm with Evenly-Space Timesteps}{section.1.2}% 13
-\BOOKMARK [2][-]{subsection.1.2.2}{KMCLib}{section.1.2}% 14
-\BOOKMARK [2][-]{subsection.1.2.3}{Managing KMCLib Calculations in Parallel}{section.1.2}% 15
-\BOOKMARK [1][-]{section.1.3}{1D Calculation Results}{chapter.1}% 16
-\BOOKMARK [2][-]{subsection.1.3.1}{Flow Patterns}{section.1.3}% 17
-\BOOKMARK [2][-]{subsection.1.3.2}{Scans Through \040with Constant Boundary Densities}{section.1.3}% 18
-\BOOKMARK [2][-]{subsection.1.3.3}{Varying \040and Boundary Density Difference Together}{section.1.3}% 19
-\BOOKMARK [2][-]{subsection.1.3.4}{Varying the Boundary Densities with Constant }{section.1.3}% 20
-\BOOKMARK [2][-]{subsection.1.3.5}{Diffusion Coefficient}{section.1.3}% 21
-\BOOKMARK [1][-]{section.1.4}{2D Calculation Results}{chapter.1}% 22
-\BOOKMARK [2][-]{subsection.1.4.1}{Calculational Choices}{section.1.4}% 23
-\BOOKMARK [2][-]{subsection.1.4.2}{Results}{section.1.4}% 24
-\BOOKMARK [1][-]{section.1.5}{Conclusions}{chapter.1}% 25
-\BOOKMARK [0][-]{appendix.A}{Code Listings}{}% 26
-\BOOKMARK [1][-]{section.A.1}{1d Ising Correlation Functions \040}{appendix.A}% 27
-\BOOKMARK [1][-]{section.A.2}{n-Dimensional Continuum-Limit MFT }{appendix.A}% 28
-\BOOKMARK [0][-]{section*.21}{Bibliography}{}% 29
+\BOOKMARK [0][-]{chapter.1}{Preliminary Work, Background and Motivation}{}% 7
+\BOOKMARK [1][-]{section.1.1}{The TiO2/Ti Interface System}{chapter.1}% 8
+\BOOKMARK [1][-]{section.1.2}{Initial Attempts to Model the TiO2/Ti Interface System}{chapter.1}% 9
+\BOOKMARK [2][-]{subsection.1.2.1}{Molecular Dynamics}{section.1.2}% 10
+\BOOKMARK [1][-]{section.1.3}{Large-Scale Models of the Ti/O/Nb Interacting System}{chapter.1}% 11
+\BOOKMARK [2][-]{subsection.1.3.1}{Proposed Linear System}{section.1.3}% 12
+\BOOKMARK [2][-]{subsection.1.3.2}{Attempts to create a Suitable Nonlinear System}{section.1.3}% 13
+\BOOKMARK [2][-]{subsection.1.3.3}{Parametrisation from a Microscopic Model}{section.1.3}% 14
+\BOOKMARK [1][-]{section.1.4}{The Sticky Particle Model}{chapter.1}% 15
+\BOOKMARK [2][-]{subsection.1.4.1}{Model Motivation}{section.1.4}% 16
+\BOOKMARK [2][-]{subsection.1.4.2}{Model Definition}{section.1.4}% 17
+\BOOKMARK [2][-]{subsection.1.4.3}{Model Properties}{section.1.4}% 18
+\BOOKMARK [2][-]{subsection.1.4.4}{Relation to Existing Literature}{section.1.4}% 19
+\BOOKMARK [2][-]{subsection.1.4.5}{Generalisation to Higher Dimensions}{section.1.4}% 20
+\BOOKMARK [1][-]{section.1.5}{Implications of Initial Work for the PhD Direction}{chapter.1}% 21
+\BOOKMARK [2][-]{subsection.1.5.1}{Why the Change of Direction?}{section.1.5}% 22
+\BOOKMARK [2][-]{subsection.1.5.2}{Why Investigate Flow in the SPM?}{section.1.5}% 23
+\BOOKMARK [0][-]{chapter.2}{Analytical Results about the SPM}{}% 24
+\BOOKMARK [1][-]{section.2.1}{Solving Problems in Nonequlibrium Statistical Mechanics}{chapter.2}% 25
+\BOOKMARK [2][-]{subsection.2.1.1}{Equilibrium Statistical Mechanics}{section.2.1}% 26
+\BOOKMARK [2][-]{subsection.2.1.2}{Nonequlibrium Statistical Mechanics}{section.2.1}% 27
+\BOOKMARK [2][-]{subsection.2.1.3}{Where does the SPM stand?}{section.2.1}% 28
+\BOOKMARK [1][-]{section.2.2}{Similarities between the SPM and Established Models in 1D}{chapter.2}% 29
+\BOOKMARK [2][-]{subsection.2.2.1}{Relationship with the Ising Model}{section.2.2}% 30
+\BOOKMARK [2][-]{subsection.2.2.2}{Correlation Functions}{section.2.2}% 31
+\BOOKMARK [2][-]{subsection.2.2.3}{Equivalence with the Misanthrope Process}{section.2.2}% 32
+\BOOKMARK [2][-]{subsection.2.2.4}{Calculation of the Partition Function of the SPM on a Closed Ring}{section.2.2}% 33
+\BOOKMARK [1][-]{section.2.3}{Using the Mean-Field Approximation on the SPM}{chapter.2}% 34
+\BOOKMARK [2][-]{subsection.2.3.1}{Lattice MFT Derivation}{section.2.3}% 35
+\BOOKMARK [2][-]{subsection.2.3.2}{Continuum Limit MFT Derivation}{section.2.3}% 36
+\BOOKMARK [2][-]{subsection.2.3.3}{Negative Diffusion Coefficients}{section.2.3}% 37
+\BOOKMARK [2][-]{subsection.2.3.4}{Continuum Limit MFT Solutions}{section.2.3}% 38
+\BOOKMARK [2][-]{subsection.2.3.5}{Implications of Continuum MFT Breakdown}{section.2.3}% 39
+\BOOKMARK [1][-]{section.2.4}{The SPM in Higher Dimensions}{chapter.2}% 40
+\BOOKMARK [2][-]{subsection.2.4.1}{Symmetry + Locality + Detailed Balance = Unique 1-Parameter SPM}{section.2.4}% 41
+\BOOKMARK [2][-]{subsection.2.4.2}{MFT of the n-Dimensional SPM}{section.2.4}% 42
+\BOOKMARK [1][-]{section.2.5}{Conclusions About the SPM MFT}{chapter.2}% 43
+\BOOKMARK [0][-]{chapter.3}{Transition Rate Matrix Analysis}{}% 44
+\BOOKMARK [1][-]{section.3.1}{The Transition Rate Operator for the SPM}{chapter.3}% 45
+\BOOKMARK [2][-]{subsection.3.1.1}{A Small Worked Example: Closed System}{section.3.1}% 46
+\BOOKMARK [1][-]{section.3.2}{Forming the TRM for Systems with Dirichlet Boundary Conditions}{chapter.3}% 47
+\BOOKMARK [2][-]{subsection.3.2.1}{Dirichlet Boundary Conditions}{section.3.2}% 48
+\BOOKMARK [2][-]{subsection.3.2.2}{Another Small Worked Example: Open System}{section.3.2}% 49
+\BOOKMARK [2][-]{subsection.3.2.3}{Formation of the TRM in Sparse Format}{section.3.2}% 50
+\BOOKMARK [1][-]{section.3.3}{The Eigenspectrum of the TRM}{chapter.3}% 51
+\BOOKMARK [2][-]{subsection.3.3.1}{The Computation of the TRM Eigenspectrum}{section.3.3}% 52
+\BOOKMARK [2][-]{subsection.3.3.2}{The Structure of the TRM Eigenspectrum}{section.3.3}% 53
+\BOOKMARK [2][-]{subsection.3.3.3}{Current and Density in the Steady State}{section.3.3}% 54
+\BOOKMARK [1][-]{section.3.4}{Time-Dependent Properties of Small SPM Systems}{chapter.3}% 55
+\BOOKMARK [2][-]{subsection.3.4.1}{The Relaxation Time for the SPM}{section.3.4}% 56
+\BOOKMARK [2][-]{subsection.3.4.2}{Time-Evolution of States}{section.3.4}% 57
+\BOOKMARK [1][-]{section.3.5}{Conclusions}{chapter.3}% 58
+\BOOKMARK [0][-]{chapter.4}{Monte-Carlo Simulations of the SPM}{}% 59
+\BOOKMARK [1][-]{section.4.1}{Numerical Simulations of Continuous-Time Markov Processes}{chapter.4}% 60
+\BOOKMARK [2][-]{subsection.4.1.1}{Purpose of Monte-Carlo Methods}{section.4.1}% 61
+\BOOKMARK [2][-]{subsection.4.1.2}{Evenly-Spaced Timesteps}{section.4.1}% 62
+\BOOKMARK [2][-]{subsection.4.1.3}{The N-Fold Way, or Gillespie Algorithm}{section.4.1}% 63
+\BOOKMARK [1][-]{section.4.2}{Implementation of Monte Carlo Methods}{chapter.4}% 64
+\BOOKMARK [2][-]{subsection.4.2.1}{Our Implementation of a Metropolis-Hastings Algorithm with Evenly-Space Timesteps}{section.4.2}% 65
+\BOOKMARK [2][-]{subsection.4.2.2}{KMCLib}{section.4.2}% 66
+\BOOKMARK [2][-]{subsection.4.2.3}{Managing KMCLib Calculations in Parallel}{section.4.2}% 67
+\BOOKMARK [1][-]{section.4.3}{1D Calculation Results}{chapter.4}% 68
+\BOOKMARK [2][-]{subsection.4.3.1}{Flow Patterns}{section.4.3}% 69
+\BOOKMARK [2][-]{subsection.4.3.2}{Scans Through \040with Constant Boundary Densities}{section.4.3}% 70
+\BOOKMARK [2][-]{subsection.4.3.3}{Varying \040and Boundary Density Difference Together}{section.4.3}% 71
+\BOOKMARK [2][-]{subsection.4.3.4}{Varying the Boundary Densities with Constant }{section.4.3}% 72
+\BOOKMARK [2][-]{subsection.4.3.5}{Diffusion Coefficient}{section.4.3}% 73
+\BOOKMARK [1][-]{section.4.4}{2D Calculation Results}{chapter.4}% 74
+\BOOKMARK [2][-]{subsection.4.4.1}{Aspect Ratio Considerations}{section.4.4}% 75
+\BOOKMARK [2][-]{subsection.4.4.2}{Varying \040with Constant Boundary Conditions}{section.4.4}% 76
+\BOOKMARK [1][-]{section.4.5}{Conclusions}{chapter.4}% 77
+\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 78
+\BOOKMARK [0][-]{appendix.A}{Code Listings}{}% 79
+\BOOKMARK [1][-]{section.A.1}{1d Ising Correlation Functions \040}{appendix.A}% 80
+\BOOKMARK [1][-]{section.A.2}{n-Dimensional Continuum-Limit MFT }{appendix.A}% 81
+\BOOKMARK [0][-]{section*.59}{Bibliography}{}% 82

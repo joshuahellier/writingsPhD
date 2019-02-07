@@ -1,4 +1,4 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{12}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -12,16 +12,48 @@ Bortz, A., M.~Kalos, and J.~Lebowitz.
 \newblock
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/0021999175900601}.
 
+\bibitem[{Evans and Waclaw(2014)}]{evansWaclaw2014}
+Evans, M.~R., and B.~Waclaw.
+\newblock \enquote{Condensation in stochastic mass transport models: beyond the
+  zero-range process.}
+\newblock \emph{Journal of Physics A: Mathematical and Theoretical} 47, ~9:
+  (2014) 095,001.
+\newblock \urlprefix\url{http://stacks.iop.org/1751-8121/47/i=9/a=095001}.
+
 \bibitem[{Hoffmann et~al.(2014)Hoffmann, Matera, and Reuter}]{hoffmann2014kmos}
 Hoffmann, M.~J., S.~Matera, and K.~Reuter.
 \newblock \enquote{kmos: A lattice kinetic Monte Carlo framework.}
 \newblock \emph{Computer Physics Communications} 185, ~7: (2014) 2138--2150.
+
+\bibitem[{Ivanova(2007)}]{ivanova2007}
+Ivanova, N.~M.
+\newblock \enquote{Exact solutions of diffusion-convection equations.}
+\newblock \emph{arXiv preprint arXiv:0710.4000}
+  \urlprefix\url{https://arxiv.org/abs/0710.4000}.
+
+\bibitem[{Laisant(1905)}]{laisant1905}
+Laisant, C.-A.
+\newblock \enquote{Int\'egration des fonctions inverses.}
+\newblock \emph{Nouvelles annales de math\'ematiques : journal des candidats
+  aux \'ecoles polytechnique et normale} 5: (1905) 253--257.
+\newblock \urlprefix\url{http://eudml.org/doc/101975}.
+
+\bibitem[{Landau et~al.(1980)Landau, Lifshitz, and
+  Pitaevskii}]{landauLifshitzStatmech}
+Landau, L.~D., E.~M. Lifshitz, and L.~Pitaevskii.
+\newblock \emph{Statistical physics, part I}.
+\newblock pergamon, Oxford, 1980.
 
 \bibitem[{{Leetmaa} and {Skorodumova}(2014)}]{leetmaa2014KMCLib}
 {Leetmaa}, M., and N.~V. {Skorodumova}.
 \newblock \enquote{{KMCLib: A general framework for lattice kinetic Monte Carlo
   (KMC) simulations}.}
 \newblock \emph{Computer Physics Communications} 185: (2014) 2340--2349.
+
+\bibitem[{Martynov(2012)}]{martynovStatmech}
+Martynov, G.~A.
+\newblock \emph{Classical Statistical Mechanics}, volume~89.
+\newblock Springer Science \& Business Media, 2012.
 
 \bibitem[{Plimpton et~al.(2009)Plimpton, Battaile, Chandross, Holm, Thompson,
   Tikare, Wagner, Webb, Zhou, Cardona et~al.}]{spparks}
@@ -37,6 +69,13 @@ Prados, A., J.~J. Brey, and B.~S{\'a}nchez-Rey.
   time-dependent transition rates.}
 \newblock \emph{Journal of Statistical Physics} 89, ~3: (1997) 709--734.
 \newblock \urlprefix\url{https://doi.org/10.1007/BF02765541}.
+
+\bibitem[{Sherratt(1998)}]{sherrat1998}
+Sherratt, J.~A.
+\newblock \enquote{On the transition from initial data to travelling waves in
+  the Fisher-KPP equation.}
+\newblock \emph{Dynamics and Stability of Systems} 13, ~2: (1998) 167--174.
+\newblock \urlprefix\url{https://doi.org/10.1080/02681119808806258}.
 
 \bibitem[{Voter(2005)}]{voterKMC}
 Voter, A.
