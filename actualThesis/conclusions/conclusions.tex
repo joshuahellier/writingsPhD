@@ -1,2 +1,44 @@
 \chapter{Conclusions}
-Need to summarise the key results of the research here, and give an overview.
+During the course of this research, we have used a whole battery of methods in order to try to understand
+the behaviour of the Sticky Particle Model. Here we present our main conclusions, and suggest topics which
+future researchers may wish to investigate.
+
+Our main conclusions about the Sticky Particle Model are as follows:
+\begin{itemize}
+ \item The Sticky Particle Model, and its $n$-dimensional generalisation, is the unique stochastic exclusion 
+ model defined on a square $n$-dimensional lattice in which the particle dynamics are completely symmetric,
+ depend only upon a particle's immediate environment and obey detailed balance (Sec.~\ref{sec:uniqueProof}).
+ \item The partition function and chemical potential for the SPM on a closed ring can be calculated analytically (Sec.~\ref{sec:spmPartFn}).
+ \item The $n$-dimensional SPM has simple continuum-limit mean-field approximation which can be easily
+ calculated (Sec.~\ref{sec:nDMftDeriv}). It isn't great at predicting behaviour in $1$D, but in higher dimensions
+ it is quite good.
+ \item In $1$D we can use our numerical Transition Rate Matrix method to exactly solve, to great accuracy,
+ small SPM systems (Chap.~\ref{sec:transRateChapter}).
+ \item Using TRM methods, we find that in $1$D we observe a \textit{power-law switching} phenomenon, whereby the dependence of the boundary-induced current upon the stickiness parameter $\lambda$ switches from
+ varying linearly with $\lambda$ to varying approximately cubically with $\lambda$ 
+ (Sec.~\ref{sec:TRMDensityCurrent}). Whilst this does not appear to be a discontinuous phase transition in the
+ normal sense, the system does undergo radical change when $\lambda$ is varied only slightly; thus, we think that it is reasonable to call this behaviour a transition.
+ \item Our TRM observations in $1$D are broadly confirmed by larger-scale Monte-Carlo simulations 
+ (Sec.~\ref{sec:1dMonteCarlo}).
+ \item In $2$D our Monte-Carlo calculations have revealed an interesting phenomenon whereby there appear
+ to be multiple stable (or possibly metastable) states which can occur in an SPM system with given boundary
+ conditions at small $\lambda$ (Sec.~\ref{sec:2dLambdaScans}); these states may be identified by their 
+ different densities and current dependencies.
+\end{itemize}
+
+We have also developed many codes and other technologies in order to carry out our investigations 
+<link to code base>. Of the methods we have developed, we are perhaps most proud of the TRM method, which
+isn't something we have seen the like of in the literature. We suspect that it could be put to good use on a
+variety of other low-dimensional systems, to give researchers insight into the behaviour of these systems on 
+small scales. This small-scale behaviour can often be a good window into larger-scale phenomena, and using TRM
+analysis one might pick up on things to calculate that one wouldn't usually think to investigate.
+
+In terms of future work to be done in this area, we would suggest that other systems might exhibit
+power-law switching, and so this should be checked. We would also suggest that the community
+might wish to look again at models which are symmetric and obey detailed balance; although their
+equilibrium properties in closed boundaries are often rather trivial, this work has shown that they are 
+capable of doing interesting things when driven by boundary conditions. Finally, we think that the
+odd hysteresis-like phenomenon we saw in $2$D is well worth further investigation, and regret not having the
+time to pursue it further.
+
+
