@@ -133,7 +133,7 @@ In the previous section we have discussed the various approaches one might use w
 
 
 
-\subsection{Relationship with the Ising Model}
+\subsection{Relationship with the Ising Model} \label{sec:isingSim}
 If we implement the rules of the SPM on a periodic domain, we no longer have to deal with boundary conditions. In this special circumstance, we can find an isomorphism between this model and the Ising model with fixed magnetisation.
 One does this by associating the Ising spins $\sigma_i \in \left\{-1, 1 \right\}$ with $\rho_i \in \left\{ 0, 1 \right\}$ via
 \begin{equation}
@@ -342,7 +342,7 @@ as we have done many times in the course of this project,
 that might change things, as now the system would be in a nonequilibrium steady state as opposed
 to a thermodynamic equilibrium, and those are not quite the same beast.
 
-\section{Using the Mean-Field Approximation on the SPM}
+\section{Using the Mean-Field Approximation on the SPM} \label{sec:spmMft}
 For the reasons discussed in Sec.~\ref{sec:mftStatus}, we do not possess an analytic solution for the SPM on a nonperiodic bounded domain. Such a solution might exist, but
 we will proceed on the assumption that the model is not analytically solvable. Therefore, it would be useful to at least possess approximate analytic solutions, as this can help us by giving us
 something to test our numerics against, and point us in the direction of interesting behaviours which might occur. We will start by deriving the MFT on a lattice, and will then take the continuum limit (as the lattice spacing tends to zero

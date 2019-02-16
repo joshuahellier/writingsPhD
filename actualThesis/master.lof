@@ -2,55 +2,59 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {(1.1)}{\ignorespaces An impression of the kind of background potential experienced by a particle moving against a periodic lattice in $1$D.}}{3}{figure.caption.11}
+\contentsline {figure}{\numberline {(1.2)}{\ignorespaces The kind of interaction potential which might exist between two nearby particles.}}{4}{figure.caption.12}
+\contentsline {figure}{\numberline {(1.3)}{\ignorespaces The sum of the background and interaction potentials.}}{4}{figure.caption.13}
+\contentsline {figure}{\numberline {(1.4)}{\ignorespaces The transition rates in the Sticky Particle Model.}}{6}{figure.caption.14}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {(2.1)}{\ignorespaces Plots of the equal-time particle density correlation function on a ring.}}{10}{figure.caption.11}
-\contentsline {figure}{\numberline {(2.2)}{\ignorespaces The free energy density of the SPM on a closed ring, as a function of density and $\lambda $.}}{14}{figure.caption.12}
-\contentsline {figure}{\numberline {(2.3)}{\ignorespaces The chemical potential of the SPM on a closed ring, as a function of density and $\lambda $.}}{15}{figure.caption.13}
-\contentsline {figure}{\numberline {(2.4)}{\ignorespaces Some plots of the variation of the MFT diffusion coefficient with density, for some selected $\lambda $.}}{19}{figure.caption.14}
-\contentsline {figure}{\numberline {(2.5)}{\ignorespaces A contour plot of the variation of the MFT diffusion coefficient with density and stickiness.}}{20}{figure.caption.15}
-\contentsline {figure}{\numberline {(2.6)}{\ignorespaces The variation in the current at fixed $\lambda $ with respect to the boundary densities.}}{24}{figure.caption.16}
-\contentsline {figure}{\numberline {(2.7)}{\ignorespaces The variation of flow rate with respect to $\lambda $ in the MFT, with fixed boundary densities.}}{25}{figure.caption.17}
-\contentsline {figure}{\numberline {(2.8)}{\ignorespaces The dependence of the critial value of $\lambda $ required for backward diffusion on the boundary conditions.}}{26}{figure.caption.18}
-\contentsline {figure}{\numberline {(2.9)}{\ignorespaces The variation of the system-wide average density with respect to $\lambda $ in the MFT, with fixed boundary densities.}}{27}{figure.caption.19}
-\contentsline {figure}{\numberline {(2.10)}{\ignorespaces The possibe transitions which may occur in a symmetric local 2-dimensional hopping model.}}{31}{figure.caption.20}
-\contentsline {figure}{\numberline {(2.11)}{\ignorespaces Figure demonstrating that a local system obeying detailed balance and symmetry cannot have interesting local configuration-dependent dynamics.}}{32}{figure.caption.21}
-\contentsline {figure}{\numberline {(2.12)}{\ignorespaces Figure demonstrating that particle motion out of a hyperplane with $m$ adjacent particles away from an empty space moves with rate $\lambda ^m$.}}{34}{figure.caption.22}
-\contentsline {figure}{\numberline {(2.13)}{\ignorespaces Figure demonstrating that particle motion out of a hyperplane with $m$ adjacent particles away from an empty space moves with rate $\lambda ^m$.}}{34}{figure.caption.23}
-\contentsline {figure}{\numberline {(2.14)}{\ignorespaces The variation of the density of maximal/minimal flow with $\lambda $.}}{38}{figure.caption.25}
-\contentsline {figure}{\numberline {(2.15)}{\ignorespaces $2$d SPM MFT current flow due to boundaries, for a selection of $\lambda $.}}{40}{figure.caption.26}
-\contentsline {figure}{\numberline {(2.16)}{\ignorespaces $2$d SPM MFT current flow as a function of $\lambda $, with fixed boundaries.}}{40}{figure.caption.27}
+\contentsline {figure}{\numberline {(2.1)}{\ignorespaces Plots of the equal-time particle density correlation function on a ring.}}{18}{figure.caption.15}
+\contentsline {figure}{\numberline {(2.2)}{\ignorespaces The free energy density of the SPM on a closed ring, as a function of density and $\lambda $.}}{22}{figure.caption.16}
+\contentsline {figure}{\numberline {(2.3)}{\ignorespaces The chemical potential of the SPM on a closed ring, as a function of density and $\lambda $.}}{23}{figure.caption.17}
+\contentsline {figure}{\numberline {(2.4)}{\ignorespaces Some plots of the variation of the MFT diffusion coefficient with density, for some selected $\lambda $.}}{27}{figure.caption.18}
+\contentsline {figure}{\numberline {(2.5)}{\ignorespaces A contour plot of the variation of the MFT diffusion coefficient with density and stickiness.}}{28}{figure.caption.19}
+\contentsline {figure}{\numberline {(2.6)}{\ignorespaces The variation in the current at fixed $\lambda $ with respect to the boundary densities.}}{32}{figure.caption.20}
+\contentsline {figure}{\numberline {(2.7)}{\ignorespaces The variation of flow rate with respect to $\lambda $ in the MFT, with fixed boundary densities.}}{33}{figure.caption.21}
+\contentsline {figure}{\numberline {(2.8)}{\ignorespaces The dependence of the critial value of $\lambda $ required for backward diffusion on the boundary conditions.}}{34}{figure.caption.22}
+\contentsline {figure}{\numberline {(2.9)}{\ignorespaces The variation of the system-wide average density with respect to $\lambda $ in the MFT, with fixed boundary densities.}}{35}{figure.caption.23}
+\contentsline {figure}{\numberline {(2.10)}{\ignorespaces The possibe transitions which may occur in a symmetric local 2-dimensional hopping model.}}{39}{figure.caption.24}
+\contentsline {figure}{\numberline {(2.11)}{\ignorespaces Figure demonstrating that a local system obeying detailed balance and symmetry cannot have interesting local configuration-dependent dynamics.}}{40}{figure.caption.25}
+\contentsline {figure}{\numberline {(2.12)}{\ignorespaces Figure demonstrating that particle motion out of a hyperplane with $m$ adjacent particles away from an empty space moves with rate $\lambda ^m$.}}{42}{figure.caption.26}
+\contentsline {figure}{\numberline {(2.13)}{\ignorespaces Figure demonstrating that particle motion out of a hyperplane with $m$ adjacent particles away from an empty space moves with rate $\lambda ^m$.}}{42}{figure.caption.27}
+\contentsline {figure}{\numberline {(2.14)}{\ignorespaces The variation of the density of maximal/minimal flow with $\lambda $.}}{46}{figure.caption.29}
+\contentsline {figure}{\numberline {(2.15)}{\ignorespaces $2$d SPM MFT current flow due to boundaries, for a selection of $\lambda $.}}{48}{figure.caption.30}
+\contentsline {figure}{\numberline {(2.16)}{\ignorespaces $2$d SPM MFT current flow as a function of $\lambda $, with fixed boundaries.}}{48}{figure.caption.31}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {(3.1)}{\ignorespaces The variation of configuration probabilities with $\lambda $ for a small open system.}}{48}{figure.caption.28}
-\contentsline {figure}{\numberline {(3.2)}{\ignorespaces The variation of the eigenspectrum of the TRM with $\lambda $ for a small open system.}}{49}{figure.caption.29}
-\contentsline {figure}{\numberline {(3.3)}{\ignorespaces The TRM eigenspectrum for a system with $L=5$, $b=1000$.}}{54}{figure.caption.30}
-\contentsline {figure}{\numberline {(3.4)}{\ignorespaces The lower part of the TRM eigenspectrum for a system with $L=\{5, 10\}, $, $b=\{100, 1000\}$.}}{56}{figure.caption.31}
-\contentsline {figure}{\numberline {(3.5)}{\ignorespaces A graph of the scaling of the number of slow modes with system size.}}{58}{figure.caption.33}
-\contentsline {figure}{\numberline {(3.6)}{\ignorespaces The upper TRM eigenspectrum for a system with $L=\{5, 10\}, $, $b=\{100, 1000\}$.}}{60}{figure.caption.34}
-\contentsline {figure}{\numberline {(3.7)}{\ignorespaces The ``full'' TRM eigenspectrum for a system with $L=8, $, $b=1000$.}}{61}{figure.caption.35}
-\contentsline {figure}{\numberline {(3.8)}{\ignorespaces The variation of the density profile with $\lambda $ for a system of size $L=12$ and boundaries $(\rho _0 = 0.6, \rho _L = 0.4)$.}}{63}{figure.caption.36}
-\contentsline {figure}{\numberline {(3.9)}{\ignorespaces The variation of the current (measured flowing from high density boundary to low) with $\lambda $ for a system of size $L=10$ and boundaries $(\rho _0 = 0.6, \rho _L = 0.4)$.}}{65}{figure.caption.37}
-\contentsline {figure}{\numberline {(3.10)}{\ignorespaces The variation of the diffusion coefficient of a system of size $L=10$ with respect to $\lambda $ and $\rho $.}}{67}{figure.caption.38}
-\contentsline {figure}{\numberline {(3.11)}{\ignorespaces The variation of the order parameter $\chi $ for a system of size $L=10$ with respect to $\lambda $ and $\rho $.}}{68}{figure.caption.39}
-\contentsline {figure}{\numberline {(3.12)}{\ignorespaces The dependence of the relaxation time on $\lambda $ for three sets of boundary conditions.}}{70}{figure.caption.40}
-\contentsline {figure}{\numberline {(3.13)}{\ignorespaces The time-evolution of uniform distributions to equilibrium.}}{72}{figure.caption.41}
+\contentsline {figure}{\numberline {(3.1)}{\ignorespaces The variation of configuration probabilities with $\lambda $ for a small open system.}}{56}{figure.caption.32}
+\contentsline {figure}{\numberline {(3.2)}{\ignorespaces The variation of the eigenspectrum of the TRM with $\lambda $ for a small open system.}}{57}{figure.caption.33}
+\contentsline {figure}{\numberline {(3.3)}{\ignorespaces The TRM eigenspectrum for a system with $L=5$, $b=1000$.}}{62}{figure.caption.34}
+\contentsline {figure}{\numberline {(3.4)}{\ignorespaces The lower part of the TRM eigenspectrum for a system with $L=\{5, 10\}, $, $b=\{100, 1000\}$.}}{64}{figure.caption.35}
+\contentsline {figure}{\numberline {(3.5)}{\ignorespaces A graph of the scaling of the number of slow modes with system size.}}{66}{figure.caption.37}
+\contentsline {figure}{\numberline {(3.6)}{\ignorespaces The upper TRM eigenspectrum for a system with $L=\{5, 10\}, $, $b=\{100, 1000\}$.}}{68}{figure.caption.38}
+\contentsline {figure}{\numberline {(3.7)}{\ignorespaces The ``full'' TRM eigenspectrum for a system with $L=8, $, $b=1000$.}}{69}{figure.caption.39}
+\contentsline {figure}{\numberline {(3.8)}{\ignorespaces The variation of the density profile with $\lambda $ for a system of size $L=12$ and boundaries $(\rho _0 = 0.6, \rho _L = 0.4)$.}}{71}{figure.caption.40}
+\contentsline {figure}{\numberline {(3.9)}{\ignorespaces The variation of the current (measured flowing from high density boundary to low) with $\lambda $ for a system of size $L=10$ and boundaries $(\rho _0 = 0.6, \rho _L = 0.4)$.}}{73}{figure.caption.41}
+\contentsline {figure}{\numberline {(3.10)}{\ignorespaces The variation of the diffusion coefficient of a system of size $L=10$ with respect to $\lambda $ and $\rho $.}}{75}{figure.caption.42}
+\contentsline {figure}{\numberline {(3.11)}{\ignorespaces The variation of the order parameter $\chi $ for a system of size $L=10$ with respect to $\lambda $ and $\rho $.}}{76}{figure.caption.43}
+\contentsline {figure}{\numberline {(3.12)}{\ignorespaces The dependence of the relaxation time on $\lambda $ for three sets of boundary conditions.}}{78}{figure.caption.44}
+\contentsline {figure}{\numberline {(3.13)}{\ignorespaces The time-evolution of uniform distributions to equilibrium.}}{80}{figure.caption.45}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {(4.1)}{\ignorespaces Illustration of the method for choosing successor states in the n-fold way.}}{79}{figure.caption.42}
-\contentsline {figure}{\numberline {(4.2)}{\ignorespaces The flow pattern of sticky particles in $1$D}}{87}{figure.caption.43}
-\contentsline {figure}{\numberline {(4.3)}{\ignorespaces The flow pattern of repulsive particles in $1$D}}{89}{figure.caption.44}
-\contentsline {figure}{\numberline {(4.4)}{\ignorespaces The current flowing through systems as we vary $\lambda $ with constant boundaries, $1$D}}{91}{figure.caption.45}
-\contentsline {figure}{\numberline {(4.5)}{\ignorespaces As Fig.\nobreakspace {}\ref {fig:1DlambdaScans} but over a much wider range of $\lambda $-values.}}{93}{figure.caption.46}
-\contentsline {figure}{\numberline {(4.6)}{\ignorespaces Calculations of the dependence of current upon $\lambda $, repeated with different system sizes.}}{94}{figure.caption.47}
-\contentsline {figure}{\numberline {(4.7)}{\ignorespaces Higher moments of the current, in 1$D$}}{96}{figure.caption.48}
-\contentsline {figure}{\numberline {(4.8)}{\ignorespaces The variation of the overall mean density of the SPM system with $\lambda $ for different boundary conditions, in $1$D.}}{97}{figure.caption.49}
-\contentsline {figure}{\numberline {(4.9)}{\ignorespaces The variation of the fluctuation of the density of the SPM system with $\lambda $ for different boundary conditions, in $1$D.}}{99}{figure.caption.50}
-\contentsline {figure}{\numberline {(4.10)}{\ignorespaces The mean block size and its standard error.}}{101}{figure.caption.51}
-\contentsline {figure}{\numberline {(4.11)}{\ignorespaces Results obtained by fixing the average of the boundary densities and varying their difference and $\lambda $}}{102}{figure.caption.52}
-\contentsline {figure}{\numberline {(4.12)}{\ignorespaces Mean currents observed when varying the boundary densities, fixing $\lambda $, for different $\lambda $}}{104}{figure.caption.53}
-\contentsline {figure}{\numberline {(4.13)}{\ignorespaces Mean densities observed when varying the boundary densities, fixing $\lambda $, for different $\lambda $}}{105}{figure.caption.54}
-\contentsline {figure}{\numberline {(4.14)}{\ignorespaces The variation of the KMC-calculated diffusion coefficient with $\rho $ and $\lambda $.}}{106}{figure.caption.55}
-\contentsline {figure}{\numberline {(4.15)}{\ignorespaces The variation of the current in a $2$D SPM system with $\lambda $, for a variety of different system sizes and aspect ratios.}}{108}{figure.caption.56}
-\contentsline {figure}{\numberline {(4.16)}{\ignorespaces The variation of the overall density in a $2$D SPM system with $\lambda $.}}{110}{figure.caption.57}
-\contentsline {figure}{\numberline {(4.17)}{\ignorespaces The variation of the mean current and its variance in a $2$D SPM system with $\lambda $.}}{111}{figure.caption.58}
+\contentsline {figure}{\numberline {(4.1)}{\ignorespaces Illustration of the method for choosing successor states in the n-fold way.}}{87}{figure.caption.46}
+\contentsline {figure}{\numberline {(4.2)}{\ignorespaces The flow pattern of sticky particles in $1$D}}{95}{figure.caption.47}
+\contentsline {figure}{\numberline {(4.3)}{\ignorespaces The flow pattern of repulsive particles in $1$D}}{98}{figure.caption.48}
+\contentsline {figure}{\numberline {(4.4)}{\ignorespaces The current flowing through systems as we vary $\lambda $ with constant boundaries, $1$D}}{100}{figure.caption.49}
+\contentsline {figure}{\numberline {(4.5)}{\ignorespaces As Fig.\nobreakspace {}\ref {fig:1DlambdaScans} but over a much wider range of $\lambda $-values.}}{101}{figure.caption.50}
+\contentsline {figure}{\numberline {(4.6)}{\ignorespaces Calculations of the dependence of current upon $\lambda $, repeated with different system sizes.}}{103}{figure.caption.51}
+\contentsline {figure}{\numberline {(4.7)}{\ignorespaces Higher moments of the current, in 1$D$}}{104}{figure.caption.52}
+\contentsline {figure}{\numberline {(4.8)}{\ignorespaces The variation of the overall mean density of the SPM system with $\lambda $ for different boundary conditions, in $1$D.}}{105}{figure.caption.53}
+\contentsline {figure}{\numberline {(4.9)}{\ignorespaces The variation of the fluctuation of the density of the SPM system with $\lambda $ for different boundary conditions, in $1$D.}}{107}{figure.caption.54}
+\contentsline {figure}{\numberline {(4.10)}{\ignorespaces The mean block size and its standard error.}}{109}{figure.caption.55}
+\contentsline {figure}{\numberline {(4.11)}{\ignorespaces Results obtained by fixing the average of the boundary densities and varying their difference and $\lambda $}}{110}{figure.caption.56}
+\contentsline {figure}{\numberline {(4.12)}{\ignorespaces Mean currents observed when varying the boundary densities, fixing $\lambda $, for different $\lambda $}}{112}{figure.caption.57}
+\contentsline {figure}{\numberline {(4.13)}{\ignorespaces Mean densities observed when varying the boundary densities, fixing $\lambda $, for different $\lambda $}}{113}{figure.caption.58}
+\contentsline {figure}{\numberline {(4.14)}{\ignorespaces The variation of the KMC-calculated diffusion coefficient with $\rho $ and $\lambda $.}}{114}{figure.caption.59}
+\contentsline {figure}{\numberline {(4.15)}{\ignorespaces The variation of the current in a $2$D SPM system with $\lambda $, for a variety of different system sizes and aspect ratios.}}{117}{figure.caption.60}
+\contentsline {figure}{\numberline {(4.16)}{\ignorespaces The variation of the overall density in a $2$D SPM system with $\lambda $.}}{118}{figure.caption.61}
+\contentsline {figure}{\numberline {(4.17)}{\ignorespaces The variation of the mean current and its variance in a $2$D SPM system with $\lambda $.}}{119}{figure.caption.62}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsfinish 

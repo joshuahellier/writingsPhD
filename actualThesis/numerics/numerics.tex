@@ -50,7 +50,7 @@ introduction>, we can use the following recipe:
  (of which there are $L+2$) at random. If the site chosen is one of the boundaries with density $\rho$,
  reset the site to be occupied with probability $\rho$ and unoccupied with probability $1-\rho$.
  \item If Site is occupied, pick one of the two adjacent sites, which we will call Target, at random with equal probability.
- This will be the site we attempt to move into. If it is not, go back to \textbf{START}.
+ This will be the site we attempt to move into. If Site is not occupied, go back to \textbf{START}.
  \item \textit{If Site is not on the boundary}: If Target is occupied, go to \textbf{START}. Otherwise, consider the other adjacent site,
  which we will refer to as Rear. If Rear is empty, move the particle in Site into Target 
  randomly with
@@ -96,7 +96,7 @@ much of the distribution simply because we aren't moving much.
 We could have made this code marginally more efficient by making the more likely moves certain, and
 correspondingly adjusting the timestep size $\Delta t$ to account for this; however, this only
 improves efficiency by a factor of around $2$ , whilst making the code more complicated, so as
-we only used this method to verify the results of our main code we didn't bother.
+we only used this method to verify the results of our main code it didn't seem worthwhile.
 It is possible for us to get
 around this issue by advancing time in a variable fashion, although this comes at the cost of
 a little more computation per iteration.
@@ -120,10 +120,11 @@ calculations, we should not set the incoming and outgoing rates to be extremely 
 trivial processes come to dominate the calculation and cause the timesteps to be on average extremely small, wasting our computing time. Instead, we set them to
 be proportional to the geometric mean of $1$ and $\lambda$, and thus in the language of~\ref{eq:blinkRates}
 this corresponds to setting $B_0 = \sqrt{\lambda}$. This way the boundaries refresh often, but not too
-often, and should still act as suitable reservoirs.
+often, and should still act as suitable reservoirs, which we can test by comparing small systems with 
+Chapter~\ref{sec:transRateChapter} and comparing with code in Sec~\ref{sec:evenTimesteps}.
 
 We will get into the fine details about how the software we use implements KMC in Sec.~\ref{sec:kmcLib}.
-Let us instead discuss how we obtain the required probability distributions using the uniform distribution
+Let us first discuss how we obtain the required probability distributions using the uniform distribution
 on $(0, 1)$, $U(0, 1)$:
 \begin{itemize}
  \item We can randomly choose the successor state required in step~\ref{weightingChoose} by
@@ -195,7 +196,7 @@ included here <location>; the intention is that a reader wishing to reproduce an
 so by performing a few simple modifications to the code listed there. A more comprehensive codebase is
 stored at <location>, but this is sparsely annotated working code, and so might not be very helpful.
 
-The exemplary code which actually interfaces directly with \texttt{KMCLib} is contained within 
+A code which provides Python input for \texttt{KMCLib} is contained within 
 \texttt{concFlow.py}. This script takes in several command line inputs. These provide the parameters for
 a simulation of the SPM, with the desired value of $\lambda$, system size and boundary conditions. It 
 then sets up the representation of the system configuration and the means to enumerate possible
@@ -379,8 +380,7 @@ this is as follows:
 Thus, we can produce a spacetime diagram which shows the motion of particle density through the 
 system over time. Clearly this method depends upon supplying a timescale $\delta t$ over which we
 perform our averaging; a large $\delta t$ will ignore most of the specifics of the motion, whereas
-a very small value will reveal a system in which nothing happens most of the time, except when
-this calm is punctuated by transitions.
+a very small value will reveal a system in which only one particle is moving at any given time.
 
 \subsubsection{Flow Visualization for Sticky Particles} \label{sec:1DStickyPlots}
 We have performed calculations which illustrate the behaviour of an SPM system in $1$ dimension, displayed
@@ -400,7 +400,8 @@ all of these plots, dark tones represent low time-averaged particle occupation, 
 represent high time-averaged particle occupation.
 \begin{figure} \caption[The flow pattern of sticky particles in $1$D]{Spacetime plots of the particle flow
 in 1 spatial dimension, as described in~\ref{sec:1DStickyPlots}. In each case, the $x$-axis represents time
-and the $y$-axis space. The higher-density boundary is the one at the top of each image.} \renewcommand{\arraystretch}{-0.5}
+and the $y$-axis space. The higher-density boundary is the one at the top of each image. Dark tones 
+indicate low particle density, light tones high.} \renewcommand{\arraystretch}{-0.5}
 \label{fig:1DStickyPlots}
 \begin{center}
 \begin{tabular}{c @{\hskip -0.5em} c| c @{\hskip -0.5em} c @{\hskip -0.5em} c} 
@@ -441,11 +442,13 @@ details. Our principle observations are as follows:
  situation we have blocks of particles separated by voids of vacancies. These voids contain a dilute gas
  of particles. Over these longer timescales, we see that the blocks of particles do in fact slowly migrate
  around the system, occasionally breaking apart or reforming during their travels. Also notice that the 
- voids are more likely to be found towards the centre of the system than adjacent to the boundaries;
- this is presumably a response to the way that we have implemented the boundaries. The chemical potential
+ voids are more likely to be found towards the centre of the system than adjacent to the boundaries.
+ The chemical potential
  (Fig~\ref{fig:spmChemPot}) for small-$\lambda$ is minimised for high density, thus a boundary held at any
  density should be expected to in practise generate a high local density regardless of the density it is
- set to emulate.
+ set to emulate; as we move away from the boundary its correlations with the interior weaken, so we think
+ that the accumulation of particles on the boundary is an edge effect with a certain depth, and that the
+ situation towards the centre of the system is more representative of the preferred bulk behaviour.
  \item Meanwhile for higher-$\lambda$, we see a ``tissue paper'' pattern over these intermediate
  timescales; the system is similar to a gas of randomly-walking particles, but there is a little bit more
  short-range correlation than that, hence the observed texture in the image.
@@ -508,7 +511,10 @@ so we aren't calculating the other moments of the current using that method.
 \begin{figure} \caption[The current flowing through systems as we vary $\lambda$ with constant boundaries,
 $1$D]{The mean current observed to flow from a boundary with greater particle density to lesser particle 
 density in $1$D. Here the boundary densities are held constant throughout, whilst $\lambda$ is varied.
-The lower plot is the same data as the upper one, but with logarithmic axes instead of linear ones.} 
+The lower plot is the same data as the upper one, but with logarithmic axes instead of linear ones.
+The dashed lines
+correspond to the MFT predictions, the joined circles to TRM-computed results, the triangles to results
+computed using evenly-timestepped Monte Carlo and the crosses to KMC calculations.} 
 \label{fig:1DlambdaScans}
 \begin{center}
 \begin{tabular}{c} 
@@ -529,7 +535,7 @@ Sec.~\ref{sec:TRMLambdaScan}. Our main observations about the current are as fol
  TRM and MFT results. The actual constants of proportionality don't quite match, which is a common issue
  in all of these results. We have seen in Sec.~\ref{sec:flowPatternVis} that there is usually a boundary
  layer of excess particles or vacancies next to both boundaries, thus it is possible that this issue
- arises from this boundary layer causing the current to not scale with $\lambda$ in quite the way we
+ arises from this boundary layer causing the current to not scale with $L$ in quite the way we
  expect. However, this is something we can check by varying the system size and checking the current
  variation with $\lambda$, as we have done in Fig.\ref{fig:lambdaScanRepeats}.
  \item For $\lambda \in (0.01, 0.3)$, the current undergoes power law variation with $\lambda$, again in 
@@ -594,7 +600,7 @@ measured in the same setup as used in Fig.~\ref{fig:1DlambdaScans}.}
 There's a little bit of a bend in the variance as we go through the transition, but nothing major.
 Skewness is typically positive but fluctuates a lot, and goes negative past certain thresholds at
 large $\lambda$. Kurtosis is bounded and possibly negative for $\lambda$ above the transition threshold,
-then decides to start growing large and positive as we go through the suspected transition.
+then starts growing large and positive as we go through the suspected transition.
 Thus, we have several different pieces of weak evidence of something happening in the transition region,
 but nothing clear and conclusive like a spike or discontinuity.
 
@@ -627,7 +633,7 @@ stability argument.
 We can also measure the variance of the densities we observed, and use this to gauge the size of the
 density fluctuation, $\Var(\rho)$. In the results displayed in Fig.~\ref{fig:lambdaScanDensityFluc}, we have
 computed the density fluctuation in our $1$D SPM system with boundary conditions
-$(\rho_0, \rho_L) = (0.6, 0.4)$, using the evenly-timestepped Monte Caro method. Here we have
+$(\rho_0, \rho_L) = (0.6, 0.4)$, using the evenly-timestepped Monte-Carlo method. Here we have
 calculated this fluctuation for systems of various different sizes, and then normalised the fluctuation
 via multiplication by system size. Note that we have two datasets for $L=400$ as we used two different
 numbers of timesteps to see what impact it had.
@@ -641,7 +647,7 @@ observed in the SPM system with $\lambda$ for different boundary conditions, in 
 \end{figure}
 
 As this causes the points to generally align for $\lambda>0.3$, this suggests that in that regime the 
-dependence of $L \Var (\rho)$ upon $L$ is pretty weak; therefore,
+dependence of $L \times \Var (\rho)$ upon $L$ is pretty weak; therefore,
 the density fluctuation scales as $\mathcal{O}(L^{-1})$, implying that the number of particles in the
 system fluctuates as $\mathcal{O}(1)$, which makes perfect sense when you consider that the system
 allows particles to enter and leave the system only at the two boundaries, which do not change with the
@@ -790,7 +796,7 @@ Please note that whilst this is probably the largest single calculation we have 
 course of this research, it is also the earliest chronologically; thus, there are many issues
 with it:
 \begin{itemize}
- \item We probably used a system that was too large. A size $64$ system proved to be quite adequate
+ \item We probably used a system that was unnecessarily large. A size $64$ system proved to be quite adequate
  later on, and equilibrates much faster.
  \item We should have performed a larger number of shorter analysis runs; that way we would
  probably obtain a more robust estimate for $D$, which wouldn't be so susceptible to being
