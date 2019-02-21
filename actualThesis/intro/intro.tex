@@ -8,8 +8,8 @@ association with existing models in the literature.
 \subsection{The Motion of Small Atoms in Crystal Lattices}
 Consider a material composed of a regular crystalline lattice of a single type of atom. Most pure metals
 are like this in at least part of their solid phase. For example, under standard conditions Iron is such
-a material, and will typically try and assume a body-centred cubic (bcc) structure, whilst Titanium tends to
-form a hexagonal close-packed (hcp) structure.
+a material, and will typically try and assume a body-centred cubic (bcc) structure~\cite{Villars2016}, whilst Titanium tends to
+form a hexagonal close-packed (hcp) structure~\cite{Patterson1925}.
 
 It is often possible for impurities to enter such a crystalline material whose atoms are smaller than those
 which the material is composed of. Such small impurity atoms can reside in the interstitial spaces between 
@@ -19,8 +19,9 @@ the lattice atoms and travel to the next site, or those atoms perhaps moving apa
 passage; both of these processes are dominated by thermal effects at finite temperature, and the end result
 is that the impurity atom will tend to hop from one interstitial site into an
 adjacent one essentially at random, with some rate $\tau_0 ^{-1} \mathrm{s}^{-1}$.
-Such rates can be determined either by actual experiments (e.g. tracer diffusion) or by theoretical means
-(e.g. molecular dynamics).
+Such rates can be determined either by actual experiments (e.g. tracer diffusion
+~\cite{Lamb1946, Wersin2004}) or by theoretical means
+(e.g. molecular dynamics~\ref{Zhang1994, keffer2001}).
 
 A single such impurity atom will obviously perform some kind of random walk though the system, and that kind
 of mathematics has be treated previously. In this work, we really want to consider what effects these
@@ -32,7 +33,7 @@ caused by interaction. Therefore we won't be calculating any actual transition r
 An actual crystal in physical reality is typically $3$-dimensional (or possibly $2$-dimensional, but those
 are odd cases). However, a lot of the time these $3$D crystals can be quite anisotropic. For example, in
 an hcp crystal lattice, the complementary lattice of octahedral interstitial sites a simple hexagonal
-structure, consisting of stacked planes of hexagonal lattices. Thus, it is not too difficult to envision
+structure, consisting of stacked planes of hexagonal lattices~\cite{Li2018}. Thus, it is not too difficult to envision
 a situation in which the hopping rate is much faster between planes than within them, or vice-versa. In the
 first situation, if there was sufficient discrepancy between the interplanar and intraplanar hopping rates
 we would essentially have a series of decoupled $1$-dimensional systems.
@@ -45,7 +46,7 @@ return to the issue of higher dimensions in Sec.~\ref{sec:highDimSPM}.
 A particle hopping back and forth in $1$D would experience a periodic potential energy arising from the 
 background lattice, perhaps like the one displayed in Fig.~\ref{fig:periodicPot}.
 \begin{figure} \caption[An impression of the kind of background potential experienced by a particle moving
-against a periodic lattice in $1$D.]{A simple example the kind of background potential experienced by a 
+against a periodic lattice in $1$D.]{A simple example of the kind of background potential experienced by a 
 particle moving against a periodic lattice in $1$D. Here the potential is represented by $f(x)$, where $a$
 is the lattice spacing.} 
 \label{fig:periodicPot}
@@ -55,9 +56,10 @@ is the lattice spacing.}
 \end{figure}
 In terms of its potential
 energy due to other particles like itself, it might experience a hardcore repulsion with an 
-intermediate-range attraction/repulsion, such as the Lennard-Jones potential shown in 
+intermediate-range attraction/repulsion, such as the Lennard-Jones 
+potential~\cite{atkins2011} shown in 
 \begin{figure} \caption[The kind of interaction potential which might exist between two nearby particles.]{The kind of interaction potential which might exist between two nearby particles, $g(x)$. Here we have 
-used a Lennard-Jones potential, with parameters chosen so that the interaction scale is comparable to the
+used a Lennard-Jones potential~\cite{atkins2011}, with parameters chosen so that the interaction scale is comparable to the
 lattice spacing $a$. The particle generating this potential is located at the origin.} 
 \label{fig:partInteraction}
 \begin{center}
@@ -87,7 +89,7 @@ is highly likely to be at any given time, thus it is reasonable to speak of part
  \item There is a large potential barrier opposing attempts by particles to get close together. Therefore,
  it is going to be unlikely that multiple particles would be able to squeeze into the same slot,
  and so the assumption that each slot can contain at most one particle is a reasonable one.
- \item If the transition rates between adjacent slots behave in an Arrhenius-like manner, i.e.
+ \item If the transition rates between adjacent slots behave in an Arrhenius-like manner~\cite{arrhenius1889, levine2005}, i.e.
  \begin{equation}
   \tau_0 \propto e^{\frac{\Delta U}{k_B T}},
  \end{equation}
@@ -120,8 +122,8 @@ divided by the base rate $\tau_0^{-1}$.}
 \end{figure}
 A simple verbal description of the model is as follows: particles move randomly into empty adjacent sites with rate 
 $\tau_0^{-1}$, unless they are already adjacent to a particle, in which case they jump away from that adjacent
-particle with rate $\lambda \tau_0^{-1}$. We have factored out $\tau_0$ because it is the ratio of these two rates
-($\lambda$) which is most important to the phenomenology of this model; rescaling $\tau_0$ is equivalent to 
+particle with rate $\lambda \tau_0^{-1}$. We have factored out $\tau_0$ because it is the ratio of these two rates,
+$\lambda$, which is most important to the phenomenology of this model; rescaling $\tau_0$ is equivalent to 
 rescaling time, which is in some sense trivial, whereas varying $\lambda$ should yield models with different behaviours.
 
 Of course, this model is the epitome of a ``toy model'', and with good reason. The complexity of the
@@ -129,7 +131,7 @@ analysis of physical models generally scales quite unfavourably with the number 
 has the benefit of having only one meaningful parameter, which should make it much easier for us
 to explore model behaviour when we use numerical methods.
 
-\section{Properties of the Sticky Particle Model}
+\section{Properties of the Sticky Particle Model} \label{sec:spmProperties}
 Here we list a few properties that the SPM possesses. Note that these properties, although simple, are
 often not shared by other models, and in some sense they mark the SPM out by its having all of them.
 \subsection{Homogeneity}
@@ -157,7 +159,8 @@ slot the particle is hopping away from, meaning that there are two possible rate
 of that neighbour. But by symmetry and homogeneity, these two rates must apply at every site, and equally
 in both directions; thus, adopting all these properties gives us no choice but the SPM.
 
-These rates also imply an additional property. Recall the definition of \textbf{detailed balance}:
+These rates also imply an additional property. Recall the definition of 
+\textbf{detailed balance}~\cite{gardiner1985}:
 that there exists
 a probability distribution $P$ over configurations $\xi \in \Xi$ such that 
 $\forall \xi_1 , \xi_2 \in \Xi $,
@@ -199,7 +202,8 @@ Of course, the SPM is not exactly ``new''; it is very similar to several models 
 literature. Here we will discuss the more prominent of these, with emphasis on why the SPM is different or
 how we are going to analyse it differently to them.
 \subsection{The Ising Model}
-The SPM is equivalent to a constrained version of the classical Ising model in $1$D; we can map SPM
+The SPM is equivalent to a constrained version of the classical Ising 
+model~\cite{lenz1920, Ising1925, strecka2015} in $1$D; we can map SPM
 occupations $\rho_i \in {0, 1}$ on to Ising spins $\sigma_i \in {-1, 1}$ via the transformation
 \begin{equation}
  \sigma_i = 2 \rho_i - 1 .
@@ -207,7 +211,8 @@ occupations $\rho_i \in {0, 1}$ on to Ising spins $\sigma_i \in {-1, 1}$ via the
 The constraint is that the magnetisation is locally conserved, i.e. we can only swap the spins of adjacent
 sites during the dynamics. If we are careful with our definitions of the SPM transition rates,
 the SPM is a equivalent to a method for numerically simulating the Ising model known as Kawasaki
-dynamics, which has been in the literature for a long time. Kawasaki dynamics was originally intended as
+dynamics, which has been in the literature for a long time~\cite{kawasaki1966, Garrido1990, grynberg2010}. 
+Kawasaki dynamics was originally intended as
 a stochastic Markov process designed to replicate the Ising model in equilibrium, albeit with that strange
 constraint on the magnetisation (the Ising model does not normally have such a constraint). We have more 
 to say about the correspondence with the Ising model in Sec.~\ref{sec:isingSim}.
@@ -215,18 +220,23 @@ to say about the correspondence with the Ising model in Sec.~\ref{sec:isingSim}.
 In theory one can calculate equilibrium properties of the SPM by using this equivalence to the constrained
 Ising model; in order to do this, one may attempt to implement the constraint by varying the applied
 magnetic field in such a way that the system ends up with the correct magnetisation, and then working
-out desired quantities from there using the Ising partition function. However, we found that this results
+out desired quantities from there using the Ising partition function~\cite{baxter2016}. However, we found that
+this results
 in extremely convoluted algebra, and it is actually easier to build a new partition for the SPM from 
 scratch as we have done in Sec.~\ref{sec:spmPartFn}.
 \subsection{SEP/ASEP/TASEP} \label{sec:asep}
-The SPM also resembles the SEP/ASEP/TASEP family of models, as it is an exclusion process. However, we 
+The SPM also resembles the SEP/ASEP/TASEP family of models~\cite{liggett1985, golinelli2006, blythe2007,
+Crampe2014}, 
+as it is an
+exclusion process. However, we 
 have not found this resemblance to be particularly helpful, as these models do not contain the
 nearest-neighbour interactions between particles that the SPM does. Thus, we do not believe that we are
 able to solve the SPM using a similar matrix product solution to TASEP. Furthermore, ASEP and TASEP
 are manifestly asymmetric in their bulk dynamics, whereas the SPM is not.
 
 \subsection{The KLS Model}
-The Katz-Lebowitz-Spohn (KLS) model is designed to model the behaviour of ions moving stochastically
+The Katz-Lebowitz-Spohn (KLS) model~\cite{Katz1984, Zia2010} was originally designed to model the
+behaviour of ions moving stochastically
 under the influence of an external potential. The SPM is in fact a specific symmetric case of the
 $1$-dimensional KLS model. Whilst the KLS model exhibits plenty of interesting behaviour
 (in particular, the formation of stripes during flow in higher dimensions), most of the research done

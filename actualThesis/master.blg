@@ -9,45 +9,52 @@ A level-1 auxiliary file: conclusions/conclusions.aux
 A level-1 auxiliary file: appendix1/appendix1.aux
 The style file: ChicagoReedweb.bst
 Database file #1: overallBib.bib
+Warning--I'm ignoring Villars2016's extra "note" field
+--line 709 of file overallBib.bib
+Warning--I'm ignoring Villars2016's extra "note" field
+--line 711 of file overallBib.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 12 entries,
+Warning--to sort, need author or key in Villars2016
+Warning--can't use both author and editor fields in Kolesnichenko2014
+You've used 48 entries,
             3202 wiz_defined-function locations,
-            1171 strings with 14577 characters,
-and the built_in function-call counts, 10227 in all, are:
-= -- 1129
-> -- 318
-< -- 13
-+ -- 156
-- -- 96
-* -- 601
-:= -- 1220
-add.period$ -- 50
-call.type$ -- 12
-change.case$ -- 79
-chr.to.int$ -- 12
-cite$ -- 12
-duplicate$ -- 999
-empty$ -- 581
-format.name$ -- 126
-if$ -- 2018
+            1414 strings with 21141 characters,
+and the built_in function-call counts, 39321 in all, are:
+= -- 4403
+> -- 1079
+< -- 58
++ -- 548
+- -- 321
+* -- 2247
+:= -- 4650
+add.period$ -- 198
+call.type$ -- 48
+change.case$ -- 302
+chr.to.int$ -- 48
+cite$ -- 52
+duplicate$ -- 3893
+empty$ -- 2306
+format.name$ -- 435
+if$ -- 7804
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 109
-newline$ -- 72
-num.names$ -- 48
-pop$ -- 364
+missing$ -- 419
+newline$ -- 263
+num.names$ -- 188
+pop$ -- 1399
 preamble$ -- 1
-purify$ -- 79
+purify$ -- 297
 quote$ -- 0
-skip$ -- 547
+skip$ -- 2129
 stack$ -- 0
-substring$ -- 467
-swap$ -- 802
-text.length$ -- 6
+substring$ -- 1848
+swap$ -- 3127
+text.length$ -- 25
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 99
-warning$ -- 0
-while$ -- 52
+type$ -- 402
+warning$ -- 2
+while$ -- 219
 width$ -- 0
-write$ -- 157
+write$ -- 608
+(There were 4 warnings)

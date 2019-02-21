@@ -1,8 +1,42 @@
-\begin{thebibliography}{12}
+\begin{thebibliography}{48}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{}
+
+\bibitem[{Vil()}]{Villars2016}
+\enquote{$\alpha$-Fe (ferrite) (Fe rt) Crystal Structure: Datasheet from
+  ``PAULING FILE Multinaries Edition -- 2012'' in SpringerMaterials
+  (https://materials.springer.com/isp/crystallographic/docs/sd{\_}1817302).}, .
+\newblock
+  \urlprefix\url{https://materials.springer.com/isp/crystallographic/docs/sd_1817302}.
+\newblock Copyright 2016 Springer-Verlag Berlin Heidelberg {\&} Material Phases
+  Data System (MPDS), Switzerland {\&} National Institute for Materials Science
+  (NIMS), Japan.
+
+\bibitem[{Arrhenius(1889)}]{arrhenius1889}
+Arrhenius, S.
+\newblock \enquote{{\"U}ber die Dissociationsw{\"a}rme und den Einfluss der
+  Temperatur auf den Dissociationsgrad der Elektrolyte.}
+\newblock \emph{Zeitschrift f{\"u}r physikalische Chemie} 4, ~1: (1889)
+  96--116.
+
+\bibitem[{Atkins and De~Paula(2011)}]{atkins2011}
+Atkins, P., and J.~De~Paula.
+\newblock \emph{Physical chemistry for the life sciences}.
+\newblock Oxford University Press, USA, 2011.
+
+\bibitem[{Baxter(2016)}]{baxter2016}
+Baxter, R.~J.
+\newblock \emph{Exactly solved models in statistical mechanics}.
+\newblock Elsevier, 2016.
+
+\bibitem[{Blythe and Evans(2007)}]{blythe2007}
+Blythe, R.~A., and M.~R. Evans.
+\newblock \enquote{Nonequilibrium steady states of matrix-product form: a
+  solver's guide.}
+\newblock \emph{Journal of Physics A: Mathematical and Theoretical} 40, ~46:
+  (2007) R333.
 
 \bibitem[{Bortz et~al.(1975)Bortz, Kalos, and Lebowitz}]{Bortz1975}
 Bortz, A., M.~Kalos, and J.~Lebowitz.
@@ -12,6 +46,21 @@ Bortz, A., M.~Kalos, and J.~Lebowitz.
 \newblock
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/0021999175900601}.
 
+\bibitem[{Crampe et~al.(2014)Crampe, Ragoucy, and Vanicat}]{Crampe2014}
+Crampe, N., E.~Ragoucy, and M.~Vanicat.
+\newblock \enquote{Integrable approach to simple exclusion processes with
+  boundaries. Review and progress.}
+\newblock \emph{Journal of Statistical Mechanics: Theory and Experiment} 2014,
+  ~11: (2014) P11,032.
+\newblock
+  \urlprefix\url{https://doi.org/10.1088%2F1742-5468%2F2014%2F11%2Fp11032}.
+
+\bibitem[{Dewar(2005)}]{dewar2005}
+Dewar, R.~C.
+\newblock \enquote{Maximum entropy production and the fluctuation theorem.}
+\newblock \emph{Journal of Physics A: Mathematical and General} 38, ~21: (2005)
+  L371.
+
 \bibitem[{Evans and Waclaw(2014)}]{evansWaclaw2014}
 Evans, M.~R., and B.~Waclaw.
 \newblock \enquote{Condensation in stochastic mass transport models: beyond the
@@ -20,16 +69,84 @@ Evans, M.~R., and B.~Waclaw.
   (2014) 095,001.
 \newblock \urlprefix\url{http://stacks.iop.org/1751-8121/47/i=9/a=095001}.
 
+\bibitem[{Gardiner et~al.(1985)}]{gardiner1985}
+Gardiner, C.~W., et~al.
+\newblock \emph{Handbook of stochastic methods}, volume~3.
+\newblock springer Berlin, 1985.
+
+\bibitem[{Garrido et~al.(1990)Garrido, Lebowitz, Maes, and Spohn}]{Garrido1990}
+Garrido, P.~L., J.~L. Lebowitz, C.~Maes, and H.~Spohn.
+\newblock \enquote{Long-range correlations for conservative dynamics.}
+\newblock \emph{Phys. Rev. A} 42: (1990) 1954--1968.
+\newblock \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRevA.42.1954}.
+
+\bibitem[{Golinelli and Mallick(2006)}]{golinelli2006}
+Golinelli, O., and K.~Mallick.
+\newblock \enquote{The asymmetric simple exclusion process: an integrable model
+  for non-equilibrium statistical mechanics.}
+\newblock \emph{Journal of Physics A: Mathematical and General} 39, ~41: (2006)
+  12,679.
+
+\bibitem[{Grafke et~al.(2015)Grafke, Grauer, and Sch{\"a}fer}]{grafke2015}
+Grafke, T., R.~Grauer, and T.~Sch{\"a}fer.
+\newblock \enquote{The instanton method and its numerical implementation in
+  fluid mechanics.}
+\newblock \emph{Journal of Physics A: Mathematical and Theoretical} 48, ~33:
+  (2015) 333,001.
+
+\bibitem[{Grynberg(2010)}]{grynberg2010}
+Grynberg, M.~D.
+\newblock \enquote{Revisiting Kawasaki dynamics in one dimension.}
+\newblock \emph{Phys. Rev. E} 82: (2010) 051,121.
+\newblock \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRevE.82.051121}.
+
+\bibitem[{Hellier and Ackland(2018)}]{hellier2018}
+Hellier, J.~D., and G.~J. Ackland.
+\newblock \enquote{On the Diffusion of Sticky Particles in 1D.}
+\newblock \emph{arXiv preprint arXiv:1803.09712} .
+
 \bibitem[{Hoffmann et~al.(2014)Hoffmann, Matera, and Reuter}]{hoffmann2014kmos}
 Hoffmann, M.~J., S.~Matera, and K.~Reuter.
 \newblock \enquote{kmos: A lattice kinetic Monte Carlo framework.}
 \newblock \emph{Computer Physics Communications} 185, ~7: (2014) 2138--2150.
+
+\bibitem[{Honig(1999)}]{honig1999}
+Honig, J.~M.
+\newblock \enquote{Mean field theory of phase transitions.}
+\newblock \emph{Journal of chemical education} 76, ~6: (1999) 848.
+
+\bibitem[{Ising(1925)}]{Ising1925}
+Ising, E.
+\newblock \enquote{Beitrag zur Theorie des Ferromagnetismus.}
+\newblock \emph{Zeitschrift f{\"u}r Physik} 31, ~1: (1925) 253--258.
+\newblock \urlprefix\url{https://doi.org/10.1007/BF02980577}.
 
 \bibitem[{Ivanova(2007)}]{ivanova2007}
 Ivanova, N.~M.
 \newblock \enquote{Exact solutions of diffusion-convection equations.}
 \newblock \emph{arXiv preprint arXiv:0710.4000}
   \urlprefix\url{https://arxiv.org/abs/0710.4000}.
+
+\bibitem[{Katz et~al.(1984)Katz, Lebowitz, and Spohn}]{Katz1984}
+Katz, S., J.~L. Lebowitz, and H.~Spohn.
+\newblock \enquote{Nonequilibrium steady states of stochastic lattice gas
+  models of fast ionic conductors.}
+\newblock \emph{Journal of Statistical Physics} 34, ~3: (1984) 497--537.
+\newblock \urlprefix\url{http://dx.doi.org/10.1007/BF01018556}.
+
+\bibitem[{Kawasaki(1966)}]{kawasaki1966}
+Kawasaki, K.
+\newblock \enquote{Diffusion Constants near the Critical Point for
+  Time-Dependent Ising Models. I.}
+\newblock \emph{Phys. Rev.} 145: (1966) 224--230.
+\newblock \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRev.145.224}.
+
+\bibitem[{Kolesnichenko et~al.(2014)Kolesnichenko, Senni, Pourranjabar, and
+  Remke}]{Kolesnichenko2014}
+Kolesnichenko, A., V.~Senni, A.~Pourranjabar, and A.~Remke.
+\newblock \emph{Applying Mean-Field Approximation to Continuous Time Markov
+  Chains}, Berlin, Heidelberg: Springer Berlin Heidelberg, 2014, 242--280.
+\newblock \urlprefix\url{https://doi.org/10.1007/978-3-662-45489-3_7}.
 
 \bibitem[{Laisant(1905)}]{laisant1905}
 Laisant, C.-A.
@@ -50,10 +167,72 @@ Landau, L.~D., E.~M. Lifshitz, and L.~Pitaevskii.
   (KMC) simulations}.}
 \newblock \emph{Computer Physics Communications} 185: (2014) 2340--2349.
 
+\bibitem[{Lehoucq and Sorensen(1996)}]{lehoucq1996}
+Lehoucq, R., and D.~Sorensen.
+\newblock \enquote{Deflation Techniques for an Implicitly Restarted Arnoldi
+  Iteration.}
+\newblock \emph{SIAM Journal on Matrix Analysis and Applications} 17, ~4:
+  (1996) 789--821.
+\newblock \urlprefix\url{https://doi.org/10.1137/S0895479895281484}.
+
+\bibitem[{Lehoucq(1999)}]{lehoucq1999}
+Lehoucq, R.~B.
+\newblock \enquote{On the convergence of an implicitly restarted Arnoldi
+  method.}
+\newblock Technical report, Sandia National Labs., Albuquerque, NM (US); Sandia
+  National Labs~…, 1999.
+
+\bibitem[{Lehoucq et~al.(1998)Lehoucq, Sorensen, and Yang}]{lehoucq1998}
+Lehoucq, R.~B., D.~C. Sorensen, and C.~Yang.
+\newblock \emph{ARPACK users' guide: solution of large-scale eigenvalue
+  problems with implicitly restarted Arnoldi methods}, volume~6.
+\newblock Siam, 1998.
+
+\bibitem[{Lenz(1920)}]{lenz1920}
+Lenz, W.
+\newblock \enquote{Beitrag zum Verst{\"a}ndnis der magnetischen Erscheinungen
+  in festen K{\"o}rpern.}
+\newblock \emph{Z. Phys.} 21: (1920) 613--615.
+
+\bibitem[{Levine(2005)}]{levine2005}
+Levine, R.
+\newblock \enquote{Molecular Reaction Dynamics, Cambridge University Press.},
+  2005.
+
+\bibitem[{Li et~al.(2018)Li, Chen, He, Zhou, Wang, Peng, Li, and Liu}]{Li2018}
+Li, B., Z.~Chen, W.~He, T.~Zhou, Y.~Wang, L.~Peng, J.~Li, and Q.~Liu.
+\newblock \enquote{Effect of titanium grain orientation on the growth of
+  compounds at diffusion bonded titanium/steel interfaces.}
+\newblock \emph{Materials Characterization} 148.
+
+\bibitem[{Liggett(1985)}]{liggett1985}
+Liggett, T.~M.
+\newblock \emph{Interacting particle systems}.
+\newblock Springer-Verlag, Berlin, 1985.
+
 \bibitem[{Martynov(2012)}]{martynovStatmech}
 Martynov, G.~A.
 \newblock \emph{Classical Statistical Mechanics}, volume~89.
 \newblock Springer Science \& Business Media, 2012.
+
+\bibitem[{Martyushev and Seleznev(2006)}]{martyushev2006}
+Martyushev, L.~M., and V.~D. Seleznev.
+\newblock \enquote{Maximum entropy production principle in physics, chemistry
+  and biology.}
+\newblock \emph{Physics reports} 426, ~1: (2006) 1--45.
+
+\bibitem[{Miller et~al.(1964)Miller, Lamb, Prater, Lee, and Adams}]{Lamb1946}
+Miller, T.~A., B.~Lamb, K.~Prater, J.~K. Lee, and R.~N. Adams.
+\newblock \enquote{Tracer Diffusion Coefficients of Aromatic Organic
+  Molecules.}
+\newblock \emph{Analytical Chemistry} 36, ~2: (1964) 418--420.
+\newblock \urlprefix\url{https://doi.org/10.1021/ac60208a003}.
+
+\bibitem[{Patterson(1925)}]{Patterson1925}
+Patterson, R.~A.
+\newblock \enquote{Crystal Structure of Titanium and Chromium.}
+\newblock \emph{Phys. Rev.} 26: (1925) 56--59.
+\newblock \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRev.26.56}.
 
 \bibitem[{Plimpton et~al.(2009)Plimpton, Battaile, Chandross, Holm, Thompson,
   Tikare, Wagner, Webb, Zhou, Cardona et~al.}]{spparks}
@@ -70,6 +249,16 @@ Prados, A., J.~J. Brey, and B.~S{\'a}nchez-Rey.
 \newblock \emph{Journal of Statistical Physics} 89, ~3: (1997) 709--734.
 \newblock \urlprefix\url{https://doi.org/10.1007/BF02765541}.
 
+\bibitem[{Pukdeboon(2011)}]{pukdeboon2011}
+Pukdeboon, C.
+\newblock \enquote{A review of fundamentals of Lyapunov theory.}
+\newblock \emph{The Journal of Applied Science} 10, ~2: (2011) 55--61.
+
+\bibitem[{Reif(2009)}]{reif2009}
+Reif, F.
+\newblock \emph{Fundamentals of statistical and thermal physics}.
+\newblock Waveland Press, 2009.
+
 \bibitem[{Sherratt(1998)}]{sherrat1998}
 Sherratt, J.~A.
 \newblock \enquote{On the transition from initial data to travelling waves in
@@ -77,10 +266,52 @@ Sherratt, J.~A.
 \newblock \emph{Dynamics and Stability of Systems} 13, ~2: (1998) 167--174.
 \newblock \urlprefix\url{https://doi.org/10.1080/02681119808806258}.
 
+\bibitem[{Strecka and Jascur(2015)}]{strecka2015}
+Strecka, J., and M.~Jascur.
+\newblock \enquote{A brief account of the Ising and Ising-like models:
+  Mean-field, effective-field and exact results.}
+\newblock \emph{arXiv preprint arXiv:1511.03031} .
+
+\bibitem[{van Tongeren(2016)}]{van2016}
+van Tongeren, S.~J.
+\newblock \enquote{Introduction to the thermodynamic Bethe ansatz.}
+\newblock \emph{Journal of Physics A: Mathematical and Theoretical} 49, ~32:
+  (2016) 323,005.
+
+\bibitem[{Van~Vleck(1945)}]{van1945}
+Van~Vleck, J.~H.
+\newblock \enquote{A Survey of the Theory of Ferromagnetism.}
+\newblock \emph{Reviews of Modern Physics} 17, ~1: (1945) 27.
+
 \bibitem[{Voter(2005)}]{voterKMC}
 Voter, A.
 \newblock \emph{Radiation Effects in Solids edited by KE Sickafus and EA
   Kotomin}.
 \newblock Springer, NATO Publishing Unit, 2005.
+
+\bibitem[{Wallace(1978)}]{wallace1978}
+Wallace, D.
+\newblock \enquote{Some applications of instantons in statistical mechanics.}
+\newblock In \emph{Solitons and Condensed Matter Physics}, Springer, 1978,
+  104--115.
+
+\bibitem[{Wersin et~al.(2004)Wersin, Loon, Soler, Yllera, Eikenberg, Gimmi,
+  Hernán, and Boisson}]{Wersin2004}
+Wersin, P., L.~V. Loon, J.~Soler, A.~Yllera, J.~Eikenberg, T.~Gimmi,
+  P.~Hernán, and J.-Y. Boisson.
+\newblock \enquote{Long-term diffusion experiment at Mont Terri: first results
+  from field and laboratory data.}
+\newblock \emph{Applied Clay Science} 26, ~1: (2004) 123 -- 135.
+\newblock
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0169131703002679}.
+\newblock Clays in Natural and Engineered Barriers for Radioactive Waste
+  Confinement.
+
+\bibitem[{Zia(2010)}]{Zia2010}
+Zia, R. K.~P.
+\newblock \enquote{Twenty Five Years After KLS: A Celebration
+  of Non-equilibrium Statistical Mechanics.}
+\newblock \emph{Journal of Statistical Physics} 138, ~1: (2010) 20--28.
+\newblock \urlprefix\url{http://dx.doi.org/10.1007/s10955-009-9884-0}.
 
 \end{thebibliography}

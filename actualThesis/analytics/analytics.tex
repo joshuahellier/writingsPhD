@@ -11,7 +11,7 @@ the SPM.
 
 
 \subsection{Equilibrium Statistical Mechanics}
-Equilibrium statistical mechanics is a bread and butter part of undergraduate physics, and there are a great many texts on the subject~\cite{landauLifshitzStatmech}. %others too probably, like whatever
+Equilibrium statistical mechanics is a bread and butter part of undergraduate physics, and there are a great many texts on the subject~\cite{landauLifshitzStatmech, reif2009}.
 When we speak of ``solving'' an equilibrium statistical mechanics system, the gold standard is to be able to calculate relationships between the statistics of large-scale quantities as a function of the system constraints or their conjugates.
 This allows one to classify the system's behaviour by making equations of state  and identifying phase transitions  (situations where at least some large-scale quantity statistics vary with respect to each other in a discontinuous manner).
 As you will see, the SPM itself is isomorphic to an equilibrium statistical mechanics model so long as we do not drive the system using boundary conditions (e.g. particle reservoirs with different concentrations). Once we introduce such driving forces however, we find that we can no longer use
@@ -19,7 +19,7 @@ equilibrium analysis, and things get a bit more difficult.
 % would like to write about the ideal gas and Ising model here
 \subsubsection{Exact Solutions}
 A quantity of key interest in equilibrium statistical mechanics is the partition
-function~\cite{, martynovStatmech}, usually denoted by $Z$. Say we have a closed classical mechanical system maintained at constant temperature $T$ by a heat bath,
+function~\cite{martynovStatmech}, usually denoted by $Z$. Say we have a closed classical mechanical system maintained at constant temperature $T$ by a heat bath,
 so only energy can enter and leave the system (the canonical ensemble). Let its state space be $\Xi$, and denote an individual microstate (specific configuration of the system) by $\xi$.
 Such a system must of course have a Hamiltonian $H : \Xi \rightarrow \mathbb{R}$. The canonical partition function for this system is defined to be
 \begin{equation} \label{eq:partFn}
@@ -41,11 +41,12 @@ extremely rare in equilibrium statistical mechanics, at least in the large-scale
 principle interest, as it is required for most interesting phenomena such as phase transitions).
 More often, one might approximate the partition function itself, perhaps by converting the required
 integral (Eq.~\ref{eq:partFn}) into an asymptotic series in one of the thermodynamic variables;
-this is effectively what one does when analysing a system in terms of instanton transitions.
+this is effectively what one does when analysing a system in terms of instanton transitions~\cite{grafke2015}.
 
 Another approach is to directly deal with the state variables we are interested in themselves,
 and try to find approximate relationships between them in order to classify their interdependence (an
-\textbf{equation of state}). Equilibrium mean-field theory (\textbf{MFT}) is exactly such a method.
+\textbf{equation of state}). Equilibrium mean-field theory
+(\textbf{MFT}~\cite{honig1999}) is exactly such a method.
 In mean-field theory, we introduce the means of thermodynamic quantities of interest as independent
 variables, and then make the assumption that they have no nontrivial correlations. In practical terms,
 this means that for thermodynamic variables $x$ and $y$, we assume that
@@ -54,7 +55,7 @@ this means that for thermodynamic variables $x$ and $y$, we assume that
 \end{equation}
 This is of course quite an assumption to make, although it is often the case that it is true to low
 order in some asymptotic expansion. Typically, MFT tends to work well in higher dimensions and more
-weakly correlated systems. In the case of the Ising Model (the Weiss Molecular Field), it incorrectly predicts a phase transition
+weakly correlated systems. In the case of the Ising Model (the Weiss Molecular Field~\cite{van1945}), it incorrectly predicts a phase transition
 in $1$d, but for $2$d and above it is at least qualitatively correct.
 
 Finally, one can attempt to sample directly from the space of microstates numerically via Monte Carlo
@@ -71,14 +72,16 @@ maintaining a fixed time-averaged ensemble distribution allowing currents to flo
 
 In general, nonequilibrium statistical mechanics problems tend to be quite a lot harder to get 
 a handle on than equilibrium statistical mechanics problems. The principle reason for this is the
-issue of time-dependence. In true equilibrium, where there is no flow and therefore no overall motion, there is no passage of time, which effectively reduces the number of variables under consideration. This, coupled with the second law of thermodynamics, means that whatever state we are
+issue of time-dependence. In true equilibrium, where there is no flow and therefore no overall motion,
+there is no passage of time, which effectively reduces the number of variables under consideration. This, coupled with the second law of thermodynamics, means that whatever state we are
 in must be an allowed state with maximal entropy; in this case, entropy ends up acting a little bit
-like a Lyapunov function, which we can use to find candidate final states. 
+like a Lyapunov function~\cite{pukdeboon2011}, which we can use to find candidate final states. 
 
 This is of no help to us at all out of of equilibrium; asking a question such as
 ``how much current flows across a given concentration gradient?'' inherently involves time, and so
 we can't just make a maximal-entropy argument to get the answer. There are occasions in the 
-literature where a principle of ``maximal entropy production'' is invoked in order to close sets of
+literature where a principle of ``maximal entropy production''~\cite{dewar2005, martyushev2006}
+is invoked in order to close sets of
 equations, but as far as we have seen there is not yet a proof of why such a thing should in
 general be true.
 
@@ -86,7 +89,8 @@ general be true.
 \subsubsection{Exact Solutions}
 There are some problems in nonequilibrium statistical mechanics are known which have exact solutions. 
 These include the Ising model in $1$ and $2$ dimensions, as well as a class of problems which can be
-solved in steady by matrix products or Bethe ansatz. These are the subject of much interest at the
+solved in steady by matrix products or Bethe ansatz~\cite{van2016}. These are the subject of much
+interest at the
 moment, not least because one can often use isomorphisms between systems which are known to
 be integrable in order to discover new integrable systems. Unfortunately, building up such an exact solution to a specific problem from scratch does not seem to be possible in every case,
 so it remains to be seen how useful these methods really are for tackling problems of actual
@@ -97,7 +101,8 @@ physical interest.
 As with equilibrium statistical mechanics, there are a bunch of approximate methods which can
 be invoked to probe system behaviour, some of which we have used some of these in our research.
 Instead of solving the full system as an integrable system, there are approaches in which instantons
-are used to ``patch together'' local solutions to try to get a grasp of the whole picture. One can,
+are used to ``patch together'' local solutions to try to get a grasp of the whole picture
+~\cite{wallace1978}. One can,
 as always, simply simulate a system by numerical means and try to derive useful statistics from the
 output. In order to do this more efficiently, one can possibly use results from Large Deviation
 Theory (LDT) in order to boost the strength of the tails of the distributions and so capture the essence
@@ -105,11 +110,11 @@ of some useful large deviation function. However, again this doesn't seem to be 
 be done completely generically.
 
 Of course, mean-field theory is still an option, although now that time dependence has been added
-it tends to produce a set of coupled ODEs for the mean variables under consideration. It is also in
+it tends to produce a set of coupled ODEs for the mean variables under consideration~\cite{Kolesnichenko2014}. It is also in
 principle possible to study small-scale systems essentially exactly by numerical analysis of the
 relevant transition state matrix (TRM). Of course, this has the disadvantage that it is only a
 small finite system, so some of the phenomena observed in it will differ from larger versions of the
-same system.
+same system. We perform this kind of analysis in Chap.~\ref{sec:transRateChapter}
 
 
 \subsection{Where does the SPM stand?} \label{sec:spmStatus}
@@ -117,19 +122,22 @@ The issue of how to analyse the SPM leaves us in a slightly awkward position. It
 as the Symmetric Exclusion Process; however, the extra interaction in the SPM makes it quite
 different, as it is in fact longer-ranged. Thus, it's a bit difficult to see immediately how to
 modify a SEP matrix-product steady state in order to solve the SPM. In a similar vein, it might 
-in fact be possible to solve the SPM exactly using thermodynamic Bethe ansatz, but we have neither
+in fact be possible to solve the SPM exactly using thermodynamic Bethe ansatz~\cite{van2016},
+but we have neither
 the expertise nor the time to properly investigate that possibility.
 
 Instead, we have gone for a somewhat more pedestrian, traditional approach. In the rest of this
 chapter, we will discuss the relationships enjoyed by the SPM and some well-known models,
 and will then perform  mean-field analysis, in the hope of obtaining some at least qualitative
 results about how the SPM behaves. In Ch.~\ref{sec:transRateChapter} we will then consider some semianalytic solutions to the SPM
-in finite systems in $1$d via TRM analysis. Finally, in Ch.~\ref{sec:numerics} we will compare the TRM and MFT results to numerical simulations performed using Monte-Carlo (MC) methods. We have also performed
+in finite systems in $1$d via TRM analysis. Finally, in Chap.~\ref{sec:numerics} we will compare the TRM and MFT results to numerical simulations performed using Monte-Carlo (MC) methods. We have also performed
 MC calculations and have MFT results for the $2$-dimensional situation.
 
 
 \section{Similarities between the SPM and Established Models in 1D}
-In the previous section we have discussed the various approaches one might use when attempted to derive properties of a nonequilibrium statistical mechanical system. We will now try to put these ideas into practise on the SPM.
+In the previous section we have discussed the various approaches one might use when attempted to derive properties of a nonequilibrium statistical mechanical system. We will now try to put these ideas into practise on the SPM. We already mentioned some of the relationships between the SPM
+and some established models in Sec.~\ref{sec:existingModels}; here we will be a little more formal
+in terms of our use of these models.
 
 
 
@@ -139,14 +147,14 @@ One does this by associating the Ising spins $\sigma_i \in \left\{-1, 1 \right\}
 \begin{equation}
  \rho_i = \frac{1}{2}\left(1+\sigma_i\right).
 \end{equation}
-Recalling our proof that the SPM obeys detailed balance, we saw that the equilibrium probability of finding the SPM in a state containing $N$ particle-particle adjacencies is proportional to $\lambda^{-N}$.
+Recalling our proof that the SPM obeys detailed balance, we saw that the equilibrium probability of finding the SPM in a state containing $N$ particle-particle adjacencies is proportional to 
+$\lambda^{-N}$.
 %obviously refer to this
 If our Ising Hamiltonian is defined via
 \begin{equation}
  H = \frac{1}{2} \sum_{i=1}^L J \sigma_i \sigma_{i+1 \pmod L},
 \end{equation}
 the probability of finding ourselves in a state with $N$ paired spins is $e^{-\beta N J}$, with $\beta T =1$. The comparison with the SPM is now obvious; we set $\log{\lambda} = \beta J$. Thus $\lambda$ in the SPM has a one-to-one mapping to the ratio of the binding energy to the temperature in the Ising model.
-!Try to compute average energy, if there's time!
 
 
 \subsection{Correlation Functions}
@@ -156,12 +164,13 @@ A \texttt{Python} code which performs this calculations may be found in Sec.~\re
 
 
 This is quite a nice result, as we can use simple recursion to perform a calculation which would otherwise be quite difficult to code.
-Unfortunately the time complexity of the calculation grows exponentially in and $L$, so the largest $L$ I can reasonably run for is $20$. In the table below I have plotted the occupation probability of sites shifted from the origin
+Unfortunately the time complexity of the calculation grows exponentially in and $L$, so the largest 
+$L$ I can reasonably run for is $20$. In the table below I have plotted the occupation probability of sites shifted from the origin
 (assuming the origin is occupied)  for a selection of $\lambda = e^{-b}$ and particle densities.
 
 \begin{figure}[h!]
 \caption[Plots of the equal-time particle density correlation function on a ring.]{\label{fig:corrFns} Here are some particle-particle correlation functions for the SPM on a small closed ring,
-with the density chosen by choosing how many particles to insert at the start. The system in this case has $20$ lattice sites.
+with the density is fixed by the choice of how many particles to insert at the start. The system in this case has $20$ lattice sites.
 This was calculated using computer-assisted algebra and the various density and stickiness combinations should give an overall impression as to their structure.}
 \begin{center}
  \begin{tabular}{c  c | c | c | c}
@@ -200,7 +209,8 @@ moving, for example, one step right in the SPM corresponds to a particle moving 
   \end{cases}
 \]
 
-Using the result from~\cite{evansWaclaw2014}, that the probability weighting of a configuration $\{m_i\}$ may be factorised as
+Using the result from~\cite{evansWaclaw2014}, that the probability weighting of a configuration 
+$\{m_i\}$ may be factorised as
 \begin{equation}
  P(\{m_i\}) \propto \prod_{i+1}^N f(m_i) \delta_{L+N, \sum_{j=1}^N m_j},
 \end{equation}
@@ -440,7 +450,7 @@ Clearly, the diffusion coefficient varies quadratically with $\rho$. This is eas
 and $D \rightarrow \frac{a^2}{\tau_0} \lambda$ as $\rho \rightarrow 1$, so for $\zeta < 0$ ($\lambda>1$) $D$ is guaranteed to be positive for $\rho \in [0, 1]$ as the diffusion coefficient is an inverted parabola so far as its
 variation in $\rho$ is concerned.
 \begin{figure}[h!]
-\caption[Some plots of the variation of the MFT diffusion coefficient with density, for some selected $\lambda$.]{\label{fig:analDiffCoeffs} Plots of the variation of $\frac{\tau_0 D}{a^2}$ ($y$-axis) with respect to $\rho$ ($x$-axis), evaluated with various values of $\zeta$ (above plots).}
+\caption[Some plots of the variation of the MFT diffusion coefficient with density, for some selected $\lambda$.]{\label{fig:analDiffCoeffs} Plots of the variation of $\frac{\tau_0 D}{a^2}$ ($y$-axis) with respect to $\rho$ ($x$-axis), evaluated with various values of $\zeta$ (indicated above plots).}
 \begin{center}
  \begin{tabular}{c c}
      $\zeta = -0.15$ & $\zeta = 0$ \\ 
@@ -456,7 +466,7 @@ variation in $\rho$ is concerned.
 
 \begin{figure}[h!]
  \caption[A contour plot of the variation of the MFT diffusion coefficient with density and stickiness.]{\label{fig:diffCoeffDensityPlot} A contour plot of the variation of $\frac{\tau_0 D}{a^2}$ as a function of $\rho$ and $\lambda$. The region with negative diffusion (which is really critically slow or zero diffusion due
- to our stability argument in~\ref{sec:negDiffCoeff}) has been highlighted in purple. Note how as we descend in $\lambda$ with $\lambda<\frac{1}{4}$, it grows from a single point at $ \rho = \frac{2}{3}$
+ to our stability argument in~\ref{sec:negDiffCoeff}) has been highlighted in purple. Note how as we descend in $\lambda$ with $\lambda<\frac{1}{4}$, this region grows from a single point at $ \rho = \frac{2}{3}$
  to fill most physically realistic density values.}
  \includegraphics[width=0.99\linewidth]{analytics/images/newAnalFlow}
 \end{figure}
@@ -547,7 +557,7 @@ $x_0$ and $J_0$; in particular we find that
 \end{equation}
 which can be reinserted to yield the desired $x_0$. An illustrative plot of $J_0(\rho_B, \rho_T)$ is shown in Fig.~\ref{fig:boundaryCurrent}.
 \begin{figure}[h!]
- \caption[The variation in the current at fixed $\lambda$ with respect to the boundary densities.]{\label{fig:boundaryCurrent} A contour plot of the variation of the constant current $J_0(\rho_B, \rho_T)$ in a bounded domain with boundary densities $\rho_0$ and $\rho_L$ at $x=0$ and $L$  with $\lambda=0.2$.
+ \caption[The variation in the current at fixed $\lambda$ with respect to the boundary densities.]{\label{fig:boundaryCurrent} A contour plot of the variation of the constant current $J_0(\rho_B, \rho_T)$ in a bounded domain with boundary densities $\rho_0$ and $\rho_L$ at $x=0$ and $x=L$ respectively,  with $\lambda=0.2$.
  Notice how the magnitude of $J_0$ generally grows as the difference between $\rho_0$ and $\rho_L$ increases, and how there is a region of boundary condition space in which the current takes the opposite sign one would expect.}
  \includegraphics[width=0.99\linewidth]{analytics/images/boundaryCurrent}
 \end{figure}
@@ -570,7 +580,7 @@ To do this, we simply set $J_0 = 0$ and solve for $\lambda$, and find that
 \end{equation}
 This is shown in Fig~\ref{fig:critLambda}.
 \begin{figure}[h!]
- \caption[The dependence of the critial value of $\lambda$ required for backward diffusion on the boundary conditions.]{\label{fig:critLambda} A plot of the critical value $\lambda_c$, specified in Eq.~\ref{eq:critLambda}
+ \caption[The dependence of the critial value of $\lambda$ required for backward diffusion on the boundary conditions.]{\label{fig:critLambda} A plot of the critical value $\lambda_c$, specified in Eq.~\ref{eq:critLambda},
  which $\lambda$ must be smaller than in order to cause backward flow with boundary densities $(\rho_0, \rho_L)$. The region for which $\lambda_c$ is negative is not included and marked in white, as $\lambda>0$ for a physically
  realistic system. This shows that there are boundary configurations for which flow should still occur for arbitrarily small values of $\lambda$.}
  \includegraphics[width=0.99\linewidth]{analytics/images/criticalLambda}
@@ -654,9 +664,11 @@ which is unfortunate as this is a quantity which it is easy for us to measure us
 \section{The SPM in Higher Dimensions} \label{sec:highDimSPM}
 
 We initially designed the SPM for use in one dimension, as it was originally intended to represent interacting particles moving along a periodic potential with deep, narrow wells. However, it is only natural to wonder whether a similar
-model could be constructed in higher dimensions. Recall that the SPM in one dimension was designed to have two properties:
+model could be constructed in higher dimensions. Recall from Sec.~\ref{sec:spmProperties}
+that the SPM in one dimension has three properties:
 \begin{itemize}
- \item Left-right symmetry, and
+ \item Spatial homogeneity, which is pretty standard, and we will not mention from now on,
+ \item left-right symmetry, and
  \item locality, in the sense that only the presence or absence of a particle in an adjacent lattice site may influence the transition rate.
 \end{itemize}
 In addition we also proved that (boundary conditions aside) the SPM also obeys detailed balance. This was not put into the model intentionally, but emerges naturally as the space of possible one-dimensional
@@ -667,7 +679,7 @@ any one of six possible unique local configurations, as shown in Fig.~\ref{fig:2
 symmetric local hopping models only grows greater in higher dimensions, and this makes it very difficult to analyse the parameter space of such models using numerics. Therefore, we have chosen to investigate most closely those models
 which in addition obey detailed balance; as it turns out, there is only one such model, regardless of the number of dimensions.
 \begin{figure}[h!]
- \caption[The possibe transitions which may occur in a symmetric local 2-dimensional hopping model.]{\label{fig:2dTransitions} 
+ \caption[The possible transitions which may occur in a symmetric local 2-dimensional hopping model.]{\label{fig:2dTransitions} 
  The unique available moves in a 2-dimensional symmetric local hopping model. Note that we have rescaled time so that the free particle hopping rate is $1$, for consistency with the 1-dimensional SPM.
  Simultaneous rotations or reflections of both initial and final states are also allowed moves with the same rates. White corresponds to a lattice site occupied by a particle, black to an unoccupied site, and grey to a site
  which has no effect on the transition rate. In each case a particle moves into an empty space to its right, with its different starting environment determining the transition rate.}
@@ -702,7 +714,7 @@ We have already shown that the theorem applies in 1-dimension, as there the spac
 
 \begin{figure}[h!]
  \caption[Figure demonstrating that a local system obeying detailed balance and symmetry cannot have interesting local configuration-dependent dynamics.]{\label{fig:configInvar} 
- I and II represent two local configurations of $m$ particles, centred around a single site, which may or may not be occupied, in an $(n-1)$-dimensional hyperplane intersecting the central site. The dotted lines dashed arrows represent configurational transitions which require multiple steps, all with the same
+ I and II represent two local configurations of $m$ particles, centred around a single site, which may or may not be occupied, in an $(n-1)$-dimensional hyperplane intersecting the central site. The dashed arrows represent configurational transitions which require multiple steps, all with the same
  rate (in this case, $\lambda$) as indicated. The grey particle slot represents a slot whose occupation is irrelevant for this calculation, although it must be constant throughout.
  The expressions in the top right corners of the configurations are the probabilities of our finding the system in that configuration.
 
@@ -738,7 +750,7 @@ empty or full. Firstly, the empty case is considered in Fig.~\ref{fig:emptyMotio
  
  \begin{figure}[h!]
  \caption[Figure demonstrating that particle motion out of a hyperplane with $m$ adjacent particles away from an empty space moves with rate $\lambda^m$.]{\label{fig:emptyMotion} 
- Here we've used the same diagram rules as in Fig.~\ref{fig:configInvar}. 
+ Here we have used the same diagram rules as in Fig.~\ref{fig:configInvar}. 
  }
   \begin{center}
  \includegraphics[width=0.66\linewidth]{analytics/images/ndDBuCycle}
@@ -937,8 +949,8 @@ $2$-dimensions.
 \begin{figure}
 \caption[$2$d SPM MFT current flow as a function of $\lambda$, with fixed boundaries.]{Plots of the current variation with respect to $\lambda$ in the MFT of the 2-dimensional SPM. Boundary conditions are labelled in the legend in the form $(\rho_0, \rho_L)$.} \label{fig:2dLambdaScans}
 \begin{center}
- \begin{tabular}{c  c}
-    \includegraphics[width=0.5\linewidth]{analytics/images/mftCurrent2d/current2d3BoundLin}  & \includegraphics[width=0.5\linewidth]{analytics/images/mftCurrent2d/current2d3BoundLog} \\
+ \begin{tabular}{c}
+    \includegraphics[width=1.0\linewidth]{analytics/images/mftCurrent2d/current2d3BoundLin}  \\ \includegraphics[width=1.0\linewidth]{analytics/images/mftCurrent2d/current2d3BoundLog} \\
     \end{tabular}
 \end{center}
     \vspace{-2em}

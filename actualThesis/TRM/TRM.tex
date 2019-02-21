@@ -356,7 +356,7 @@ machine with a very large working memory, such as DiRAC.
 \subsection{The Computation of the TRM Eigenspectrum} \label{sec:eigenFind}
 Once we have the TRM $Q$ in CSC or CSR format, we can then use sparse linear algebra. 
 In our code we called the Python routine \texttt{scipy.sparse.linalg.eigs} upon it,
-which itself is a wrapper for C codes which find eigenpairs according to desired
+which itself is a wrapper for C codes~\cite{lehoucq1998} which find eigenpairs according to desired
 criteria; precisely which algorithm to used is determined during runtime, and it may
 try different methods if it doesn't initially succeed.
 
@@ -373,7 +373,7 @@ where $\| \cdot \|$ is some reasonable subordinate matrix norm (in our case, the
 shift-invert method <find article>, leading to greater accuracy in the computation of
 eigenvalues near to $0$ which is exactly what we wanted. For the other type of
 computation, we instead requested the $k$ eigenpairs with largest real part, which
-most likely provoked the code to use a Implicitly Restarted Arnoldi Method (IRAM).
+most likely provoked the code to use a Implicitly Restarted Arnoldi Method (IRAM)~\cite{lehoucq1996, lehoucq1999}.
 This is not as accurate for computing the steady state, but yields vastly more accurate
 results when computing the other eigenpairs compared to the first method. 
 
