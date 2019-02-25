@@ -45,7 +45,7 @@
 \BOOKMARK [1][-]{section.3.2}{Forming the TRM for Systems with Dirichlet Boundary Conditions}{chapter.3}% 45
 \BOOKMARK [2][-]{subsection.3.2.1}{Dirichlet Boundary Conditions}{section.3.2}% 46
 \BOOKMARK [2][-]{subsection.3.2.2}{Another Small Worked Example: Open System}{section.3.2}% 47
-\BOOKMARK [2][-]{subsection.3.2.3}{Formation of the TRM in Sparse Format}{section.3.2}% 48
+\BOOKMARK [2][-]{subsection.3.2.3}{Construction of the TRM in Sparse Format}{section.3.2}% 48
 \BOOKMARK [1][-]{section.3.3}{The Eigenspectrum of the TRM}{chapter.3}% 49
 \BOOKMARK [2][-]{subsection.3.3.1}{The Computation of the TRM Eigenspectrum}{section.3.3}% 50
 \BOOKMARK [2][-]{subsection.3.3.2}{The Structure of the TRM Eigenspectrum}{section.3.3}% 51
@@ -74,6 +74,6 @@
 \BOOKMARK [2][-]{subsection.4.4.2}{Varying \040with Constant Boundary Conditions}{section.4.4}% 74
 \BOOKMARK [1][-]{section.4.5}{Conclusions}{chapter.4}% 75
 \BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 76
-\BOOKMARK [0][-]{appendix.A}{Code Listings}{}% 77
+\BOOKMARK [0][-]{appendix.A}{Code Locations}{}% 77
 \BOOKMARK [1][-]{section.A.1}{1d Ising Correlation Functions \040}{appendix.A}% 78
 \BOOKMARK [1][-]{section.A.2}{n-Dimensional Continuum-Limit MFT }{appendix.A}% 79

@@ -44,7 +44,7 @@ The last constraint implies that
 \end{equation}
 regardless of the structure of $P$, which is our probability conservation equation.
 
-The formal (forward-time) solution to Eq.~\ref{eq:masterEq} is given by
+The formal (forward-time) solution to Eq.~\eqref{eq:masterEq} is given by
 \begin{equation} \label{eqn:formalSoln}
  P(\xi, t) = e^{(t-t_0)\mathcal{A}}P_0,
 \end{equation}
@@ -57,7 +57,7 @@ give us information about the time-evolution of the system. An important thing t
 out is that $\mathcal{A}$ does not in general have orthogonal eigenvectors because it is
 not in general symmetric,
 and so we cannot normally diagonalise it using orthogonal transformations. This means that modes do not ``decouple'' in the way that states do in the 
-Schr\"{o}dinger equation, and we instead have to deal with an \textbf{adjoint system}.
+Schr\"{o}dinger equation, and we instead have to deal with an \textbf{adjoint system}~\cite{stoll2008}.
 
 Luckily, when it comes to the analysis of steady states, there are a few results that
 can help us. If we consider the operator $\mathcal{G}_T = e^{T\mathcal{A}}$ (in other words, the 
@@ -112,7 +112,7 @@ we can rearrange the matrix into block form:
 \end{bmatrix}.
 \end{equation}
 
-According to our recipe, to learn about the solutions to Eq.~\ref{eq:masterEq} 
+According to our recipe, to learn about the solutions to Eq.~\eqref{eq:masterEq} 
 in this case, we need to know about the eigendecomposition of $Q$. 
 The block structure of $Q'$ means that there are $4$ 
 distinct parts of the state space, between which there are no transitions; this 
@@ -120,7 +120,7 @@ partitioning corresponds to the fact that particle number is conserved on the ri
 Two of these
 sectors correspond to the full and empty states, and their dynamics are completely
 trivial, in the sense that the state space is $1$d and there are no dynamics, as the
-particles/vacancies have nowhere to go!
+particles/vacancies have nowhere to go.
 The remaining sectors correspond to the situation where there is one particle or one 
 vacancy. The matrix is symmetric, meaning that its eigenvalues are real,
 and we find that both nontrivial blocks can be diagonalised to form a multiple of
@@ -151,13 +151,13 @@ destruction of particles, that will change; we will consider that situation now.
 \section{Forming the TRM for Systems with Dirichlet Boundary Conditions}
 
 \subsection{Dirichlet Boundary Conditions} \label{sec:CTMPBoundaries}
-In Chap.~\ref{sec:analChap} we made an MFT for the SPM in $1$-dimension, and when 
+In Ch.~\ref{sec:analChap} we made an MFT for the SPM in $1$-dimension, and when 
 investigating steady states used Dirichlet boundary conditions when we needed them.
 In particular, we had a system of length $L$ and sought solutions in which the system
 density was pinned at $\rho_0$ at $x=0$ and $\rho_L$ at $x=L$. 
 
 We would like to do a similar thing for the non-MFT SPM. An exact analogue of the situation
-does not exist, as occupation number is not defined \textit{a priori} in a Markov process, but merely emerges as a result of the rate prescribed.The closest imitation to it
+does not exist, as occupation number is not defined \textit{a priori} in a Markov process, but merely emerges as a result of the rates prescribed. The closest imitation to it
 we can get is by allowing particles to be created and destroyed in boundary regions at
 either end of a chain, and then try to set these rates so that the time-averaged occupation probability in the end sites are $\rho_0$ and $\rho_L$ respectively. Note
 that this is a little more involved than simply loading and unloading particles as
@@ -192,7 +192,7 @@ thus, particles will move in and out of it as normal, and when the outermost sit
 occupation is required to determine the transition rate for a particle moving inward,
 that information is available. One could possibly eliminate the need for the outermost
 boundary site by averaging over occupations, however we have chosen not to do this for
-consistency with out Monte-Carlo calculations in Chap.~\ref{sec:numerics}.
+consistency with our Monte-Carlo calculations in Ch.~\ref{sec:numerics}.
 
 Observant readers will notice that by using these creation and annihilation rates we
 are left with a free variable, $B_0$. This controls the ratio of the creation and
@@ -264,7 +264,7 @@ configurations, can be computed with a little care, and turns out to be
 \end{equation}
 where
 \begin{equation}
- D = \lambda  (\lambda  (\lambda  (5 \lambda +26)+37)+24)+4.
+ D = \lambda  \left[\lambda  (\lambda  \left[5 \lambda +26\right]+37)+24 \right]+4.
 \end{equation}
 The variation of the occupation probabilities with $\lambda$ is displayed in
 Fig.~\ref{fig:smallOccProbs}.
@@ -280,7 +280,7 @@ Fig.~\ref{fig:smallOccProbs}.
 Notice that at extremely small $\lambda$ the system either empties or a single particle gets stuck to
 the full boundary, 
 essentially preventing further flow by blocking it. Meanwhile, at large $\lambda$ there are
-a few fairly popular states, with the most dominant being one with alternating particles and 
+a few fairly popular states, the most dominant being one with alternating particles and 
 vacancies, as one might expect. The steady-state current from left to right in this system can be
 calculated analytically once we have the steady state probability distribution, and turns out to be
 \begin{equation}
@@ -303,9 +303,9 @@ this is displayed in Fig.~\ref{fig:smallEigSpec}.
  \includegraphics[width=1.0\textwidth]{TRM/images/smallOpenEigSpec}
   \end{center}
 \end{figure}
-It is in many ways rather similar to the eigenspectra we find for larger systems, so we see Sec.~\ref{sec:trmEigenspec} for our comments on those.
+It is in many ways rather similar to the eigenspectra we find for larger systems, so see Sec.~\ref{sec:trmEigenspec} for our comments on those.
 
-\subsection{Formation of the TRM in Sparse Format}
+\subsection{Construction of the TRM in Sparse Format}
 
 As we have seen, it is possible to find the eigendecomposition of the TRM analytically for extremely
 small systems with special boundary conditions. However, we'd really like to see what happens for
@@ -331,14 +331,16 @@ that we could use this to solve the SPM on a finite domain for small systems
 ``exactly'' (or at least, up to some nominated numerical tolerance).
 
 To make use of this, we need to assemble the TRM in a suitable sparse format.
-I have written a Python code which does this. The script itself is stored <decide how 
-precisely>, but the gist of the algorithm is to simply run through all possible states,
+I have written a Python code which does this. The script itself may be 
+found in~\cite{hellier2019b} at 
+\texttt{codes/exact/matStuff/sparseSysRep.py}, but the gist of the algorithm is to simply run through all possible states,
 document all the transitions they can perform, and store the resulting entries in
 a sparse matrix element by element. During construction, the matrix should be stored in
 coordinate list format, i.e. a list of elements of the form $(\mathrm{row}, 
 \mathrm{column}, \mathrm{value})$, as this is trivial to update as we only inspect
 each matrix entry once. We can then convert the matrix to a compressed format such
-as CSC (Compressed Sparse Column) or CSR (Compressed Sparse Row). We used CSC, but in
+as CSC (\textbf{Compressed Sparse Column}) or CSR
+(\textbf{Compressed Sparse Row}). We used CSC, but in
 hindsight CSR would probably have been a better choice as it tends to make
 matrix-vector multiplication a little more efficient. Once we have the TRM in this
 format, it is ready for sparse linear algebra operations. Note that whilst
@@ -370,7 +372,8 @@ which amounts to saying that
  \frac{\| Q x_0 - q_0 x_0 \|}{\| x_0 \|} \le 10^{-12} = \epsilon
 \end{equation}
 where $\| \cdot \|$ is some reasonable subordinate matrix norm (in our case, the $1$ norm). Because we requested the eigenvalue closest to $0$, \texttt{eigs} used the
-shift-invert method <find article>, leading to greater accuracy in the computation of
+shift-invert method~\cite{panju2011}, 
+leading to greater accuracy in the computation of
 eigenvalues near to $0$ which is exactly what we wanted. For the other type of
 computation, we instead requested the $k$ eigenpairs with largest real part, which
 most likely provoked the code to use a Implicitly Restarted Arnoldi Method (IRAM)~\cite{lehoucq1996, lehoucq1999}.
@@ -379,7 +382,9 @@ results when computing the other eigenpairs compared to the first method.
 
 \subsection{The Structure of the TRM Eigenspectrum} \label{sec:trmEigenspec}
 
-Using the code listed at <place>, we can compute the eigenspectrum of an SPM system
+Using our code (\texttt{codes/exact/matStuff/sparseSysRep.py} 
+in~\cite{hellier2019b}), 
+we can compute the eigenspectrum of an SPM system
 with boundary densities connected at both ends. Such a computation requires the
 following parameters to be specified:
 \begin{itemize}
@@ -396,7 +401,7 @@ following parameters to be specified:
  (i.e. large changes to $b$ have minimal impact on the relevant internal
  dynamics of the system, even if they have a great impact on the boundary dynamics).
  \item $\lambda>0$, the internal anomalous movement rate in the SPM.
- \item $\epsilon$, the relative accuracy the calculation aims for in the sense of Eq.~\ref{eq:linAlgRelAcc}.
+ \item $\epsilon$, the relative accuracy the calculation aims for in the sense of Eq.~\eqref{eq:linAlgRelAcc}.
  \item $1 \le k < 2^{L+4}$, the number of eigenvalues to compute.
  \end{itemize}
 
@@ -409,7 +414,7 @@ following parameters to be specified:
  First, we performed a relatively small calculation, in terms of the number of eigenvalues demanded and the number of $\lambda$ used. We altered the values of $L$
  and $b$ between runs, so that we can see what impact they have on the eigenspectrum. We then performed a very
  large calculation, in order to get a good look at the eigenstructure as a whole.
- In Chap.~\ref{sec:analChap} our MFT suggested that a transition might occur around
+ In Ch.~\ref{sec:analChap} our MFT suggested that a transition might occur around
  $\lambda=\frac{1}{4}$, so we should look out for odd behaviour in that regime.
 
  To actually perform these TRM calculations, we used Edinburgh Compute and Data Facility's Linux
@@ -453,7 +458,7 @@ There are a several things to note about this spectrum:
  $\lambda$, it clearly scales as $\mathcal{O}(\lambda)$, but is unusually low in an intermediate regime of $\lambda \in (0.03, 10)$, reaching a minimum at $\lambda \sim 0.3$, which could be
  interpreted as an ``avoided crossing'' with the 0-eigenvalue. This is
  important, as the eigenvalue with smallest negative real part is the one that controls
- the approach to equilibrium; thus, we can see that around $0.3$ the system should taken unusually long to relax from an arbitrary prepared state to equilibrium.
+ the approach to equilibrium; thus, we can see that around $0.3$ the system should take unusually long to relax from an arbitrary prepared state to equilibrium.
  \item All eigenvalues tend to scale as $\mathcal{O}(\lambda)$ as $\lambda \rightarrow \infty$.
  \item Eigenvalues other than the bottom one tend to scale as $\mathcal{O}(1)$ at small
  $\lambda$. Thus, whilst the overall approach to equilibrium occurs with rate 
@@ -505,7 +510,7 @@ Again, there's a lot going on in this image, so let's break it down.
  smaller one, as so many more fluctuations need to occur to make it change its global
  state. This is something we should remember for later, as it suggests that equilibration time might scale
  pretty aggressively with system size, which is bad news for our attempts to simulate
- the system using Monte-Carlo methods (Chap.~\ref{sec:numerics}).
+ the system using Monte-Carlo methods (Ch.~\ref{sec:numerics}).
  \item The big, obvious difference between the spectra of different system size is
  the behaviour at small $\lambda$. For $L=5$ there is only $1$ eigenvalue which scales
  as $\mathcal{O}(\lambda)$ as $\lambda \rightarrow 0$, whereas for $L=10$, it would
@@ -579,7 +584,7 @@ Fig.~\ref{fig:eigsVarBVarLUpper}.
  \includegraphics[width=1.0\textheight, angle=270]{TRM/images/topEigs}
   \end{center}
 \end{figure}
-We see that now the tables are indeed turned. Altering $L$ does have a small effect on
+We see that now the tables are indeed turned. Altering $L$ does have a very small effect on
 the upper band, as we can see by how the red/black and blue/green points lie on top
 of each other. On this graph, we see that for the $L=5$ datasets there are apparently
 two bands, whilst for $L=10$ there is only one; however, recall that we have produced
@@ -693,13 +698,13 @@ $13$-$14$ are reserved for the boundaries, whose densities are already prescribe
  At large 
  $\lambda$, we see that the density profile defaults to $\rho\sim\frac{2}{3}$ plus oscillations on the 
  boundaries which decay as we go towards the interior. This is suspiciously close to the critical density
- of the MFT (Chap.~\ref{sec:analChap}) which permits a maximal flow; therefore, we suggest that the system
+ of the MFT (Ch.~\ref{sec:analChap}) which permits a maximal flow; therefore, we suggest that the system
  self-organises at high $\lambda$ to favour configurations that permit high current. The reason this density permits a high current is that in such a configuration,
  any particular particle should on average be in contact with an adjacent particle, with a free space to move into, so the dynamics of the system should be dominated by $\lambda$ rather than $1$. If the density were
  higher, some particles don't have spaces to move into, so that will slow things down; if the density were 
  lower, particles aren't receiving the speed benefit of being a neighbour. We believe that this 
  self-organisation occurs in the bulk, with thin boundary layers occurring near to boundaries
- with densities fixed away from $\frac{2}/{3}$ .
+ with densities fixed away from $\frac{2}{3}$ .
  We believe that this thin layer is revealed by the oscillatory layer observed near to the boundaries; right next to the boundary, in alternating sites, particles will tend to
  linger in sites where they are alone, rapidly leaving when they are prompted by the arrival of a new particle in 
  the  space next to them. This effect then smooths out as one goes deeper into the bulk.
@@ -717,7 +722,7 @@ $13$-$14$ are reserved for the boundaries, whose densities are already prescribe
 
  Whilst we computed the density profile, we also measured the steady state current. We also performed the
  same computation for different boundary conditions, and the results are displayed in Fig.\ref{fig:analCurr},
- along with the corresponding MFT prediction. Note that some of these calculations failed hence 
+ along with the corresponding MFT prediction. Note that some of these calculations failed, hence 
  the gaps in the spectra.
 \afterpage{
  \begin{figure}[h!]
@@ -878,15 +883,17 @@ $\lambda \in (0.03, 1)$, which is where the current looks like its undergoing so
 transition, so this increase in relative equilibration time could be interpreted as an accumulation of
 fluctuations in that regime.
 \subsection{Time-Evolution of States}
-Recall from Sec.~\ref{sec:TRMGeneralResults} that the Master Equation (Eq.~\ref{eq:masterEq}) has
-a formal solution given by Eq.~\ref{eqn:formalSoln}, in which we premultiply the initial state
+Recall from Sec.~\ref{sec:TRMGeneralResults} that the Master Equation (Eq.~\eqref{eq:masterEq}) has
+a formal solution given by Eq.~\eqref{eqn:formalSoln}, in which we premultiply the initial state
 by a matrix exponential of the TRM. Throughout this chapter we have been making use of the fact that
 the TRM is sparse in order to perform our computations. Thus, it would seem that we couldn't
 investigate the time evolution of systems, as $e^A$ is in general not sparse even if $A$ is sparse,
 and thus we would instantly run out of memory if we tried to compute anything.
 
 However, the premultiplication of a vector by a sparse matrix can be performed \textit{in place},
-and this is implemented by Python's routine \texttt{scipy.sparse.linalg.expm\_multiply}. Therefore
+and this is implemented by Python's routine
+\newline
+\texttt{scipy.sparse.linalg.expm\_multiply}. Therefore
 we have been able to calculate the time-evolution of arbitrary initial distributions. By way of an
 example we prepared three systems with initial uniform distributions, in which all possible 
 configurations are equally likely, and then monitored how their spatial occupations varied as they
@@ -914,8 +921,8 @@ responsive reservoir. The system then gradually makes its ways toward equilibriu
 boundaries and working inward, and the characteristic timescale over which this occurs seems to be in
 line with our results from \ref{sec:relaxTime}.
 
-Of course, this is more of a demonstration of what this method could achieve than actually useful
-results. We are quite sure that with a little effort one could use it to calculate time-dependent
+Of course, this is more of a demonstration of what this method could achieve than an actually useful
+result. We are quite sure that with a little effort one could use it to calculate time-dependent
 spatial correlation functions,
 for example, but we simply worked out how to perform TRM calculations too late in the project to be
 able to use it to full effect.
@@ -927,7 +934,8 @@ Numerically approximating the eigenpairs of the transition rate matrix is a conv
 alternative to the use of
 Monte Carlo methods for the computation of the properties of a Markovian statistical mechanics system.
 When using the TRM, we sacrifice system size for accuracy, as the memory requirement for TRM
-calculations scales exponentially with system size, whilst similar Monte Carlo calculations scale 
+calculations scales exponentially with system size, whilst similar Monte Carlo calculations' memory 
+requirements scale 
 linearly. However, the TRM method avoids the
 sampling issues which often emerge when attempting Monte Carlo simulations, and can yield the relevant
 statistics with relative ease once the matrix computations are completed. Furthermore, we can also
@@ -938,6 +946,7 @@ The main reason we performed these calculations, however, is to investigate the 
 to the boundary conditions. We found that the MFT prediction that the currents drops to zero or becomes 
 negative below a critical $\lambda$ (depending upon boundary conditions) does not seem to be correct;
 however, we have found that the scaling of the current does seem to undergo some kind of transition,
-from  $J \propto \lambda$ for high $\lambda$ to $J \propto \lambda^3$. This is something which we can
+from  $J \propto \lambda$ for large $\lambda$ to $J \propto \lambda^3$ for small $\lambda$.
+This is something which we can
 investigate further using Monte-Carlo methods on larger-scale systems, and we will do this in the next
 chapter.

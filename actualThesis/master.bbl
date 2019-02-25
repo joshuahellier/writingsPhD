@@ -1,18 +1,23 @@
-\begin{thebibliography}{48}
+\begin{thebibliography}{61}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{}
 
 \bibitem[{Vil()}]{Villars2016}
-\enquote{$\alpha$-Fe (ferrite) (Fe rt) Crystal Structure: Datasheet from
-  ``PAULING FILE Multinaries Edition -- 2012'' in SpringerMaterials
+\enquote{$\alpha$-Fe (ferrite) Crystal Structure: Datasheet from ``PAULING FILE
+  Multinaries Edition -- 2012'' in SpringerMaterials
   (https://materials.springer.com/isp/crystallographic/docs/sd{\_}1817302).}, .
 \newblock
   \urlprefix\url{https://materials.springer.com/isp/crystallographic/docs/sd_1817302}.
 \newblock Copyright 2016 Springer-Verlag Berlin Heidelberg {\&} Material Phases
   Data System (MPDS), Switzerland {\&} National Institute for Materials Science
   (NIMS), Japan.
+
+\bibitem[{Allen et~al.(2009)Allen, Tung, and Kaner}]{allen2009}
+Allen, M.~J., V.~C. Tung, and R.~B. Kaner.
+\newblock \enquote{Honeycomb carbon: a review of graphene.}
+\newblock \emph{Chemical reviews} 110, ~1: (2009) 132--145.
 
 \bibitem[{Arrhenius(1889)}]{arrhenius1889}
 Arrhenius, S.
@@ -31,6 +36,13 @@ Baxter, R.~J.
 \newblock \emph{Exactly solved models in statistical mechanics}.
 \newblock Elsevier, 2016.
 
+\bibitem[{Biswas et~al.(2013)Biswas, Chatterjee, Mukherjee, and
+  Pal}]{biswas2013}
+Biswas, B., S.~Chatterjee, S.~Mukherjee, and S.~Pal.
+\newblock \enquote{A discussion on Euler method: A review.}
+\newblock \emph{Electronic Journal Of Mathematical Analysis And Applications}
+  1, ~2: (2013) 294--317.
+
 \bibitem[{Blythe and Evans(2007)}]{blythe2007}
 Blythe, R.~A., and M.~R. Evans.
 \newblock \enquote{Nonequilibrium steady states of matrix-product form: a
@@ -46,6 +58,12 @@ Bortz, A., M.~Kalos, and J.~Lebowitz.
 \newblock
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/0021999175900601}.
 
+\bibitem[{Chikazumi and Graham(1997)}]{chikazumi1997}
+Chikazumi, S., and C.~Graham.
+\newblock \emph{Physics of Ferromagnetism (International Series of Monographs
+  on Physics; 94)}.
+\newblock Oxford University Press, 1997.
+
 \bibitem[{Crampe et~al.(2014)Crampe, Ragoucy, and Vanicat}]{Crampe2014}
 Crampe, N., E.~Ragoucy, and M.~Vanicat.
 \newblock \enquote{Integrable approach to simple exclusion processes with
@@ -54,6 +72,12 @@ Crampe, N., E.~Ragoucy, and M.~Vanicat.
   ~11: (2014) P11,032.
 \newblock
   \urlprefix\url{https://doi.org/10.1088%2F1742-5468%2F2014%2F11%2Fp11032}.
+
+\bibitem[{Deal and Grove(1965)}]{DealGrove1965}
+Deal, B.~E., and A.~S. Grove.
+\newblock \enquote{General Relationship for the Thermal Oxidation of Silicon.}
+\newblock \emph{Journal of Applied Physics} 36, ~12: (1965) 3770--3778.
+\newblock \urlprefix\url{https://doi.org/10.1063/1.1713945}.
 
 \bibitem[{Dewar(2005)}]{dewar2005}
 Dewar, R.~C.
@@ -99,6 +123,16 @@ Grynberg, M.~D.
 \newblock \enquote{Revisiting Kawasaki dynamics in one dimension.}
 \newblock \emph{Phys. Rev. E} 82: (2010) 051,121.
 \newblock \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRevE.82.051121}.
+
+\bibitem[{Hellier(2019{\natexlab{a}})}]{hellier2019a}
+Hellier, J.
+\newblock \enquote{Interacting Particles in 1D and 2D: Annotated codes.}
+  \urlprefix\url{https://doi.org/10.7488/ds/2500}.
+
+\bibitem[{Hellier(2019{\natexlab{b}})}]{hellier2019b}
+\rule[.6ex]{3em}{.05ex}.
+\newblock \enquote{Interacting Particles in 1D and 2D: Primary code base.}
+  \urlprefix\url{https://zenodo.org/badge/latestdoi/52518520}.
 
 \bibitem[{Hellier and Ackland(2018)}]{hellier2018}
 Hellier, J.~D., and G.~J. Ackland.
@@ -228,6 +262,12 @@ Miller, T.~A., B.~Lamb, K.~Prater, J.~K. Lee, and R.~N. Adams.
 \newblock \emph{Analytical Chemistry} 36, ~2: (1964) 418--420.
 \newblock \urlprefix\url{https://doi.org/10.1021/ac60208a003}.
 
+\bibitem[{Panju(2011)}]{panju2011}
+Panju, M.
+\newblock \enquote{Iterative methods for computing eigenvalues and
+  eigenvectors.}
+\newblock \emph{arXiv preprint arXiv:1105.1185} .
+
 \bibitem[{Patterson(1925)}]{Patterson1925}
 Patterson, R.~A.
 \newblock \enquote{Crystal Structure of Titanium and Chromium.}
@@ -259,6 +299,11 @@ Reif, F.
 \newblock \emph{Fundamentals of statistical and thermal physics}.
 \newblock Waveland Press, 2009.
 
+\bibitem[{Robert(2015)}]{metHastAlg}
+Robert, C.~P.
+\newblock \emph{The Metropolis-Hastings Algorithm}, American Cancer Society,
+  2015, 1--15.
+
 \bibitem[{Sherratt(1998)}]{sherrat1998}
 Sherratt, J.~A.
 \newblock \enquote{On the transition from initial data to travelling waves in
@@ -266,11 +311,23 @@ Sherratt, J.~A.
 \newblock \emph{Dynamics and Stability of Systems} 13, ~2: (1998) 167--174.
 \newblock \urlprefix\url{https://doi.org/10.1080/02681119808806258}.
 
+\bibitem[{Stoll(2008)}]{stoll2008}
+Stoll, M.
+\newblock \emph{Solving linear systems using the adjoint}.
+\newblock Ph.D. thesis, Oxford University, 2008.
+
 \bibitem[{Strecka and Jascur(2015)}]{strecka2015}
 Strecka, J., and M.~Jascur.
 \newblock \enquote{A brief account of the Ising and Ising-like models:
   Mean-field, effective-field and exact results.}
 \newblock \emph{arXiv preprint arXiv:1511.03031} .
+
+\bibitem[{Tegner et~al.(2015)Tegner, Zhu, Siemers, Saksl, and
+  Ackland}]{tegner2015}
+Tegner, B., L.~Zhu, C.~Siemers, K.~Saksl, and G.~Ackland.
+\newblock \enquote{High temperature oxidation resistance in titanium-niobium
+  alloys.}
+\newblock \emph{Journal of alloys and compounds} 643: (2015) 100--105.
 
 \bibitem[{van Tongeren(2016)}]{van2016}
 van Tongeren, S.~J.
@@ -278,10 +335,21 @@ van Tongeren, S.~J.
 \newblock \emph{Journal of Physics A: Mathematical and Theoretical} 49, ~32:
   (2016) 323,005.
 
+\bibitem[{Touchette(2011)}]{touchette2011}
+Touchette, H.
+\newblock \enquote{A basic introduction to large deviations: Theory,
+  applications, simulations.}
+\newblock \emph{arXiv preprint arXiv:1106.4146} .
+
 \bibitem[{Van~Vleck(1945)}]{van1945}
 Van~Vleck, J.~H.
 \newblock \enquote{A Survey of the Theory of Ferromagnetism.}
 \newblock \emph{Reviews of Modern Physics} 17, ~1: (1945) 27.
+
+\bibitem[{Voorhees(1985)}]{voorhees1985}
+Voorhees, P.~W.
+\newblock \enquote{The theory of Ostwald ripening.}
+\newblock \emph{Journal of Statistical Physics} 38,  1-2: (1985) 231--252.
 
 \bibitem[{Voter(2005)}]{voterKMC}
 Voter, A.
@@ -313,5 +381,11 @@ Zia, R. K.~P.
   of Non-equilibrium Statistical Mechanics.}
 \newblock \emph{Journal of Statistical Physics} 138, ~1: (2010) 20--28.
 \newblock \urlprefix\url{http://dx.doi.org/10.1007/s10955-009-9884-0}.
+
+\bibitem[{Zingg and Chisholm(1999)}]{zingg1999}
+Zingg, D.~W., and T.~T. Chisholm.
+\newblock \enquote{Runge--Kutta methods for linear ordinary differential
+  equations.}
+\newblock \emph{Applied Numerical Mathematics} 31, ~2: (1999) 227--238.
 
 \end{thebibliography}

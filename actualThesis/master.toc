@@ -3,7 +3,7 @@
 \contentsline {chapter}{Acknowledgements}{iii}{chapter*.4}
 \contentsline {chapter}{Contents}{iv}{section*.5}
 \contentsline {chapter}{List of Figures}{viii}{section*.7}
-\contentsline {chapter}{List of Tables}{xii}{section*.9}
+\contentsline {chapter}{List of Tables}{xi}{section*.9}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Derivation and Motivation of the Sticky Particle Model}{1}{section.1.1}
 \contentsline {subsection}{\numberline {1.1.1}The Motion of Small Atoms in Crystal Lattices}{1}{subsection.1.1.1}
@@ -23,7 +23,7 @@
 \contentsline {section}{\numberline {2.1}Solving Problems in Nonequlibrium Statistical Mechanics}{12}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Equilibrium Statistical Mechanics}{13}{subsection.2.1.1}
 \contentsline {subsubsection}{Exact Solutions}{13}{subsection.2.1.1}
-\contentsline {subsubsection}{Approximate Methods for Analysing Equilibrium Statmech Systems}{14}{equation.2.1.2}
+\contentsline {subsubsection}{Approximate Methods for Analysing Equilibrium Statistical Mechanics Systems}{14}{equation.2.1.2}
 \contentsline {subsection}{\numberline {2.1.2}Nonequlibrium Statistical Mechanics}{14}{subsection.2.1.2}
 \contentsline {subsubsection}{Exact Solutions}{15}{subsection.2.1.2}
 \contentsline {subsubsection}{Approximations}{16}{subsection.2.1.2}
@@ -53,7 +53,7 @@
 \contentsline {section}{\numberline {3.2}Forming the TRM for Systems with Dirichlet Boundary Conditions}{54}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Dirichlet Boundary Conditions}{54}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Another Small Worked Example: Open System}{55}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Formation of the TRM in Sparse Format}{58}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.3}Construction of the TRM in Sparse Format}{58}{subsection.3.2.3}
 \contentsline {section}{\numberline {3.3}The Eigenspectrum of the TRM}{60}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}The Computation of the TRM Eigenspectrum}{60}{subsection.3.3.1}
 \contentsline {subsection}{\numberline {3.3.2}The Structure of the TRM Eigenspectrum}{60}{subsection.3.3.2}
@@ -80,7 +80,7 @@
 \contentsline {subsection}{\numberline {4.2.3}Managing \texttt {KMCLib} Calculations in Parallel}{92}{subsection.4.2.3}
 \contentsline {section}{\numberline {4.3}1D Calculation Results}{93}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Flow Patterns}{94}{subsection.4.3.1}
-\contentsline {subsubsection}{Flow Visualization for Sticky Particles}{95}{Item.26}
+\contentsline {subsubsection}{Flow Visualization for Sticky Particles}{95}{Item.27}
 \contentsline {subsubsection}{Repulsive Particles}{98}{figure.caption.47}
 \contentsline {subsection}{\numberline {4.3.2}Scans Through $\lambda $ with Constant Boundary Densities}{98}{subsection.4.3.2}
 \contentsline {subsubsection}{Mean Current}{100}{subsection.4.3.2}
@@ -95,7 +95,7 @@
 \contentsline {subsection}{\numberline {4.4.2}Varying $\lambda $ with Constant Boundary Conditions}{117}{subsection.4.4.2}
 \contentsline {section}{\numberline {4.5}Conclusions}{122}{section.4.5}
 \contentsline {chapter}{\numberline {5}Conclusions}{123}{chapter.5}
-\contentsline {chapter}{\numberline {A}Code Listings}{125}{appendix.A}
+\contentsline {chapter}{\numberline {A}Code Locations}{125}{appendix.A}
 \contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{125}{section.A.1}
 \contentsline {section}{\numberline {A.2}$n$-Dimensional Continuum-Limit MFT }{125}{section.A.2}
 \tocappendix 

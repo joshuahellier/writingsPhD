@@ -15,24 +15,24 @@ refer to numerical routines in which we attempt to characterise an unknown distr
 via known rules, by using
 pseudorandom numbers in order to produce sample data which is hopefully faithful to the original 
 distribution, at least in terms of the statistics we are trying to calculate. A good example of a
-commonly-used Monte-Carlo method in Physics is the Metropolis-Hastings algorithm, which in its original
+commonly-used Monte-Carlo method in Physics is the Metropolis-Hastings algorithm~\cite{metHastAlg}, which in its original
 form is used to calculate statistics for equilibrium statistical mechanics systems.
 
 In our situation, we wish to be able to mimic a continuous-time discrete-state Markov process.
-As we saw in Chap.~\ref{sec:transRateChapter}, the state space for a TRM system of size $L$
+As we saw in Ch.~\ref{sec:transRateChapter}, the state space for a TRM system of size $L$
 scales as
 $\mathcal{O}(2^L$); thus we quickly run out of size if we try to consider exact probability distributions, which correspond to
 vectors in $\mathbb{R}^{L^2}$. We can, however, store individual configurations, which only occupy
 $\mathcal{O}(L)$ space. Therefore, we need to find a way to produce trajectories through the discrete
 state space which sample the actual space of system trajectories well enough to allow us to access the
 statistics we want. Of course, there isn't a unique ``best'' way to do this. We have considered two
-contrasting methods, which differ primarily in the way in which they convert the original continuous 
+different approaches, which differ primarily in the way in which they convert the original continuous 
 time into discrete steps which we can use in an algorithm.
 
 \subsection{Evenly-Spaced Timesteps} \label{sec:evenTimesteps}
 
-If we wished to numerically approximate an ODE system, one might use the Euler forward or 
-Runge-Kutte methods. These both involve discretising time simply by dividing it into evenly-sized
+If we wished to numerically approximate an ODE system, one might use the Euler forward~\cite{biswas2013} or 
+Runge-Kutte~\cite{zingg1999} methods. These both involve discretising time simply by dividing it into evenly-sized
 pieces, and then converting the ODE into a discrete form by using finite differences to
 approximate derivatives. We need to be careful to choose a small enough timestep for
 the approximation to the derivative to remain good, but otherwise it is a very simple and 
@@ -42,8 +42,7 @@ We can do a very similar technique with continuous time Markov processes. In our
 if we ignore the boundaries, there are two rates, $1$ and $\lambda$, and our system is 
 homogeneous. Let us represent the system with a binary array of length $L+2$, with $L$ sites for the bulk
 and a site each representing the boundaries. Therefore, in order to simulate the action of the SPM as
-defined in <reference to appropriate section in
-introduction>, we can use the following recipe:
+defined in Sec.~\ref{sec:modelDefn}, we can use the following recipe:
 \begin{enumerate}
  \item \textbf{START}. Advance time by $\Delta t$. Pick a site, which we will call
  Site,
@@ -89,9 +88,11 @@ If $\lambda$
 is close to $1$, the probability of rejection (i.e. a step which results in no overall change to
 the system) is $\sim\frac{1}{2}$, and this is the situation in which the algorithm really shines; similarly
 it also performs well for large or small $lambda$ if the system density is very high or very low
-respectively. For extreme $\lambda$ in general however, performance drops off considerably, as
-we are often performing lots of calculations and advancing time very little, and thus not seeing
-much of the distribution simply because we aren't moving much.
+respectively. For extreme $\lambda$ and generic densities,
+performance drops off considerably,
+as
+we are often performing lots of calculations and advancing time very little, and thus not sampling
+much of the distribution per computation step.
 
 We could have made this code marginally more efficient by making the more likely moves certain, and
 correspondingly adjusting the timestep size $\Delta t$ to account for this; however, this only
@@ -113,12 +114,14 @@ BKL or Gillespie Algorithm~\cite{Bortz1975, Prados1997, voterKMC}. It evolves us
  \item Now advance time by an increment chosen from an exponential distribution whose decay rate 
  is the sum of all of the rates of the possible transitions to a successor. Go back to \textbf{START}. \label{timestepChoose}
 \end{enumerate}
-Now we just need to supply the rates <from introduction> that define the SPM, along with some additional rates describing processes at the boundary. Specifically, we use the method described 
+Now we just need to supply the rates that define the SPM 
+(Sec.~\ref{sec:modelDefn}), 
+along with some additional rates describing processes at the boundary. Specifically, we use the method described 
 in~\ref{sec:CTMPBoundaries} to do this, whereby we have a double layer of ``blinking'' boundary sites
 and sites in the internal layer undergo the same transitions as in the bulk. However, unlike in our TRM
 calculations, we should not set the incoming and outgoing rates to be extremely high, as then these rather
 trivial processes come to dominate the calculation and cause the timesteps to be on average extremely small, wasting our computing time. Instead, we set them to
-be proportional to the geometric mean of $1$ and $\lambda$, and thus in the language of~\ref{eq:blinkRates}
+be proportional to the geometric mean of $1$ and $\lambda$, and thus in the language of~\eqref{eq:blinkRates}
 this corresponds to setting $B_0 = \sqrt{\lambda}$. This way the boundaries refresh often, but not too
 often, and should still act as suitable reservoirs, which we can test by comparing small systems with 
 Chapter~\ref{sec:transRateChapter} and comparing with code in Sec~\ref{sec:evenTimesteps}.
@@ -169,7 +172,7 @@ therefore takes $\mathcal{O}(\log{L})$ time and so should be insignificant.
 \section{Implementation of Monte Carlo Methods}
 \subsection{Our Implementation of a Metropolis-Hastings Algorithm with Evenly-Space Timesteps}
 We have written a Fortran code which implements the algorithm in Sec~\ref{sec:evenTimesteps}. This is
-stored in <location of code>. This programme initialises the system to have a particle density
+stored in \cite{hellier2019a} in \texttt{evenTimesteps/evenTimesteps.f}. This programme initialises the system to have a particle density
 equal to the average of the two desired boundary densities, and then proceeds in a manner extremely
 faithful to the simple accept/reject algorithm.
 
@@ -192,9 +195,9 @@ Of course, setting up different calculations which vary different parameters or 
 require different scripts. Going through every script we wrote individually would cause this thesis
 to be around twice as long and three times more dull; therefore we have instead chosen to focus
 upon a single set of codes designed to perform a particular calculation, which we have annotated and 
-included here <location>; the intention is that a reader wishing to reproduce any of our results could do
+included in~\cite{hellier2019a} in \texttt{kmc/1d/currentCalc}; the intention is that a reader wishing to reproduce any of our results could do
 so by performing a few simple modifications to the code listed there. A more comprehensive codebase is
-stored at <location>, but this is sparsely annotated working code, and so might not be very helpful.
+stored at~\cite{hellier2019b}, but this is sparsely annotated working code, and so might not be as helpful.
 
 A code which provides Python input for \texttt{KMCLib} is contained within 
 \texttt{concFlow.py}. This script takes in several command line inputs. These provide the parameters for
@@ -300,7 +303,7 @@ Therefore, we have used a single-threaded environment for all of the calculation
 thesis.
 
 In order to set up a batch of calculations, we use the following procedure, implemented by the codes
-stored in \texttt{kmc/1d/} within <location>:
+stored in \texttt{kmc/1d/} within~\cite{hellier2019a}:
 \begin{enumerate}
  \item Create a batch of input files, in the subdirectory \texttt{jobInputs/}. In our setup, we
  require that files titled
@@ -329,7 +332,7 @@ stored in \texttt{kmc/1d/} within <location>:
  problem seems to be an issue with type conversion between Python and C++, which only seems to 
  become a significant issue in larger calculations.
 \end{enumerate}
-Note that throughout our calculations, we have stored data in a human-readable format, instead of
+Throughout our calculations, we have stored data in a human-readable format, instead of
 in a more compressed binary format. This is because we believe that the benefit of having a 
 human-readable format, and therefore a much greater ability to look through data and check the 
 output, outweighs the associated memory cost (around a factor of $10$ or so), 
@@ -373,7 +376,7 @@ this is as follows:
  occupancy variable to all sites at all times. Between timesteps, all sites not directly involved
  with a transition would have an occupancy of $1$ or $0$, and those involved in the transition
  would smoothly switch from occupancies of $0$ to $1$ and vice-versa.
- \item We can now make a new, evenly-stepped grid of space and time where we use even timesteps.
+ \item We can now make a new, evenly-stepped grid of space and time.
  We can integrate the interpolated KMC data over the time spacings of the new grid in order to
  find average occupations over the specified timeframe. 
 \end{enumerate}
@@ -700,8 +703,9 @@ equilibration steps and then $1000$ alternating measurement and relaxation
 runs of $16000$ and $1000$ steps respectively. From this we calculated
 the same kinds of quantities as in Sec.~\ref{sec:lambdaScans}; the 
 principle results are displayed in Fig~\ref{fig:constDens}.
-\begin{figure} \caption[Results obtained by fixing the average of the boundary densities and varying their difference and $\lambda$]{The main results. obtained by having boundary densities 
-$(\rho_0, \rho_L)=(\rho + \frac{1}{2} \delta \rho , \rho - \frac{1}{2} \delta \rho)$. 
+\begin{figure} \caption[Results obtained by fixing the average of the boundary densities and varying their difference and $\lambda$]{The main results obtained 
+when we have boundary densities 
+$(\rho_0, \rho_L)=(\rho + \frac{1}{2} \delta \rho , \rho - \frac{1}{2} \delta \rho)$ and vary $\lambda$ and $\delta \rho$.
 Here $\rho=\frac{1}{2}$. Clockwise from top left, we have: The mean current, the current variance,
 the mean block size, and the mean overall system density. Note that in our mean block size
 computation, many calculations failed; this explains the sparsity of the data in the right
@@ -732,7 +736,9 @@ $1000$ steps.
 for different $\lambda$]{Here we have varied $\rho_0$ and $\rho_L$ separately for several different 
 values of $\lambda$, and measured the resulting mean current. Note that here we have plotted the 
 absolute value of the current, as it should be antisymmetric about $\rho_0 = \rho_L$, which would
-not take kindly to having its logarithm taken.} 
+not take kindly to having its logarithm taken. White patches indicate measurements
+which are out of bounds, generally because they were too large, whose
+incorporation would have negatively affected the usefulness of the graph.} 
 \label{fig:boundaryVarCurr}
 \begin{center}
 \begin{tabular}{c c} 
@@ -818,7 +824,8 @@ As we saw in Sec.~\ref{sec:highDimSPM}, it is possible to define a logical exten
 to dimensions higher than $1$D. Whilst it is not viable to perform TRM calculations in higher 
 dimensions (as the scaling with system size is already very bad), it is relatively easy to adapt
 our $1$D KMC codes to perform SPM calculations in $2$D or $3$D. Such a KMC input script may be found
-here<insert code>. One thing that does need considering in this case is that a 2-dimensional square
+in \texttt{kmc/2d/2dSteadyFlow.py} in ~\cite{hellier2019a}.
+One thing that does need considering in this case is that a 2-dimensional square
 lattice-based domain would normally have $4$ boundaries instead of $2$, which would mean $2$ extra
 boundary conditions which would need to be prescribed in addition to $\rho_0$ and $\rho_L$.
 However, we have avoided this difficult by making one of the coordinates cyclic; therefore, in our
@@ -913,7 +920,8 @@ However, there are some big differences:
  the large-$\lambda$ (repulsive) limit is continuous or discrete.
  \item For our low-density choice of boundary conditions $(\rho_0, \rho_L) = (0.3, 0.1)$,
  it would appear that the mean overall system density splits into two separate branches,
- forming a curve reminiscent of the hysteresis curves exhibited by ferromagnets <ref>. This
+ forming a curve reminiscent of the hysteresis curves exhibited by
+ ferromagnets~\cite{chikazumi1997}. This
  is perhaps not so surprising, as there is a relationship between the $2$D SPM and the $2$D Ising
  Model with fixed magnetisation. Our interpretation of this is that in this regime there are
  two flow-permitting configurations which both satisfy the desired boundary conditions
@@ -932,7 +940,7 @@ configurations are different. The current variance is broadly power-law with $\l
 with kinks around the transitions and again some exhibition of the ``hysteresis''-like branching.
 
 Another way to look at this branching is to consider the fact that researchers have observed 
-``stripes'' in the KLS model <ref>. In that particular context the model contains asymmetric
+``stripes'' in the KLS model~\cite{Zia2010}. In that particular context the model contains asymmetric
 bulk dynamics, and stripes of low and high density spontaneously form and spiral around the 
 system, transmitting current as they do so. It could be the case that our $16 \times 16$ system
 tries to generate such stripes, but is too small to support more than one stripe; thus, instead

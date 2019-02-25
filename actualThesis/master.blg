@@ -15,46 +15,48 @@ Warning--I'm ignoring Villars2016's extra "note" field
 --line 711 of file overallBib.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--to sort, need author or key in Villars2016
+Warning--empty journal in hellier2019a
+Warning--empty journal in hellier2019b
 Warning--can't use both author and editor fields in Kolesnichenko2014
-You've used 48 entries,
+You've used 61 entries,
             3202 wiz_defined-function locations,
-            1414 strings with 21141 characters,
-and the built_in function-call counts, 39321 in all, are:
-= -- 4403
-> -- 1079
-< -- 58
-+ -- 548
-- -- 321
-* -- 2247
-:= -- 4650
-add.period$ -- 198
-call.type$ -- 48
-change.case$ -- 302
-chr.to.int$ -- 48
-cite$ -- 52
-duplicate$ -- 3893
-empty$ -- 2306
-format.name$ -- 435
-if$ -- 7804
-int.to.chr$ -- 1
+            1482 strings with 22859 characters,
+and the built_in function-call counts, 49309 in all, are:
+= -- 5538
+> -- 1336
+< -- 73
++ -- 686
+- -- 396
+* -- 2798
+:= -- 5846
+add.period$ -- 245
+call.type$ -- 61
+change.case$ -- 379
+chr.to.int$ -- 60
+cite$ -- 67
+duplicate$ -- 4881
+empty$ -- 2894
+format.name$ -- 541
+if$ -- 9784
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 419
-newline$ -- 263
-num.names$ -- 188
-pop$ -- 1399
+missing$ -- 519
+newline$ -- 326
+num.names$ -- 240
+pop$ -- 1752
 preamble$ -- 1
-purify$ -- 297
+purify$ -- 374
 quote$ -- 0
-skip$ -- 2129
+skip$ -- 2698
 stack$ -- 0
-substring$ -- 1848
-swap$ -- 3127
-text.length$ -- 25
+substring$ -- 2325
+swap$ -- 3902
+text.length$ -- 30
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 402
-warning$ -- 2
-while$ -- 219
+type$ -- 513
+warning$ -- 4
+while$ -- 278
 width$ -- 0
-write$ -- 608
-(There were 4 warnings)
+write$ -- 759
+(There were 6 warnings)

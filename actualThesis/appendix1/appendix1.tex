@@ -1,15 +1,15 @@
-\chapter{Code Listings}
+\chapter{Code Locations}
 
 \section{1d Ising Correlation Functions \label{sec:corrFnCode} }
 
-The \texttt{Python} script at <location> computes the probability of a site being occupied $l$ lattice spacings away from an occupied site.
+The Python script \texttt{correlationFunctions/exactDist.py} in~\cite{hellier2019a} computes the probability of a site being occupied $l$ lattice spacings away from an occupied site.
 It requires the system size $L$ and the number of particles $N$ as inputs. The output is saved in a file called \texttt{corrFnResults.m}, which is formatted so that it may be used by \texttt{Mathematica}.
-
 
 
 \section{$n$-Dimensional Continuum-Limit MFT \label{sec:mftCode}}
 
-The Mathematica script contained in <location> computes the current which flows between two adjacent sites
+The Mathematica script \texttt{codes/mathematica/analytic/ndMftCurrent.m} contained 
+in~\cite{hellier2019b} computes the current which flows between two adjacent sites
 (offset in the $e_1$ direction) in the MFT of the $n$-dimensional SPM; due to symmetry, this tells us
 what happens in an arbitrary direction. In this case $n$ is set to $3$,
 but it still works if changed to any positive number.

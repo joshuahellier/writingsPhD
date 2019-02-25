@@ -11,8 +11,9 @@ are like this in at least part of their solid phase. For example, under standard
 a material, and will typically try and assume a body-centred cubic (bcc) structure~\cite{Villars2016}, whilst Titanium tends to
 form a hexagonal close-packed (hcp) structure~\cite{Patterson1925}.
 
-It is often possible for impurities to enter such a crystalline material whose atoms are smaller than those
-which the material is composed of. Such small impurity atoms can reside in the interstitial spaces between 
+It is often possible for impurities to enter such a crystalline material.  In many
+situations, these invading atoms are smaller than those of
+which the bulk material is composed~\cite{DealGrove1965, tegner2015}. Such small impurity atoms can reside in the interstitial spaces between 
 the crystal atoms, and they will sometimes move between adjacent interstitial sites. This motion is
 stochastic in nature, as it depends upon the impurity possessing sufficient momentum to squeeze between
 the lattice atoms and travel to the next site, or those atoms perhaps moving apart a little to allow easier
@@ -23,22 +24,26 @@ Such rates can be determined either by actual experiments (e.g. tracer diffusion
 ~\cite{Lamb1946, Wersin2004}) or by theoretical means
 (e.g. molecular dynamics~\ref{Zhang1994, keffer2001}).
 
-A single such impurity atom will obviously perform some kind of random walk though the system, and that kind
-of mathematics has be treated previously. In this work, we really want to consider what effects these
+A single such impurity atom will obviously perform some kind of random walk though the system, and those kinds
+of mathematics have been treated previously. In this work, we really want to consider what effects these
 particles have upon each other as they hop around, via their interactions; thus, we think it best that we
 perform simplifications in order to strip out any nonessential details, so that we can focus on effects 
-caused by interaction. Therefore we won't be calculating any actual transition rates for real systems.
+caused by interaction. Therefore we won't be calculating any
+transition rates for real systems.
 
 \subsection{Reduction to $1$D, Simplifications, and Model Definition}
-An actual crystal in physical reality is typically $3$-dimensional (or possibly $2$-dimensional, but those
-are odd cases). However, a lot of the time these $3$D crystals can be quite anisotropic. For example, in
-an hcp crystal lattice, the complementary lattice of octahedral interstitial sites a simple hexagonal
+\label{sec:modelDefn}
+A crystal in physical reality is typically $3$-dimensional 
+\footnote{or possibly $2$-dimensional, but those
+are odd cases~\cite{allen2009}}.
+However, a lot of the time these $3$D crystals can be quite anisotropic. For example, in
+an hcp crystal lattice, the complementary lattice of octahedral interstitial sites form a simple hexagonal
 structure, consisting of stacked planes of hexagonal lattices~\cite{Li2018}. Thus, it is not too difficult to envision
 a situation in which the hopping rate is much faster between planes than within them, or vice-versa. In the
-first situation, if there was sufficient discrepancy between the interplanar and intraplanar hopping rates
+first situation, if there were sufficient discrepancy between the interplanar and intraplanar hopping rates
 we would essentially have a series of decoupled $1$-dimensional systems.
 
-We should also remember that it is often much easier to use analytical techniques in $1$-dimension than
+We should also remember that it is often much easier to use analytical techniques in one dimension than
 in higher dimensions, and that the performance of numerical techniques often scales unfavourably 
 with dimension. Therefore, we have chosen to concentrate on the $1$D case for the time being, and will then
 return to the issue of higher dimensions in Sec.~\ref{sec:highDimSPM}.
@@ -55,10 +60,10 @@ is the lattice spacing.}
 \end{center}
 \end{figure}
 In terms of its potential
-energy due to other particles like itself, it might experience a hardcore repulsion with an 
+energy due to other particles like itself, it might experience a hard core repulsion with an 
 intermediate-range attraction/repulsion, such as the Lennard-Jones 
 potential~\cite{atkins2011} shown in 
-\begin{figure} \caption[The kind of interaction potential which might exist between two nearby particles.]{The kind of interaction potential which might exist between two nearby particles, $g(x)$. Here we have 
+\begin{figure} \caption[The kind of interaction potential that might exist between two nearby particles.]{The kind of interaction potential that might exist between two nearby particles, $g(x)$. Here we have 
 used a Lennard-Jones potential~\cite{atkins2011}, with parameters chosen so that the interaction scale is comparable to the
 lattice spacing $a$. The particle generating this potential is located at the origin.} 
 \label{fig:partInteraction}
@@ -78,16 +83,16 @@ of the peak between it and the next-nearest neighbour.}
 \includegraphics[width=1.0\textwidth]{intro/images/fgSumPlot}
 \end{center}
 \end{figure}
-There are a couple of things to note here in terms of such a particle moving with
+There are a few things to note here in terms of such a particle moving with
 the influence of fluctuating forces:
 \begin{enumerate}
 \item Particles should be expected to spend the vast majority of their time in the minima of the 
 externally-induced potential. This essentially creates a lattice of distinct slots within which a
 particle
-is highly likely to be at any given time, thus it is reasonable to speak of particles occupying these 
+is highly likely to be at any given time. Thus it is reasonable to speak of particles occupying these 
 ``slots'' and occasionally transitioning between them.
  \item There is a large potential barrier opposing attempts by particles to get close together. Therefore,
- it is going to be unlikely that multiple particles would be able to squeeze into the same slot,
+ it is unlikely that multiple particles would be able to squeeze into the same slot,
  and so the assumption that each slot can contain at most one particle is a reasonable one.
  \item If the transition rates between adjacent slots behave in an Arrhenius-like manner~\cite{arrhenius1889, levine2005}, i.e.
  \begin{equation}
@@ -104,14 +109,19 @@ at the origin, we might expect that \textbf{the dominant affect of the presence 
 to alter the rate at which an adjacent particle will move away from it}. Of course, the depths and barrier
 heights of other slots further away would also in general be affected, but if the interparticle interaction potential decays very rapidly over the length of a lattice spacing these next-neighbour effects will be
 very small compared to the nearest-neighbour effect.
+\item The particle and background lattice is also assumed to thermalize
+after the hop. There 
+should be no time-correlated "double hop" events or "two particle"
+simultaneous hops.
 \end{enumerate}
 
 \subsection{The Sticky Particle Model}
-Combining these ideas, we would do well to investigate models which exhibit exclusion (i.e. no more than one 
-particle per slot), and in which particles hop differently away from adjacent particles to when they are on their 
+Combining these ideas, we would do well to investigate models that exhibit exclusion (i.e. no more than one 
+particle per slot), and in which particles hop away from adjacent particles 
+differently to when they are on their 
 own. Therefore, we propose a continuous-time Markov process with transition rates as indicated in
 Fig.~\ref{fig:transRates}, which we call the Sticky Particle Model (SPM).
-\begin{figure} \caption[The transition rates in the Sticky Particle Model.]{The transition rates in the Sticky Particle Model. Here white circles are particles, black circles vacancies. Dots indicate connections to the rest of 
+\begin{figure} \caption[The transition rates in the Sticky Particle Model.]{The transition rates in the Sticky Particle Model. Here white circles are particles, and black circles are vacancies. Dots indicate connections to the rest of 
 the system; the configuration of the particles and vacancies there is irrelevant to the transition here due to the
 interaction's short range. Arrows with accompanying quantities indicate possible transitions and their rates, here 
 divided by the base rate $\tau_0^{-1}$.} 
@@ -123,7 +133,7 @@ divided by the base rate $\tau_0^{-1}$.}
 A simple verbal description of the model is as follows: particles move randomly into empty adjacent sites with rate 
 $\tau_0^{-1}$, unless they are already adjacent to a particle, in which case they jump away from that adjacent
 particle with rate $\lambda \tau_0^{-1}$. We have factored out $\tau_0$ because it is the ratio of these two rates,
-$\lambda$, which is most important to the phenomenology of this model; rescaling $\tau_0$ is equivalent to 
+$\lambda$, that is most important to the phenomenology of this model; rescaling $\tau_0$ is equivalent to 
 rescaling time, which is in some sense trivial, whereas varying $\lambda$ should yield models with different behaviours.
 
 Of course, this model is the epitome of a ``toy model'', and with good reason. The complexity of the
@@ -139,20 +149,22 @@ The same transition rules apply to any particle in an SPM system regardless of s
 We will break true homogeneity later on when we consider adding boundary conditions, but even then
 we still have homogeneous dynamics in the bulk.
 \subsection{Symmetry}
-One of the more simple aspects of the SPM is its obvious mirror symmetry; that is, the system dynamics
-are unchanged by a mirror symmetry transformation. This differentiates it from ASEP-like models; we
+One of the more simple aspects of the SPM is its obvious mirror symmetry: that is, the system dynamics
+are unchanged by a mirror symmetry transformation. This differentiates it from ASEP-like models~\cite{golinelli2006}; we
 will say more about those in Sec.~\ref{sec:asep}. We will refer to this property as \textit{symmetry}.
 \subsection{Locality}
 The SPM has the property that a particle's transition rates are determined solely by its immediate
 environment, in the sense that it can only hop into a space which is empty, and its rate of doing so
-then only depends upon what is behind it. By bothering to take account of what is behind it, it 
-differentiates itself from SEP; by not concerning itself with anything further afield, it is not the
+then only depends upon what is behind it. By taking account of account of what is behind it, the model is differentiated from SEP; by not accounting 
+for anything further afield, it is not the
 same as a more transparently energy-based model might be (although we will see that this model does
 have an energy interpretation in Sec.~\ref{sec:dbProof}). We will henceforth refer to this property
 as \textit{locality}.
 \subsection{Detailed Balance} \label{sec:dbProof}
 The SPM possesses the properties of homogeneity, symmetry and locality essentially by design. Indeed, it is
-the only exclusion model in $1$D which possesses all of these properties; a particle can only move into
+the only exclusion model in $1$D which possesses all of these
+properties~\footnote{SEP also obeys these properties, but it is of course 
+simply the $\lambda=1$ case of the SPM.}: a particle can only move into
 an empty space (exclusion), and so then by locality we need only concern ourselves with its immediate 
 neighbours to determine the hopping rate; then there are only two options, depending upon what is in the 
 slot the particle is hopping away from, meaning that there are two possible rates, one for each occupation
@@ -167,9 +179,10 @@ $\forall \xi_1 , \xi_2 \in \Xi $,
   \begin{equation} \label{eq:dbDefn}
     P(\xi_1) \cdot \sigma(\xi_1 \rightarrow \xi_2) = P(\xi_2) \cdot \sigma(\xi_2 \rightarrow \xi_1).
   \end{equation}  
-Here $\Xi$ is the space of all possible configurations for the SPM, and 
+Here, $\Xi$ is the space of all possible configurations for the SPM, and 
 $\sigma(a \rightarrow b)$ is the transition rate from state $a$ to state $b$. In our case a transition
-means performing one of the operations shown in Fig.~\ref{fig:transRates}. There we
+means performing one of the operations shown in Fig.~\ref{fig:transRates}. There,
+we
 list all of the motions that can occur, with all possible local environments: the central two slots must
 contain exactly one particle and one vacancy in order for a transition to be possible, and there are two
 ways to do this; then there are the two remaining slots at the sides, which can have any of the two
@@ -178,10 +191,10 @@ occupations each, so there are $8$ meaningful configurations in total.
 Consider a probability distribution of the form $P(\xi) \propto \lambda^{-n}$, where $n$ is the total
 number of particle-particle adjacencies in the system. In the outer two diagrams of 
 Fig.~\ref{fig:transRates}, the forward and backward transition rates are identical, as are the number of
-particle-particle adjacencies; thus Eq.~\ref{eq:dbDefn} is trivially satisfied using the proposed 
+particle-particle adjacencies; thus Eq.~\eqref{eq:dbDefn} is trivially satisfied using the proposed 
 distribution $P$. In the middle two diagrams, we see that reducing the number of adjacencies by one
-occurs with rate $\lambda$ whilst increasing that number by one happens with rate $1$. Thus, in the 
-language of Eq.~\ref{eq:dbDefn},
+occurs with rate $\lambda$, whilst increasing that number by one happens with rate $1$. Thus, in the 
+language of Eq.~\eqref{eq:dbDefn},
 \begin{equation}
  \lambda P_0 \cdot 1 = P_0 \cdot \lambda,
 \end{equation}
@@ -192,13 +205,14 @@ that the model obeys detailed balance is perhaps not so surprising; however, it 
 obvious from the transition rates alone.
 
 An alert reader will have noticed that we still haven't discussed the domain on which the process takes 
-place very much. In our detailed balance proof we used only the SPM bulk rates, thus this result only
+place very much. In our detailed balance proof we used only the SPM bulk rates, 
+so that this result only
 applies to SPM systems defined on an infinite domain or on a finite ring. If one introduces boundaries,
 and defines additional rates to define their behaviour, one will typically end up breaking detailed 
 balance.
 
 \section{Relationship to Existing Models} \label{sec:existingModels}
-Of course, the SPM is not exactly ``new''; it is very similar to several models already discussed in the
+Of course, the SPM is not exactly ``new'': it is very similar to several models already discussed in the
 literature. Here we will discuss the more prominent of these, with emphasis on why the SPM is different or
 how we are going to analyse it differently to them.
 \subsection{The Ising Model}
@@ -213,17 +227,18 @@ sites during the dynamics. If we are careful with our definitions of the SPM tra
 the SPM is a equivalent to a method for numerically simulating the Ising model known as Kawasaki
 dynamics, which has been in the literature for a long time~\cite{kawasaki1966, Garrido1990, grynberg2010}. 
 Kawasaki dynamics was originally intended as
-a stochastic Markov process designed to replicate the Ising model in equilibrium, albeit with that strange
-constraint on the magnetisation (the Ising model does not normally have such a constraint). We have more 
+a stochastic Markov process designed to replicate the Ising model in equilibrium, albeit with a
+constraint on the magnetisation, which makes more sense when the
+dynamics are interpreted as a model of a two-species alloy. We have more 
 to say about the correspondence with the Ising model in Sec.~\ref{sec:isingSim}.
 
-In theory one can calculate equilibrium properties of the SPM by using this equivalence to the constrained
+In theory, one can calculate equilibrium properties of the SPM by using this equivalence to the constrained
 Ising model; in order to do this, one may attempt to implement the constraint by varying the applied
 magnetic field in such a way that the system ends up with the correct magnetisation, and then working
 out desired quantities from there using the Ising partition function~\cite{baxter2016}. However, we found that
 this results
 in extremely convoluted algebra, and it is actually easier to build a new partition for the SPM from 
-scratch as we have done in Sec.~\ref{sec:spmPartFn}.
+scratch, as we have done in Sec.~\ref{sec:spmPartFn}.
 \subsection{SEP/ASEP/TASEP} \label{sec:asep}
 The SPM also resembles the SEP/ASEP/TASEP family of models~\cite{liggett1985, golinelli2006, blythe2007,
 Crampe2014}, 
@@ -251,18 +266,18 @@ research into flow in many-body systems uses internal dynamics to drive the flow
 boundaries. Therefore, we are essentially working from scratch with this model.
 To present our results, we are using the following structure:
 \begin{itemize}
- \item We use primarily analytic methods in Chap.~\ref{sec:analChap}. These include the evaluation
+ \item We use primarily analytic methods in Ch.~\ref{sec:analChap}. These include the evaluation
  of the partition function for the SPM on a closed ring (Sec.~\ref{sec:spmPartFn}), the development
  of the mean-field theory of the SPM (Sec.~\ref{sec:spmMft}) and its generalisation to higher dimensions
  (Sec.~\ref{sec:highDimSPM}).
- \item In Chap.~\ref{sec:transRateChapter} we introduce a method for using sparse numerical linear
+ \item In Ch.~\ref{sec:transRateChapter} we introduce a method for using sparse numerical linear
  algebra to exactly solve the steady state distribution for small $1$D SPM systems. We also show how this
  method can be used to compute some time-dependent quantities in Sec.~\ref{sec:TRMTimeDep}.
- \item In Chap.~\ref{sec:numerics} we discuss the use of Monte-Carlo methods to calculate the properties
+ \item In Ch.~\ref{sec:numerics} we discuss the use of Monte-Carlo methods to calculate the properties
  of the SPM in somewhat larger $1$D and $2$D systems. In particular we focus on the Kinetic
   Monte-Carlo algorithm (KMC) in Sec.~\ref{sec:nFoldWay}, and calculate the bulk of our results
   using it.
-\item We summarise our main conclusions in Chap.~\ref{sec:conclusionsChap}.
+\item We summarise our main conclusions in Ch.~\ref{sec:conclusionsChap}.
 \end{itemize}
 
 
