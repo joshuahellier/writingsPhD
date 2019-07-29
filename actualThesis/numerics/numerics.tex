@@ -10,7 +10,7 @@ Here we will discuss the theory behind the Monte-Carlo methods used to simulate 
 processes. We will assume throughout that we have the computational means to produce pseudorandom
 floating-point numbers in a way which which closely approximates the uniform real distribution over $(0, 1)$.
 \subsection{Purpose of Monte-Carlo Methods}
-We should first really describe what we mean by a Monte-Carlo method. In essence, Monte-Carlo methods
+We should first describe what we mean by a Monte-Carlo method. In essence, Monte-Carlo methods
 refer to numerical routines in which we attempt to characterise an unknown distribution, generated 
 via known rules, by using
 pseudorandom numbers in order to produce sample data which is hopefully faithful to the original 
@@ -21,7 +21,7 @@ form is used to calculate statistics for equilibrium statistical mechanics syste
 In our situation, we wish to be able to mimic a continuous-time discrete-state Markov process.
 As we saw in Ch.~\ref{sec:transRateChapter}, the state space for a TRM system of size $L$
 scales as
-$\mathcal{O}(2^L$); thus we quickly run out of size if we try to consider exact probability distributions, which correspond to
+$\mathcal{O}(2^L$); thus we quickly run out of memory if we try to consider exact probability distributions, which correspond to
 vectors in $\mathbb{R}^{L^2}$. We can, however, store individual configurations, which only occupy
 $\mathcal{O}(L)$ space. Therefore, we need to find a way to produce trajectories through the discrete
 state space which sample the actual space of system trajectories well enough to allow us to access the
@@ -64,9 +64,9 @@ defined in Sec.~\ref{sec:modelDefn}, we can use the following recipe:
 \end{enumerate}
 We define $\Delta t$ via 
 \begin{equation}
- \Delta t = \frac{\tau_0}{L (1+\lambda)}.
+ \Delta t = \frac{\tau_0}{(L+2) (1+\lambda)}.
 \end{equation}
-In terms of the algorithm's correctness at producing reasonable trajectories, we simply need note that
+In terms of the algorithm's ability to produce reasonable trajectories, we simply need note that
 the rates at which particular transitions should occur are in the correct proportions, and that the boundaries result in the correct densities in equilibrium;
 then, we just need
 to verify that the rate at which free particles move is the correct one in absolute terms, which it is,
@@ -87,7 +87,7 @@ trying to replicate.
 If $\lambda$
 is close to $1$, the probability of rejection (i.e. a step which results in no overall change to
 the system) is $\sim\frac{1}{2}$, and this is the situation in which the algorithm really shines; similarly
-it also performs well for large or small $lambda$ if the system density is very high or very low
+it also performs well for large or small $\lambda$ if the system density is very high or very low
 respectively. For extreme $\lambda$ and generic densities,
 performance drops off considerably,
 as
@@ -192,8 +192,8 @@ Monte-Carlo codes other than \texttt{KMCLib}, we chose to use that one due to ou
 of the languages involved, and preference for a Python frontend.
 
 Of course, setting up different calculations which vary different parameters or measure different things
-require different scripts. Going through every script we wrote individually would cause this thesis
-to be around twice as long and three times more dull; therefore we have instead chosen to focus
+require different scripts. Going through every script we wrote individually would not be particularly instructive;
+therefore we have instead chosen to focus
 upon a single set of codes designed to perform a particular calculation, which we have annotated and 
 included in~\cite{hellier2019a} in \texttt{kmc/1d/currentCalc}; the intention is that a reader wishing to reproduce any of our results could do
 so by performing a few simple modifications to the code listed there. A more comprehensive codebase is
@@ -770,7 +770,8 @@ densities instead of the currents.}
 We see a similar picture to the one we saw in Sec.~\ref{sec:constDens}; the system naturally 
 wishes to relax to a high-density, low-current regime at small $\lambda$ regardless of boundary 
 conditions, (probably primarily due to attempts to minimise free energy), but this is suppressed by
-large boundary density differences.
+large boundary density differences. It is also important to note that Fick's Law is violated in every case here,
+as one can see by the fact that the colour gradients are not constant along lines of constant $\rho_0 + \rho_L$.
 
 \subsection{Diffusion Coefficient}
 Wrapping up our calculations in $1$D, we can compute the effective diffusion coefficient, which

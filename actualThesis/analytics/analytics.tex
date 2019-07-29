@@ -1,7 +1,7 @@
 \chapter{Analytical Results about the SPM} \label{sec:analChap}
 
 We now have a model, the SPM, which should represent the kind of behaviour in which we are interested.
-In this chapter, we will attempt to derive analytic results about how material flows in the model. Initially,
+In this chapter, we will attempt to derive analytic results about how particles flow in the model. Initially,
 this was all done with the aim of
 producing an approximation to the behaviour in the hydrodynamic limit and thus informing us about phenomena such as surface layer formation; however, as you will see the analytic
 predictions suggest that the flows could be quite interesting in their own
@@ -24,7 +24,7 @@ equilibrium analysis, and things get a bit more difficult.
 A quantity of key interest in equilibrium statistical mechanics is the partition
 function~\cite{martynovStatmech}, usually denoted by $Z$. Say we have a closed classical mechanical system maintained at constant temperature $T$ by a heat bath,
 so only energy can enter and leave the system (the canonical ensemble). Let its state space be $\Xi$, and denote an individual microstate (specific configuration of the system) by $\xi$.
-Such a system must of course have a Hamiltonian $H : \Xi \rightarrow \mathbb{R}$. The canonical partition function for this system is defined to be
+Such a system is defined by a Hamiltonian $H : \Xi \rightarrow \mathbb{R}$. The canonical partition function for this system is defined to be
 \begin{equation} \label{eq:partFn}
  Z(\beta) = \int_\Xi  \! \! \mathrm{d}  \xi \  \  e^{- \beta H(\xi)},
 \end{equation}
@@ -91,12 +91,13 @@ general be true.
 
 \subsubsection{Exact Solutions}
 Some problems in nonequilibrium statistical mechanics are known which have exact solutions. 
-These include the Ising model in $1$ and $2$ dimensions, as well as a class of problems which can be
+These include the Ising model in $1$ and $2$ dimensions~\cite{brush1967}, as well as a class of problems which can be
 solved in steady state by matrix products or Bethe ansatz~\cite{van2016}. 
 These are the subject of much
 interest at the
 moment, not least because one can often use isomorphisms between systems which are known to
-be integrable in order to discover new integrable systems. Unfortunately, building up such an exact solution to a specific problem from scratch does not seem to be possible in every case,
+be integrable in order to discover new integrable systems~\cite{Rota1989}.
+Unfortunately, building up such an exact solution to a specific problem from scratch does not seem to be possible in every case,
 so it remains to be seen how useful these methods really are for tackling problems of actual
 physical interest.
 
@@ -116,7 +117,7 @@ be done completely generically.
 Of course, mean-field theory is still an option, although now that time dependence has been added
 it tends to produce a set of coupled ODEs for the mean variables under consideration~\cite{Kolesnichenko2014}. It is also in
 principle possible to study small-scale systems essentially exactly by numerical analysis of the
-relevant transition state matrix (TRM). Of course, this has the disadvantage that it is only a
+relevant \textbf{Transition Rate Matrix} (TRM). Of course, this has the disadvantage that it is only a
 small finite system, so some of the phenomena observed in it will differ from larger versions of the
 same system. We perform this kind of analysis in Ch.~\ref{sec:transRateChapter}.
 
@@ -170,7 +171,7 @@ A Python code which performs this calculations is discussed in Sec.~\ref{sec:cor
 This is quite a nice result, as we can use simple recursion to perform a calculation which would otherwise be quite difficult to code.
 Unfortunately the time complexity of the calculation grows exponentially in and $L$, so the largest 
 $L$ I can reasonably run for is $20$. In the table below I have plotted the occupation probability of sites shifted from the origin
-(assuming the origin is occupied)  for a selection of $\lambda = e^{-b}$ and particle densities.
+(normalised so that the correlation with no shift is $1$)  for a selection of $\lambda$ and particle densities.
 
 \begin{figure}[h!]
 \caption[Plots of the equal-time particle density correlation function on a ring.]{\label{fig:corrFns}Some particle-particle correlation functions for the SPM on a small closed ring,
@@ -196,41 +197,6 @@ cause particles to tend to cluster together, whilst large $\lambda$ values cause
 of $\rho$ and $\lambda$ by using the magnetic field in the original Ising model as a Lagrange multiplier in order to fix the total magnetisation (corresponding to particle number in the SPM). However, due to the fact that we cannot
 accurately compute correlation functions to any decent accuracy using our numerics (see Ch.~\ref{sec:numerics}), we concluded that it was not worth the time to perform the calculation as we would have nothing to compare it to.
 
-\subsection{Equivalence with the Misanthrope Process}
-Keeping the SPM on a ring, there is again a correspondence between it and the Misanthrope Process~\cite{evansWaclaw2014}. The Misanthrope Process is, like the SPM, defined by its rates. This time, however, there can be arbitrarily many particles
-on a single lattice site. We can choose to consider the symmetric version, in which particles hop in either direction. The defining feature of the process is that particles hop from sites with occupation $m$ to adjacent sites with occupation
-$n$ with some rate $u(m, n)$.
-
-The equivalence between this and the SPM is made by identifying the \textbf{number} of particles on a site in the Misanthrope Process with the \textbf{length} of the gap between two particles in the SPM. In this way, one can see that a particle
-moving, for example, one step right in the SPM corresponds to a particle moving from one stack to the adjacent one on the left in the Misanthrope Process. To complete the equivalence we set
-
-
-\[
-  u(m, n) =
-  \begin{cases}
-                                   \lambda, & n=0 \\
-                                   1, & \text{otherwise.} 
-  \end{cases}
-\]
-
-Using the result, from~\cite{evansWaclaw2014}, that the probability weighting of a configuration 
-$\{m_i\}$ may be factorised as
-\begin{equation}
- P(\{m_i\}) \propto \prod_{i+1}^N f(m_i) \delta_{L+N, \sum_{j=1}^N m_j},
-\end{equation}
-where $f(m)$ is a weighting dependent on the occupation of a site,  we see that for the SPM 
-\begin{equation}
- f(m) = 
- \begin{cases}
- \lambda, & n=0 \\
- 1, & \text{otherwise}
- \end{cases}.
-\end{equation}
-Thus, for finite $\lambda$ 
-\begin{equation}
- \frac{f(m)}{f(m-1)} = 1, \forall m>2, 
-\end{equation}
-which remains bounded as $m \rightarrow \infty$. Therefore this model does not exhibit explosive condensation, again by using~\cite{evansWaclaw2014}.
 
 \subsection{Calculation of the Partition Function of the SPM on a Closed Ring} \label{sec:spmPartFn}
 
@@ -504,7 +470,7 @@ this is like a gap opening up in $\rho$ when $\zeta > \frac{3}{4}$. At its maxim
 \end{equation}
 so there is still a region where $\rho$ is sufficiently low that negative diffusion does not occur.
 
-In terms of what a negative diffusion coefficient actually means, consider a constant solution $\rho(x, t) = \rho_0$. Insertion Eq.~\eqref{eq:contPDE} quickly confirms that this is indeed a solution. Now consider adding a small
+In terms of what a negative diffusion coefficient actually means, consider a constant solution $\rho(x, t) = \rho_0$. Insertion into Eq.~\eqref{eq:contPDE} quickly confirms that this is indeed a solution. Now consider adding a small
 perturbation $\delta\rho (x, t)$ to $\rho_0$. The equation for the time evolution of $\delta \rho$ then reads
 \begin{equation}
  \partDeriv{\delta\rho}{t} = \frac{a^2}{\tau_0} \left[1 - \zeta \rho_0\left(4-3\rho_0\right) \right] \partDeriv{^2 \delta \rho}{x^2}.
@@ -513,7 +479,7 @@ This becomes a little clearer if one takes a Fourier transform with respect to $
 \begin{equation}
  \partDeriv{\hat{\delta \rho}}{t} = - k^2 \frac{a^2}{\tau_0} \left[1 - \zeta \rho_0\left(4-3\rho_0\right) \right] \hat{\delta \rho}.
 \end{equation}
-This shows us that so long as $\zeta<\frac{3}{4}$, small perturbations to the density are suppressed by exponential decay in time with increasing ferocity as their wavenumber increases for all wavenumbers,
+This shows us that so long as $\zeta<\frac{3}{4}$, small perturbations to the density are suppressed by exponential decay in time with increasing intensity as their wavenumber increases for all wavenumbers,
 and so the solution is stable; the same applies if $\zeta>\frac{3}{4}$ so long as we do not stray into situations where
 \begin{equation}
 \label{eq:rhoPmDefn}
@@ -547,8 +513,9 @@ Doing so again, we find that we can invoke the chain rule via
 \label{eq:steadyDeriv}
    J_0 (x - x_0) &= -\frac{a^2}{\tau_0} \int  \! \! \mathrm{d}x  \frac{\mathrm{d}\rho}{\mathrm{d}x} \left[1 - \zeta \rho\left(4-3\rho\right) \right] \\
        &=   -\frac{a^2}{\tau_0} \int  \! \! \mathrm{d}\rho   \left[1 - \zeta \rho\left(4-3\rho\right) \right] \\
-       &= -\frac{a^2}{\tau_0} \rho \left[1+\zeta \rho\left(\rho-2\right)\right]
+       &= -\frac{a^2}{\tau_0} \rho \left[1+\zeta \rho\left(\rho-2\right)\right],
 \end{align}
+where $x_0$ absorbs the constant of integration.
 Thus with a little rearrangement we have $x$ as a function of $\rho$, with $\rho$ a cubic in $x$. We can in principle invert this to obtain $\rho (x)$, but let us first consider the appropriate boundary conditions to use.
 
 Let us consider solving problems on a bounded domain; we choose to do this as opposed to an infinite one, as one can see that for our cubic $ \|x\|  \rightarrow \pm \infty \implies \|\rho\|  \rightarrow \pm \infty$ for nontrivial $J$.
@@ -560,7 +527,9 @@ $x_0$ and $J_0$; in particular we find that
 \label{eq:blockFlow}
   J_0 = \frac{a^2}{L \tau_0} \left[ \rho_0 - \rho_L + \zeta \left( \rho_0\left[\rho_0^2-2\right] - \rho_L\left[\rho_L^2-2\right] \right) \right],
 \end{equation}
-which can be reinserted to yield the desired $x_0$. An illustrative plot of $J_0(\rho_B, \rho_T)$ is shown in Fig.~\ref{fig:boundaryCurrent}.
+which can be reinserted to yield the desired $x_0$. Note that the current is not directly proportional to the
+concentration difference between the boundaries; thus, the MFT predicts violation of Fick's Law.
+An illustrative plot of $J_0(\rho_0, \rho_L)$ is shown in Fig.~\ref{fig:boundaryCurrent}.
 \begin{figure}[h!]
  \caption[The variation in the current at fixed $\lambda$ with respect to the boundary densities.]{\label{fig:boundaryCurrent} A contour plot of the variation of the constant current $J_0(\rho_B, \rho_T)$ in a bounded domain with boundary densities $\rho_0$ and $\rho_L$ at $x=0$ and $x=L$ respectively,  with $\lambda=0.2$.
  Notice how the magnitude of $J_0$ generally grows as the difference between $\rho_0$ and $\rho_L$ increases, and how there is a region of boundary condition space in which the current takes the opposite sign one would expect.}
@@ -598,8 +567,10 @@ We can also obtain a prediction of the system-wide average density
 so long as we can invert $x(\rho)$ to find $\rho(x)$ uniquely. The easiest way to do this is using the main result in~\cite{laisant1905}, yielding
 \begin{equation}
  \bar{\rho} = \frac{6 (\rho_0 + \rho_L) + \zeta \left[9 \left( \rho_0^3 + \rho_L^3\right) - 16 \left( \rho_0^2 + \rho_L^2 \right) + \rho_0\rho_L\left( 9\left[ \rho_0 + \rho_L \right] - 16  \right)  \right]}{12 \left[ 1 + 
-  \zeta \left( \rho_0^2 + \rho_L^2 + \rho_0 \rho_L - 2 \left[ \rho_0+\rho_L \right] \right) \right]}.
+  \zeta \left( \rho_0^2 + \rho_L^2 + \rho_0 \rho_L - 2 \left[ \rho_0+\rho_L \right] \right) \right]};
 \end{equation}
+to obtain this one simply imposes the conditions that $\rho(0)=\rho_0$ and $\rho(L)=\rho_L$, and then solve for $J_0$
+and back-substitute.
 The variation of the average density with $\lambda$ for selected fixed boundary conditions is plotted in Fig.~\ref{fig:mftDens}. In general, this overall density deviates very little from the average of the two boundary densities.
 \begin{figure}[h!]
  \caption[The variation of the system-wide average density with respect to $\lambda$ in the MFT, with fixed boundary densities.]{\label{fig:mftDens} 
@@ -632,14 +603,14 @@ As we can vary $\omega_0$ to shift solutions around in $\omega$ essentially arbi
 achievable by setting $\omega_0 = 0$. At this point, we are faced with the prospect of trying to invert Eq.~\eqref{eq:travWavSoln}. This would be annoying, although one could be assisted by numerics to lighten the load.
 However, we can gather plenty of information simply by taking some limits. As $\omega \rightarrow \infty$, $\phi \rightarrow 0$ by design, and so $\phi(\omega) = \mathcal{O}(e^{-\frac{v\omega\tau_0}{a^2}})$; having an
 exponential tail at the leading edge of the wave, with a thickness proportional to the default diffusion coefficient divided by the wave speed, makes perfect sense. Meanwhile, by considering small variations in $\phi$ around $1$,
-we may derive that $\phi \sim 1-\frac{v \tau_0}{a^2 \lambda} \omega$ as $\omega \rightarrow 0$. One could see this as being a front, behind which the system is filled by a blast wave moving with velocity $v$. Notice how both
+we may derive that $\phi \sim 1-\frac{v \tau_0}{a^2 \lambda} \omega$ as $\omega \rightarrow 0$. One could see this as being a front, behind which the system is filled by a shock wave moving with velocity $v$. Notice how both
 limits suggest that the leading edge of the wave becomes thinner with increasing wavespeed, whilst close to the full region it thickens in proportion to $\lambda$.
 
 However, we are left with the problem that we have the free parameter $v$ in the solution. One might hope that we can find the preferred value for $v$ by means of a speed-selection argument as is does with the Fisher-KPP
 equation~\cite{sherrat1998}, but that does not work in this case as the wave tail thickness is monotonic in the wave speed. Therefore, the wave speed seems to be dictated by the initial conditions, which allows some rather bizarre
 behaviour. For example, in the limit $v \rightarrow +\infty$, the initial condition (in other words, setting $t=0$ and observing that $\rho(x, 0) = \phi(x)$) resembles an inverted Heaviside step function for $x>0$; thus this
 suggests that if we were to start the system with initial condition $\rho(x, 0) = 1 - H(x)$, the high-density region would advance into the low-density region with infinite velocity, regardless of $a$, $\tau_0$ or $\lambda$.
-This seems somewhat aphyical, and serves as a reminder that the MFT is a guide only, and shouldn't be expected to accurately predict the behaviour of the SPM.
+This seems somewhat unphysical, and serves as a reminder that the MFT is a guide only, and shouldn't be expected to accurately predict the behaviour of the SPM.
 
 Using~\cite{ivanova2007} there is one last type of solution based upon symmetry. To acquire it, let us define $\xi = \frac{x}{\sqrt{t}}$ and $\rho(x, t) = \chi(\xi)$; then our PDE reduces to
 \begin{equation}
@@ -830,7 +801,7 @@ Computing this current for a few low values of $n$, a pattern emerges, as one ca
 \end{tabular}
 \end{center}
 \end{table}
-Thus one can see that the MFT current in $n$-dimensions is
+Spotting the pattern in $n$, one can see that the MFT current in $n$-dimensions is
 \begin{equation}
  \mathbf{J} = -\frac{a^2}{\tau_0}\left( 1 - \zeta \rho \right)^{2(n-1)} \left[ 1 - \zeta \rho\left( (2n+2) - (2n+1)\rho \right) \right] \mathbf{\nabla} \rho,
 \end{equation}
@@ -871,16 +842,16 @@ in order for a vacancy to move).
 
 When $\lambda \rightarrow 1$, we find that $D \rightarrow \frac{a^2}{\tau_0}$, which makes perfect sense as turning off the interactions gives us normal diffusion again. As $\lambda \rightarrow 0$,
 \begin{equation}
- D(\rho) \rightarrow (1-\rho)^{2(m-1)} \left[ 1 - (2m+1)\rho \right],
+ D(\rho) \rightarrow (1-\rho)^{2(n-1)} \left[ 1 - (2n+1)\rho \right],
 \end{equation}
-suggesting that in that limit negative diffusion occurs at densities higher than $\frac{1}{2m+1}$.
+suggesting that in that limit negative diffusion occurs at densities higher than $\frac{1}{2n+1}$.
 In terms of the behaviour for very large $\lambda$, one can show that
 \begin{equation}
- D(\rho) = \lambda^{2m-1} \rho^{2(m-1)} \left[ (2m+1)\rho - (2m+2) \right] + \mathcal{O}(\lambda^{2(m-1)}),
+ D(\rho) = \lambda^{2n-1} \rho^{2(n-1)} \left[ (2n+1)\rho - (2n+2) \right] + \mathcal{O}(\lambda^{2(n-1)}),
 \end{equation}
-so we should expect to see currents of $\mathcal{O}(\lambda^{2m-1})$ for large $\lambda$ in arbitrary
+so we should expect to see currents of $\mathcal{O}(\lambda^{2n-1})$ for large $\lambda$ in arbitrary
 dimensions. Of course, the number of sites adjacent to a particle attempting to move into an adjacent vacancy
-is $2m-1$, so in the large $\lambda$ limit $\mathcal{O}(\lambda^{2m-1})$ is the biggest speedup
+is $2n-1$, so in the large $\lambda$ limit $\mathcal{O}(\lambda^{2n-1})$ is the biggest speedup
 we could reasonably expect to see, and the MFT reflects that.
 
 Unlike the $1$d situation, there is no longer a symmetry in the density dependence of the
@@ -904,7 +875,7 @@ $\rho_c \rightarrow \frac{4n^2+2n-2}{2n(1+2n)}$, which approaches $1$ as the num
 becomes very large. 
  \begin{figure}[h!]
  \caption[The variation of the density of maximal/minimal flow with $\lambda$.]{\label{fig:criticalRho} 
- The variation of the $\rho$ for which flow is extremal as a function of $\lambda$, for $n=\{1, 2, 3\}$. Notice that it starts low and ends high in the $2$ and $3$-dimensional cases, but is constant in
+ The variation of $\rho_c$, for which flow is extremal, as a function of $\lambda$, for $n=\{1, 2, 3\}$. Notice that it starts low and ends high in the $2$ and $3$-dimensional cases, but is constant in
  the $1$d case.
  }
   \begin{center}
@@ -940,6 +911,8 @@ Specifically, in the $2$-dimensional case, $J_0$ is given by
  -\rho_0^2 \right)+\left(\rho_0 - \rho_L\right) \right].
 \end{aligned}
 \end{equation}
+Note that Fick's Law (that the current should be proportional to the difference between the concentrations at
+the boundaries) does not hold.
 The dependence of flow upon the boundary conditions for some given $\lambda$ is shown in
 Figure.~\ref{fig:2dFlows}, and the dependence of flow upon $\lambda$ for some fixed boundaries is shown in Fig.~\ref{fig:2dLambdaScans}. We can use these in comparison with our Monte-Carlo data in
 $2$-dimensions.

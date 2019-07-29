@@ -68,7 +68,7 @@ a discrete time one. If we assume that $\Xi$ is finite and $\mathcal{G}_T$ is ir
 a Markov operator it must possess  a unique eigenvector with corresponding eigenvalue $1$.
 All other eigenvalues must have modulus between $0$ and $1$. Therefore, $\mathcal{A}$
 must share that same unique eigenvector with associated eigenvalue $0$, and its other
-eigenvectors must have negative real part. In physical terms, the system must have a single
+eigenvalues must have negative real part. In physical terms, the system must have a single
 steady state probability distribution, which it always relaxes towards exponentially
 quickly, with a rate determined by the nonzero eigenvalue of $\mathcal{A}$ with real
 part closest to $0$.
@@ -207,7 +207,7 @@ In practise, in our larger-scale calculations we  used
 \end{equation}
 with $b$ set to, $100$ or $1000$.
 
-\subsection{Another Small Worked Example: Open System}
+\subsection{Another Worked Example: Open System}
 
 Using full boundary conditions, the smallest system we can consider consists of adjacent boundary
 layers, in which particles pass directly from the inner layer of one boundary to the inner layer
@@ -253,7 +253,8 @@ configurations, can be computed with a little care, and turns out to be
 \begin{equation}
  q_0 = D^{-1}
  \begin{bmatrix}
-  3 \lambda +1,\lambda  (3 \lambda +1) \\
+  3 \lambda +1 \\
+  \lambda  (3 \lambda +1) \\
   \lambda  (\lambda +2) (3 \lambda +1) \\
   \lambda ^3 (\lambda +3) \\
   (\lambda +3) (2 \lambda  (\lambda +2)+1) \\
@@ -292,12 +293,12 @@ approximation that $J \sim \frac{1}{4} \lambda$. Thus, at least for this tiny ex
 extreme boundary conditions, there does not appear to be any change in the scaling of the current
 with $\lambda$.
 
-We can also compute the negative real part of the eigenspectrum of the TRM for this small system;
+We can also compute the eigenspectrum of the TRM for this small system;
 this is displayed in Fig.~\ref{fig:smallEigSpec}.
  \begin{figure}[h!]
  \caption[The variation of the eigenspectrum of the TRM with $\lambda$ for a small open system.]{\label{fig:smallEigSpec} 
- The variation of the negative real part of the eigenspectrum of the TRM for our small open system
- with $\lambda$.
+ The variation of the eigenspectrum of the TRM for our small open system with $\lambda$. Here we have plotted
+ $-\Re{\lambda}$, as $\lambda$ is expected to be a complex number with negative real part.
  }
   \begin{center}
  \includegraphics[width=1.0\textwidth]{TRM/images/smallOpenEigSpec}
@@ -434,7 +435,8 @@ following parameters to be specified:
  \begin{figure}[!ht]
  \caption[The TRM eigenspectrum for a system with $L=5$, $b=1000$.]{\label{fig:eigsL5B1000} 
  The TRM eigenspectrum, computed for a system with $\rho_0 = 0.6$, $\rho_L = 0.4$,
- $L=5$, $b=1000$.
+ $L=5$, $b=1000$. Here we have plotted
+ $-\Re{\lambda}$, as $\lambda$ is expected to be a complex number with negative real part.
  }
   \begin{center}
  \includegraphics[width=0.9\textheight, angle=270]{TRM/images/singleMultEigB1000L5}
@@ -471,15 +473,15 @@ There are a several things to note about this spectrum:
  which the associated eigenvectors refer to. This makes it look rather 
  unfeasible that such an analytic solution could be constructed in the first place.
 \end{itemize}
-Of course, this is only the $32$ lowest eigenvalues; there could be different behaviour
-in the higher ones. Before we perform a larger calculation however, let us turn our
+Of course, this is only the $32$ eigenvalues with real part closest to zero; there could be different behaviour
+in the other ones. Before we perform a larger calculation however, let us turn our
 attention to the dependence of the eigenspectrum upon $b$ and $L$, which we have studied
 by repeating our calculation with different values for those parameters, as shown in
 Fig~\ref{fig:eigsVarBVarL}.
 \afterpage{
  \begin{figure}[h!]
  \caption[The lower part of the TRM eigenspectrum for a system with $L=\{5, 10\}, $, $b=\{100, 1000\}$.]{\label{fig:eigsVarBVarL} 
- The lower TRM eigenspectrum, computed for a system with $\rho_0 = 0.6$, $\rho_L = 0.4$,
+ The lower (negative real) TRM eigenspectrum, computed for a system with $\rho_0 = 0.6$, $\rho_L = 0.4$,
  with all combinations of
  $L=\{5, 10\}$, $b=\{100, 1000\}$. Missing computations, visible via the vertical gaps in
  the data, are due to computational issues, rather than being numerically meaningful. Note that
@@ -488,7 +490,7 @@ Fig~\ref{fig:eigsVarBVarL}.
  at least in the digital copy.
  }
   \begin{center}
- \includegraphics[width=1.0\textheight, angle=270]{TRM/images/repeatRepeatMultEig}
+ \includegraphics[width=0.9\textheight, angle=270]{TRM/images/repeatRepeatMultEig}
   \end{center}
 \end{figure}
 \clearpage
@@ -537,13 +539,13 @@ $L$.}
 \begin{tabular}{r || r | r | r | r | r | r | r | r | r | r | r | r} \label{tab:bandThickness}
  $L$ & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 \\
  \hline
- Bandwidth & 1 & 3 & 6 & 11 & 20 & 36 & 64 & 113 & 199 \\
+ $\mathrm{N}^\mathrm{o}$. Slow Modes & 1 & 3 & 6 & 11 & 20 & 36 & 64 & 113 & 199 \\
 \end{tabular}
 \end{center}
 \end{table}
 If we plot the number of slow modes as a function of system size on a plot with a 
 logarithmic $y$-axis, as we have done in Fig.~\ref{fig:bandWidthScaling},
-it is rather obvious that the bandwidth scales exponentially with system size.
+it is rather obvious that this number scales exponentially with system size.
 However, the number of slow modes seems to scale as $\mathcal{O}(2^{\sim 0.84 L})$,
 whereas the number of possible states, and therefore the total number of eigenvalues of
 the TRM, scales as $2^L$. Thus, one can see that although the number of slow modes grows
@@ -555,7 +557,7 @@ becomes large.
  \caption[A graph of the scaling of the number of slow modes with system size.]{\label{fig:bandWidthScaling} 
  A plot of the scaling of the number of slow modes in the eigenspectrum of the TRM of
  an SPM system of size $L$. The trendline displayed has equation
- $ \mathrm{Bandwidth} = 2^{a(L+b)}$, with $a=0.84$, $b=-3.9$.
+ $ \mathrm{N}^\mathrm{o} \mathrm{Slow Modes} = 2^{a(L+b)}$, with $a=0.84$, $b=-3.9$.
  }
   \begin{center}
  \includegraphics[width=1.0\textwidth]{TRM/images/bandWidth}
@@ -575,8 +577,8 @@ performing a calculation in which the $64$ eigenvalues with largest negative rea
 part were calculated. The negative real parts of these eigenvalues are displayed in
 Fig.~\ref{fig:eigsVarBVarLUpper}.
  \begin{figure}[h!]
- \caption[The upper TRM eigenspectrum for a system with $L=\{5, 10\}, $, $b=\{100, 1000\}$.]{\label{fig:eigsVarBVarLUpper} 
- The upper TRM eigenspectrum, computed for a system with $\rho_0 = 0.6$, $\rho_L = 0.4$,
+ \caption[The upper  TRM eigenspectrum for a system with $L=\{5, 10\}, $, $b=\{100, 1000\}$.]{\label{fig:eigsVarBVarLUpper} 
+ The upper (negative real) TRM eigenspectrum, computed for a system with $\rho_0 = 0.6$, $\rho_L = 0.4$,
  with all combinations of
  $L=\{5, 10\}$, $b=\{100, 1000\}$.
  }
@@ -610,7 +612,7 @@ get a general overview of the TRM.
 \afterpage{
  \begin{figure}[h!]
  \caption[The ``full'' TRM eigenspectrum for a system with $L=8, $, $b=1000$.]{\label{fig:bigEigSpec} 
- The ``full'' TRM eigenspectrum, computed for a system with $\rho_0 = 0.6$, $\rho_L = 0.4$,
+ The ``full'' (negative real) TRM eigenspectrum, computed for a system with $\rho_0 = 0.6$, $\rho_L = 0.4$,
  with $L=8$, $b=1000$. Missing computations, visible via the vertical gaps in
  the data, are due to computational issues, rather than being numerically meaningful.
  }
@@ -755,20 +757,22 @@ There's a lot going on here, so let's break it down.
  start running backwards or at the very least be pinned at zero,
  whilst for $(0.6, 0.4)$ it suggests that the current should tend to a constant
  as $\lambda \rightarrow 0$. 
- Instead of the flow crashing to zero, the TRM results show a more gradual reduction of the current.
+ Instead of the flow discontinuously switching to zero, the TRM results show a more gradual reduction of the current.
  Measurement by comparison with a trendline shows that the current varies as $\mathcal{O}(\lambda^3)$ as 
  $\lambda$ becomes small.
  \item There is an intermediate regime in which the dependence of the current upon $\lambda$ transitions
  between $\mathcal{O}(\lambda^3)$ and $\mathcal{O}(\lambda)$. This is the situation for $\lambda \in (0.03, 0.5)$.
- \iffalse
  \item There is also some slightly odd behaviour on display in terms of the apparent ``poles'' in the 
  current for
-the $(0.6, 0.4)$ and $(0.9, 0.7)$-boundaried systems. This could be due to a close-approach of eigenvalues,
-causing the algorithm to pick the wrong one under certain circumstances. We have filtered the results by
+the $(0.6, 0.4)$ and $(0.9, 0.7)$-boundaried systems, observed around $\lambda=0.002$ and $\lambda=0.1$ respectively.
+This could be due to a close-approach of the $0^\mathrm{th}$
+and $1^\mathrm{st}$ eigenvalues,
+causing the algorithm to pick the wrong one under certain circumstances. We have attempted to filter the results by
 imposing the inequality $\| q_0 \| \le \lambda K$ for $K=10^{-9}$ with $q_0$ being the ``zero'' eigenvalue,
-but some results may have slipped through this net. We think this is the most likely explanation we have to
-hand.
-\fi
+but some results may have slipped through this net. Likewise, this criterion may have been too stringent in some
+cases, resulting in otherwise valid datapoints being removed (hence the gaps observed in the $(0.3, 0.1)$ data at higher
+$\lambda$-values).
+
 \end{itemize}
 So, it seems that whilst we don't see a transition to zero flow as predicted by the MFT, we do see
 a big change in the way the flow depends upon $\lambda$ as we pass between the large-$\lambda$ to 
@@ -807,7 +811,7 @@ primarily at small-$\lambda$, low density, where the diffusion
 coefficient is unusually high. This is presumably because the density
 of particles is so low that the small value of $\lambda$ has little impact on the diffusion coefficient.
 There is also some odd behaviour, in particular for extremely low $\lambda$ and low $\rho$. We probably
-shouldn't trust those the results. As $\lambda \rightarrow 0$, the space of vectors with eigenvalue zero
+shouldn't trust those results. As $\lambda \rightarrow 0$, the space of vectors with eigenvalue zero
 switches from being $1$-dimensional to being very high-dimensional, because any state containing adjacent
 particles becomes a steady state (and in fact an absorbing state). Thus, we should expect that at some
 as we go to smaller and smaller $\lambda$ our calculations should start behaving badly because the lower

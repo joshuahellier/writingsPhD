@@ -17,46 +17,47 @@ Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--to sort, need author or key in Villars2016
 Warning--empty journal in hellier2019a
 Warning--empty journal in hellier2019b
+Warning--empty journal in keffer2001
 Warning--can't use both author and editor fields in Kolesnichenko2014
-You've used 61 entries,
+You've used 64 entries,
             3202 wiz_defined-function locations,
-            1482 strings with 22859 characters,
-and the built_in function-call counts, 49309 in all, are:
-= -- 5538
-> -- 1336
-< -- 73
-+ -- 686
-- -- 396
-* -- 2798
-:= -- 5846
-add.period$ -- 245
-call.type$ -- 61
-change.case$ -- 379
-chr.to.int$ -- 60
-cite$ -- 67
-duplicate$ -- 4881
-empty$ -- 2894
-format.name$ -- 541
-if$ -- 9784
+            1501 strings with 23207 characters,
+and the built_in function-call counts, 50902 in all, are:
+= -- 5695
+> -- 1369
+< -- 77
++ -- 706
+- -- 405
+* -- 2880
+:= -- 6073
+add.period$ -- 256
+call.type$ -- 64
+change.case$ -- 394
+chr.to.int$ -- 63
+cite$ -- 71
+duplicate$ -- 5033
+empty$ -- 3011
+format.name$ -- 553
+if$ -- 10099
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 519
-newline$ -- 326
-num.names$ -- 240
-pop$ -- 1752
+missing$ -- 540
+newline$ -- 340
+num.names$ -- 252
+pop$ -- 1830
 preamble$ -- 1
-purify$ -- 374
+purify$ -- 389
 quote$ -- 0
-skip$ -- 2698
+skip$ -- 2754
 stack$ -- 0
-substring$ -- 2325
-swap$ -- 3902
-text.length$ -- 30
+substring$ -- 2387
+swap$ -- 3998
+text.length$ -- 31
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 513
-warning$ -- 4
-while$ -- 278
+type$ -- 540
+warning$ -- 5
+while$ -- 291
 width$ -- 0
-write$ -- 759
-(There were 6 warnings)
+write$ -- 792
+(There were 7 warnings)

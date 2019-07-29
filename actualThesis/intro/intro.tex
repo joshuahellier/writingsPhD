@@ -22,7 +22,7 @@ is that the impurity atom will tend to hop from one interstitial site into an
 adjacent one essentially at random, with some rate $\tau_0 ^{-1} \mathrm{s}^{-1}$.
 Such rates can be determined either by actual experiments (e.g. tracer diffusion
 ~\cite{Lamb1946, Wersin2004}) or by theoretical means
-(e.g. molecular dynamics~\ref{Zhang1994, keffer2001}).
+(e.g. molecular dynamics~\cite{Zhang1994, keffer2001}).
 
 A single such impurity atom will obviously perform some kind of random walk though the system, and those kinds
 of mathematics have been treated previously. In this work, we really want to consider what effects these
@@ -31,7 +31,7 @@ perform simplifications in order to strip out any nonessential details, so that 
 caused by interaction. Therefore we won't be calculating any
 transition rates for real systems.
 
-\subsection{Reduction to $1$D, Simplifications, and Model Definition}
+\subsection{Reduction to 1D, Simplifications, and Model Definition}
 \label{sec:modelDefn}
 A crystal in physical reality is typically $3$-dimensional 
 \footnote{or possibly $2$-dimensional, but those
@@ -41,7 +41,7 @@ an hcp crystal lattice, the complementary lattice of octahedral interstitial sit
 structure, consisting of stacked planes of hexagonal lattices~\cite{Li2018}. Thus, it is not too difficult to envision
 a situation in which the hopping rate is much faster between planes than within them, or vice-versa. In the
 first situation, if there were sufficient discrepancy between the interplanar and intraplanar hopping rates
-we would essentially have a series of decoupled $1$-dimensional systems.
+we would essentially have a series of decoupled $1$ or $2$-dimensional systems.
 
 We should also remember that it is often much easier to use analytical techniques in one dimension than
 in higher dimensions, and that the performance of numerical techniques often scales unfavourably 
@@ -96,7 +96,7 @@ is highly likely to be at any given time. Thus it is reasonable to speak of part
  and so the assumption that each slot can contain at most one particle is a reasonable one.
  \item If the transition rates between adjacent slots behave in an Arrhenius-like manner~\cite{arrhenius1889, levine2005}, i.e.
  \begin{equation}
-  \tau_0 \propto e^{\frac{\Delta U}{k_B T}},
+  \tau_0^{-1} \propto e^{\frac{\Delta U}{k_B T}},
  \end{equation}
  with $k_B T$ being the characteristic thermal energy,
 then the rate of transition is dominated by $\Delta U$, the size of the ``energy barrier'' which
@@ -155,7 +155,7 @@ will say more about those in Sec.~\ref{sec:asep}. We will refer to this property
 \subsection{Locality}
 The SPM has the property that a particle's transition rates are determined solely by its immediate
 environment, in the sense that it can only hop into a space which is empty, and its rate of doing so
-then only depends upon what is behind it. By taking account of account of what is behind it, the model is differentiated from SEP; by not accounting 
+then only depends upon what is behind it. By taking account of what is behind it, the model is differentiated from SEP; by not accounting 
 for anything further afield, it is not the
 same as a more transparently energy-based model might be (although we will see that this model does
 have an energy interpretation in Sec.~\ref{sec:dbProof}). We will henceforth refer to this property
@@ -186,7 +186,7 @@ we
 list all of the motions that can occur, with all possible local environments: the central two slots must
 contain exactly one particle and one vacancy in order for a transition to be possible, and there are two
 ways to do this; then there are the two remaining slots at the sides, which can have any of the two
-occupations each, so there are $8$ meaningful configurations in total.
+occupations each, so there are $8$ meaningfully different transitions in total.
 
 Consider a probability distribution of the form $P(\xi) \propto \lambda^{-n}$, where $n$ is the total
 number of particle-particle adjacencies in the system. In the outer two diagrams of 
@@ -255,8 +255,9 @@ behaviour of ions moving stochastically
 under the influence of an external potential. The SPM is in fact a specific symmetric case of the
 $1$-dimensional KLS model. Whilst the KLS model exhibits plenty of interesting behaviour
 (in particular, the formation of stripes during flow in higher dimensions), most of the research done
-into it has involved using asymmetric versions of the model to drive flow; thus, the symmetric version
-most similar to the SPM has not received much attention.
+into it has involved using asymmetric versions of the model to drive flow. The stationary
+distribution for the symmetric version on a ring is given in~\cite{Katz1984}, whilst the version with open boundaries
+which we study here has received far less attention.
 
 \section{Research Outline}
 Our investigation into the SPM has focussed primarily upon its flow characteristics when driven

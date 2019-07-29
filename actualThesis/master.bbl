@@ -1,4 +1,4 @@
-\begin{thebibliography}{61}
+\begin{thebibliography}{64}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -58,6 +58,11 @@ Bortz, A., M.~Kalos, and J.~Lebowitz.
 \newblock
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/0021999175900601}.
 
+\bibitem[{Brush(1967)}]{brush1967}
+Brush, S.~G.
+\newblock \enquote{History of the Lenz-Ising model.}
+\newblock \emph{Reviews of modern physics} 39, ~4: (1967) 883.
+
 \bibitem[{Chikazumi and Graham(1997)}]{chikazumi1997}
 Chikazumi, S., and C.~Graham.
 \newblock \emph{Physics of Ferromagnetism (International Series of Monographs
@@ -84,14 +89,6 @@ Dewar, R.~C.
 \newblock \enquote{Maximum entropy production and the fluctuation theorem.}
 \newblock \emph{Journal of Physics A: Mathematical and General} 38, ~21: (2005)
   L371.
-
-\bibitem[{Evans and Waclaw(2014)}]{evansWaclaw2014}
-Evans, M.~R., and B.~Waclaw.
-\newblock \enquote{Condensation in stochastic mass transport models: beyond the
-  zero-range process.}
-\newblock \emph{Journal of Physics A: Mathematical and Theoretical} 47, ~9:
-  (2014) 095,001.
-\newblock \urlprefix\url{http://stacks.iop.org/1751-8121/47/i=9/a=095001}.
 
 \bibitem[{Gardiner et~al.(1985)}]{gardiner1985}
 Gardiner, C.~W., et~al.
@@ -174,6 +171,11 @@ Kawasaki, K.
   Time-Dependent Ising Models. I.}
 \newblock \emph{Phys. Rev.} 145: (1966) 224--230.
 \newblock \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRev.145.224}.
+
+\bibitem[{Keffer()}]{keffer2001}
+Keffer, D.
+\newblock \enquote{The working man’s guide to obtaining self diffusion
+  coefficients from molecular dynamics simulations.} .
 
 \bibitem[{Kolesnichenko et~al.(2014)Kolesnichenko, Senni, Pourranjabar, and
   Remke}]{Kolesnichenko2014}
@@ -304,6 +306,11 @@ Robert, C.~P.
 \newblock \emph{The Metropolis-Hastings Algorithm}, American Cancer Society,
   2015, 1--15.
 
+\bibitem[{Rota(1989)}]{Rota1989}
+Rota, G.-C.
+\newblock \enquote{Integrable systems in statistical mechanics.}
+\newblock \emph{Advances in Mathematics} 73: (1989) 147.
+
 \bibitem[{Sherratt(1998)}]{sherrat1998}
 Sherratt, J.~A.
 \newblock \enquote{On the transition from initial data to travelling waves in
@@ -374,6 +381,13 @@ Wersin, P., L.~V. Loon, J.~Soler, A.~Yllera, J.~Eikenberg, T.~Gimmi,
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0169131703002679}.
 \newblock Clays in Natural and Engineered Barriers for Radioactive Waste
   Confinement.
+
+\bibitem[{Zhang and Pastor(1994)}]{Zhang1994}
+Zhang, Y., and R.~W. Pastor.
+\newblock \enquote{A Comparision of Methods for Computing Transition Rates from
+  Molecular Dynamics Simulation.}
+\newblock \emph{Molecular Simulation} 13, ~1: (1994) 25--38.
+\newblock \urlprefix\url{https://doi.org/10.1080/08927029408022182}.
 
 \bibitem[{Zia(2010)}]{Zia2010}
 Zia, R. K.~P.

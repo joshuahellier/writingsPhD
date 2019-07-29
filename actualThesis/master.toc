@@ -7,7 +7,7 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Derivation and Motivation of the Sticky Particle Model}{1}{section.1.1}
 \contentsline {subsection}{\numberline {1.1.1}The Motion of Small Atoms in Crystal Lattices}{1}{subsection.1.1.1}
-\contentsline {subsection}{\numberline {1.1.2}Reduction to $1$D, Simplifications, and Model Definition}{2}{subsection.1.1.2}
+\contentsline {subsection}{\numberline {1.1.2}Reduction to 1D, Simplifications, and Model Definition}{2}{subsection.1.1.2}
 \contentsline {subsection}{\numberline {1.1.3}The Sticky Particle Model}{5}{subsection.1.1.3}
 \contentsline {section}{\numberline {1.2}Properties of the Sticky Particle Model}{7}{section.1.2}
 \contentsline {subsection}{\numberline {1.2.1}Homogeneity}{7}{subsection.1.2.1}
@@ -18,7 +18,7 @@
 \contentsline {subsection}{\numberline {1.3.1}The Ising Model}{9}{subsection.1.3.1}
 \contentsline {subsection}{\numberline {1.3.2}SEP/ASEP/TASEP}{10}{subsection.1.3.2}
 \contentsline {subsection}{\numberline {1.3.3}The KLS Model}{10}{subsection.1.3.3}
-\contentsline {section}{\numberline {1.4}Research Outline}{10}{section.1.4}
+\contentsline {section}{\numberline {1.4}Research Outline}{11}{section.1.4}
 \contentsline {chapter}{\numberline {2}Analytical Results about the SPM}{12}{chapter.2}
 \contentsline {section}{\numberline {2.1}Solving Problems in Nonequlibrium Statistical Mechanics}{12}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Equilibrium Statistical Mechanics}{13}{subsection.2.1.1}
@@ -31,28 +31,27 @@
 \contentsline {section}{\numberline {2.2}Similarities between the SPM and Established Models in 1D}{17}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Relationship with the Ising Model}{17}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Correlation Functions}{18}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Equivalence with the Misanthrope Process}{19}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Calculation of the Partition Function of the SPM on a Closed Ring}{20}{subsection.2.2.4}
-\contentsline {section}{\numberline {2.3}Using the Mean-Field Approximation on the SPM}{24}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Lattice MFT Derivation}{24}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Continuum Limit MFT Derivation}{26}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Negative Diffusion Coefficients}{28}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Continuum Limit MFT Solutions}{30}{subsection.2.3.4}
-\contentsline {subsubsection}{Steady Flow Across a Bounded Domain}{30}{subsection.2.3.4}
-\contentsline {subsubsection}{Other Analytic Solutions}{34}{figure.caption.23}
-\contentsline {subsection}{\numberline {2.3.5}Implications of Continuum MFT Breakdown}{37}{subsection.2.3.5}
-\contentsline {section}{\numberline {2.4}The SPM in Higher Dimensions}{37}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Symmetry + Locality + Detailed Balance = Unique 1-Parameter SPM}{38}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}MFT of the $n$-Dimensional SPM}{43}{subsection.2.4.2}
-\contentsline {subsubsection}{Limiting and Symmetry Properties of the $n$-Dimensional MFT}{45}{equation.2.4.60}
-\contentsline {subsubsection}{The SPM MFT in $2$-Dimensions}{47}{equation.2.4.66}
-\contentsline {section}{\numberline {2.5}Conclusions About the SPM MFT}{47}{section.2.5}
+\contentsline {subsection}{\numberline {2.2.3}Calculation of the Partition Function of the SPM on a Closed Ring}{19}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}Using the Mean-Field Approximation on the SPM}{23}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Lattice MFT Derivation}{23}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Continuum Limit MFT Derivation}{25}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Negative Diffusion Coefficients}{27}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Continuum Limit MFT Solutions}{29}{subsection.2.3.4}
+\contentsline {subsubsection}{Steady Flow Across a Bounded Domain}{29}{subsection.2.3.4}
+\contentsline {subsubsection}{Other Analytic Solutions}{33}{figure.caption.23}
+\contentsline {subsection}{\numberline {2.3.5}Implications of Continuum MFT Breakdown}{36}{subsection.2.3.5}
+\contentsline {section}{\numberline {2.4}The SPM in Higher Dimensions}{36}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Symmetry + Locality + Detailed Balance = Unique 1-Parameter SPM}{37}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}MFT of the $n$-Dimensional SPM}{42}{subsection.2.4.2}
+\contentsline {subsubsection}{Limiting and Symmetry Properties of the $n$-Dimensional MFT}{44}{equation.2.4.57}
+\contentsline {subsubsection}{The SPM MFT in $2$-Dimensions}{46}{equation.2.4.63}
+\contentsline {section}{\numberline {2.5}Conclusions About the SPM MFT}{46}{section.2.5}
 \contentsline {chapter}{\numberline {3}Transition Rate Matrix Analysis}{50}{chapter.3}
 \contentsline {section}{\numberline {3.1}The Transition Rate Operator for the SPM}{50}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}A Small Worked Example: Closed System}{52}{subsection.3.1.1}
 \contentsline {section}{\numberline {3.2}Forming the TRM for Systems with Dirichlet Boundary Conditions}{54}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Dirichlet Boundary Conditions}{54}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Another Small Worked Example: Open System}{55}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.2}Another Worked Example: Open System}{55}{subsection.3.2.2}
 \contentsline {subsection}{\numberline {3.2.3}Construction of the TRM in Sparse Format}{58}{subsection.3.2.3}
 \contentsline {section}{\numberline {3.3}The Eigenspectrum of the TRM}{60}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}The Computation of the TRM Eigenspectrum}{60}{subsection.3.3.1}
