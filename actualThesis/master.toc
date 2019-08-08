@@ -3,7 +3,7 @@
 \contentsline {chapter}{Acknowledgements}{iii}{chapter*.4}
 \contentsline {chapter}{Contents}{iv}{section*.5}
 \contentsline {chapter}{List of Figures}{viii}{section*.7}
-\contentsline {chapter}{List of Tables}{xi}{section*.9}
+\contentsline {chapter}{List of Tables}{xii}{section*.9}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Derivation and Motivation of the Sticky Particle Model}{1}{section.1.1}
 \contentsline {subsection}{\numberline {1.1.1}The Motion of Small Atoms in Crystal Lattices}{1}{subsection.1.1.1}
@@ -64,9 +64,9 @@
 \contentsline {subsubsection}{TRM-Computed Density Profile}{71}{subsection.3.3.3}
 \contentsline {subsubsection}{TRM-Computed Current}{73}{figure.caption.40}
 \contentsline {subsubsection}{TRM-Computed Diffusion Coefficient}{75}{figure.caption.41}
-\contentsline {section}{\numberline {3.4}Time-Dependent Properties of Small SPM Systems}{78}{section.3.4}
+\contentsline {section}{\numberline {3.4}Time-Dependent Properties of Small SPM Systems}{77}{section.3.4}
 \contentsline {subsection}{\numberline {3.4.1}The Relaxation Time for the SPM}{78}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Time-Evolution of States}{79}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.2}Time-Evolution of States}{80}{subsection.3.4.2}
 \contentsline {section}{\numberline {3.5}Conclusions}{80}{section.3.5}
 \contentsline {chapter}{\numberline {4}Monte-Carlo Simulations of the SPM}{83}{chapter.4}
 \contentsline {section}{\numberline {4.1}Numerical Simulations of Continuous-Time Markov Processes}{83}{section.4.1}
@@ -83,19 +83,20 @@
 \contentsline {subsubsection}{Repulsive Particles}{98}{figure.caption.47}
 \contentsline {subsection}{\numberline {4.3.2}Scans Through $\lambda $ with Constant Boundary Densities}{98}{subsection.4.3.2}
 \contentsline {subsubsection}{Mean Current}{100}{subsection.4.3.2}
-\contentsline {subsubsection}{Current Higher Moments}{103}{figure.caption.51}
-\contentsline {subsubsection}{Overall Density}{103}{figure.caption.51}
-\contentsline {subsubsection}{Block Size Distribution}{109}{figure.caption.54}
-\contentsline {subsection}{\numberline {4.3.3}Varying $\lambda $ and Boundary Density Difference Together}{109}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Varying the Boundary Densities with Constant $\lambda $}{112}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Diffusion Coefficient}{112}{subsection.4.3.5}
-\contentsline {section}{\numberline {4.4}2D Calculation Results}{116}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Aspect Ratio Considerations}{116}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Varying $\lambda $ with Constant Boundary Conditions}{117}{subsection.4.4.2}
-\contentsline {section}{\numberline {4.5}Conclusions}{122}{section.4.5}
-\contentsline {chapter}{\numberline {5}Conclusions}{123}{chapter.5}
-\contentsline {chapter}{\numberline {A}Code Locations}{125}{appendix.A}
-\contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{125}{section.A.1}
-\contentsline {section}{\numberline {A.2}$n$-Dimensional Continuum-Limit MFT }{125}{section.A.2}
+\contentsline {subsubsection}{Current Higher Moments}{104}{figure.caption.52}
+\contentsline {subsubsection}{Overall Density}{107}{figure.caption.53}
+\contentsline {subsubsection}{Time-Averaged Density Profiles}{110}{figure.caption.55}
+\contentsline {subsubsection}{Block Size Distribution}{112}{figure.caption.56}
+\contentsline {subsection}{\numberline {4.3.3}Varying $\lambda $ and Boundary Density Difference Together}{112}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Varying the Boundary Densities with Constant $\lambda $}{115}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Diffusion Coefficient}{115}{subsection.4.3.5}
+\contentsline {section}{\numberline {4.4}2D Calculation Results}{120}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Aspect Ratio Considerations}{120}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Varying $\lambda $ with Constant Boundary Conditions}{121}{subsection.4.4.2}
+\contentsline {section}{\numberline {4.5}Conclusions}{126}{section.4.5}
+\contentsline {chapter}{\numberline {5}Conclusions}{127}{chapter.5}
+\contentsline {chapter}{\numberline {A}Code Locations}{129}{appendix.A}
+\contentsline {section}{\numberline {A.1}1d Ising Correlation Functions }{129}{section.A.1}
+\contentsline {section}{\numberline {A.2}$n$-Dimensional Continuum-Limit MFT }{129}{section.A.2}
 \tocappendix 
 \contentsfinish 

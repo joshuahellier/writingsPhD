@@ -402,8 +402,8 @@ $\sim \{ 6, 2, 1 \}\times 10^{-2} \mathrm{s}$ for $\lambda \in \{ 0.05, 0.15, 0.
 all of these plots, dark tones represent low time-averaged particle occupation, whilst light tones
 represent high time-averaged particle occupation.
 \begin{figure} \caption[The flow pattern of sticky particles in $1$D]{Spacetime plots of the particle flow
-in 1 spatial dimension, as described in~\ref{sec:1DStickyPlots}. In each case, the $x$-axis represents time
-and the $y$-axis space. The higher-density boundary is the one at the top of each image. Dark tones 
+in 1 spatial dimension, as described in~\ref{sec:1DStickyPlots}. In each case, the $x$-axis represents \textbf{time}
+and the $y$-axis \textbf{space}. The higher-density boundary is the one at the top of each image. Dark tones 
 indicate low particle density, light tones high.} \renewcommand{\arraystretch}{-0.5}
 \label{fig:1DStickyPlots}
 \begin{center}
@@ -474,8 +474,12 @@ explosive tendency to separate if brought together. We have performed such a cal
 displayed in Fig~\ref{fig:1DRepulsePlots}, with a system
 of length $L=1024$, $\lambda = 10^6$ and $(\rho_0 , \rho_L) = (0.99, 0.01)$, for which we performed $40960$
 KMC steps. The time slices used in the plot are of size  $2 \times 10^{-7} \mathrm{s}$.
-\begin{figure} \caption[The flow pattern of repulsive particles in $1$D]{Spacetime plot for a system of 
-repulsive particles.} 
+\begin{figure} \caption[The flow pattern of repulsive particles in $1$D.]{Spacetime plot for a system of 
+repulsive particles. As before, time increases along the $x$-axis
+and space along the $y$-axis. The top plot displays the time-dependent density using the normal shading scheme
+(white is full, black is empty, grey indicates partial occupation). In the bottom plot, we invert the shading scheme
+every other site; thus, regions populated with alternating particles and vacancies are now displayed as solid blocks,
+with the moving boundaries between those blocks being domain walls.} 
 \label{fig:1DRepulsePlots}
 \begin{center}
 \begin{tabular}{c} 
@@ -517,12 +521,13 @@ density in $1$D. Here the boundary densities are held constant throughout, whils
 The lower plot is the same data as the upper one, but with logarithmic axes instead of linear ones.
 The dashed lines
 correspond to the MFT predictions, the joined circles to TRM-computed results, the triangles to results
-computed using evenly-timestepped Monte Carlo and the crosses to KMC calculations.} 
+computed using evenly-timestepped Monte Carlo and the crosses to KMC calculations. Note that we do not have reliable
+error estimates for the evenly-timestepped Monte Carlo calculations.} 
 \label{fig:1DlambdaScans}
 \begin{center}
 \begin{tabular}{c} 
-\includegraphics[width=1.1\linewidth]{numerics/images/lambdaScan/allDataLinear} \\
-\includegraphics[width=1.1\linewidth]{numerics/images/lambdaScan/allData} \\
+\includegraphics[width=1.1\linewidth]{numerics/images/lambdaScan/correctionsCombinedLinear} \\
+\includegraphics[width=1.1\linewidth]{numerics/images/lambdaScan/correctionsCombinedLogSmall} \\
 \end{tabular}
 \end{center}
 \end{figure}
@@ -540,7 +545,7 @@ Sec.~\ref{sec:TRMLambdaScan}. Our main observations about the current are as fol
  layer of excess particles or vacancies next to both boundaries, thus it is possible that this issue
  arises from this boundary layer causing the current to not scale with $L$ in quite the way we
  expect. However, this is something we can check by varying the system size and checking the current
- variation with $\lambda$, as we have done in Fig.\ref{fig:lambdaScanRepeats}.
+ variation with $\lambda$, as we have done in Figs.\ref{fig:lambdaScanRepeats}.
  \item For $\lambda \in (0.01, 0.3)$, the current undergoes power law variation with $\lambda$, again in 
  agreement with our TRM calculations, with $J \propto \lambda^{3}$.
  \item For smaller values of $\lambda$, the observed mean current starts to become noisy, at least in the
@@ -553,17 +558,34 @@ Sec.~\ref{sec:TRMLambdaScan}. Our main observations about the current are as fol
 \begin{figure} \caption[As Fig.~\ref{fig:1DlambdaScans} but over a much wider range of $\lambda$-values.]{As the logarithmic plot in Fig.~\ref{fig:1DlambdaScans} but over a  much wider range of $\lambda$-values.} 
 \label{fig:1DlambdaScansLogged}
 \begin{center}
-\includegraphics[width=1.0\textheight, angle=270]{numerics/images/lambdaScan/allDataWide}
+\includegraphics[width=1.0\textheight, angle=270]{numerics/images/lambdaScan/correctionsCombinedLogLarge}
+\end{center}
+\end{figure}
+
+\begin{figure} \caption[Comparison of the variation of the mean current with $\lambda$ for different system sizes.]{As
+Fig \ref{fig:1DlambdaScans}, but we are now comparing Monte Carlo results from systems of different size instead of 
+the other calculation methods. Here, \textbf{circles}, \textbf{squares} and \textbf{triangles} represent systems of 
+size $L=32$, $64$ and $128$ respectively. The currents computed have been normalised via multiplication by $L$.
+Note that all error bars are present; when invisible, this suggests that they are smaller than symbol size. We believe
+that the errors for the extreme low-$\lambda$ regime are underestimates, due to the systems not having had time to
+fully equilibrate. MFT results are displayed for comparison as solid curves.} 
+\label{fig:corrLambdaScans1d}
+\begin{center}
+\begin{tabular}{c} 
+\includegraphics[width=1.1\linewidth]{numerics/images/lambdaScan/correctionsLambdaScan1dSmall} \\
+\includegraphics[width=1.1\linewidth]{numerics/images/lambdaScan/correctionsLambdaScan1dLarge} \\
+\end{tabular}
 \end{center}
 \end{figure}
 
 Thus, we still seem to see the same ``transition'' we saw when analysing TRM results. To ensure that this
 behaviour in the current isn't just an artefact of system size, we can vary the system size whilst
-measuring the current, as we have done in Fig.~\ref{fig:lambdaScanRepeats}.
-\begin{figure} \caption[Calculations of the dependence of current upon $\lambda$, repeated with different system sizes.]{Calculations of the dependence of current upon $\lambda$, repeated with different system sizes as indicated. Here we have focussed on the boundary setup 
+measuring the current, as we have done in Figs. \ref{fig:corrLambdaScans1d} and \ref{fig:lambdaScanRepeats}.
+\begin{figure} \caption[Calculations of the dependence of current upon $\lambda$, repeated with different system sizes.]{Calculations of the dependence of current upon $\lambda$, repeated using KMC with different system sizes as indicated. Here we have focussed on the boundary setup 
 $(\rho_0, \rho_L) = (0.75, 0.25)$ and region $\lambda \in (0.04, 0.25)$, which constitutes the
 bend in our supposed transition. Standard errors in the current were computed using observed current 
-variances.} 
+variances. The fact that the errors seem to increase with system size suggests that the larger systems are fluctuating
+more due to poorer equilibration.} 
 \label{fig:lambdaScanRepeats}
 \begin{center}
 \includegraphics[width=0.95\textheight, angle=270]{numerics/images/lambdaScan/lambdaScanRepeatFlows}
@@ -574,6 +596,13 @@ Here we see that our method for normalising currents for different system sizes 
 to work quite well, at least over the system sizes we are looking at. It also indicates that our choice of
 $L=64$ behaves well until $\lambda < 0.05$, at which point the fluctuations start to become very large 
 compared to the observed mean current.
+
+An important thing to note here is that the critical $\lambda$ at which the ``transition'' occurs does
+\textbf{not} seem to be sensitive to the system size. Similarly, the $\lambda$ at which the results ``plateau''
+and reduction in $\lambda$ no longer meaningfully reduces the current also depends very weakly upon system size,
+if at all. This plateau is presumably due to the flow becoming so slow that the number of particles moving in
+and out of the system over a given timeframe is becoming so small that it becomes very susceptible to noise,
+and so when we plot logarithmically we see the plateau with many results scattered under it.
 
 \subsubsection{Current Higher Moments}
 Using our KMC calculations, we can also compute the higher moments of the current. As we do not have any 
@@ -587,7 +616,10 @@ Fig.~\ref{fig:lambdaScanHigherMoments}. Note that no units for skewness and kurt
 as they have already been normalised using the scale set by the variance.
 \afterpage{
 \begin{figure} \caption[Higher moments of the current, in 1$D$]{The higher moments of the current, 
-measured in the same setup as used in Fig.~\ref{fig:1DlambdaScans}.} 
+measured using KMC in the same setup as used in Fig.~\ref{fig:1DlambdaScans}. Note that we do not have reliable error estimates
+for these quantities, as their computation would require good knowledge of these same higher moments; given the 
+already dubious quality of the skewness and kurtosis readings (which one can assess visually from the spreading of  
+nearby points on the graph), we can't make a proper assessment of the error in the variance.} 
 \label{fig:lambdaScanHigherMoments}
 \begin{center}
 \begin{tabular}{c} 
@@ -609,7 +641,7 @@ but nothing clear and conclusive like a spike or discontinuity.
 
 
 \subsubsection{Overall Density}
-
+\label{sec:ovDens}
 In addition to measuring current and its moments, we can measure the mean overall density of particles in
 the system. We did this using the same system parameters as in Fig.~\ref{fig:1DlambdaScans}; the 
 variation in this mean density with $\lambda$ for different boundary conditions is displayed in 
@@ -619,7 +651,7 @@ Fig.~\ref{fig:lambdaScanDensityMean}.
 Setup is the same as in Fig.~\ref{fig:1DlambdaScans}.} 
 \label{fig:lambdaScanDensityMean}
 \begin{center}
-\includegraphics[width=0.95\textheight, angle=270]{numerics/images/lambdaScan/wideDensProfiles}
+\includegraphics[width=0.95\textheight, angle=270]{numerics/images/lambdaScan/correctionDecWideDensProfiles}
 \end{center}
 \end{figure}
 \clearpage
@@ -635,15 +667,18 @@ organises to have a density of $\sim \frac{2}{3}$ in order to enable maximal flo
 stability argument.
 
 We can also measure the variance of the densities we observed, and use this to gauge the size of the
-density fluctuation, $\Var(\rho)$. In the results displayed in Fig.~\ref{fig:lambdaScanDensityFluc}, we have
+density fluctuation, $\Var(\rho) = \Var(N)/L$, where $N$ is the number of particles in the system.
+In the results displayed in Fig.~\ref{fig:lambdaScanDensityFluc}, we have
 computed the density fluctuation in our $1$D SPM system with boundary conditions
 $(\rho_0, \rho_L) = (0.6, 0.4)$, using the evenly-timestepped Monte-Carlo method. Here we have
 calculated this fluctuation for systems of various different sizes, and then normalised the fluctuation
 via multiplication by system size. Note that we have two datasets for $L=400$ as we used two different
-numbers of timesteps to see what impact it had.
-\begin{figure} \caption[The variation of the fluctuation of the  density of the SPM system with 
+numbers of timesteps to see what impact it had; it would appear that this impact was quite negligible.
+\begin{figure} \caption[The variation of the variance of the  density of the SPM system with 
 $\lambda$ for different boundary conditions, in $1$D.]{The variation of the fluctuation of the density
-observed in the SPM system with $\lambda$ for different boundary conditions, in $1$D.} 
+observed in the SPM system with $\lambda$ for different boundary conditions, in $1$D. Error estimates are not 
+available due to our inability to reliably calculate higher moments. This variance is normalised via multiplication
+by the system size $L$.} 
 \label{fig:lambdaScanDensityFluc}
 \begin{center}
 \includegraphics[width=0.95\textheight, angle=270]{numerics/images/lambdaScan/normDenFluc}
@@ -665,6 +700,40 @@ This is in essence a ``time to equilibration'' error, in the sense that the syst
 timescale is longer than our observation timescale, and this informs us that we should be dubious about
 our larger-$L$ results once we get into the extremely small $\lambda$ regime.
 
+\subsubsection{Time-Averaged Density Profiles}
+If we use the same methodology as in Sec. \ref{sec:ovDens}, but instead take long-term time averages, we can
+compute the time-invariant average occupation of particular sites for a system with given $\lambda$ and boundary
+conditions. In Fig. \ref{fig:densityProfiles} we show how this density profile changes with $\lambda$ for fixed 
+boundary densities $(\rho_0, \rho_L) = (0.6, 0.4)$.
+\begin{figure} \caption[Time-averaged density profiles for systems with fixed boundary densities, over a range of 
+$\lambda$.]{Time-averaged density profiles for systems with fixed boundary densities $(\rho_0, \rho_L)=(0.6, 0.4)$, 
+over a range of $\lambda$. Here the system size used is $L=100$. The top plot shows the density profile with a 
+selection of $\lambda$ values coded by colour. The bottom plot shows a coloured density plot showing the continuous
+variation of the time-averaged profile with $\lambda$. Note that the standard errors on these densities are very small
+compared to $1$ (the maximum density), so error bars are not displayed.}
+\label{fig:densityProfiles}
+\begin{center}
+\begin{tabular}{c} 
+\includegraphics[width=1.0\linewidth]{numerics/images/diffCoeff/densityInstances} \\
+\includegraphics[width=1.0\linewidth]{numerics/images/diffCoeff/graemeDensityProfile} \\
+\end{tabular}
+\end{center}
+\end{figure}
+We see some general trends:
+\begin{itemize}
+ \item For $\lambda=1$ and other nearby values, the density profile is a smooth, flat descent from the high density to
+ the low density.
+ \item For very small $\lambda$, the system nearly fills, except for just around the boundaries (where particles
+ are still quite free to move in and out of the system).
+ \item For very large $\lambda$, the system adopts another flat gradient in the bulk, but this time interpolating
+ between densities higher than the boundary densities we used in this case. In addition, there are also oscillations
+ observed near to the boundaries. Due to the small standard errors estimated, we are quite sure that these are not
+ calculational artefacts, and are in fact caused by a combination of the extremely repulsive nature of the particles
+ and the order which is being imposed by the boundaries themselves. This effect is consistent with our TRM results
+ displayed in Fig. \ref{fig:analDensProf}.
+\end{itemize}
+
+
 \subsubsection{Block Size Distribution}
 The final type of measurement we have recorded in this ``$\lambda$-scan'' series of calculations is
 the distribution of block sizes. By this we mean that we observe how many contiguous runs of $1$, $2$ 
@@ -672,14 +741,12 @@ and so on particles there are and add these to a time-weighted histogram, as per
 Sec.~\ref{sec:kmcLib}. If we do this, again using our run parameters from
 Fig.~\ref{fig:lambdaScanDensityFluc}, we find that the mean block size and its standard error vary
 as shown in Fig.~\ref{fig:blockSizeDistn}.
-\begin{figure} \caption[The mean block size and its standard error.]{The mean block size and associated
-standard error, using the same run parameters as we did for Fig.~\ref{fig:1DlambdaScans}.} 
+\begin{figure} \caption[The mean block size and its standard error.]{The mean block size, calculated using KMC 
+with the same run parameters as we did for Fig.~\ref{fig:1DlambdaScans}. Note that the error estimates here are 
+plotted, and are presumably underestimates for extremely small $\lambda$.} 
 \label{fig:blockSizeDistn}
 \begin{center}
-\begin{tabular}{c} 
-\includegraphics[width=1.0\linewidth]{numerics/images/lambdaScan/blockSizeMeans} \\
-\includegraphics[width=1.0\linewidth]{numerics/images/lambdaScan/blockSizeStdErr} \\
-\end{tabular}
+\includegraphics[width=0.95\textheight, angle=270]{numerics/images/lambdaScan/correctionBlockSizes}
 \end{center}
 \end{figure}
 
@@ -725,6 +792,7 @@ small $\lambda$ with small $\delta \rho$, and another regime where $\lambda$ is 
 $\delta \rho$ is bigger. In other words, when $\lambda$ becomes small the system gains density,
 block size, and flow slows; however, a large boundary difference can still force through current
 and keep density and block size lower, so there is a tradeoff between these competing forces.
+
 \subsection{Varying the Boundary Densities with Constant $\lambda$}
 Instead of varying $\lambda$, we can instead choose to hold it constant whilst we vary the two
 boundary densities. We have done this with a series of different $\lambda$; the mean current results
@@ -786,9 +854,10 @@ we can use weighted least squares fitting to estimate the value of $D(\rho, \lam
 its error. We did this, using $16$ values of $\delta \rho$ for each $(\rho, \lambda)$ pair we
 computed (arranged in a $24 \times 12$ grid); each computation consisted of a $160000000$ KMC step
 equilibration run, followed by $10$ alternating $80000000$ step measurement run and $16000000$ step
-relaxation run pairs. The system size used in this case was $L=124$. Our estimate for $D$ and its
+relaxation run pairs. The system size used in this case was $L=124$. Our estimates for $D$ and its
 standard error are displayed in
-Fig.~\ref{fig:KMCDiffCoeff}.
+Fig. \ref{fig:KMCDiffCoeff}. Additionally, we performed similar calculations with a wider range of 
+$\lambda$ and different system sizes, which are displayed in Fig. \ref{fig:KMCDiffCoeffAltTake}.
 \begin{figure} \caption[The variation of the KMC-calculated diffusion coefficient with $\rho$ and 
 $\lambda$.]{The variation of the KMC-calculated diffusion coefficient with $\rho$ and 
 $\lambda$. The top panel is the estimate of $D(\rho, \lambda)$, and the bottom panel is the associated
@@ -798,6 +867,23 @@ standard error.}
 \begin{tabular}{c}
 \includegraphics[width=0.95\textwidth]{numerics/images/diffCoeff/numDiffCoeff} \\
 \includegraphics[width=0.95\textwidth]{numerics/images/diffCoeff/newFlowErr} \\
+\end{tabular}
+\end{center}
+\end{figure}
+
+\begin{figure} \caption[The variation of the KMC-calculated diffusion coefficient with $\rho$ and 
+$\lambda$; alternate plots.]{Data computed using the same methodology as in Fig. \ref{fig:KMCDiffCoeff}, but this time we
+have plotted the 
+diffusion coefficient as a function of density with multiple coloured datasets indicating different values for 
+$\lambda$. In addition, these results were made using different system sizes, with \textbf{circles}, \textbf{squares}
+and \textbf{triangles} corresponding to systems of size $L=32$, $64$ and $128$ respectively.
+The MFT prediction is also displayed for each $\lambda$ as a solid coloured curve. We have split the data
+between low and high $\lambda$-values for ease of visualisation. } 
+\label{fig:KMCDiffCoeffAltTake}
+\begin{center}
+\begin{tabular}{c}
+\includegraphics[width=0.95\textwidth]{numerics/images/diffCoeff/diffCoeffLow} \\
+\includegraphics[width=0.95\textwidth]{numerics/images/diffCoeff/diffCoeffHigh} \\
 \end{tabular}
 \end{center}
 \end{figure}
@@ -818,7 +904,11 @@ with it:
 That said, these results do compare nicely with our MFT calculations, displayed in 
 Fig.~\ref{fig:diffCoeffDensityPlot}. The qualitative features are very similar, although the
 MFT-predicted ``transition'' doesn't occur quite where it suggests, which we have seen  
-more clearly in our scans in Sec.~\ref{sec:lambdaScans}.
+more clearly in our scans in Sec.~\ref{sec:lambdaScans}. Also, the diffusion coefficient does not seem to vary in a consistent way with system size.
+
+
+
+
 
 \section{2D Calculation Results}
 As we saw in Sec.~\ref{sec:highDimSPM}, it is possible to define a logical extension of the SPM
@@ -850,10 +940,10 @@ current. The results are displayed in Fig~\ref{fig:aspectRatios}.
 \begin{figure} \caption[The variation of the current in a $2$D SPM system with $\lambda$,
 for a variety of different system sizes and aspect ratios.]{The variation of the current in a $2$D SPM
 system with $\lambda$, for a variety of different system sizes and aspect ratios. The dotted
-line indicates the relevant MFT prediction.} 
+line indicates the relevant MFT prediction. This was computed using KMC.} 
 \label{fig:aspectRatios}
 \begin{center}
-\includegraphics[width=0.95\textheight, angle=270]{numerics/images/2d/sizeCompLambdaScan}
+\includegraphics[width=0.95\textheight, angle=270]{numerics/images/2d/correctionFlowSizeComparison}
 \end{center}
 \end{figure}
 
@@ -878,26 +968,27 @@ However, due to the bigger issues with equilibration and overall computational t
 This is a scan through values of $\lambda$ with fixed boundary conditions, similar to our work
 in Sec.~\ref{sec:lambdaScans}. Here we used $L \times W = 16 \times 16$, allowed $16000000$ KMC
 steps for equilibration time, and then did $4096$ measurement cycles of alternating $16000$-step
-and $320000$-step analysis and relaxation runs, just like in Sec.\ref{sec:aspectRatio}.
+and $320000$-step analysis and relaxation runs, just like in Sec.\ref{sec:aspectRatio}. We repeated these calculations
+with the same parameters with $L \times W = 32 \times 32$.
 Our results for the overall system density are displayed in Fig.\ref{fig:2dSysDens}, and
 our measurements of current and its variance are shown in Fig.\ref{fig:2dSysCurr}.
 \begin{figure} \caption[The variation of the overall density in a $2$D SPM system with 
 $\lambda$.]{The variation of the overall density in a $2$D SPM system with $\lambda$, with
-$3$ sets of boundary conditions as indicated.} 
+$3$ sets of boundary conditions as indicated. Here diamonds indicate results taken with $L\times W=16 \times 16$,
+whilst crosses indicate results with $L\times W=32\times 32$.} 
 \label{fig:2dSysDens}
 \begin{center}
-\includegraphics[width=0.95\textheight, angle=270]{numerics/images/2d/2dDensity}
+\includegraphics[width=0.95\textheight, angle=270]{numerics/images/2d/correctionsDensBoth}
 \end{center}
 \end{figure}
 \begin{figure} \caption[The variation of the mean current and its variance in a $2$D SPM system
 with $\lambda$.]{The variation of the mean current and its variance in a $2$D SPM system
-with $\lambda$, with boundary conditions as indicated. The mean current is the top panel,
-and the current variance is the bottom panel.} 
+with $\lambda$, with boundary conditions as indicated. Diamonds indicate results taken with $L\times W=16 \times 16$,
+crosses $L\times W=32\times 32$.} 
 \label{fig:2dSysCurr}
 \begin{center}
 \begin{tabular}{c}
-\includegraphics[width=0.95\textwidth]{numerics/images/2d/2dCurrentMeans} \\
-\includegraphics[width=0.95\textwidth]{numerics/images/2d/2dCurrentVars} \\
+\includegraphics[width=0.95\textheight, angle=270]{numerics/images/2d/corrections2dMeans}
 \end{tabular}
 \end{center}
 \end{figure}
@@ -920,16 +1011,12 @@ However, there are some big differences:
  conditions; then, one should be able to observe whether the spectrum of densities in
  the large-$\lambda$ (repulsive) limit is continuous or discrete.
  \item For our low-density choice of boundary conditions $(\rho_0, \rho_L) = (0.3, 0.1)$,
- it would appear that the mean overall system density splits into two separate branches,
+ it would appear that the mean overall system density splits into two separate branches for the 
+ $L\times W=16\times 16$ system,
  forming a curve reminiscent of the hysteresis curves exhibited by
- ferromagnets~\cite{chikazumi1997}. This
- is perhaps not so surprising, as there is a relationship between the $2$D SPM and the $2$D Ising
- Model with fixed magnetisation. Our interpretation of this is that in this regime there are
- two flow-permitting configurations which both satisfy the desired boundary conditions
- and are both fairly stable, at least over the timescale of our measurements. Looking at it in 
- this way, this appears to be another example which illustrates the possibility that there can
- be competing stable/metastable states in $2$D which cannot occur in $1$D because there is
- insufficient freedom.
+ ferromagnets~\cite{chikazumi1997}. However, this does not seem to happen in the larger $L\times W=32\times 32$
+ system. Thus, we may be probing a scenario in which the small system size allows multiple different stable
+ dynamical modes to form, whilst the larger system does not support this.
 \end{itemize}
 So far as the current is concerned, we see broadly the same behaviour as in our (linear) plot
 in Fig~\ref{fig:aspectRatios}; the current has roughly power-law dependence on $\lambda$ for
@@ -938,7 +1025,8 @@ below a threshold in $\lambda$. The mean current for our low density boundary ch
 like
 the density does, suggesting that the effective diffusion coefficients of the competing 
 configurations are different. The current variance is broadly power-law with $\lambda$,
-with kinks around the transitions and again some exhibition of the ``hysteresis''-like branching.
+with kinks around the transitions and again some exhibition of the ``hysteresis''-like branching in the
+$L\times W=16\times 16$ case.
 
 Another way to look at this branching is to consider the fact that researchers have observed 
 ``stripes'' in the KLS model~\cite{Zia2010}. In that particular context the model contains asymmetric
@@ -948,7 +1036,7 @@ tries to generate such stripes, but is too small to support more than one stripe
 different stripes are realised in different simulations. Of course, as this system is ergodic, we
 should in the long-term limit see both stripe types manifest in any given simulation; however,
 the switching time, if both stripe types are quite stable, might be so long that we would never
-actually observe this happening.
+actually observe this happening. As we see no such effect in the larger system, this hypothesis seems likely.
 
 \section{Conclusions}
 The primary conclusions from our work with Monte-Carlo methods is as follows:
@@ -963,7 +1051,7 @@ The primary conclusions from our work with Monte-Carlo methods is as follows:
  regarless of boundary conditions, in an effort to maximise flow (or more directly, system
  stability).
  \item Our foray in $2$D has been brief, but suggests that there is much more interesting material to study there, in particular the limiting behaviours with extreme $\lambda$
- and the hysteresis-curve effect we see in the density for low-density boundary configurations.
+ and the hysteresis-curve effect we see in the density for low-density boundary configurations in small systems.
 \end{itemize}
 
 

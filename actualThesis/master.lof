@@ -34,27 +34,30 @@
 \contentsline {figure}{\numberline {(3.8)}{\ignorespaces The variation of the density profile with $\lambda $ for a system of size $L=12$ and boundaries $(\rho _0 = 0.6, \rho _L = 0.4)$.}}{72}{figure.caption.40}
 \contentsline {figure}{\numberline {(3.9)}{\ignorespaces The variation of the current (measured flowing from high density boundary to low) with $\lambda $ for a system of size $L=10$ and boundaries $(\rho _0 = 0.6, \rho _L = 0.4)$.}}{74}{figure.caption.41}
 \contentsline {figure}{\numberline {(3.10)}{\ignorespaces The variation of the diffusion coefficient of a system of size $L=10$ with respect to $\lambda $ and $\rho $.}}{76}{figure.caption.42}
-\contentsline {figure}{\numberline {(3.11)}{\ignorespaces The variation of the order parameter $\chi $ for a system of size $L=10$ with respect to $\lambda $ and $\rho $.}}{77}{figure.caption.43}
+\contentsline {figure}{\numberline {(3.11)}{\ignorespaces The variation of the order parameter $\chi $ for a system of size $L=10$ with respect to $\lambda $ and $\rho $.}}{78}{figure.caption.43}
 \contentsline {figure}{\numberline {(3.12)}{\ignorespaces The dependence of the relaxation time on $\lambda $ for three sets of boundary conditions.}}{79}{figure.caption.44}
 \contentsline {figure}{\numberline {(3.13)}{\ignorespaces The time-evolution of uniform distributions to equilibrium.}}{81}{figure.caption.45}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {(4.1)}{\ignorespaces Illustration of the method for choosing successor states in the n-fold way.}}{88}{figure.caption.46}
 \contentsline {figure}{\numberline {(4.2)}{\ignorespaces The flow pattern of sticky particles in $1$D}}{96}{figure.caption.47}
-\contentsline {figure}{\numberline {(4.3)}{\ignorespaces The flow pattern of repulsive particles in $1$D}}{99}{figure.caption.48}
+\contentsline {figure}{\numberline {(4.3)}{\ignorespaces The flow pattern of repulsive particles in $1$D.}}{99}{figure.caption.48}
 \contentsline {figure}{\numberline {(4.4)}{\ignorespaces The current flowing through systems as we vary $\lambda $ with constant boundaries, $1$D}}{101}{figure.caption.49}
 \contentsline {figure}{\numberline {(4.5)}{\ignorespaces As Fig.\nobreakspace {}\ref {fig:1DlambdaScans} but over a much wider range of $\lambda $-values.}}{102}{figure.caption.50}
-\contentsline {figure}{\numberline {(4.6)}{\ignorespaces Calculations of the dependence of current upon $\lambda $, repeated with different system sizes.}}{104}{figure.caption.51}
-\contentsline {figure}{\numberline {(4.7)}{\ignorespaces Higher moments of the current, in 1$D$}}{105}{figure.caption.52}
-\contentsline {figure}{\numberline {(4.8)}{\ignorespaces The variation of the overall mean density of the SPM system with $\lambda $ for different boundary conditions, in $1$D.}}{106}{figure.caption.53}
-\contentsline {figure}{\numberline {(4.9)}{\ignorespaces The variation of the fluctuation of the density of the SPM system with $\lambda $ for different boundary conditions, in $1$D.}}{108}{figure.caption.54}
-\contentsline {figure}{\numberline {(4.10)}{\ignorespaces The mean block size and its standard error.}}{110}{figure.caption.55}
-\contentsline {figure}{\numberline {(4.11)}{\ignorespaces Results obtained by fixing the average of the boundary densities and varying their difference and $\lambda $}}{111}{figure.caption.56}
-\contentsline {figure}{\numberline {(4.12)}{\ignorespaces Mean currents observed when varying the boundary densities, fixing $\lambda $, for different $\lambda $}}{113}{figure.caption.57}
-\contentsline {figure}{\numberline {(4.13)}{\ignorespaces Mean densities observed when varying the boundary densities, fixing $\lambda $, for different $\lambda $}}{114}{figure.caption.58}
-\contentsline {figure}{\numberline {(4.14)}{\ignorespaces The variation of the KMC-calculated diffusion coefficient with $\rho $ and $\lambda $.}}{115}{figure.caption.59}
-\contentsline {figure}{\numberline {(4.15)}{\ignorespaces The variation of the current in a $2$D SPM system with $\lambda $, for a variety of different system sizes and aspect ratios.}}{118}{figure.caption.60}
-\contentsline {figure}{\numberline {(4.16)}{\ignorespaces The variation of the overall density in a $2$D SPM system with $\lambda $.}}{120}{figure.caption.61}
-\contentsline {figure}{\numberline {(4.17)}{\ignorespaces The variation of the mean current and its variance in a $2$D SPM system with $\lambda $.}}{121}{figure.caption.62}
+\contentsline {figure}{\numberline {(4.6)}{\ignorespaces Comparison of the variation of the mean current with $\lambda $ for different system sizes.}}{103}{figure.caption.51}
+\contentsline {figure}{\numberline {(4.7)}{\ignorespaces Calculations of the dependence of current upon $\lambda $, repeated with different system sizes.}}{105}{figure.caption.52}
+\contentsline {figure}{\numberline {(4.8)}{\ignorespaces Higher moments of the current, in 1$D$}}{106}{figure.caption.53}
+\contentsline {figure}{\numberline {(4.9)}{\ignorespaces The variation of the variance of the density of the SPM system with $\lambda $ for different boundary conditions, in $1$D.}}{108}{figure.caption.54}
+\contentsline {figure}{\numberline {(4.10)}{\ignorespaces The variation of the overall mean density of the SPM system with $\lambda $ for different boundary conditions, in $1$D.}}{109}{figure.caption.55}
+\contentsline {figure}{\numberline {(4.11)}{\ignorespaces Time-averaged density profiles for systems with fixed boundary densities, over a range of $\lambda $.}}{111}{figure.caption.56}
+\contentsline {figure}{\numberline {(4.12)}{\ignorespaces The mean block size and its standard error.}}{113}{figure.caption.57}
+\contentsline {figure}{\numberline {(4.13)}{\ignorespaces Results obtained by fixing the average of the boundary densities and varying their difference and $\lambda $}}{114}{figure.caption.58}
+\contentsline {figure}{\numberline {(4.14)}{\ignorespaces Mean currents observed when varying the boundary densities, fixing $\lambda $, for different $\lambda $}}{116}{figure.caption.59}
+\contentsline {figure}{\numberline {(4.15)}{\ignorespaces Mean densities observed when varying the boundary densities, fixing $\lambda $, for different $\lambda $}}{117}{figure.caption.60}
+\contentsline {figure}{\numberline {(4.16)}{\ignorespaces The variation of the KMC-calculated diffusion coefficient with $\rho $ and $\lambda $.}}{118}{figure.caption.61}
+\contentsline {figure}{\numberline {(4.17)}{\ignorespaces The variation of the KMC-calculated diffusion coefficient with $\rho $ and $\lambda $; alternate plots.}}{119}{figure.caption.62}
+\contentsline {figure}{\numberline {(4.18)}{\ignorespaces The variation of the current in a $2$D SPM system with $\lambda $, for a variety of different system sizes and aspect ratios.}}{122}{figure.caption.63}
+\contentsline {figure}{\numberline {(4.19)}{\ignorespaces The variation of the overall density in a $2$D SPM system with $\lambda $.}}{124}{figure.caption.64}
+\contentsline {figure}{\numberline {(4.20)}{\ignorespaces The variation of the mean current and its variance in a $2$D SPM system with $\lambda $.}}{125}{figure.caption.65}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsfinish 
