@@ -1,7 +1,7 @@
 \chapter{Transition Rate Matrix Analysis} 
 \label{sec:transRateChapter}
 Now that we have MFT predictions about the relationship between density difference and
-current in the SPM, it would be good to try to investigate their validity. In Chapter~\ref{sec:numerics} we will use Monte-Carlo methods to do this in $1$d and $2$d, but in this chapter we will restrict our attention to $1$d.
+current in the SPM, it would be good to try to investigate their validity. In Chapter~\ref{sec:numerics} we will use Monte-Carlo methods to do this in $1$D and $2$D, but in this chapter we will restrict our attention to $1$D.
 
 \section{The Transition Rate Operator for the SPM} \label{sec:TRMGeneralResults}
 The SPM is an autonomous continuous-time Markov Process, which describes continual transitions between states
@@ -44,7 +44,7 @@ The last constraint implies that
 \end{equation}
 regardless of the structure of $P$, which is our probability conservation equation.
 
-The formal (forward-time) solution to Eq.~\eqref{eq:masterEq} is given by
+The formal (forward-time) solution to Eq. \eqref{eq:masterEq} is given by
 \begin{equation} \label{eqn:formalSoln}
  P(\xi, t) = e^{(t-t_0)\mathcal{A}}P_0,
 \end{equation}
@@ -112,14 +112,14 @@ we can rearrange the matrix into block form:
 \end{bmatrix}.
 \end{equation}
 
-According to our recipe, to learn about the solutions to Eq.~\eqref{eq:masterEq} 
+According to our recipe, to learn about the solutions to Eq. \eqref{eq:masterEq} 
 in this case, we need to know about the eigendecomposition of $Q$. 
 The block structure of $Q'$ means that there are $4$ 
 distinct parts of the state space, between which there are no transitions; this 
 partitioning corresponds to the fact that particle number is conserved on the ring.
 Two of these
 sectors correspond to the full and empty states, and their dynamics are completely
-trivial, in the sense that the state space is $1$d and there are no dynamics, as the
+trivial, in the sense that the state space is $1$D and there are no dynamics, as the
 particles/vacancies have nowhere to go.
 The remaining sectors correspond to the situation where there is one particle or one 
 vacancy. The matrix is symmetric, meaning that its eigenvalues are real,
@@ -151,7 +151,7 @@ destruction of particles, that will change; we will consider that situation now.
 \section{Forming the TRM for Systems with Dirichlet Boundary Conditions}
 
 \subsection{Dirichlet Boundary Conditions} \label{sec:CTMPBoundaries}
-In Ch.~\ref{sec:analChap} we made an MFT for the SPM in $1$-dimension, and when 
+In Ch. \ref{sec:analChap} we made an MFT for the SPM in $1$-dimension, and when 
 investigating steady states used Dirichlet boundary conditions when we needed them.
 In particular, we had a system of length $L$ and sought solutions in which the system
 density was pinned at $\rho_0$ at $x=0$ and $\rho_L$ at $x=L$. 
@@ -192,7 +192,7 @@ thus, particles will move in and out of it as normal, and when the outermost sit
 occupation is required to determine the transition rate for a particle moving inward,
 that information is available. One could possibly eliminate the need for the outermost
 boundary site by averaging over occupations, however we have chosen not to do this for
-consistency with our Monte-Carlo calculations in Ch.~\ref{sec:numerics}.
+consistency with our Monte-Carlo calculations in Ch. \ref{sec:numerics}.
 
 Observant readers will notice that by using these creation and annihilation rates we
 are left with a free variable, $B_0$. This controls the ratio of the creation and
@@ -219,7 +219,7 @@ $\rho_L=0$, the outer boundary layers become nondynamical, and the system simpli
 particles can only enter at the full end with rate $\lambda$, and can only leave at the empty end.
 Therefore, we can consider a system consisting of single boundary layers attached to a single internal
 slot without needing to consider a state space larger than $2^3=8$. Using the same state-labelling
-convention as in Sec.~\ref{sec:workedExampleClosed}, the TRM for this new open system is
+convention as in Sec. \ref{sec:workedExampleClosed}, the TRM for this new open system is
 \begin{equation}
 Q = 
 \begin{bmatrix}
@@ -268,7 +268,7 @@ where
  D = \lambda  \left[\lambda  (\lambda  \left[5 \lambda +26\right]+37)+24 \right]+4.
 \end{equation}
 The variation of the occupation probabilities with $\lambda$ is displayed in
-Fig.~\ref{fig:smallOccProbs}.
+Fig. \ref{fig:smallOccProbs}.
  \begin{figure}[h!]
  \caption[The variation of configuration probabilities with $\lambda$ for a small open system.]{\label{fig:smallOccProbs} 
  The variation of the steady-state configuration probability distribution with $\lambda$ for our
@@ -294,7 +294,7 @@ extreme boundary conditions, there does not appear to be any change in the scali
 with $\lambda$.
 
 We can also compute the eigenspectrum of the TRM for this small system;
-this is displayed in Fig.~\ref{fig:smallEigSpec}.
+this is displayed in Fig. \ref{fig:smallEigSpec}.
  \begin{figure}[h!]
  \caption[The variation of the eigenspectrum of the TRM with $\lambda$ for a small open system.]{\label{fig:smallEigSpec} 
  The variation of the eigenspectrum of the TRM for our small open system with $\lambda$. Here we have plotted
@@ -304,7 +304,7 @@ this is displayed in Fig.~\ref{fig:smallEigSpec}.
  \includegraphics[width=1.0\textwidth]{TRM/images/smallOpenEigSpec}
   \end{center}
 \end{figure}
-It is in many ways rather similar to the eigenspectra we find for larger systems, so see Sec.~\ref{sec:trmEigenspec} for our comments on those.
+It is in many ways rather similar to the eigenspectra we find for larger systems, so see Sec. \ref{sec:trmEigenspec} for our comments on those.
 
 \subsection{Construction of the TRM in Sparse Format}
 
@@ -402,7 +402,7 @@ following parameters to be specified:
  (i.e. large changes to $b$ have minimal impact on the relevant internal
  dynamics of the system, even if they have a great impact on the boundary dynamics).
  \item $\lambda>0$, the internal anomalous movement rate in the SPM.
- \item $\epsilon$, the relative accuracy the calculation aims for in the sense of Eq.~\eqref{eq:linAlgRelAcc}.
+ \item $\epsilon$, the relative accuracy the calculation aims for in the sense of Eq. \eqref{eq:linAlgRelAcc}.
  \item $1 \le k < 2^{L+4}$, the number of eigenvalues to compute.
  \end{itemize}
 
@@ -415,7 +415,7 @@ following parameters to be specified:
  First, we performed a relatively small calculation, in terms of the number of eigenvalues demanded and the number of $\lambda$ used. We altered the values of $L$
  and $b$ between runs, so that we can see what impact they have on the eigenspectrum. We then performed a very
  large calculation, in order to get a good look at the eigenstructure as a whole.
- In Ch.~\ref{sec:analChap} our MFT suggested that a transition might occur around
+ In Ch. \ref{sec:analChap} our MFT suggested that a transition might occur around
  $\lambda=\frac{1}{4}$, so we should look out for odd behaviour in that regime.
 
  To actually perform these TRM calculations, we used Edinburgh Compute and Data Facility's Linux
@@ -430,7 +430,7 @@ following parameters to be specified:
  First, we performed a calculation with $L=5$, $b=1000$ in which we computed the
  negative real part of the $32$ eigenvalues with real part closest to zero for a wide range of $\lambda$ with fixed
  boundary conditions. The resulting eigenspectrum is displayed in
- Fig.~\ref{fig:eigsL5B1000}.
+ Fig. \ref{fig:eigsL5B1000}.
  \afterpage{
  \begin{figure}[!ht]
  \caption[The TRM eigenspectrum for a system with $L=5$, $b=1000$.]{\label{fig:eigsL5B1000} 
@@ -512,7 +512,7 @@ Again, there's a lot going on in this image, so let's break it down.
  smaller one, as so many more fluctuations need to occur to make it change its global
  state. This is something we should remember for later, as it suggests that equilibration time might scale
  pretty aggressively with system size, which is bad news for our attempts to simulate
- the system using Monte-Carlo methods (Ch.~\ref{sec:numerics}).
+ the system using Monte-Carlo methods (Ch. \ref{sec:numerics}).
  \item The big, obvious difference between the spectra of different system size is
  the behaviour at small $\lambda$. For $L=5$ there is only $1$ eigenvalue which scales
  as $\mathcal{O}(\lambda)$ as $\lambda \rightarrow 0$, whereas for $L=10$, it would
@@ -527,11 +527,11 @@ address this in the next subsection.
 
 \subsubsection{The Scaling of the Number of Slow Modes at Low $\lambda$}
 To find out how the number of nonzero eigenvalues in the $\mathcal{O}(\lambda)$-scaling
-band (as observed in Fig.~\ref{fig:eigsVarBVarL}) scales with system size,
+band (as observed in Fig. \ref{fig:eigsVarBVarL}) scales with system size,
 we can simply fix $\lambda$ to be sufficiently low (say, $\lambda=0.0001$)and repeat
 computations of the low-lying eigenspectrum for different $L$. Here, due to the
 computational limitations we are up against, we only compute up to $L=13$. The number
-of slow modes as a function of $L$ is displayed in Tab.~\ref{tab:bandThickness}.
+of slow modes as a function of $L$ is displayed in Tab. \ref{tab:bandThickness}.
 \begin{table} \caption[Tabulated values for the variation of the width of the slow band with
 system size.]{A table of the number of slow modes occurring at low $\lambda$ for given 
 $L$.}
@@ -544,7 +544,7 @@ $L$.}
 \end{center}
 \end{table}
 If we plot the number of slow modes as a function of system size on a plot with a 
-logarithmic $y$-axis, as we have done in Fig.~\ref{fig:bandWidthScaling},
+logarithmic $y$-axis, as we have done in Fig. \ref{fig:bandWidthScaling},
 it is rather obvious that this number scales exponentially with system size.
 However, the number of slow modes seems to scale as $\mathcal{O}(2^{\sim 0.84 L})$,
 whereas the number of possible states, and therefore the total number of eigenvalues of
@@ -560,7 +560,7 @@ becomes large.
  $ \mathrm{N}^\mathrm{o} \mathrm{Slow Modes} = 2^{a(L+b)}$, with $a=0.84$, $b=-3.9$.
  }
   \begin{center}
- \includegraphics[width=1.0\textwidth]{TRM/images/bandWidth}
+ \includegraphics[width=1.0\textwidth]{TRM/images/bandwidth}
   \end{center}
 \end{figure}
 
@@ -575,15 +575,15 @@ impact the eigenspectrum in some way. Therefore, we have done an additional chec
 by varying $b$ and $L$ and 
 performing a calculation in which the $64$ eigenvalues with largest negative real
 part were calculated. The negative real parts of these eigenvalues are displayed in
-Fig.~\ref{fig:eigsVarBVarLUpper}.
+Fig. \ref{fig:eigsVarBVarLUpper}.
  \begin{figure}[h!]
- \caption[The upper  TRM eigenspectrum for a system with $L=\{5, 10\}, $, $b=\{100, 1000\}$.]{\label{fig:eigsVarBVarLUpper} 
+ \caption[The upper  TRM eigenspectrum for a system with $L=\{5, 10\}$, $b=\{100, 1000\}$.]{\label{fig:eigsVarBVarLUpper} 
  The upper (negative real) TRM eigenspectrum, computed for a system with $\rho_0 = 0.6$, $\rho_L = 0.4$,
  with all combinations of
  $L=\{5, 10\}$, $b=\{100, 1000\}$.
  }
   \begin{center}
- \includegraphics[width=1.0\textheight, angle=270]{TRM/images/topEigs}
+ \includegraphics[width=0.9\textheight, angle=270]{TRM/images/topEigs}
   \end{center}
 \end{figure}
 We see that now the tables are indeed turned. Altering $L$ does have a very small effect on
@@ -611,7 +611,7 @@ constant boundary conditions), but this time compute a lot of eigenvalues in ord
 get a general overview of the TRM. 
 \afterpage{
  \begin{figure}[h!]
- \caption[The ``full'' TRM eigenspectrum for a system with $L=8, $, $b=1000$.]{\label{fig:bigEigSpec} 
+ \caption[The ``full'' TRM eigenspectrum for a system with $L=8$, $b=1000$.]{\label{fig:bigEigSpec} 
  The ``full'' (negative real) TRM eigenspectrum, computed for a system with $\rho_0 = 0.6$, $\rho_L = 0.4$,
  with $L=8$, $b=1000$. Missing computations, visible via the vertical gaps in
  the data, are due to computational issues, rather than being numerically meaningful.
@@ -622,7 +622,7 @@ get a general overview of the TRM.
 \end{figure}
 \clearpage
 }
-Plotted in Fig.~\ref{fig:bigEigSpec} are the negative real components of the $1024$ eigenvalues with smallest negative
+Plotted in Fig. \ref{fig:bigEigSpec} are the negative real components of the $1024$ eigenvalues with smallest negative
  real part, for the TRM of an SPM system of length $L=8$ and regularisation parameter 
  $b=1000$. We say that this is the ``full'' eigenspectrum not because
  we have computed all of the eigenvalues (we have not, as there are $2^{12} = 4096$ in
@@ -673,7 +673,7 @@ keeping one of the current components.
 By way of example, we computed the density profile for a system with $L=10$, $b=1000$,
 again sweeping through a wide range of scales of $\lambda$ as in the previous section.
 We kept the boundaries constant with our usual $\rho_0 = 0.6$, $\rho_L = 0.4$
-configuration. A density plot of the data is shown in Fig.~\ref{fig:analDensProf}.
+configuration. A density plot of the data is shown in Fig. \ref{fig:analDensProf}.
  \begin{figure}[h!]
  \caption[The variation of the density profile with $\lambda$ for a system of size
  $L=12$ and boundaries $(\rho_0 = 0.6, \rho_L = 0.4)$.]{\label{fig:analDensProf} 
@@ -700,7 +700,7 @@ $13$-$14$ are reserved for the boundaries, whose densities are already prescribe
  At large 
  $\lambda$, we see that the density profile defaults to $\rho\sim\frac{2}{3}$ plus oscillations on the 
  boundaries which decay as we go towards the interior. This is suspiciously close to the critical density
- of the MFT (Ch.~\ref{sec:analChap}) which permits a maximal flow; therefore, we suggest that the system
+ of the MFT (Ch. \ref{sec:analChap}) which permits a maximal flow; therefore, we suggest that the system
  self-organises at high $\lambda$ to favour configurations that permit high current. The reason this density permits a high current is that in such a configuration,
  any particular particle should on average be in contact with an adjacent particle, with a free space to move into, so the dynamics of the system should be dominated by $\lambda$ rather than $1$. If the density were
  higher, some particles don't have spaces to move into, so that will slow things down; if the density were 
@@ -717,7 +717,7 @@ $13$-$14$ are reserved for the boundaries, whose densities are already prescribe
  have been limited by the slowest-flowing region) and thus flushing out or bringing in new 
  particles. In this way, the system as a whole will tend to favour the fast-flow densities, as
  they are more stable than the alternatives. We discuss more numerical data about the system density
- in Sec.~\ref{sec:lambdaScans}, and that seems to generally support the conclusions we have reached
+ in Sec. \ref{sec:lambdaScans}, and that seems to generally support the conclusions we have reached
  here using our TRM method.
  
  \subsubsection{TRM-Computed Current} \label{sec:TRMLambdaScan}
@@ -793,7 +793,7 @@ and then evaluating the quantity
 \end{equation}
 We performed such a calculation, in which we picked $\delta \rho$ to be $0.001$ and $L=10$. We tabulated
 $D$ for a range of $\lambda$ and $\rho$, and a contour plot of the data is displayed in 
-Fig.~\ref{fig:TRMDiffCoeff}.
+Fig. \ref{fig:TRMDiffCoeff}.
  \begin{figure}[h!]
  \caption[The variation of the diffusion coefficient of a system of size $L=10$ with respect to $\lambda$
  and $\rho$.]{\label{fig:TRMDiffCoeff} 
@@ -825,13 +825,13 @@ $\rho=\frac{2}{3}$.
 
 The trend in terms of $\lambda$ is that the gradient of the diffusion coefficient as it varies with 
 $\lambda$ and $\rho$ is generally low for large $\lambda$ and high for small $\lambda$. In light
-of our results in Fig.~\ref{fig:analCurr}, this makes sense as the power law seems to change as we switch
+of our results in Fig. \ref{fig:analCurr}, this makes sense as the power law seems to change as we switch
 between low and high $\lambda$. This suggests that an order parameter of the form
 \begin{equation}
  \chi(\rho, \lambda) = \left(\partDeriv{\ln{D}}{\ln{\lambda}}\right)_\rho
 \end{equation}
 should reveal the power-law structure. We can compute this from our existing data in Fig.
-\ref{fig:TRMDiffCoeff}, and it is displayed in Fig.~\ref{fig:TRMOrderParam}.
+\ref{fig:TRMDiffCoeff}, and it is displayed in Fig. \ref{fig:TRMOrderParam}.
  \begin{figure}[h!]
  \caption[The variation of the order parameter $\chi$ for a system of size $L=10$ with respect to $\lambda$
  and $\rho$.]{\label{fig:TRMOrderParam} 
@@ -858,7 +858,7 @@ As we have seen, the eigenvalue with least negative real
 part effectively controls the rate at which a generically-prepared system equilibrates, by acting as a lower bound on the rate of relaxation towards equilibrium. Therefore, the reciprocal of this 
 relaxation rate should yield a characteristic time for convergence to equilibrium, the relaxation
 time. We have computed this relaxation time for
-our three standard boundary conditions in Fig.~\ref{fig:TRMRelaxTime}.
+our three standard boundary conditions in Fig. \ref{fig:TRMRelaxTime}.
  \begin{figure}[h!]
  \caption[The dependence of the relaxation time on $\lambda$ for three sets of boundary conditions.]{\label{fig:TRMRelaxTime} 
 A plot showing the dependence of the relaxation time upon $\lambda$ for a system of size $L=10$ with
@@ -887,8 +887,8 @@ $\lambda \in (0.03, 1)$, which is where the current looks like its undergoing so
 transition, so this increase in relative equilibration time could be interpreted as an accumulation of
 fluctuations in that regime.
 \subsection{Time-Evolution of States}
-Recall from Sec.~\ref{sec:TRMGeneralResults} that the Master Equation (Eq.~\eqref{eq:masterEq}) has
-a formal solution given by Eq.~\eqref{eqn:formalSoln}, in which we premultiply the initial state
+Recall from Sec. \ref{sec:TRMGeneralResults} that the Master Equation (Eq. \eqref{eq:masterEq}) has
+a formal solution given by Eq. \eqref{eqn:formalSoln}, in which we premultiply the initial state
 by a matrix exponential of the TRM. Throughout this chapter we have been making use of the fact that
 the TRM is sparse in order to perform our computations. Thus, it would seem that we couldn't
 investigate the time evolution of systems, as $e^A$ is in general not sparse even if $A$ is sparse,
@@ -902,7 +902,7 @@ we have been able to calculate the time-evolution of arbitrary initial distribut
 example we prepared three systems with initial uniform distributions, in which all possible 
 configurations are equally likely, and then monitored how their spatial occupations varied as they
 relaxed towards equilibrium (which should always occur, as discussed in 
-Sec.~\ref{sec:TRMGeneralResults}). The results are displayed in Fig.~\ref{fig:TRMTimeDep}.
+Sec. \ref{sec:TRMGeneralResults}). The results are displayed in Fig. \ref{fig:TRMTimeDep}.
 \begin{figure}
 \caption[The time-evolution of uniform distributions to equilibrium.]{Plots of the time-evolution
 of the density profiles of systems prepared with uniform distributions. These systems are of
@@ -911,9 +911,9 @@ going from top to bottom, respectively. The total time intervals have been adjus
 equilibration time.} \label{fig:TRMTimeDep}
 \begin{center}
  \begin{tabular}{c}
-    \includegraphics[width=0.6\linewidth]{TRM/images/timeSeriesl0_1}  \\ 
-    \includegraphics[width=0.6\linewidth]{TRM/images/timeSeriesl1_0}  \\
-    \includegraphics[width=0.6\linewidth]{TRM/images/timeSeriesl2_0}  \\
+    \includegraphics[width=0.55\linewidth]{TRM/images/timeSeriesl0_1}  \\ 
+    \includegraphics[width=0.55\linewidth]{TRM/images/timeSeriesl1_0}  \\
+    \includegraphics[width=0.55\linewidth]{TRM/images/timeSeriesl2_0}  \\
     \end{tabular}
 \end{center}
     \vspace{-2em}

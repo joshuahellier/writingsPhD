@@ -43,7 +43,7 @@ Of course, the situation in which one can simply evaluate the partition function
 extremely rare in equilibrium statistical mechanics, at least in the large-scale limit (the one of
 principal interest, as it is required for most interesting phenomena such as phase transitions).
 More often, one might approximate the partition function itself, perhaps by converting the required
-integral (Eq.~\eqref{eq:partFn}) into an asymptotic series in one of the thermodynamic variables;
+integral (Eq. \eqref{eq:partFn}) into an asymptotic series in one of the thermodynamic variables;
 this is essentially what one does when analysing a system in terms of instanton transitions~\cite{grafke2015}.
 
 Another approach is to deal directly with the state variables we are interested in themselves,
@@ -63,7 +63,7 @@ in $1$D, but for $2$D and above it is at least qualitatively correct.
 
 Finally, one can attempt to sample directly from the space of microstates numerically via Monte Carlo
 methods, and in doing so build up information about state variables that way.
-We will say more about this in Ch.~\ref{sec:numerics}.
+We will say more about this in Ch. \ref{sec:numerics}.
 
 \subsection{Nonequlibrium Statistical Mechanics}
 Nonequilibrium statistical mechanics differs from equilibrium statistical mechanics in the sense that
@@ -119,7 +119,7 @@ it tends to produce a set of coupled ODEs for the mean variables under considera
 principle possible to study small-scale systems essentially exactly by numerical analysis of the
 relevant \textbf{Transition Rate Matrix} (TRM). Of course, this has the disadvantage that it is only a
 small finite system, so some of the phenomena observed in it will differ from larger versions of the
-same system. We perform this kind of analysis in Ch.~\ref{sec:transRateChapter}.
+same system. We perform this kind of analysis in Ch. \ref{sec:transRateChapter}.
 
 
 \subsection{Where does the SPM stand?} \label{sec:spmStatus}
@@ -134,14 +134,14 @@ the expertise nor the time to properly investigate that possibility.
 Instead, we have gone for a somewhat more pedestrian, traditional approach. In the rest of this
 chapter, we will discuss the relationships enjoyed by the SPM and some well-known models,
 and will then perform  mean-field analysis, in the hope of obtaining some at least qualitative
-results about how the SPM behaves. In Ch.~\ref{sec:transRateChapter}, we will then consider some semianalytic solutions to the SPM
-in finite systems in $1$d via TRM analysis. Finally, in Ch.~\ref{sec:numerics}, we will compare the TRM and MFT results to numerical simulations performed using Monte-Carlo (MC) methods. We have also performed
+results about how the SPM behaves. In Ch. \ref{sec:transRateChapter}, we will then consider some semianalytic solutions to the SPM
+in finite systems in $1$D via TRM analysis. Finally, in Ch. \ref{sec:numerics}, we will compare the TRM and MFT results to numerical simulations performed using Monte-Carlo (MC) methods. We have also performed
 MC calculations and have MFT results for the $2$-dimensional situation.
 
 
 \section{Similarities between the SPM and Established Models in 1D}
 In the previous section we have discussed the various approaches one might use when attempting to derive properties of a nonequilibrium statistical mechanical system. We will now try to put these ideas into practice on the SPM. We already mentioned some of the relationships between the SPM
-and some established models in Sec.~\ref{sec:existingModels}; here we will be a little more formal
+and some established models in Sec. \ref{sec:existingModels}; here we will be a little more formal
 in terms of our use of these models.
 
 
@@ -165,7 +165,7 @@ the probability of finding ourselves in a state with $N$ paired spins is $e^{-\b
 \subsection{Correlation Functions}
 For relatively small systems, given a system size $L$ and a number of particles $N$, we can analytically compute the pairwise correlation function $C(l) = \left\langle \rho_i \rho_{i+l} \right\rangle$, or ``the probability that site $i+l$
 is occupied given that $i$ is'' (the system is clearly homogeneous in $i$, so its value is irrelevant).
-A Python code which performs this calculations is discussed in Sec.~\ref{sec:corrFnCode}.
+A Python code which performs this calculations is discussed in Sec. \ref{sec:corrFnCode}.
 
 
 This is quite a nice result, as we can use simple recursion to perform a calculation which would otherwise be quite difficult to code.
@@ -195,15 +195,14 @@ This was calculated using computer-assisted algebra and the various density and 
 Clearly, as $l$ becomes large, the correlation function tends to the density (note that the way we have defined the correlation function does not subtract this background probability; hence why many definitions do). Very small $\lambda$-values
 cause particles to tend to cluster together, whilst large $\lambda$ values cause particles and vacancies to tend to alternate. In theory we could use the equivalence with the Ising model to compute correlation lengths as a function
 of $\rho$ and $\lambda$ by using the magnetic field in the original Ising model as a Lagrange multiplier in order to fix the total magnetisation (corresponding to particle number in the SPM). However, due to the fact that we cannot
-accurately compute correlation functions to any decent accuracy using our numerics (see Ch.~\ref{sec:numerics}), we concluded that it was not worth the time to perform the calculation as we would have nothing to compare it to.
+accurately compute correlation functions to any decent accuracy using our numerics (see Ch. \ref{sec:numerics}), we concluded that it was not worth the time to perform the calculation as we would have nothing to compare it to.
 
 
 \subsection{Calculation of the Partition Function of the SPM on a Closed Ring} \label{sec:spmPartFn}
 
-Whilst we are on the subject of the duality between the SPM and the Misanthrope Process, we
+Using the duality between the SPM in a closed system and the Ising Model, we
 can observe that the probability weighting of any configuration is proportional to $\lambda^{-k}$,
-where $k$ is the number of particle-particle adjacencies in the SPM and the number of empty slots
-in the Misanthrope Process. This raises the question: if we know the weightings, can we calculate the
+where $k$ is the number of particle-particle adjacencies in the SPM. This raises the question: if we know the weightings, can we calculate the
 partition function, and therefore other quantities such as the free energy or chemical potential,
 for the SPM on a closed ring with particle density $\rho$?
 
@@ -227,23 +226,30 @@ In order to attempt this, we must first make two observations from the field of 
  = \frac{(N+M-1)!}{N!(M-1)!}.
 \end{equation}
  \end{itemize}
-Now let us consider a Misanthrope Process on a closed ring of $N$ slots, into which we wish to
-distribute $L-N$ particles; this corresponds to the SPM on a ring with $L$ slots containing $N$
-particles. Say we wish to distribute the particles so that only $M$ of the slots
-contain any particles at all; then the above two combinatorial results suggest that there are
-$\frac{N!}{M!(N-M)!}$ ways to choose which $M$ slots, into which we insert one particle each,
+Now let us consider an alternative way to look at our SPM system. Instead of considering particles and vacancies
+moving
+around on a lattice of size $L$, let us instead consider a ring containing $N$ boxes, into which we wish to
+distribute $L-N$ balls. These balls are allowed to jointly occupy boxes; this corresponds to the SPM on
+a ring with $L$ slots containing $N$ particles. The occupation numbers of the boxes represent the distances 
+between consecutive particles in the old system.
+
+Say we wish to distribute the balls so that only $M$ of the boxes
+contain any at all; then the above two combinatorial results suggest that there are
+$\frac{N!}{M!(N-M)!}$ ways to choose which $M$ boxes, into which we insert one ball each,
 leaving $\frac{(L-N-1)!}{(L-N)!(M-1)!}$ ways to insert the remainder. Thus, the overall number of
-possible ways to distribute the particles so that only $M$ slots contain any at all is
+possible ways to distribute the balls so that only $M$ boxes contain any at all is
 \begin{equation}
  C_M = \frac{N!(L-N-1)!}{M!(N-M)!(L-N)!(M-1)!}.
 \end{equation}
-As we know, the weighting of a configuration in which only $M$ of the slots are nonempty is
-$\lambda^{-(N-M)}$; therefore, the partition function $Z_L (\lambda, N)$ for a system of size $L$ is
+This corresponds to the situation when there are $(N-M)$ particle-particle adjacencies in the SPM. By analogy with
+the Ising model, 
+the equilibrium weighting of a configuration in which only $M$ of the boxes are nonempty is
+$\lambda^{-(N-M)}$; therefore, the partition function $Z_L (\lambda, N)$ for an SPM system of size $L$ is
 \begin{equation}
  Z_L (\lambda, N) = \sum_{M=1}^{M=\min{ \{ N-1, L-N \} }} \left[ \frac{N!(L-N-1)!}{M!(N-M)!(L-N)!(M-1)!}
  \lambda^{-(N-M)} \right].
 \end{equation}
-For statistical mechanics, we are really interested in the situation where the system size is very
+For statistical mechanics, we are primarily interested in the situation where the system size is very
 large. Therefore, let us define $\rho$, $m \in (0, 1)$ so that $N = \rho L$ and $M = mL$, and invoke
 the Stirling approximation $\log{x!} \sim x \log{x}$ for large $x$. Regarding $L$ as a large 
 constant, and keeping only leading order behaviour in $L$, we find that 
@@ -268,21 +274,18 @@ One of the solutions occurs in $(0, \min{\{\rho, 1-\rho\}})$, at
 and a little analysis reveals that
 it is indeed a maximum, as required for the use of Laplace's Method. Therefore, we find that
 \begin{equation}
-\begin{split}
-\sqrt[L]{Z_L (\lambda, \rho)} \sim &\sqrt{2 \pi } \frac{  (1-\rho )^{1-\rho } \rho ^{\rho }}{
+\sqrt[L]{Z_L (\lambda, \rho)} \sim \sqrt{2 \pi } \frac{  (1-\rho )^{1-\rho } \rho ^{\rho }}{
 m_+^{2 m_+} \left(\rho -m_+\right)^{\rho-m_+} \left(1-m_+-\rho
-   \right)^{1 - m_+ - \rho}}  \\ 
-   & \times \sqrt{\frac{m_+
-   \left(\rho -m_+\right) \left(1- m_+ -\rho\right)}{ 2 (1-\rho) \rho - m_+}} \lambda
-   ^{m_+-\rho }
-   \end{split}.
+   \right)^{1 - m_+ - \rho}} \left( 1 + \mathcal{O}(L^{-1})  \right) ,
 \end{equation}
+where the term relating to the curvature of the integrand around the critical point (which would usually be
+present when using the Laplace Method) vanishes under the action of the $L^\mathrm{th}$ root for large $L$.
 From here one can use computer algebra to obtain the free energy density
 $
  F(\rho, \lambda) = - \frac{\log{Z_L}}{L}
 $
-(Fig.~\ref{fig:spmFreeEnergy}) and chemical potential $\mu (\rho, \lambda) = \partDeriv{F}{\rho}$
-(Fig~\ref{fig:spmChemPot}) of the SPM system. 
+(Fig. \ref{fig:spmFreeEnergy}) and chemical potential $\mu (\rho, \lambda) = \partDeriv{F}{\rho}$
+(Fig. \ref{fig:spmChemPot}) of the SPM system. 
 \begin{figure}[h!]
  \caption[The free energy density of the SPM on a closed ring, as a function of density
  and $\lambda$.]{\label{fig:spmFreeEnergy} 
@@ -302,7 +305,7 @@ $
  and $\lambda$.]{\label{fig:spmChemPot} 
  The variation of the SPM chemical potential on a large closed ring as a function of particle 
  density and stickiness parameter $\lambda$. Again, we see some bad behaviour at $\lambda=1$,
- for the same reasons as before.
+ for the same reasons as before. The curve $\mu (\rho, \lambda) = 0$ is highlighted by a thick black contour.
  }
   \begin{center}
  \includegraphics[width=1.0\textwidth]{analytics/images/spmChemPot}
@@ -311,19 +314,19 @@ $
 Of course, in thermodynamic equilibrium a system generally attempts to lower its total free energy
 to the lowest value allowed by the constraints. If we hold $\lambda$ constant whilst allowing $\rho$
 to vary, this corresponds to the curve $\mu(\rho, \lambda)=0$, which one can follow on
-Fig.~\ref{fig:spmChemPot}; Fig.~\ref{fig:spmFreeEnergy} confirms that this is indeed
+Fig. \ref{fig:spmChemPot}; Fig. \ref{fig:spmFreeEnergy} confirms that this is indeed
 a minimum. Thus we should expect that a very large system connected to a particle reservoir would
 tend towards having a total density such that $\mu = 0$, regardless of the particle density
 in the reservoir, as the particle density in the system would only be pinned to that of the
-reservoir near to the boundary. Therefore, at large $\lambda$ we would see systems tend towards a
-density of $\rho=\frac{1}{2}$, whereas for small $\lambda$ the system would tend to fill.
+reservoir near to the boundary. By this logic, at large $\lambda$ we would see systems tend towards a
+density of $\rho\sim\frac{1}{3}$, whereas for small $\lambda$ the system would tend to fill.
 Of course, if we were to hook a system up to two different boundaries and cause a current to flow,
 as we have done many times in the course of this project,
 that might change things, as now the system would be in a nonequilibrium steady state as opposed
 to a thermodynamic equilibrium, and those are not quite the same beast.
 
 \section{Using the Mean-Field Approximation on the SPM} \label{sec:spmMft}
-For the reasons discussed in Sec.~\ref{sec:spmStatus}, we do not possess an analytic solution for the SPM on a nonperiodic bounded domain. Such a solution might exist, but
+For the reasons discussed in Sec. \ref{sec:spmStatus}, we do not possess an analytic solution for the SPM on a nonperiodic bounded domain. Such a solution might exist, but
 we will proceed on the assumption that the model is not analytically solvable. Therefore, it would be useful to at least possess approximate analytic solutions, as this can help us by giving us
 something to test our numerics against, and point us in the direction of interesting behaviours which might occur. We will start by deriving the MFT on a lattice, and will then take the continuum limit (as the lattice spacing tends to zero
 relative to our scale of interest), as that should predict the dominant behaviour on the macroscopic scale.
@@ -387,7 +390,7 @@ Now we can Taylor expand for $\rho_{i+m} (t)$, as
 \begin{equation}
  \rho(x+am,t) = \rho(x, t) + ma \partDeriv{\rho(x, t)}{x} + \frac{1}{2} m^2 a^2 \partDeriv{^2\rho(x, t)}{x^2} + \mathcal{O}(a^3). 
 \end{equation}
-Preferably with the aid of a computational algebra package (such as Wolfram Mathematica), one may directly substitute Taylor expansions for the required $\rho_j$ into Eq.~\eqref{eq:latticeMFT}, continuing to truncate
+Preferably with the aid of a computational algebra package (such as Wolfram Mathematica), one may directly substitute Taylor expansions for the required $\rho_j$ into Eq. \eqref{eq:latticeMFT}, continuing to truncate
 at $\mathcal{O}(a^3)$. Doing so, and collecting terms, we find that
 \begin{align}
   \tau_0 \partDeriv{\rho}{t} =& a^2 \left[ 1-\zeta \rho (4-3\rho) \partDeriv{^2 \rho}{x^2}  \right] +
@@ -417,7 +420,7 @@ we see that our diffusion coefficient is
 \end{equation}
 Setting $\zeta \rightarrow 0$ (i.e. $\lambda = 1$), we see that $D \rightarrow \frac{a^2}{\tau_0}$, which is consistent with what we would expect for SEP.
 
-Clearly, the diffusion coefficient varies quadratically with $\rho$. This is easiest to see via a few graphs, as shown in Fig.~\ref{fig:analDiffCoeffs}. Note that $D \rightarrow \frac{a^2}{\tau_0}$ as $\rho \rightarrow 0$
+Clearly, the diffusion coefficient varies quadratically with $\rho$. This is easiest to see via a few graphs, as shown in Fig. \ref{fig:analDiffCoeffs}. Note that $D \rightarrow \frac{a^2}{\tau_0}$ as $\rho \rightarrow 0$
 and $D \rightarrow \frac{a^2}{\tau_0} \lambda$ as $\rho \rightarrow 1$, so for $\zeta < 0$ ($\lambda>1$) $D$ is guaranteed to be positive for $\rho \in [0, 1]$ as the diffusion coefficient is an inverted parabola so far as its
 variation in $\rho$ is concerned.
 \begin{figure}[h!]
@@ -470,7 +473,7 @@ this is like a gap opening up in $\rho$ when $\zeta > \frac{3}{4}$. At its maxim
 \end{equation}
 so there is still a region where $\rho$ is sufficiently low that negative diffusion does not occur.
 
-In terms of what a negative diffusion coefficient actually means, consider a constant solution $\rho(x, t) = \rho_0$. Insertion into Eq.~\eqref{eq:contPDE} quickly confirms that this is indeed a solution. Now consider adding a small
+In terms of what a negative diffusion coefficient actually means, consider a constant solution $\rho(x, t) = \rho_0$. Insertion into Eq. \eqref{eq:contPDE} quickly confirms that this is indeed a solution. Now consider adding a small
 perturbation $\delta\rho (x, t)$ to $\rho_0$. The equation for the time evolution of $\delta \rho$ then reads
 \begin{equation}
  \partDeriv{\delta\rho}{t} = \frac{a^2}{\tau_0} \left[1 - \zeta \rho_0\left(4-3\rho_0\right) \right] \partDeriv{^2 \delta \rho}{x^2}.
@@ -521,7 +524,7 @@ Thus with a little rearrangement we have $x$ as a function of $\rho$, with $\rho
 Let us consider solving problems on a bounded domain; we choose to do this as opposed to an infinite one, as one can see that for our cubic $ \|x\|  \rightarrow \pm \infty \implies \|\rho\|  \rightarrow \pm \infty$ for nontrivial $J$.
 Therefore let us consider solutions on the domain $[0, L]$ for $L>0$. With a second order ODE of this kind, we must supply two boundary conditions, which may be Dirichlet, Neumann or some mixture of the two,
 and must contain at least one piece of Dirichlet information. However, our ODE does not make any special reference to $\rho$ values of $0$ or $1$, and therefore if we do not fix $\rho$ at both boundaries it is highly likely that the solution will contain
-unphysical values for $\rho$. Therefore, let us apply Dirichlet conditions at both boundaries, so that $\rho(0) = \rho_0$ and $\rho(L) = \rho_L$. Inserting this information into Eq.~\eqref{eq:steadyDeriv} we can fix the constants
+unphysical values for $\rho$. Therefore, let us apply Dirichlet conditions at both boundaries, so that $\rho(0) = \rho_0$ and $\rho(L) = \rho_L$. Inserting this information into Eq. \eqref{eq:steadyDeriv} we can fix the constants
 $x_0$ and $J_0$; in particular we find that
 \begin{equation}
 \label{eq:blockFlow}
@@ -529,7 +532,7 @@ $x_0$ and $J_0$; in particular we find that
 \end{equation}
 which can be reinserted to yield the desired $x_0$. Note that the current is not directly proportional to the
 concentration difference between the boundaries; thus, the MFT predicts violation of Fick's Law.
-An illustrative plot of $J_0(\rho_0, \rho_L)$ is shown in Fig.~\ref{fig:boundaryCurrent}.
+An illustrative plot of $J_0(\rho_0, \rho_L)$ is shown in Fig. \ref{fig:boundaryCurrent}.
 \begin{figure}[h!]
  \caption[The variation in the current at fixed $\lambda$ with respect to the boundary densities.]{\label{fig:boundaryCurrent} A contour plot of the variation of the constant current $J_0(\rho_B, \rho_T)$ in a bounded domain with boundary densities $\rho_0$ and $\rho_L$ at $x=0$ and $x=L$ respectively,  with $\lambda=0.2$.
  Notice how the magnitude of $J_0$ generally grows as the difference between $\rho_0$ and $\rho_L$ increases, and how there is a region of boundary condition space in which the current takes the opposite sign one would expect.}
@@ -537,7 +540,7 @@ An illustrative plot of $J_0(\rho_0, \rho_L)$ is shown in Fig.~\ref{fig:boundary
 \end{figure}
 
 This solution in particular is extremely useful, as we can use it to predict the flow which should occur (MFT being correct) if we set up a numerical simulation of the SPM with a length of, say, $L$ lattice points. In particular,
-if we vary $\lambda$ whilst keeping the boundaries constant, the measured current should vary linearly, as depicted in Fig.~\ref{fig:lambdaScanPlots}. Thus, if we were to run simulations with, say,
+if we vary $\lambda$ whilst keeping the boundaries constant, the measured current should vary linearly, as depicted in Fig. \ref{fig:lambdaScanPlots}. Thus, if we were to run simulations with, say,
 $(\rho_0, \rho_L) = (0.6, 0.4)$, we should see the transition to a backwards or critically slow flow occur.
 \begin{figure}[h!]
  \caption[The variation of flow rate with respect to $\lambda$ in the MFT, with fixed boundary densities.]{\label{fig:lambdaScanPlots} A plot of the MFT prediction of the dedimensionalised flow rate with varying $\lambda$ for boundaries $(\rho_0, \rho_L) = \left\lbrace (0.3, 0.1), (0.6, 0.4), (0.9, 0.7) \right\rbrace$.
@@ -546,7 +549,7 @@ $(\rho_0, \rho_L) = (0.6, 0.4)$, we should see the transition to a backwards or 
  whilst varying $\lambda$.}
  \includegraphics[width=0.99\linewidth]{analytics/images/lambdaFlucPlots}
 \end{figure}
-We can use Eq.~\eqref{eq:blockFlow} to find the critical value for $\lambda$, $\lambda_c$, at which the transition to negative diffusion should occur for given boundary conditions.
+We can use Eq. \eqref{eq:blockFlow} to find the critical value for $\lambda$, $\lambda_c$, at which the transition to negative diffusion should occur for given boundary conditions.
 To do this, we simply set $J_0 = 0$ and solve for $\lambda$, and find that 
 \begin{equation}
 \label{eq:critLambda}
@@ -554,7 +557,7 @@ To do this, we simply set $J_0 = 0$ and solve for $\lambda$, and find that
 \end{equation}
 This is shown in Fig~\ref{fig:critLambda}.
 \begin{figure}[h!]
- \caption[The dependence of the critial value of $\lambda$ required for backward diffusion on the boundary conditions.]{\label{fig:critLambda} A plot of the critical value $\lambda_c$, specified in Eq.~\eqref{eq:critLambda},
+ \caption[The dependence of the critial value of $\lambda$ required for backward diffusion on the boundary conditions.]{\label{fig:critLambda} A plot of the critical value $\lambda_c$, specified in Eq. \eqref{eq:critLambda},
  which $\lambda$ must be smaller than in order to cause backward flow with boundary densities $(\rho_0, \rho_L)$. The region for which $\lambda_c$ is negative is not included and marked in white, as $\lambda>0$ for a physically
  realistic system. This shows that there are boundary configurations for which flow should still occur for arbitrarily small values of $\lambda$.}
  \includegraphics[width=0.99\linewidth]{analytics/images/criticalLambda}
@@ -569,9 +572,9 @@ so long as we can invert $x(\rho)$ to find $\rho(x)$ uniquely. The easiest way t
  \bar{\rho} = \frac{6 (\rho_0 + \rho_L) + \zeta \left[9 \left( \rho_0^3 + \rho_L^3\right) - 16 \left( \rho_0^2 + \rho_L^2 \right) + \rho_0\rho_L\left( 9\left[ \rho_0 + \rho_L \right] - 16  \right)  \right]}{12 \left[ 1 + 
   \zeta \left( \rho_0^2 + \rho_L^2 + \rho_0 \rho_L - 2 \left[ \rho_0+\rho_L \right] \right) \right]};
 \end{equation}
-to obtain this one simply imposes the conditions that $\rho(0)=\rho_0$ and $\rho(L)=\rho_L$, and then solve for $J_0$
-and back-substitute.
-The variation of the average density with $\lambda$ for selected fixed boundary conditions is plotted in Fig.~\ref{fig:mftDens}. In general, this overall density deviates very little from the average of the two boundary densities.
+to obtain this one simply imposes the conditions that $\rho(0)=\rho_0$ and $\rho(L)=\rho_L$, and then solves for $J_0$
+and back-substitutes.
+The variation of the average density with $\lambda$ for selected fixed boundary conditions is plotted in Fig. \ref{fig:mftDens}. In general, this overall density deviates very little from the average of the two boundary densities.
 \begin{figure}[h!]
  \caption[The variation of the system-wide average density with respect to $\lambda$ in the MFT, with fixed boundary densities.]{\label{fig:mftDens} 
  A plot of the MFT prediction of the overall system-wide density with varying $\lambda$ for boundaries $(\rho_0, \rho_L) = \left\lbrace (0.3, 0.1), (0.6, 0.4), (0.9, 0.7) \right\rbrace$.
@@ -600,7 +603,7 @@ The only way to achieve this is by setting $\mu=0$, leaving us with
  \omega(\phi) = \frac{a^2}{v\tau_0} \left[ \frac{1}{2}\zeta \phi(8-3\phi) - \log{\phi} - \frac{5}{2}\zeta \right] + \omega_0.
 \end{equation}
 As we can vary $\omega_0$ to shift solutions around in $\omega$ essentially arbitrarily, we can choose where $\phi$ takes a desired value. For convenience, let's make $\phi$ take the value $1$ at $\omega=0$, which is easily
-achievable by setting $\omega_0 = 0$. At this point, we are faced with the prospect of trying to invert Eq.~\eqref{eq:travWavSoln}. This would be annoying, although one could be assisted by numerics to lighten the load.
+achievable by setting $\omega_0 = 0$. At this point, we are faced with the prospect of trying to invert Eq. \eqref{eq:travWavSoln}. This would be annoying, although one could be assisted by numerics to lighten the load.
 However, we can gather plenty of information simply by taking some limits. As $\omega \rightarrow \infty$, $\phi \rightarrow 0$ by design, and so $\phi(\omega) = \mathcal{O}(e^{-\frac{v\omega\tau_0}{a^2}})$; having an
 exponential tail at the leading edge of the wave, with a thickness proportional to the default diffusion coefficient divided by the wave speed, makes perfect sense. Meanwhile, by considering small variations in $\phi$ around $1$,
 we may derive that $\phi \sim 1-\frac{v \tau_0}{a^2 \lambda} \omega$ as $\omega \rightarrow 0$. One could see this as being a front, behind which the system is filled by a shock wave moving with velocity $v$. Notice how both
@@ -622,7 +625,7 @@ which isn't particularly amenable to solution, so after some solution attempts w
 
 
 \subsection{Implications of Continuum MFT Breakdown}
-We have already mentioned that the MFT can predict negative diffusion coefficients for $\lambda<\frac{1}{4}$, $\rho \in (\rho_-, \rho_+)$ as defined in Eq.~\eqref{eq:rhoPmDefn}. However, we should investigate this in a little
+We have already mentioned that the MFT can predict negative diffusion coefficients for $\lambda<\frac{1}{4}$, $\rho \in (\rho_-, \rho_+)$ as defined in Eq. \eqref{eq:rhoPmDefn}. However, we should investigate this in a little
 more detail, as it has testable implications for the SPM.
 
 Treating the MFT at face value, our stability analysis in~\ref{sec:negDiffCoeff} suggests that in the event that we have a region with $\rho \in (\rho_-, \rho_+)$ there should be a tendency for the medium to separate into parts which
@@ -640,7 +643,7 @@ which is unfortunate as this is a quantity which it is easy for us to measure us
 \section{The SPM in Higher Dimensions} \label{sec:highDimSPM}
 
 We initially designed the SPM for use in one dimension, as it was originally intended to represent interacting particles moving along a periodic potential with deep, narrow wells. However, it is only natural to wonder whether a similar
-model could be constructed in higher dimensions. Recall from Sec.~\ref{sec:spmProperties}
+model could be constructed in higher dimensions. Recall from Sec. \ref{sec:spmProperties}
 that the SPM in one dimension has three properties:
 \begin{itemize}
  \item Spatial homogeneity, which is pretty standard, and we will not mention from now on,
@@ -651,7 +654,7 @@ In addition we also proved that (boundary conditions aside) the SPM also obeys d
 models which are local and symmetric is very small.
 Let us consider only square lattices in $n$ dimensions, for simplicity. If we attempt to build a model in two dimensions which is symmetric and local, (i.e. obeys all the point group symmetries of the underlying lattice, and whose transitions
 are only influenced by the immediate environment around a particle), we find that we now have more freedom in the model construction than we did in one dimension. For example, in two dimensions a moving particle might be leaving
-any one of six possible unique local configurations, as shown in Fig.~\ref{fig:2dTransitions}, and so such a model would need to be parametrised by 5 rates, once we take time rescaling
+any one of six possible unique local configurations, as shown in Fig. \ref{fig:2dTransitions}, and so such a model would need to be parametrised by 5 rates, once we take time rescaling
 into account. The number of possible
 symmetric local hopping models only grows greater in higher dimensions, and this makes it very difficult to analyse the parameter space of such models using numerics. Therefore, we have chosen to investigate most closely those models
 which in addition obey detailed balance; as it turns out, there is only one such model, regardless of the number of dimensions.
@@ -665,7 +668,7 @@ which in addition obey detailed balance; as it turns out, there is only one such
 
 
 \subsection{Symmetry + Locality + Detailed Balance = Unique 1-Parameter SPM} \label{sec:uniqueProof}
-When investigating higher-dimensional analogues of the SPM, we initially considered a generic model as shown in Fig.~\ref{fig:2dTransitions}; however, as the parameter space is so large, we decided to attempt to impose the detailed
+When investigating higher-dimensional analogues of the SPM, we initially considered a generic model as shown in Fig. \ref{fig:2dTransitions}; however, as the parameter space is so large, we decided to attempt to impose the detailed
 balance condition and see how much freedom that gave the model. In the end, after some exceedingly tedious casework, we found that in order to obey detailed balance particles needed to move with transition rates
 specified by the following theorem, which applies in arbitrary numbers of dimensions:
 \begin{theorem}
@@ -687,7 +690,7 @@ where $m$ is the number of particles directly adjacent to the particle which is 
 \end{theorem}
 
 \begin{proof}
-We have already shown (Sec.~\ref{sec:spmProperties}) that the theorem applies in 1-dimension,
+We have already shown (Sec. \ref{sec:spmProperties}) that the theorem applies in 1-dimension,
 as there the space of possible models is so constrained that there is only one symmetric local model, which is the SPM. This model, as we showed, obeys detailed balance anyway, so we're done for $n=1$.
 
 \begin{figure}[h!]
@@ -703,7 +706,7 @@ as there the space of possible models is so constrained that there is only one s
 \end{figure}
 
 We will proceed with the proof via induction. Let us assume that the result is true in $(n-1)$ dimensions. Firstly, we need to show that the actual configuration
-of the particles in contact with a particle does not affect its rate of motion into an adjacent free space. Fig.~\ref{fig:configInvar} shows just such a situation: there are $m$ particles clustered around the central particle in an $(n-1)$-dimensional hyperplane, but in two different local configurations, I and II. Because the model in $(n-1)$-d obeys detailed balance, we can consider a reversible chain of moves from one configuration to the other.
+of the particles in contact with a particle does not affect its rate of motion into an adjacent free space. Fig. \ref{fig:configInvar} shows just such a situation: there are $m$ particles clustered around the central particle in an $(n-1)$-dimensional hyperplane, but in two different local configurations, I and II. Because the model in $(n-1)$-d obeys detailed balance, we can consider a reversible chain of moves from one configuration to the other.
 We do this by moving each particle adjacent to the central particle outwards, with rate $\lambda$. Once they are all separated from the central
 particle, we can them move them around at leisure, with each move having rate $1$ so long as we keep them separate; luckily, there is plenty of room to do this, as we can simply move the particles further away using only rate $1$ moves. We can then rebuild the particles from, say, configuration I into
 their exact state in configuration II. Furthermore, we can do exactly the same thing going from configuration II to configuration I, again using only
@@ -717,7 +720,7 @@ I, the only way detailed balance can be obeyed is if $\lambda_1 = \lambda_2$. Th
 cannot depend upon the configuration of its adjacent particles in a given $(n-1)$-dimensional hyperplane, only their number.
 
 Now we need to consider two cases, as the slot directly behind the central particle's proposed direction of motion can be either
-empty or full. Firstly, the empty case is considered in Fig.~\ref{fig:emptyMotion}. This time, we are highlighting the fact that if we move the central particle out of a hyperplane configuration of $m$ particles, which occurs with rate $u_m$, this results in a gas of free particles;
+empty or full. Firstly, the empty case is considered in Fig. \ref{fig:emptyMotion}. This time, we are highlighting the fact that if we move the central particle out of a hyperplane configuration of $m$ particles, which occurs with rate $u_m$, this results in a gas of free particles;
  equivalently we could've produced a gas by moving the adjacent particles one by one as before, which requires $m$ steps with each with rate $\lambda$. As the two gases are equivalent, in detailed balance terms, they must have the same realisation probability. If the
  probability of our being in the initial configuration (top left) was $p$, then by detailed balance the probability of our being in
  a free particle state is simultaneously both $p u_m$ and $p \lambda^m$, and so
@@ -727,15 +730,15 @@ empty or full. Firstly, the empty case is considered in Fig.~\ref{fig:emptyMotio
  \end{equation}
  
  \begin{figure}[h!]
- \caption[Figure demonstrating that particle motion out of a hyperplane with $m$ adjacent particles away from an empty space moves with rate $\lambda^m$.]{\label{fig:emptyMotion} 
- Here we have used the same diagram rules as in Fig.~\ref{fig:configInvar}. 
+ \caption[Figure demonstrating that particle motion out of a hyperplane with $m$ adjacent particles away from an empty space occurs with rate $\lambda^m$.]{\label{fig:emptyMotion} 
+ Here we have used the same diagram rules as in Fig. \ref{fig:configInvar}. 
  }
   \begin{center}
  \includegraphics[width=0.66\linewidth]{analytics/images/ndDBuCycle}
   \end{center}
 \end{figure}
 
-In Fig.~\ref{fig:fullMotion}, we show exactly the same thing, only this time there is a particle behind the central particle, and so an
+In Fig. \ref{fig:fullMotion}, we show exactly the same thing, only this time there is a particle behind the central particle, and so an
 additional move must be made in order to create a gas of free particles. This means that the equivalence is now between $p u_m$ and
 $p \lambda^{m+1}$, and so
  \begin{equation}
@@ -744,8 +747,8 @@ $p \lambda^{m+1}$, and so
  With the constraints that detailed balance imposes upon $u_m$ and $w_m$, we find that the original proposition for dimension $n$ is true so long as it is for dimension $(n-1)$ for $n>1$, and as we know it is true for $n=1$, the theorem is proved.
 
  \begin{figure}[h!]
- \caption[Figure demonstrating that particle motion out of a hyperplane with $m$ adjacent particles away from an empty space moves with rate $\lambda^m$.]{\label{fig:fullMotion} 
- As Fig.~\ref{fig:emptyMotion}, but now with a particle behind the central one. 
+ \caption[Figure demonstrating that particle motion out of a hyperplane with $m$ adjacent particles away from an empty space occurs with rate $\lambda^m$.]{\label{fig:fullMotion} 
+ As Fig. \ref{fig:emptyMotion}, but now with a particle behind the central one. 
  }
   \begin{center}
  \includegraphics[width=0.66\linewidth]{analytics/images/ndDBwCycle}
@@ -766,7 +769,7 @@ is therefore a good first target for study. As such, we will perform a mean-fiel
 of the $n$-dimensional SPM, to give us analytical results to compare to later Monte-Carlo numerics.
 
 \subsection{MFT of the $n$-Dimensional SPM} \label{sec:nDMftDeriv}
-In the same manner as in Sec.~\ref{sec:latticeMFT}, we will let $\rho_\chi (t)$ be the mean occupation of the $\chi^\mathrm{th}$ site
+In the same manner as in Sec. \ref{sec:latticeMFT}, we will let $\rho_\chi (t)$ be the mean occupation of the $\chi^\mathrm{th}$ site
 at time $t$, where $\chi \in \mathbb{Z}^n$. Let the unit vector in the $i^\mathrm{th}$
 direction be $e_i \in \mathbb{Z}^n$, so that $\rho_{\chi+e_i}$ refers to a lattice site adjacent to the $\chi^\mathrm{th}$ and offset in the $i^\mathrm{th}$ direction. Then,
 making the normal MFT assumption (that means of products are products of means),
@@ -785,9 +788,9 @@ Again, we will move to a continuum formulation. To do this, we are best off cons
 between the site at $\chi$ and the site at $\chi+e_i$, and then Taylor expanding $\rho(\mathbf{x}, t)$ as a continuous
 variable. Doing this analytically in arbitrary dimensions is extremely tedious, and more importantly error-prone; thus, computer assistance is useful. Discussion of a code which calculates this MFT current for given 
 $n$
-to $\mathcal{O}(a^3)$ may be found in Sec.~\ref{sec:mftCode}.
+to $\mathcal{O}(a^3)$ may be found in Sec. \ref{sec:mftCode}.
 
-Computing this current for a few low values of $n$, a pattern emerges, as one can see in Tab.~\ref{tab:currents}.
+Computing this current for a few low values of $n$, a pattern emerges, as one can see in Tab. \ref{tab:currents}.
 \begin{table}  \caption[The dependence of MFT current upon dimension in the SPM.]{The MFT current in the SPM, as a function of the density gradient, for the first $4$ dimensions.} \label{tab:currents}
 \begin{center}
 \begin{tabular}{c | r} 
@@ -832,7 +835,7 @@ homogeneous solution there.
 
 \subsubsection{Limiting and Symmetry Properties of the $n$-Dimensional MFT}
 Now that we have derived the diffusion coefficient $D$ in the $n$-dimensional MFT, we can investigate
-some special cases, in a similar manner to the $1$d situation.
+some special cases, in a similar manner to the $1$D situation.
 
 As $\rho \rightarrow 0$, $D\rightarrow 1$, which makes sense as in extremely low-density situations
 the particles do not interact. As $\rho \rightarrow 1$,
@@ -854,7 +857,7 @@ dimensions. Of course, the number of sites adjacent to a particle attempting to 
 is $2n-1$, so in the large $\lambda$ limit $\mathcal{O}(\lambda^{2n-1})$ is the biggest speedup
 we could reasonably expect to see, and the MFT reflects that.
 
-Unlike the $1$d situation, there is no longer a symmetry in the density dependence of the
+Unlike the $1$D situation, there is no longer a symmetry in the density dependence of the
 diffusion coefficient. This is because the $\left( 1 - \zeta \rho \right)^{2(n-1)}$ bracket is
 symmetric about $\rho=\zeta^{-1}$, whereas the $\left[ 1 - \zeta \rho\left( (2n+2) - (2n+1)\rho \right) \right] $ bracket's symmetry is about $\rho=\frac{n+1}{2n+1}$; thus, in general they would not share
 a point of symmetry, and so their product would not be symmetric.
@@ -870,13 +873,13 @@ for allowed $\rho$ when $\zeta>1 \implies \lambda<0$, which is aphysical. The se
  \rho_c = \frac{4}{2 \zeta n^2+(3-\lambda) n+\lambda + \sqrt{\left(2 \zeta n^2+(3-\lambda) n+\lambda\right)^2-8 \zeta n (2 n+1)}}.
 \end{equation}
 The extremum is a minimum for $\lambda<1$ and a maximum for $\lambda>1$. The variation of $\rho_c$
-with $\lambda$ is shown in Fig.~\ref{fig:criticalRho}. In terms of interpretation, this extremum determines where maximal flow occurs for $\lambda>1$. As $\lambda \rightarrow \infty$, 
+with $\lambda$ is shown in Fig. \ref{fig:criticalRho}. In terms of interpretation, this extremum determines where maximal flow occurs for $\lambda>1$. As $\lambda \rightarrow \infty$, 
 $\rho_c \rightarrow \frac{4n^2+2n-2}{2n(1+2n)}$, which approaches $1$ as the number of dimensions
 becomes very large. 
  \begin{figure}[h!]
  \caption[The variation of the density of maximal/minimal flow with $\lambda$.]{\label{fig:criticalRho} 
  The variation of $\rho_c$, for which flow is extremal, as a function of $\lambda$, for $n=\{1, 2, 3\}$. Notice that it starts low and ends high in the $2$ and $3$-dimensional cases, but is constant in
- the $1$d case.
+ the $1$D case.
  }
   \begin{center}
  \includegraphics[width=0.66\linewidth]{analytics/images/nDCriticalRho}
@@ -885,7 +888,7 @@ becomes very large.
 
 In all numbers of dimensions, the SPM MFT can produce negative flows. To find out which conditions
 are required for this, we must solve $D(\rho) = 0$ for $\rho \in (0, 1)$. Luckily we already
-have $D$ in a factorised form in Eq.~\eqref{eq:nDmftDiffCoeff}. Assuming $\zeta<1$, the first bracket
+have $D$ in a factorised form in Eq. \eqref{eq:nDmftDiffCoeff}. Assuming $\zeta<1$, the first bracket
 cannot have a solution on $(0, 1)$, therefore we seek the zeros of the second bracket. The discriminant
 of the quadratic in the second bracket is
 \begin{equation}
@@ -893,12 +896,12 @@ of the quadratic in the second bracket is
 \end{equation}
 thus the crossover between the existence and nonexistence of real solutions to $D(\rho)=0$ occurs
 when $\zeta = \frac{2n+1}{(n+1)^2}$. Using our result for the dependence of $\rho_c$ upon $\lambda$
-(Eq.~\eqref{eq:critRho}), we see that as we reduce $\lambda$ from $1$, backwards diffusion first occurs for
+(Eq. \eqref{eq:critRho}), we see that as we reduce $\lambda$ from $1$, backwards diffusion first occurs for
 \begin{equation}
  \rho_c = \frac{4(n+1)}{(n+1)(6 n - 3) + 3 + (2 n+1)\sqrt{n (9 n-8)}}
 \end{equation}
-As we have seen, this ``gap'' of negative diffusion begins at $\rho_c = \frac{2}{3}$ in $1$d, and 
-then at $\rho_c\sim 0.22$ in $2$d and $\rho_c\sim 0.13$ in $3$d.
+As we have seen, this ``gap'' of negative diffusion begins at $\rho_c = \frac{2}{3}$ in $1$D, and 
+then at $\rho_c\sim 0.22$ in $2$D and $\rho_c\sim 0.13$ in $3$D.
 
 
 \subsubsection{The SPM MFT in $2$-Dimensions}
@@ -914,10 +917,10 @@ Specifically, in the $2$-dimensional case, $J_0$ is given by
 Note that Fick's Law (that the current should be proportional to the difference between the concentrations at
 the boundaries) does not hold.
 The dependence of flow upon the boundary conditions for some given $\lambda$ is shown in
-Figure.~\ref{fig:2dFlows}, and the dependence of flow upon $\lambda$ for some fixed boundaries is shown in Fig.~\ref{fig:2dLambdaScans}. We can use these in comparison with our Monte-Carlo data in
+Fig. \ref{fig:2dFlows}, and the dependence of flow upon $\lambda$ for some fixed boundaries is shown in Fig. \ref{fig:2dLambdaScans}. We can use these in comparison with our Monte-Carlo data in
 $2$-dimensions.
 \begin{figure}
-\caption[$2$d SPM MFT current flow due to boundaries, for a selection of $\lambda$.]{Plots of the flow in the MFT of the 2-dimensional SPM, where we are varying the boundary densities. The values of $\lambda$ used are $\{0.2, 0.4, 0.75, 2 \}$, going clockwise from top left.} \label{fig:2dFlows}
+\caption[$2$D SPM MFT current flow due to boundaries, for a selection of $\lambda$.]{Plots of the flow in the MFT of the 2-dimensional SPM, where we are varying the boundary densities. The values of $\lambda$ used are $\{0.2, 0.4, 0.75, 2 \}$, going clockwise from top left.} \label{fig:2dFlows}
 \begin{center}
  \begin{tabular}{c  c}
     \includegraphics[width=0.5\linewidth]{analytics/images/mftCurrent2d/mftCurrent2dlp2}  & \includegraphics[width=0.5\linewidth]{analytics/images/mftCurrent2d/mftCurrent2dlp4} \\
@@ -928,7 +931,7 @@ $2$-dimensions.
 \end{figure}
 
 \begin{figure}
-\caption[$2$d SPM MFT current flow as a function of $\lambda$, with fixed boundaries.]{Plots of the current variation with respect to $\lambda$ in the MFT of the 2-dimensional SPM. Boundary conditions are labelled in the legend in the form $(\rho_0, \rho_L)$.} \label{fig:2dLambdaScans}
+\caption[$2$D SPM MFT current flow as a function of $\lambda$, with fixed boundaries.]{Plots of the current variation with respect to $\lambda$ in the MFT of the 2-dimensional SPM. Boundary conditions are labelled in the legend in the form $(\rho_0, \rho_L)$.} \label{fig:2dLambdaScans}
 \begin{center}
  \begin{tabular}{c}
     \includegraphics[width=1.0\linewidth]{analytics/images/mftCurrent2d/current2d3BoundLin}  \\ \includegraphics[width=1.0\linewidth]{analytics/images/mftCurrent2d/current2d3BoundLog} \\
@@ -942,7 +945,7 @@ $2$-dimensions.
 In this Chapter we have derived a whole host of results about the continuum limit Mean-Field Theory
 of the Sticky Particle Model defined in arbitrary dimensions. The key things to take away from it are:
 \begin{itemize}
- \item Thm.~\ref{thm:ndSPM} shows us that the $n$-dimensional SPM (as defined within it) is the only
+ \item Thm. \ref{thm:ndSPM} shows us that the $n$-dimensional SPM (as defined within it) is the only
  model defined on an $n$-dimensional square lattice which is symmetric, local and obeys
  detailed balance.
  \item The MFT of this model \textbf{always} predicts a transition in which the diffusion coefficient
